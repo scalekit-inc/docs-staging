@@ -1623,10 +1623,11 @@
   ],
   "tags": [
     {
-      "description": "Organization",
+      "description": "Organization represents a customer or a tenant of your product. This is the top level entity and all the resources are mapped to this Organization object. Each organization will be uniquely identified by `organization_id`. You can use this service to create and manage Enterprise SSO Connections for an organization.",
       "name": "Organization"
     },
     {
+      "description": "Connection represents a unique Single Sign-on instance for an Organization. This resource has all the configuration and settings that are needed to establish an SSO and exchange user information securely between Scalekit and your customer's Identity Provider. Depending on the connection_type parameter, the corresponding configuration details can be retrieved by using `oidc_config` or `saml_config` parameter.",
       "name": "ConnectionService"
     }
   ],
