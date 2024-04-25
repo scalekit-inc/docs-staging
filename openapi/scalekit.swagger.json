@@ -1623,7 +1623,7 @@
   ],
   "tags": [
     {
-      "description": "Organization represents a customer or a tenant of your product. This is the top level entity and all the resources are mapped to this Organization object. Each organization will be uniquely identified by `organization_id`. You can use this service to create and manage Enterprise SSO Connections for an organization.\n\n<div class=\"parameters\"><div class=\"parameters-title\">Attributes</div><ul class=\"parameter-list\"><li class=\"parameter-item\"><div class=\"parameter-item-container\"><div class=\"property property--level-0 property--compact\" noncollapsible=\"false\"><div class=\"property-heading\"><div class=\"property-name\">id</div></div><div class=\"property-description\"><div class=\"markdown\"><p>Unique ID of an Organization</p></div></div></div></div></li><li class=\"parameter-item\"><div class=\"parameter-item-container\"><div class=\"property property--level-0 property--compact\" noncollapsible=\"false\"><div class=\"property-heading\"><div class=\"property-name\">name</div></div><div class=\"property-description\"><div class=\"markdown\"><p>Organization Name</p></div></div></div></div></li></ul></div>\n",
+      "description": "Organization represents a customer or a tenant of your product. This is the top level entity and all the resources are mapped to this Organization object. Each organization will be uniquely identified by `organization_id`. You can use this service to create and manage Enterprise SSO Connections for an organization.\n\n**Attributes**\n\n| Attribute Name | Attribute Description |\n|---|---|\n| id<br>(string) | Unique ID of an Organization |",
       "name": "Organization"
     },
     {
