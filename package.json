@@ -15,22 +15,28 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@ark-ui/react": "^2.2.3",
     "@docsearch/js": "^3.6.0",
     "@docusaurus/core": "3.2.1",
     "@docusaurus/preset-classic": "3.2.1",
     "@mdx-js/react": "^3.0.0",
     "@scalar/docusaurus": "^0.2.9",
-    "clsx": "^2.0.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.376.0",
     "plugin-image-zoom": "github:flexanalytics/plugin-image-zoom",
     "prism-react-renderer": "^2.3.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "redocusaurus": "^2.0.2"
+    "redocusaurus": "^2.0.2",
+    "tailwind-merge": "^2.3.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.2.1",
     "@docusaurus/tsconfig": "3.2.1",
     "@docusaurus/types": "3.2.1",
+    "tailwindcss": "^3.4.3",
     "typescript": "~5.2.2"
   },
   "browserslist": {

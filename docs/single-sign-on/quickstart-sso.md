@@ -73,7 +73,7 @@ After a successful user authentication, Scalekit provides a temporary code value
 
 To make Scalekit integration easier, you can install our SDK by running the below command in your terminal. 
 
-<Tabs groupId="tech-stack">
+<Tabs groupId="tech-stack" queryString>
 <TabItem value="nodejs" label="NodeJS">
 
 
@@ -102,7 +102,7 @@ import "scalekit-inc/go-sdk"
 To use the Scalekit SDK in your application code, you can create the client using the following code and use the client to invoke appropriate API calls.
 
 
-<Tabs groupId="tech-stack">
+<Tabs groupId="tech-stack" queryString>
 <TabItem value="nodejs" label="NodeJS">
 
 ```javascript
@@ -139,7 +139,7 @@ As part of the Authorization URL, you would need to send one of the below requir
 - `domain`:  If you have configured that your application will enforce Single Sign-on for all users from a single email domain, this attribute is used to detect the appropriate SSO connection. Example: `google.com` or `yourcustomerdomain.com`
 
 
-<Tabs groupId="tech-stack">
+<Tabs groupId="tech-stack" queryString>
 <TabItem value="nodejs" label="NodeJS">
 
 ```javascript showLineNumbers
@@ -173,7 +173,7 @@ const authorizationURL = scalekit.getAuthorizationUrl(redirectUri, {
 
 After the user has successfully authenticated with their Identity Provider, Scalekit sends a unique authorization `code` to the redirect_uri that is sent as part of the authorization URL above. You will need to send this `code` and your `client_secret` to get the authenticated user's profile information.
 
-<Tabs groupId="tech-stack">
+<Tabs groupId="tech-stack" queryString>
 <TabItem value="nodejs" label="NodeJS">
 
 ```javascript showLineNumbers

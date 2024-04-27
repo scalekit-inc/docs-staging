@@ -28,6 +28,7 @@
   --ifm-color-primary-lighter: rgb(102, 212, 189);
   --ifm-color-primary-lightest: rgb(146, 224, 208);
   --ifm-code-font-size: 95%;
+  --ifm-heading-font-weight: 600;
   --ifm-menu-color: #202020;
   --ifm-menu-color-active: #202020;
   --ifm-font-family-base: "Inter", sans-serif;
@@ -168,6 +169,13 @@ nav.pagination-nav {
 
 .menu__caret {
   size: small;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: var(--ifm-heading-font-weight)
 }
 
 p {
