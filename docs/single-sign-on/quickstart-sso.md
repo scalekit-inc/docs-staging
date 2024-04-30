@@ -100,12 +100,17 @@ const scalekit = new Scalekit(
   SCALEKIT_CLIENT_SECRET
 );
 
+const authorizationURL = scalekit.getAuthorizationUrl(redirectUri)
+
+// Authorization URL with optional login hint parameter
 const authorizationURL = scalekit.getAuthorizationUrl(redirectUri, {
-        loginHint: "user@example.com",
-        //connectionId: "conn_1223231234124",
-        //domain: "example.com",
-        organizationId: "org_123235245"
-      })
+  loginHint: "user@example.com",
+})
+
+// Authorization URL with optional organization ID parameter
+const authorizationURL = scalekit.getAuthorizationUrl(redirectUri, {
+  connectionId: connectionId,
+})
 
 // next step is to redirect the user to this authorizationURL
 ```
@@ -139,21 +144,23 @@ After Scalekit completes SSO authentication, it sends a unique authorization cod
 <TabItem value="nodejs" label="Node.js">
 
 ```javascript showLineNumbers
-const {code} = req.query;
+const {code, error, error_description} = req.query;
 
 // handle errors, if any
 
+// authenticate with the code
 const res = await sc.authenticateWithCode({
-        code: code,
-        redirectUri: redirectUri
-      });
+  code: code,
+  redirectUri: redirectUri
+});
 
 // res.user has the authenticated user's details 
-// const user_email = res.user.email;
+const userEmail = res.user.email;
 
 
-// next step is to create a session for this user and 
-// redirect the user to your application.
+/** next step is to create a session for this user and 
+redirect the user to your application.
+**/
 ```
 
 </TabItem>

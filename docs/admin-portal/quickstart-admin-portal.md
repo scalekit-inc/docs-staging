@@ -29,8 +29,7 @@ Utilize our API to generate an Admin Portal link that is uniquely keyed to an or
 <TabItem value="nodejs" label="Node.js">
 
 ```javascript showLineNumbers
-const links = await sc.organization.generateCustomerPortalLink('org_1233222' as string);
-// links[0] is the Admin Portal link
+const link = await sc.organization.generateCustomerPortalLink(organizationId);
 ```
 
  </TabItem>
