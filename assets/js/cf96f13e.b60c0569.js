@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkscalekit_docs=self.webpackChunkscalekit_docs||[]).push([[6],{2141:e=>{e.exports=JSON.parse('{"title":"Integration Guides","slug":"/integrations","permalink":"/integrations","navigation":{"next":{"title":"SAML","permalink":"/integrations/saml"}}}')}}]);
