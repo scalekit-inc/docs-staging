@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.3.2">
 <title data-rh="true">Auth0 | Scalekit | Developer Documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://docs.scalekit.com/integrations/auth0"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Auth0 | Scalekit | Developer Documentation"><meta data-rh="true" name="description" content="Learn how to integrate Scalekit with Auth0 via OpenID Connect (OIDC)"><meta data-rh="true" property="og:description" content="Learn how to integrate Scalekit with Auth0 via OpenID Connect (OIDC)"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://docs.scalekit.com/integrations/auth0"><link data-rh="true" rel="alternate" href="https://docs.scalekit.com/integrations/auth0" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.scalekit.com/integrations/auth0" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://7554BDRAJD-dsn.algolia.net" crossorigin="anonymous"><link rel="stylesheet" href="/assets/css/styles.596a52d1.css">
-<script src="/assets/js/runtime~main.670a3bac.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.2720f3bb.js" defer="defer"></script>
 <script src="/assets/js/main.20abf0ac.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -36,13 +36,13 @@
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="2a-copy-callback-url-from-auth0">2a. Copy Callback URL from Auth0<a href="#2a-copy-callback-url-from-auth0" class="hash-link" aria-label="Direct link to 2a. Copy Callback URL from Auth0" title="Direct link to 2a. Copy Callback URL from Auth0">​</a></h4>
 <p>In your Auth0 dashboard, go to Authentication &gt; Enterprise &gt; OpenID Connect &gt; Scalekit &gt; Settings.
 Copy the &quot;Callback URL&quot; that&#x27;s available in the General section of settings.</p>
-<figure><img decoding="async" loading="lazy" alt="Copy Redirect URI from your Auth0 Dashboard" src="/assets/images/SCR-20240507-omfj-4f97f61fb42a0e85f6c53fbd48ce2449.png" width="3158" height="2252" class="img_ev3q">
-<figcaption>Copy Redirect URI from your Auth0 Dashboard</figcaption></figure>
+<figure><img decoding="async" loading="lazy" alt="Copy Callback URL from Auth0 Dashboard" src="/assets/images/SCR-20240507-omfj-4f97f61fb42a0e85f6c53fbd48ce2449.png" width="3158" height="2252" class="img_ev3q">
+<figcaption>Copy Callback URL from your Auth0 Dashboard</figcaption></figure>
 <br>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="2b-set-redirect-uri-in-scalekit-api-config">2b. Set Redirect URI in Scalekit API Config<a href="#2b-set-redirect-uri-in-scalekit-api-config" class="hash-link" aria-label="Direct link to 2b. Set Redirect URI in Scalekit API Config" title="Direct link to 2b. Set Redirect URI in Scalekit API Config">​</a></h4>
 <p>Go to your Scalekit dashboard. Select environment as Development or Production. Navigate to the &quot;API Config&quot; in the Settings (left nav). In the Redirect URIs section, select <strong>Add new URI</strong>. Paste the Callback URL that you copied from Auth0 dashboard. Click on Add button.</p>
-<figure><img decoding="async" loading="lazy" alt="Add Redirect URI in your Scalekit Dashboard" src="/assets/images/SCR-20240509-mcic-0ad080db0bffab065ba1af81cd2d9533.png" width="2728" height="1530" class="img_ev3q">
-<figcaption>Add Redirect URI in your Scalekit Dashboard</figcaption></figure>
+<figure><img decoding="async" loading="lazy" alt="Add new Redirect URI in Scalekit Dashboard" src="/assets/images/SCR-20240509-mcic-0ad080db0bffab065ba1af81cd2d9533.png" width="2728" height="1530" class="img_ev3q">
+<figcaption>Add new Redirect URI in Scalekit Dashboard</figcaption></figure>
 <br>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="3-enable-home-realm-discovery">3. Enable Home Realm Discovery<a href="#3-enable-home-realm-discovery" class="hash-link" aria-label="Direct link to 3. Enable Home Realm Discovery" title="Direct link to 3. Enable Home Realm Discovery">​</a></h3>
 <p>After you have successfully configured Scalekit as an OIDC connection in your Auth0 tenant, it&#x27;s time to enable home realm discovery for your enterprise customers. This configuration will help Auth0 determine which users to be routed to login via Single Sign-on.</p>
@@ -54,18 +54,18 @@ Navigate to &quot;Home Realm Discovery&quot; in the Login Experience Customizati
 <li>If there is no match, users will be prompted to login via other authentication methods like password or passwordless login based on your Auth0 configuration.</li>
 </ul>
 <p>For example, if you would like users from three Organizations (FooCorp, BarCorp, AcmeCorp) to access your application using their respective identity providers, you need to add them as a comma separated list foocorp.com, barcorp.com, acmecorp.com. Screenshot below for reference</p>
-<figure><img decoding="async" loading="lazy" alt="Add domains for Home Realm Discovery" src="/assets/images/SCR-20240509-mgoe-86843be27e41ded6a5708b3388f1d811.png" width="2796" height="1670" class="img_ev3q">
-<figcaption>Add domains for Home Realm Discovery</figcaption></figure>
+<figure><img decoding="async" loading="lazy" alt="Add domains for Home Realm Discovery in Auth0" src="/assets/images/SCR-20240509-mgoe-86843be27e41ded6a5708b3388f1d811.png" width="2796" height="1670" class="img_ev3q">
+<figcaption>Add domains for Home Realm Discovery in Auth0</figcaption></figure>
 <br>
 <p><strong>Press Save</strong> to save Home Realm Discovery settings.</p>
-<p>That&#x27;s it! You have successfully integrated Scalekit with Auth0. Proceed to learn how to onboard a new enterprise customer to login via Single Sign-on.</p>
+<p>You have now successfully integrated Scalekit with Auth0. Proceed to learn how to onboard a new enterprise customer to login via Single Sign-on using Scalekit.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="4-onboarding-single-sign-on-customers-in-scalekit">4. Onboarding Single Sign-on customers in Scalekit<a href="#4-onboarding-single-sign-on-customers-in-scalekit" class="hash-link" aria-label="Direct link to 4. Onboarding Single Sign-on customers in Scalekit" title="Direct link to 4. Onboarding Single Sign-on customers in Scalekit">​</a></h3>
-<p>While onboarding every new enterprise customer,</p>
-<ul>
-<li>create an organization in Scalekit</li>
-<li>Generate Admin Portal link to help your customers configure their Single Sign-on settings.</li>
-<li>Configure Home Real Discovery settings in the Scalekit dashboard.</li>
-</ul>
-<p>You can read more about managing organizations <a href="/manage-scalekit/organization">here</a></p></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/integrations/firebase"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Firebase</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#introduction" class="table-of-contents__link toc-highlight">Introduction</a></li><li><a href="#before-getting-started" class="table-of-contents__link toc-highlight">Before getting started</a></li><li><a href="#integrate-scalekit-with-auth0" class="table-of-contents__link toc-highlight">Integrate Scalekit with Auth0</a><ul><li><a href="#1-add-scalekit-as-oidc-connection" class="table-of-contents__link toc-highlight">1. Add Scalekit as OIDC connection</a></li><li><a href="#2-add-redirect-uri-in-scalekit" class="table-of-contents__link toc-highlight">2. Add Redirect URI in Scalekit</a></li><li><a href="#3-enable-home-realm-discovery" class="table-of-contents__link toc-highlight">3. Enable Home Realm Discovery</a></li><li><a href="#4-onboarding-single-sign-on-customers-in-scalekit" class="table-of-contents__link toc-highlight">4. Onboarding Single Sign-on customers in Scalekit</a></li></ul></li></ul></div></div></div></div></main></div></div></div></div>
+<p>To onboard new enterprise customers using Single Sign-on login, you need to:</p>
+<ol>
+<li>Create an Organization in Scalekit</li>
+<li>Generate Admin Portal link to allow your customers configure SSO settings</li>
+<li>Configure Home Real Discovery settings in the Scalekit dashboard</li>
+</ol>
+<p>You can read more about managing Organizations <a href="/manage-scalekit/organization">here</a></p></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/integrations/firebase"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Firebase</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#introduction" class="table-of-contents__link toc-highlight">Introduction</a></li><li><a href="#before-getting-started" class="table-of-contents__link toc-highlight">Before getting started</a></li><li><a href="#integrate-scalekit-with-auth0" class="table-of-contents__link toc-highlight">Integrate Scalekit with Auth0</a><ul><li><a href="#1-add-scalekit-as-oidc-connection" class="table-of-contents__link toc-highlight">1. Add Scalekit as OIDC connection</a></li><li><a href="#2-add-redirect-uri-in-scalekit" class="table-of-contents__link toc-highlight">2. Add Redirect URI in Scalekit</a></li><li><a href="#3-enable-home-realm-discovery" class="table-of-contents__link toc-highlight">3. Enable Home Realm Discovery</a></li><li><a href="#4-onboarding-single-sign-on-customers-in-scalekit" class="table-of-contents__link toc-highlight">4. Onboarding Single Sign-on customers in Scalekit</a></li></ul></li></ul></div></div></div></div></main></div></div></div></div>
 </body>
 </html>
