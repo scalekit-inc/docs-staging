@@ -86,6 +86,7 @@
 
 .theme-code-block{
     display: grid;
+    overflow: auto;
 }
 
 .container {
@@ -444,7 +445,7 @@ p {
     font-size: 1.25rem;
 }
 
-.cardContainer img,svg {
+.cardContainer img, .cardContainer svg {
     float: left;
     margin-right: 12px;
     width: 36px;
@@ -662,11 +663,7 @@ div.narrow-references-container>div:nth-child(2)>section>div>div>div:nth-child(2
     display: none;
 }
 
-pre {
-    overflow: visible;
-}
-
-code {
+td code {
     white-space: pre-wrap;
     overflow-wrap: anywhere;
 }
@@ -814,3 +811,5 @@ table thead tr {
     transition-duration: 300ms;
 
 }
+
+.openapi-explorer__code-block{overflow: auto;}

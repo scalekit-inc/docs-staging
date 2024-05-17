@@ -21,6 +21,8 @@
     "@mdx-js/react": "^3.0.0",
     "@scalar/docusaurus": "^0.2.9",
     "clsx": "^2.0.0",
+    "docusaurus-plugin-openapi-docs": "^3.0.0-beta.10",
+    "docusaurus-theme-openapi-docs": "^3.0.0-beta.10",
     "plugin-image-zoom": "github:flexanalytics/plugin-image-zoom",
     "prism-react-renderer": "^2.3.0",
     "react": "^18.0.0",

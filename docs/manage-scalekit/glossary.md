@@ -1,6 +1,7 @@
 
 # Glossary
-<Subtitle>Familiarize yourself with the entities and glossary of Scalekit platform</Subtitle>
+
+<Subtitle>Familiarize yourself with the entities and terminology of Scalekit platform</Subtitle>
 
 **Workspace**<br />
 Represents the account of Scalekit customer.

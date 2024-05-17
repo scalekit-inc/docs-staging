@@ -1,0 +1,772 @@
+---
+id: connection-service-get-connection
+title: "Get Connection"
+description: "Get  Connection details"
+sidebar_label: "Get Connection"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "get api-method"
+info_path: reference/scalekit-apis
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Connection"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/v1/organizations/{organization_id}/connections/{id}"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get  Connection details
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"description":"Organization ID for the Connection. Either Organization Id or Organization's External Id needs to be provided","name":"organization_id","in":"path","required":true,"schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"description":"Connection ID. Unique ID for the connection","name":"id","in":"path","required":true,"schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Query Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"description":"Organization's External ID. Either Organization Id or Organization's External Id needs to be provided","name":"external_id","in":"query","schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          Success
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                connection
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <span
+                                    className={"openapi-schema__container"}
+                                  >
+                                    <strong
+                                      className={"openapi-schema__property"}
+                                    >
+                                      attribute_mapping
+                                    </strong><span
+                                      className={"openapi-schema__name"}
+                                    >
+                                       object
+                                    </span>
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  <div
+                                    style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                                  >
+                                    
+                                    
+                                    Attribute Mapping
+                                    
+                                    
+                                  </div><SchemaItem
+                                    name={"property name*"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"type":"string"}}
+                                    collapsible={false}
+                                    discriminator={false}
+                                  >
+                                    
+                                  </SchemaItem>
+                                </div>
+                              </details>
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"configuration_type"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={"**Possible values:** [`DISCOVERY`, `MANUAL`]"}
+                              schema={{"description":"Configuration Type. ","example":"MANUAL","type":"string","enum":["DISCOVERY","MANUAL"]}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"debug_enabled"}
+                              required={false}
+                              schemaName={"boolean"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Debug mode for the connection. Debug would allow non HTTPS endpoint to be used with the connection","type":"boolean","example":true}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"enabled"}
+                              required={false}
+                              schemaName={"boolean"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Indicates whether Connection active for Org users","type":"boolean","example":false}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"id"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Connection ID","type":"string","example":"conn_2123312131125533"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <span
+                                    className={"openapi-schema__container"}
+                                  >
+                                    <strong
+                                      className={"openapi-schema__property"}
+                                    >
+                                      oidc_config
+                                    </strong><span
+                                      className={"openapi-schema__name"}
+                                    >
+                                       object
+                                    </span>
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  <div
+                                    style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                                  >
+                                    
+                                    
+                                    OIDC Configuration if ConnectionType == OIDC
+                                    
+                                    
+                                  </div><SchemaItem
+                                    collapsible={false}
+                                    name={"authorize_uri"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"Authorize URI","type":"string","example":"https://youridp.com/service/oauth/authorize"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"client_id"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"Client ID","type":"string","example":"oauth_client_id"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"client_secret"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"Client Secret","type":"string","example":"oauth_client_secret"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"discovery_endpoint"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"Discovery Endpoint","type":"string","example":"https://youridp.com/service/oauth/.well-known/openid-configuration"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"issuer"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"Issuer URL","type":"string","example":"https://youridp.com/service/oauth"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"jwks_uri"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"JWKS URI","type":"string","example":"https://youridp.com/service/oauth/jwks"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"pkce_enabled"}
+                                    required={false}
+                                    schemaName={"boolean"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"PKCE Enabled","type":"boolean","example":true}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"redirect_uri"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"Redirect URI","type":"string","example":"https://yourapp.com/service/oauth/redirect"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"scopes"}
+                                    required={false}
+                                    schemaName={"string[]"}
+                                    qualifierMessage={"**Possible values:** [`openid`, `profile`, `email`, `address`, `phone`]"}
+                                    schema={{"description":"OIDC Scopes","type":"array","items":{"type":"string","enum":["openid","profile","email","address","phone"]},"example":["openid","profile"]}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"token_auth_type"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={"**Possible values:** [`URL_PARAMS`, `BASIC_AUTH`]"}
+                                    schema={{"description":"Token Auth Type","example":"URL_PARAMS","type":"string","enum":["URL_PARAMS","BASIC_AUTH"]}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"token_uri"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"Token URI","type":"string","example":"https://youridp.com/service/oauth/token"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"user_info_uri"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"User Info URI","type":"string","example":"https://youridp.com/service/oauth/userinfo"}}
+                                  >
+                                    
+                                  </SchemaItem>
+                                </div>
+                              </details>
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"organization_id"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Organization ID","type":"string","example":"org_2123312131125533"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"provider"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={"**Possible values:** [`OKTA`, `GOOGLE`, `MICROSOFT_AD`, `AUTH0`, `ONELOGIN`, `PING_IDENTITY`, `JUMPCLOUD`, `CUSTOM`]"}
+                              schema={{"description":"SSO Connection Provider","example":"OKTA","type":"string","enum":["OKTA","GOOGLE","MICROSOFT_AD","AUTH0","ONELOGIN","PING_IDENTITY","JUMPCLOUD","CUSTOM"]}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <span
+                                    className={"openapi-schema__container"}
+                                  >
+                                    <strong
+                                      className={"openapi-schema__property"}
+                                    >
+                                      saml_config
+                                    </strong><span
+                                      className={"openapi-schema__name"}
+                                    >
+                                       object
+                                    </span>
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  <div
+                                    style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                                  >
+                                    
+                                    
+                                    SAML Configuration if ConnectionType == SAML
+                                    
+                                    
+                                  </div><SchemaItem
+                                    collapsible={false}
+                                    name={"allow_idp_initiated_login"}
+                                    required={false}
+                                    schemaName={"boolean"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"Allow IDP Initiated Login","type":"boolean","example":true}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"assertion_encrypted"}
+                                    required={false}
+                                    schemaName={"boolean"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"Assertion Encrypted","type":"boolean","example":true}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"default_redirect_uri"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"Default Redirect URI","type":"string","example":"https://yourapp.com/service/saml/redirect"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"force_authn"}
+                                    required={false}
+                                    schemaName={"boolean"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"Force Authn","type":"boolean","example":true}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={true}
+                                    className={"schemaItem"}
+                                  >
+                                    <details
+                                      style={{}}
+                                      className={"openapi-markdown__details"}
+                                    >
+                                      <summary
+                                        style={{}}
+                                      >
+                                        <span
+                                          className={"openapi-schema__container"}
+                                        >
+                                          <strong
+                                            className={"openapi-schema__property"}
+                                          >
+                                            idp_certificates
+                                          </strong><span
+                                            className={"openapi-schema__name"}
+                                          >
+                                             object[]
+                                          </span>
+                                        </span>
+                                      </summary><div
+                                        style={{"marginLeft":"1rem"}}
+                                      >
+                                        <div
+                                          style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                                        >
+                                          
+                                          
+                                          IDP Certificates
+                                          
+                                          
+                                        </div><li>
+                                          <div
+                                            style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                                          >
+                                            Array [
+                                          </div>
+                                        </li><SchemaItem
+                                          collapsible={false}
+                                          name={"certificate"}
+                                          required={false}
+                                          schemaName={"string"}
+                                          qualifierMessage={undefined}
+                                          schema={{"description":"IDP Certificate","type":"string"}}
+                                        >
+                                          
+                                        </SchemaItem><SchemaItem
+                                          collapsible={false}
+                                          name={"create_time"}
+                                          required={false}
+                                          schemaName={"date-time"}
+                                          qualifierMessage={undefined}
+                                          schema={{"description":"Certificate Creation Time","type":"string","format":"date-time","example":"2021-09-01T00:00:00Z"}}
+                                        >
+                                          
+                                        </SchemaItem><SchemaItem
+                                          collapsible={false}
+                                          name={"expiry_time"}
+                                          required={false}
+                                          schemaName={"date-time"}
+                                          qualifierMessage={undefined}
+                                          schema={{"description":"Certificate Expiry Time","type":"string","format":"date-time","example":"2021-09-01T00:00:00Z"}}
+                                        >
+                                          
+                                        </SchemaItem><SchemaItem
+                                          collapsible={false}
+                                          name={"id"}
+                                          required={false}
+                                          schemaName={"string"}
+                                          qualifierMessage={undefined}
+                                          schema={{"description":"Certificate ID","type":"string","example":"cert_123123123123"}}
+                                        >
+                                          
+                                        </SchemaItem><SchemaItem
+                                          collapsible={false}
+                                          name={"issuer"}
+                                          required={false}
+                                          schemaName={"string"}
+                                          qualifierMessage={undefined}
+                                          schema={{"description":"Certificate Issuer","type":"string","example":"https://youridp.com/service/saml"}}
+                                        >
+                                          
+                                        </SchemaItem><li>
+                                          <div
+                                            style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                                          >
+                                            ]
+                                          </div>
+                                        </li>
+                                      </div>
+                                    </details>
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"idp_entity_id"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"IDP Entity ID","type":"string","example":"https://youridp.com/service/saml"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"idp_metadata_url"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"IDP Metadata URL","type":"string","example":"https://youridp.com/service/saml/metadata"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"idp_name_id_format"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={"**Possible values:** [`UNSPECIFIED`, `EMAIL`, `TRANSIENT`, `PERSISTENT`]"}
+                                    schema={{"description":"IDP Name ID Format","example":"EMAIL","type":"string","enum":["UNSPECIFIED","EMAIL","TRANSIENT","PERSISTENT"]}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"idp_slo_request_binding"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={"**Possible values:** [`HTTP_POST`, `HTTP_REDIRECT`]"}
+                                    schema={{"description":"IDP SLO Request Binding","example":"HTTP_POST","type":"string","enum":["HTTP_POST","HTTP_REDIRECT"]}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"idp_slo_url"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"IDP SLO URL","type":"string","example":"https://youridp.com/service/saml/slo"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"idp_sso_request_binding"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={"**Possible values:** [`HTTP_POST`, `HTTP_REDIRECT`]"}
+                                    schema={{"description":"IDP SSO Request Binding","example":"HTTP_POST","type":"string","enum":["HTTP_POST","HTTP_REDIRECT"]}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"idp_sso_url"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"IDP SSO URL","type":"string","example":"https://youridp.com/service/saml/sso"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"saml_signing_option"}
+                                    required={false}
+                                    schemaName={"enums all (string)"}
+                                    qualifierMessage={"**Possible values:** [`NO_SIGNING`, `SAML_ONLY_RESPONSE_SIGNING`, `SAML_ONLY_ASSERTION_SIGNING`, `SAML_RESPONSE_ASSERTION_SIGNING`]"}
+                                    schema={{"description":"SAML Signing Option","example":"SAML_ONLY_RESPONSE_SIGNING","type":"string","title":"enums all","enum":["NO_SIGNING","SAML_ONLY_RESPONSE_SIGNING","SAML_ONLY_ASSERTION_SIGNING","SAML_RESPONSE_ASSERTION_SIGNING"]}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"sp_assertion_url"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"SP Assertion URL","type":"string","example":"https://youridp.com/service/saml/assertion"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"sp_entity_id"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"SP Entity ID","type":"string","example":"https://yourapp.com/service/saml"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"sp_metadata_url"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"SP Metadata URL","type":"string","example":"https://youridp.com/service/saml/metadata"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"ui_button_title"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"UI Button Title","type":"string","example":"Login with SSO"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"want_request_signed"}
+                                    required={false}
+                                    schemaName={"boolean"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"Want Request Signed","type":"boolean","example":true}}
+                                  >
+                                    
+                                  </SchemaItem>
+                                </div>
+                              </details>
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"status"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={"**Possible values:** [`DRAFT`, `IN_PROGRESS`, `COMPLETED`]"}
+                              schema={{"description":"Connection Status","readOnly":true,"example":"IN_PROGRESS","type":"string","enum":["DRAFT","IN_PROGRESS","COMPLETED"]}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"test_connection_uri"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Configuration Type. ","type":"string","example":"MANUAL"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"type"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={"**Possible values:** [`OIDC`, `SAML`, `PASSWORD`]"}
+                              schema={{"description":"Connection Protocol OIDC / SAML ","example":"OIDC","type":"string","enum":["OIDC","SAML","PASSWORD"]}}
+                            >
+                              
+                            </SchemaItem>
+                          </div>
+                        </details>
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"connection\": {\n    \"attribute_mapping\": {},\n    \"configuration_type\": \"MANUAL\",\n    \"debug_enabled\": true,\n    \"enabled\": false,\n    \"id\": \"conn_2123312131125533\",\n    \"oidc_config\": {\n      \"authorize_uri\": \"https://youridp.com/service/oauth/authorize\",\n      \"client_id\": \"oauth_client_id\",\n      \"client_secret\": \"oauth_client_secret\",\n      \"discovery_endpoint\": \"https://youridp.com/service/oauth/.well-known/openid-configuration\",\n      \"issuer\": \"https://youridp.com/service/oauth\",\n      \"jwks_uri\": \"https://youridp.com/service/oauth/jwks\",\n      \"pkce_enabled\": true,\n      \"redirect_uri\": \"https://yourapp.com/service/oauth/redirect\",\n      \"scopes\": [\n        \"openid\",\n        \"profile\"\n      ],\n      \"token_auth_type\": \"URL_PARAMS\",\n      \"token_uri\": \"https://youridp.com/service/oauth/token\",\n      \"user_info_uri\": \"https://youridp.com/service/oauth/userinfo\"\n    },\n    \"organization_id\": \"org_2123312131125533\",\n    \"provider\": \"OKTA\",\n    \"saml_config\": {\n      \"allow_idp_initiated_login\": true,\n      \"assertion_encrypted\": true,\n      \"default_redirect_uri\": \"https://yourapp.com/service/saml/redirect\",\n      \"force_authn\": true,\n      \"idp_certificates\": [\n        {\n          \"certificate\": \"string\",\n          \"create_time\": \"2021-09-01T00:00:00Z\",\n          \"expiry_time\": \"2021-09-01T00:00:00Z\",\n          \"id\": \"cert_123123123123\",\n          \"issuer\": \"https://youridp.com/service/saml\"\n        }\n      ],\n      \"idp_entity_id\": \"https://youridp.com/service/saml\",\n      \"idp_metadata_url\": \"https://youridp.com/service/saml/metadata\",\n      \"idp_name_id_format\": \"EMAIL\",\n      \"idp_slo_request_binding\": \"HTTP_POST\",\n      \"idp_slo_url\": \"https://youridp.com/service/saml/slo\",\n      \"idp_sso_request_binding\": \"HTTP_POST\",\n      \"idp_sso_url\": \"https://youridp.com/service/saml/sso\",\n      \"saml_signing_option\": \"SAML_ONLY_RESPONSE_SIGNING\",\n      \"sp_assertion_url\": \"https://youridp.com/service/saml/assertion\",\n      \"sp_entity_id\": \"https://yourapp.com/service/saml\",\n      \"sp_metadata_url\": \"https://youridp.com/service/saml/metadata\",\n      \"ui_button_title\": \"Login with SSO\",\n      \"want_request_signed\": true\n    },\n    \"status\": \"IN_PROGRESS\",\n    \"test_connection_uri\": \"MANUAL\",\n    \"type\": \"OIDC\"\n  }\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      

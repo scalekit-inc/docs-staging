@@ -1,4 +1,5 @@
 import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
+import apisidebar from './docs/reference/sidebar';
 
 /**
  * Creating a sidebar enables you to:
@@ -165,7 +166,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Manage Scalekit',
-      items: ['manage-scalekit/organization','manage-scalekit/glossary']
+      items: ['manage-scalekit/organization', 'manage-scalekit/glossary']
     },
 
     {
@@ -182,6 +183,7 @@ const sidebars: SidebarsConfig = {
     },
 
   ],
+  apisidebar
 
 };
 

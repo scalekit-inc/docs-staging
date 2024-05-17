@@ -1,0 +1,371 @@
+---
+id: organization-service-create-organization
+title: "Create Organization"
+description: "Creates an Organization. An Organization represents a tenant in the your application"
+sidebar_label: "Create Organization"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "post api-method"
+info_path: reference/scalekit-apis
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create Organization"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/v1/organizations"}
+>
+  
+</MethodEndpoint>
+
+
+
+Creates an Organization. An Organization represents a tenant in the your application
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<MimeTabs
+  className={"openapi-tabs__mime"}
+>
+  <TabItem
+    label={"application/json"}
+    value={"application/json-schema"}
+  >
+    <details
+      style={{}}
+      className={"openapi-markdown__details mime"}
+      data-collapsed={false}
+      open={true}
+    >
+      <summary
+        style={{}}
+        className={"openapi-markdown__details-summary-mime"}
+      >
+        <h3
+          className={"openapi-markdown__details-summary-header-body"}
+        >
+          Body
+        </h3><strong
+          className={"openapi-schema__required"}
+        >
+          required
+        </strong>
+      </summary><div
+        style={{"textAlign":"left","marginLeft":"1rem"}}
+      >
+        <div
+          style={{"marginTop":"1rem","marginBottom":"1rem"}}
+        >
+          
+          
+          Organization details
+          
+          
+        </div>
+      </div><ul
+        style={{"marginLeft":"1rem"}}
+      >
+        <SchemaItem
+          collapsible={false}
+          name={"display_name"}
+          required={false}
+          schemaName={"Name of the org to be used in display (string)"}
+          qualifierMessage={undefined}
+          schema={{"description":"Display Name of the Organization","type":"string","title":"Name of the org to be used in display","example":"Acme Corp"}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"external_id"}
+          required={false}
+          schemaName={"External Id is useful to store a unique identifier for a given Org that. The unique Identifier can be the id of your tenant / org in your SaaSApp (string)"}
+          qualifierMessage={undefined}
+          schema={{"description":"External Id . This can be used to store a unique identifier that can help correalate scalekit Org with your SaaS app's tenant","type":"string","title":"External Id is useful to store a unique identifier for a given Org that. The unique Identifier can be the id of your tenant / org in your SaaSApp","example":"my_unique_id"}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={true}
+          className={"schemaItem"}
+        >
+          <details
+            style={{}}
+            className={"openapi-markdown__details"}
+          >
+            <summary
+              style={{}}
+            >
+              <span
+                className={"openapi-schema__container"}
+              >
+                <strong
+                  className={"openapi-schema__property"}
+                >
+                  metadata
+                </strong><span
+                  className={"openapi-schema__name"}
+                >
+                   object
+                </span>
+              </span>
+            </summary><div
+              style={{"marginLeft":"1rem"}}
+            >
+              <div
+                style={{"marginTop":".5rem","marginBottom":".5rem"}}
+              >
+                
+                
+                Key value pairs extension attributes.
+                
+                
+              </div><SchemaItem
+                name={"property name*"}
+                required={false}
+                schemaName={"string"}
+                qualifierMessage={undefined}
+                schema={{"type":"string"}}
+                collapsible={false}
+                discriminator={false}
+              >
+                
+              </SchemaItem>
+            </div>
+          </details>
+        </SchemaItem>
+      </ul>
+    </details>
+  </TabItem>
+</MimeTabs><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"201"}
+        value={"201"}
+      >
+        <div>
+          
+          
+          Created Successfully
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                organization
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <SchemaItem
+                              collapsible={false}
+                              name={"create_time"}
+                              required={true}
+                              schemaName={"date-time"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Created Time","type":"string","format":"date-time","title":"Created Time","example":"2024-001-05T14:48:00.000Z"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"display_name"}
+                              required={false}
+                              schemaName={"Name of the org to be used in display (string)"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Display Name of the Organization","type":"string","title":"Name of the org to be used in display","example":"Acme Corp"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"external_id"}
+                              required={false}
+                              schemaName={"External Id is useful to store a unique identifier for a given Org that. The unique Identifier can be the id of your tenant / org in your SaaSApp (string)"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"External Id . This can be used to store a unique identifier that can help correalate scalekit Org with your SaaS app's tenant","type":"string","title":"External Id is useful to store a unique identifier for a given Org that. The unique Identifier can be the id of your tenant / org in your SaaSApp","example":"my_unique_id"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"id"}
+                              required={false}
+                              schemaName={"Id (string)"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Organization ID","type":"string","title":"Id","example":"org_2123312131125533"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <span
+                                    className={"openapi-schema__container"}
+                                  >
+                                    <strong
+                                      className={"openapi-schema__property"}
+                                    >
+                                      metadata
+                                    </strong><span
+                                      className={"openapi-schema__name"}
+                                    >
+                                       object
+                                    </span>
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  <div
+                                    style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                                  >
+                                    
+                                    
+                                    Key value pairs extension attributes.
+                                    
+                                    
+                                  </div><SchemaItem
+                                    name={"property name*"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"type":"string"}}
+                                    collapsible={false}
+                                    discriminator={false}
+                                  >
+                                    
+                                  </SchemaItem>
+                                </div>
+                              </details>
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"region_code"}
+                              required={false}
+                              schemaName={"Optional regioncode (string)"}
+                              qualifierMessage={"**Possible values:** [`US`, `EU`]"}
+                              schema={{"description":"Region code . Only US is supported ","title":"Optional regioncode","example":"US","type":"string","enum":["US","EU"]}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"update_time"}
+                              required={false}
+                              schemaName={"date-time"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Updated Time","type":"string","format":"date-time","title":"Updated time"}}
+                            >
+                              
+                            </SchemaItem>
+                          </div>
+                        </details>
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"organization\": {\n    \"create_time\": \"2024-001-05T14:48:00.000Z\",\n    \"display_name\": \"Acme Corp\",\n    \"external_id\": \"my_unique_id\",\n    \"id\": \"org_2123312131125533\",\n    \"metadata\": {},\n    \"region_code\": \"US\",\n    \"update_time\": \"2024-05-17T08:23:56.129Z\"\n  }\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      

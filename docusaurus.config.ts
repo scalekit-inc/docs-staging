@@ -1,6 +1,8 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import type * as Plugin from '@docusaurus/types/src/plugin';
+import type * as OpenApiPlugin from 'docusaurus-plugin-openapi-docs';
 import type {ScalarOptions} from '@scalar/docusaurus'
 
 
@@ -28,7 +30,33 @@ const config: Config = {
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {defaultLocale: 'en', locales: ['en']},
+  themes: ['docusaurus-theme-openapi-docs'],
+  stylesheets: [
+    {
+      href: 'https://use.fontawesome.com/releases/v5.11.0/css/all.css',
+      type: 'text/css',
+    },
+  ],
   plugins: [
+    [
+      'docusaurus-plugin-openapi-docs',
+      {
+        id: 'openapi',
+        docsPluginId: 'classic',
+        config: {
+          reference: {
+            specPath: 'openapi/scalekit.swagger.json',
+            outputDir: 'docs/reference',
+            sidebarOptions: {
+              groupPathsBy: 'tag',
+              categoryLinkSource: 'tag',
+            },
+            hideSendButton: false,
+            showSchemas: true,
+          } satisfies OpenApiPlugin.Options
+        } satisfies Plugin.PluginOptions,
+      },
+    ],
     [
       '@scalar/docusaurus',
       {
@@ -65,7 +93,8 @@ const config: Config = {
           sidebarCollapsed: false,
           sidebarCollapsible: false,
           sidebarPath: './sidebars.ts',
-          routeBasePath: '/'
+          routeBasePath: '/',
+          docItemComponent: '@theme/ApiItem'
         },
         blog: false,
         theme: {
@@ -76,27 +105,28 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
     // Redocusaurus config
-    // [
-    //   'redocusaurus',
-    //   {
-    //     // Plugin Options for loading OpenAPI files
-    //     specs: [
-    //       // Pass it a path to a local OpenAPI YAML file
-    //       {
-    //         // Redocusaurus will automatically bundle your spec into a single
-    //         file during the build spec: 'openapi/scalekit.swagger.json',
-    //         route: '/api',
+    [
+      'redocusaurus',
+      {
+        // Plugin Options for loading OpenAPI files
+        specs: [
+          // Pass it a path to a local OpenAPI YAML file
+          {
+            // Redocusaurus will automatically bundle your spec into a single
+            // file during the build
+            spec: 'openapi/scalekit.swagger.json',
+            route: '/api',
 
-    //       },
+          },
 
-    //     ],
-    //     // Theme Options for modifying how redoc renders them
-    //     theme: {
-    //       // Change with your site colors
-    //       primaryColor: '#1890ff',
-    //     },
-    //   },
-    // ] satisfies Redocusaurus.PresetEntry,
+        ],
+        // Theme Options for modifying how redoc renders them
+        theme: {
+          // Change with your site colors
+          primaryColor: '#1890ff',
+        },
+      },
+    ] satisfies Redocusaurus.PresetEntry,
   ],
 
   themeConfig: {
@@ -163,6 +193,7 @@ const config: Config = {
       additionalLanguages: ['bash'],
     },
   } satisfies Preset.ThemeConfig,
+
 };
 
 export default config;

@@ -1,0 +1,319 @@
+---
+id: organization-service-list-organization
+title: "List Organizations"
+description: "List all Organizations in the Environment. The results are paginated. The response contains page_token that can be used to access the next page of results."
+sidebar_label: "List Organizations"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "get api-method"
+info_path: reference/scalekit-apis
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List Organizations"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/v1/organizations"}
+>
+  
+</MethodEndpoint>
+
+
+
+List all Organizations in the Environment. The results are paginated. The response contains page_token that can be used to access the next page of results.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Query Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"description":"Number of results to be returned. Max supported page_size is 30","name":"page_size","in":"query","required":true,"schema":{"type":"integer","format":"int64"}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"page_token","in":"query","schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          Success
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={false}
+                        name={"next_page_token"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                organizations
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object[]
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                              >
+                                Array [
+                              </div>
+                            </li><SchemaItem
+                              collapsible={false}
+                              name={"create_time"}
+                              required={true}
+                              schemaName={"date-time"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Created Time","type":"string","format":"date-time","title":"Created Time","example":"2024-001-05T14:48:00.000Z"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"display_name"}
+                              required={false}
+                              schemaName={"Name of the org to be used in display (string)"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Display Name of the Organization","type":"string","title":"Name of the org to be used in display","example":"Acme Corp"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"external_id"}
+                              required={false}
+                              schemaName={"External Id is useful to store a unique identifier for a given Org that. The unique Identifier can be the id of your tenant / org in your SaaSApp (string)"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"External Id . This can be used to store a unique identifier that can help correalate scalekit Org with your SaaS app's tenant","type":"string","title":"External Id is useful to store a unique identifier for a given Org that. The unique Identifier can be the id of your tenant / org in your SaaSApp","example":"my_unique_id"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"id"}
+                              required={false}
+                              schemaName={"Id (string)"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Organization ID","type":"string","title":"Id","example":"org_2123312131125533"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <span
+                                    className={"openapi-schema__container"}
+                                  >
+                                    <strong
+                                      className={"openapi-schema__property"}
+                                    >
+                                      metadata
+                                    </strong><span
+                                      className={"openapi-schema__name"}
+                                    >
+                                       object
+                                    </span>
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  <div
+                                    style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                                  >
+                                    
+                                    
+                                    Key value pairs extension attributes.
+                                    
+                                    
+                                  </div><SchemaItem
+                                    name={"property name*"}
+                                    required={false}
+                                    schemaName={"string"}
+                                    qualifierMessage={undefined}
+                                    schema={{"type":"string"}}
+                                    collapsible={false}
+                                    discriminator={false}
+                                  >
+                                    
+                                  </SchemaItem>
+                                </div>
+                              </details>
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"region_code"}
+                              required={false}
+                              schemaName={"Optional regioncode (string)"}
+                              qualifierMessage={"**Possible values:** [`US`, `EU`]"}
+                              schema={{"description":"Region code . Only US is supported ","title":"Optional regioncode","example":"US","type":"string","enum":["US","EU"]}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"update_time"}
+                              required={false}
+                              schemaName={"date-time"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Updated Time","type":"string","format":"date-time","title":"Updated time"}}
+                            >
+                              
+                            </SchemaItem><li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                              >
+                                ]
+                              </div>
+                            </li>
+                          </div>
+                        </details>
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"total_size"}
+                        required={false}
+                        schemaName={"int64"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"integer","format":"int64"}}
+                      >
+                        
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"next_page_token\": \"string\",\n  \"organizations\": [\n    {\n      \"create_time\": \"2024-001-05T14:48:00.000Z\",\n      \"display_name\": \"Acme Corp\",\n      \"external_id\": \"my_unique_id\",\n      \"id\": \"org_2123312131125533\",\n      \"metadata\": {},\n      \"region_code\": \"US\",\n      \"update_time\": \"2024-05-17T08:23:56.127Z\"\n    }\n  ],\n  \"total_size\": 0\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      

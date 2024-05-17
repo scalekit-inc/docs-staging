@@ -1,0 +1,217 @@
+---
+id: organization-service-generate-portal-link
+title: "Generate Portal link"
+description: "Generates a Admin Portal link. The Admin Portal will be used by the IT Admins to create and manage the SSO connection in their Org. The link generated via API will be valid for 1 week."
+sidebar_label: "Generate Portal link"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "put api-method"
+info_path: reference/scalekit-apis
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Generate Portal link"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"put"}
+  path={"/api/v1/organizations/{id}/portal_links"}
+>
+  
+</MethodEndpoint>
+
+
+
+Generates a Admin Portal link. The Admin Portal will be used by the IT Admins to create and manage the SSO connection in their Org. The link generated via API will be valid for 1 week.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"description":"Organization ID","name":"id","in":"path","required":true,"schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          Create Admin Portal Link
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                link
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <div
+                              style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                            >
+                              
+                              
+                              Admin Portal Link
+                              
+                              
+                            </div><SchemaItem
+                              collapsible={false}
+                              name={"expire_time"}
+                              required={false}
+                              schemaName={"date-time"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Expiry time of the link. The link is valid for 1 week.","type":"string","format":"date-time","example":"2024-02-06T14:48:00.000Z"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"id"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Unique Identifier for the link","type":"string","example":"lnk_123123123123123"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"location"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Location of the link. This is the URL that can be used to access the Admin portal. The link is valid for 1 week.","type":"string","example":"https://scalekit.com/portal/lnk_123123123123123"}}
+                            >
+                              
+                            </SchemaItem>
+                          </div>
+                        </details>
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"link\": {\n    \"expire_time\": \"2024-02-06T14:48:00.000Z\",\n    \"id\": \"lnk_123123123123123\",\n    \"location\": \"https://scalekit.com/portal/lnk_123123123123123\"\n  }\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      
