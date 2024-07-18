@@ -94,30 +94,31 @@ our SDK automatically fills in the required parameters while constructing the au
 <TabItem value="nodejs" label="Node.js">
 
 ```javascript showLineNumbers
-import {Scalekit} from "@scalekit-sdk/node";
+import { ScalekitClient } from "@scalekit-sdk/node";
 // init client
-const scalekit = new Scalekit(
+const scalekit = new ScalekitClient(
   SCALEKIT_ENVIRONMENT_URL,
   SCALEKIT_CLIENT_ID,
   SCALEKIT_CLIENT_SECRET
 );
 
-// Authorization URL with organization ID parameter and optional state parameter
- const authorizationURL = scalekit.getAuthorizationUrl(redirectUri, {
-   organizationId: 'org_12442',
-   state: state
- })
+options = {}
+// use one of the three strategies below to determine how to log the user in.
 
-// Authorization URL with optional login hint parameter
- const authorizationURL = scalekit.getAuthorizationUrl(redirectUri, {
-   loginHint: "user@example.com",
-   organizationId: 'org_12442'
- })
+// If you would like to authenticate the user via organization_id
+options.organizationId = 'org_12442'
 
-// Authorization URL with connection ID parameter
- const authorizationURL = scalekit.getAuthorizationUrl(redirectUri, {
-   connectionId: 'conn_1242242',
- })
+// If you would like to authenticate the user via connection_id
+options.connectionId = 'conn_1242242'
+
+// If you would like to authenticate the user via provider
+options.provider = 'google'
+
+// If you would like to authenticate the user via their email address
+// Domain portion of the user's email address is used to detect the appropriate enterprise SSO connection
+options.loginHint = '<user@example.com>'
+
+const authorizationURL = scalekit.getAuthorizationUrl(redirectUrl, options)  
 
 // next step is to redirect the user to this authorizationURL
 ```
@@ -143,6 +144,9 @@ options.connection_id = 'conn_1242242'
 # If you would like to authenticate the user via organization_id
 options.organization_id = 'org_12442'
 
+# If you would like to authenticate the user via provider 
+options.provider = 'google'
+
 # If you would like to authenticate the user via their email address 
 # Domain portion of the user's email address is used to detect the appropriate enterprise SSO connection
 options.login_hint = '<user@example.com>'
@@ -151,7 +155,48 @@ authorization_url = scalekit_client.get_authorization_url(
   redirect_uri=<redirect_uri>, 
   options=options
 )
+# next step is to redirect the user to this authorization_url
 
+```
+
+</TabItem>
+<TabItem value="golang" label="Go">
+
+```go showLineNumbers
+
+import (
+  "github.com/scalekit/scalekit-sdk-go"
+)
+
+func main() {
+  sc := scalekit.NewScalekitClient(
+    SCALEKIT_ENVIRONMENT_URL,
+    SCALEKIT_CLIENT_ID,
+    SCALEKIT_CLIENT_SECRET
+  )
+
+  options := scalekit.AuthorizationUrlOptions{}
+  // use one of the three strategies below to determine how to log the user in.
+
+  // If you would like to authenticate the user via connection_id
+  options.ConnectionId = "conn_1242242"
+
+  // If you would like to authenticate the user via organization_id
+  options.OrganizationId = "org_12442"
+
+  // If you would like to authenticate the user via provider
+  options.Provider = "google"
+
+  // If you would like to authenticate the user via their email address
+  // Domain portion of the user's email address is used to detect the appropriate enterprise SSO connection
+  options.LoginHint = "<user@example.com>"
+  
+  authorizationURL := sc.GetAuthorizationUrl(
+    redirectUrl, 
+    options,
+  )
+  // next step is to redirect the user to this authorizationURL
+}
 ```
 
 </TabItem>
@@ -174,7 +219,7 @@ if (error) {
 // check if this is an idp initiated login
 if (idp_initiated_login && idp_initiated_login === "success") {
   // handle idp initiated login
-  const authorizationURL = scalekit.getAuthorizationUrl(redirectUri, {
+  const authorizationURL = scalekit.getAuthorizationUrl(redirectUrl, {
     connectionId: connection_id,
     ...(relay_state && {state: relay_state}) // optionally pass relay state as state parameter
   })
@@ -185,7 +230,7 @@ if (idp_initiated_login && idp_initiated_login === "success") {
 // if there are no errors and if this is not an IdP initiated SSO, then authenticate with the code
 const res = await sc.authenticateWithCode({
   code: code,
-  redirectUri: redirectUri
+  redirectUrl: redirectUrl
 });
 
 // res.user has the authenticated user's details 
@@ -219,7 +264,58 @@ result = scalekit_client.authenticate_with_code(<code>, <redirect_uri>)
 # result.user has the authenticated user's details
 user_email = result.user.email
 
-# TODO Create a session and redirect the user to your dashboard
+# create a session and redirect the user to your dashboard
+```
+
+</TabItem>
+<TabItem value="golang" label="Go">
+
+```go showLineNumbers
+
+import (
+  "github.com/scalekit/scalekit-sdk-go"
+)
+
+func main() {
+  sc := scalekit.NewScalekitClient(
+    SCALEKIT_ENVIRONMENT_URL,
+    SCALEKIT_CLIENT_ID,
+    SCALEKIT_CLIENT_SECRET
+  )
+
+  // Handle the oauth redirect_url
+  // fetch code and error_description from request parameters.
+  code := r.URL.Query().Get("code")
+  error := r.URL.Query().Get("error")
+  errorDescription := r.URL.Query().Get("error_description")
+  idpInitiatedLogin := r.URL.Query().Get("idp_initiated_login")
+  connectionID := r.URL.Query().Get("connection_id")
+  relayState := r.URL.Query().Get("relay_state")
+
+  if error != "" {
+    // handle errors
+  }
+
+  if idpInitiatedLogin != "" && idpInitiatedLogin == "success" {
+    // handle idp initiated login
+    authorizationURL := sc.GetAuthorizationUrl(redirectUrl, {
+      ConnectionId: connectionID,
+      RelayState: relayState,
+    })
+    // next step is to redirect the user to this authorizationURL
+  }
+
+  // if there are no errors and if this is not an IdP initiated SSO, then authenticate with the code
+  res, err := sc.AuthenticateWithCode(code, redirectUrl)
+  if err != nil {
+    // handle errors
+  }
+
+  // res.User has the authenticated user's details
+  userEmail := res.User.Email
+
+  // create a session and redirect the user to your dashboard
+}
 ```
 
 </TabItem>

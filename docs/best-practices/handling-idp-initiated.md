@@ -33,15 +33,14 @@ https://default_redirect_uri?idp_initiated_login=success&connection_id=conn_1244
 
 2. You can handle this incoming idp initiated request and construct a new Authorization URL and redirect the user to this authorizationURL. This would automatically start the SP initiated SSO workflow for the user. Since the user is already logged into their Identity Provider (which is why they could initiate the IdP iniitated SSO in the first place), their identity provider will send a new clean SAML response thus eliminating all the risks of IdP initiated SSO and concerns of stolen assertions being used.
 
-
 <Tabs groupId="tech-stack" querystring>
 <TabItem value="nodejs" label="Node.js">
 
 ```javascript showLineNumbers
-import {Scalekit} from "@scalekit-sdk/node";
+import { ScalekitClient } from "@scalekit-sdk/node";
 
 // init client
-const scalekit = new Scalekit(
+const scalekit = new ScalekitClient(
   SCALEKIT_ENVIRONMENT_URL,
   SCALEKIT_CLIENT_ID,
   SCALEKIT_CLIENT_SECRET
@@ -76,7 +75,7 @@ const res = await sc.authenticateWithCode({
 const userEmail = res.user.email;
 
 
-// next step is to create a session for this user and allow access to your application resources
+// create a session for this user and allow access to your application resources
 ```
 
 </TabItem>
@@ -117,10 +116,61 @@ result = scalekit_client.authenticate_with_code(code, redirect_uri)
 # result.user has the authenticated user's details
 user_email = result.user.email
 
-# TODO Create a session and redirect the user to your dashboard
+# create a session and redirect the user to your dashboard
 ```
 
 </TabItem>
+<TabItem value="golang" label="Go">
+
+```go showLineNumbers
+import (
+  "github.com/scalekit/scalekit-sdk-go"
+)
+
+func main() {
+  // init client
+  sc := scalekit.NewScalekitClient(
+    SCALEKIT_ENVIRONMENT_URL,
+    SCALEKIT_CLIENT_ID,
+    SCALEKIT_CLIENT_SECRET
+  )
+
+  // Handle the oauth redirect
+  code := r.URL.Query().Get("code")
+  errorDescription := r.URL.Query().Get("error_description")
+  idpInitiatedLogin := r.URL.Query().Get("idp_initiated_login")
+  connectionId := r.URL.Query().Get("connection_id")
+  relayState := r.URL.Query().Get("relay_state")
+
+  if errorDescription != "" {
+    return errors.New(errorDescription)
+  }
+
+  if idpInitiatedLogin == "success" {
+    // handle idp initiated login
+    options := scalekit.AuthorizationUrlOptions{
+      ConnectionId: connectionId,
+      State: relayState,
+    }
+
+    authorizationURL := sc.GetAuthorizationUrl(
+      redirectUri, 
+      options,
+    )
+    // next step is to redirect the user to this authorizationURL
+  }
+
+  // if there are no errors and if this is not an IdP initiated SSO, then authenticate with the code
+  result := sc.AuthenticateWithCode(code, redirectUri)
+  // result.User has the authenticated user's details
+  userEmail := result.User.Email
+
+  // create a session and redirect the user to your dashboard
+}
+```
+
+</TabItem>
+
 </Tabs>
 
 ## Advantages

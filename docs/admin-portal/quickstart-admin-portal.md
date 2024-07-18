@@ -52,6 +52,19 @@ link = sc.organization.generate_portal_link('org_1233222')
 ```
 
 </TabItem>
+<TabItem value="golang" label="Go">
+
+```go showLineNumbers
+// generate admin portal link by sending organization id as a parameter
+link, err := sc.Organization.GeneratePortalLink(
+  ctx,
+  "org_1233222",
+)
+
+// link.Location is the Admin Portal url
+```
+
+</TabItem>
 </Tabs>
 
 Note:

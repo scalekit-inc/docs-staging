@@ -25,18 +25,16 @@ You can use our SDK to generate this authorization URL.
 <TabItem value="nodejs" label="Node.js">
 
 ```javascript showLineNumbers
-import {Scalekit} from "@scalekit-sdk/node";
+import { ScalekitClient } from "@scalekit-sdk/node";
 // init client
-const scalekit = new Scalekit(
+const scalekit = new ScalekitClient(
   SCALEKIT_ENVIRONMENT_URL,
   SCALEKIT_CLIENT_ID,
   SCALEKIT_CLIENT_SECRET
 );
 
-const authorizationURL = scalekit.getAuthorizationUrl(redirectUri, {
+const authorizationURL = scalekit.getAuthorizationUrl(redirectUrl, {
   loginHint: "user@example.com",
-  //connectionId: "conn_1223231234124",
-  //domain: "example.com",
   organizationId: "org_123235245"
 })
 
@@ -62,6 +60,36 @@ options.login_hint = "user@example.com"
 
 authorization_url = scalekit_client.get_authorization_url(redirect_uri, options)
 # next step is to redirect the user to this authorization_url
+```
+
+</TabItem>
+<TabItem value="golang" label="Go">
+
+```go showLineNumbers
+
+import (
+  "github.com/scalekit-inc/go-sdk"
+)
+
+func main() {
+  // init client
+  sc := scalekit.NewScalekitClient(
+    SCALEKIT_ENVIRONMENT_URL,
+    SCALEKIT_CLIENT_ID,
+    SCALEKIT_CLIENT_SECRET
+  )
+
+  options := scalekit.AuthorizationUrlOptions{
+    OrganizationId: "org_123235245",
+    LoginHint: "user@example.com",
+  }
+
+  authorizationURL := sc.GetAuthorizationUrl(
+    redirectUrl, 
+    options,
+  )
+  // next step is to redirect the user to this authorizationURL
+}
 ```
 
 </TabItem>
