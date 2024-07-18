@@ -13,7 +13,7 @@ curl --request GET \
 
 ```js showLineNumbers
 // scalekit client takes care of authentication behind the scenes.
-const sc = new Scalekit(
+const sc = new ScalekitClient(
   SCALEKIT_ENVIRONMENT_URL,
   SCALEKIT_CLIENT_ID,
   SCALEKIT_CLIENT_SECRET
@@ -41,6 +41,24 @@ connections = sc.connection.list_connections(
 )
 
 ```
+
+</TabItem>
+<TabItem value="golang" label="Go">
+  
+  ```go showLineNumbers
+  // scalekit client takes care of authentication behind the scenes.
+  sc := scalekit.NewScalekitClient(
+    SCALEKIT_ENVIRONMENT_URL,
+    SCALEKIT_CLIENT_ID,
+    SCALEKIT_CLIENT_SECRET
+  )
+
+  connections, err := sc.Connection.ListConnections(
+    ctx,
+    organizationId
+  )
+
+  ```
 
 </TabItem>
 </Tabs>

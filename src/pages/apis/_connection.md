@@ -130,9 +130,9 @@
                         "idp_sso_url": "https://youridp.com/sso/saml",
                     }
                     "attribute_mapping":{
-                        "email": "email", 
-                        "family_name": "lastName", 
-                        "given_name": "firstName", 
+                        "email": "email",
+                        "family_name": "lastName",
+                        "given_name": "firstName",
                         "sub": "nameid",
                     }
                     "create_time": "2024-01-05T14:48:00.000Z",
