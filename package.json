@@ -26,13 +26,15 @@
     "react-dom": "^18.0.0",
     "react-intersection-observer": "^9.10.2",
     "react-markdown": "^9.0.1",
-    "redocusaurus": "^2.0.2"
+    "redocusaurus": "^2.0.2",
+    "ws": ">=8.17.1"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.3.2",
     "@docusaurus/tsconfig": "^3.3.2",
     "@docusaurus/types": "^3.3.2",
-    "typescript": "~5.2.2"
+    "typescript": "~5.2.2",
+    "ws": ">=8.17.1"
   },
   "browserslist": {
     "production": [
