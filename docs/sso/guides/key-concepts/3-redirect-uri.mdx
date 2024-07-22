@@ -1,0 +1,45 @@
+---
+displayed_sidebar: homeSidebar
+slug: redirect-uri
+---
+import { FcCheckmark } from "react-icons/fc";
+import { FcCancel } from "react-icons/fc";
+
+# Redirect URI
+<Subtitle></Subtitle>
+
+A Redirect URI is an endpoint URL to which Scalekit redirects users to after they complete authentication with the Identity Provider. As part of your environment configuration in Scalekit dashboard, you can configure upto 5 redirect URIs per each environment.
+
+Because redirect URIs can be easily manipulated by unauthorized parties, Scalekit requires that all the redirect URIs that are meant to be used during login flow pre-registered in the Scalekit Dashboard.
+
+:::info
+
+In IdP-initiated SAML SSO Flow, Scalekit uses the Redirect URI that's marked as default to redirect the user to your application. See [here](/sso/guides/setup-sso/implement-idp-initiated-sso) to know more about how to handle IdP-initiated SSO flows.
+
+:::
+
+## Validation Rules
+The redirect URIs that you configure in the Scalekit dashboard should pass the below validation rules for security purposes.
+
+| Validation Rule  | Development Environment | Production Environment |
+|---|---|---|
+| Schemes Supported | <FcCheckmark /> <SimpleCode>http</SimpleCode><br /> <FcCheckmark /> <SimpleCode>https </SimpleCode> | <FcCheckmark /> <SimpleCode>https</SimpleCode> |
+| localhost  | <FcCheckmark /> Allowed  | <FcCancel /> Not Allowed  |
+| Support for wildcard characters (*) | <FcCheckmark /> Allowed<br /><br />See [below](#wildcard-characters-in-redirect-uris) for full details about wildcard character support | <FcCancel /> Not Allowed |
+| Max URI Length   | 256 characters  |  256 characters |
+| Query Parameters <br /> <SimpleCode>https:<span></span>//your-domain.com/callback?query=value</SimpleCode> | <FcCancel /> Not Allowed  | <FcCancel /> Not Allowed            |
+| Fragment Component <br /> <SimpleCode>https:<span></span>//your-domain.com/callback#fragment=value</SimpleCode> | <FcCancel /> Not Allowed | <FcCancel /> Not Allowed |
+
+
+## Wildcard Character (<SimpleCode>*</SimpleCode>) in Redirect URIs
+
+According to the OAuth 2.0 specification (<Link href="https://tools.ietf.org/html/rfc6749#section-3.1.2">section 3.1.2 of RFC 6749</Link>), a redirection URI must be an absolute URI. But, to make development and testing easier - this restriction is slightly relaxed in the DEVELOPMENT environments.
+
+However, the following rules will apply while allowing the wildcard character.
+
+| Validation Rule  | Example |
+|---|---|
+| Wildcard Characters are not allowed as a root-level domain  | <FcCancel /> <SimpleCode>https://\*.com</SimpleCode><br/><FcCheckmark /> <SimpleCode>https://\*.acmecorp.com</SimpleCode><br/><FcCheckmark /> <SimpleCode>https<span></span>://auth-\*.acmecorp.com</SimpleCode> |
+| A redirect URI can have only one wildcard character  | <FcCancel /> <SimpleCode>https://\*.\*.acmecorp.com</SimpleCode><br/><FcCheckmark /> <SimpleCode>https://\*.acmecorp.com</SimpleCode> |
+| Wildcard character must be located in a subdomain within the hostname component | <FcCancel /> <SimpleCode>https<span></span>://acmecorp.\*.com</SimpleCode><br/><FcCheckmark /> <SimpleCode>https://\*.acmecorp.com</SimpleCode> |
+| Wildcard must be part of the subdomain that is farthest from the hostname component | <FcCancel /> <SimpleCode>https<span></span>://auth.\*.acmecorp.com</SimpleCode><br/><FcCheckmark /> <SimpleCode>https://\*.auth.acmecorp.com</SimpleCode> |

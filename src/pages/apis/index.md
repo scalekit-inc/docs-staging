@@ -3,7 +3,7 @@ hide_table_of_contents: true
 title: "API Reference"
 
 ---
-import InstallSDK from '@site/docs/templates/_install-sdk.md';
+import InstallSDK from '@site/docs/sso/templates/_install-sdk.md';
 import ConnectionTag from './_connection.md';
 import AdminPortalTag from './_adminPortal.md';
 import OrganizationTag from './_organization.md';
@@ -19,6 +19,7 @@ import SidebarItems from '@site/src/components/SidebarItems';
 <div className="sidebarContainer">
 <nav className="menu thin-scrollbar">
 <ul className="theme-doc-sidebar-menu menu__list">
+
 <SidebarItems></SidebarItems>
 
 </ul>
@@ -46,7 +47,7 @@ Read below to understand more about how to authenticate the API calls and how to
 <div className="col col--6">
 **Just getting Started?**
 
-Refer to our <a href="/" target="_blank">Quick Start Guide</a>
+Refer to our <Link href="/sso/quickstart" target="_blank">Quick Start Guide</Link>
 <br />
 <CodeWithHeader title="Client Libraries">
 <InstallSDK />
@@ -83,7 +84,7 @@ You can obtain a secure token by making `POST` call to the `https://{ENV_URL}/oa
 </div>
 <div className="col col--6">
 <CodeWithHeader title="API Authentication">
-<Tabs groupId="tech-stack" querystring>
+<Tabs groupId="tech-stack" queryString>
 <TabItem value="curl" label="cURL">
 
 ```bash showLineNumbers
@@ -99,12 +100,12 @@ $ curl https://{ENV_URL}/oauth/token \
 <TabItem value="nodejs" label="Node.js">
 
 ```js showLineNumbers
-import { ScalekitClient } from "@scalekit-sdk/node";
+import {Scalekit} from "@scalekit-sdk/node";
 
 // scalekit client takes care of authentication behind the scenes.
-const scalekit = new ScalekitClient(
-  <SCALEKIT_ENVIRONMENT_URL>, 
-  <SCALEKIT_CLIENT_ID>, 
+const scalekit = new Scalekit(
+  <SCALEKIT_ENVIRONMENT_URL>,
+  <SCALEKIT_CLIENT_ID>,
   <SCALEKIT_CLIENT_SECRET>
 );
 ```
@@ -116,8 +117,8 @@ const scalekit = new ScalekitClient(
 from scalekit import ScalekitClient
 
 scalekit_client = ScalekitClient(
-  <SCALEKIT_ENVIRONMENT_URL>, 
-  <SCALEKIT_CLIENT_ID>, 
+  <SCALEKIT_ENVIRONMENT_URL>,
+  <SCALEKIT_CLIENT_ID>,
   <SCALEKIT_CLIENT_SECRET>
 )
 ```
@@ -133,8 +134,8 @@ import (
 
 func main() {
   scalekitClient := scalekit.NewClient(
-    <SCALEKIT_ENVIRONMENT_URL>, 
-    <SCALEKIT_CLIENT_ID>, 
+    <SCALEKIT_ENVIRONMENT_URL>,
+    <SCALEKIT_CLIENT_ID>,
     <SCALEKIT_CLIENT_SECRET
   )
 }
@@ -228,7 +229,7 @@ You can see the list of different HTTP Status Codes and the error message format
     <div className="col col--6">
         When you need one of your customers to login via Enterprise SSO, you can redirect them to Scalekit's Authorization URL with necessary details about the organization or the SSO connection. Scalekit will seamleslly deal with integrating with any Identity Provider and exchanges user information via SAML or OIDC or OAuth2.
 
-More details about the Single Sign-on flow is described <Link href="/" target="_blank">here</Link>
+More details about the Single Sign-on flow is described <Link href="/sso/quickstart" target="_blank">here</Link>
     </div>
     <div className="col col--6">
         <Endpoints tag="Authentication" />

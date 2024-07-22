@@ -3,28 +3,18 @@ import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
-  title: "Scalekit | Developer Documentation",
+  title: "Scalekit Docs",
   tagline: "Enterprise Ready Authentiction Platform for SaaS",
-  favicon: "img/favicon.ico",
-
-  // Set the production url of your site here
+  favicon: "img/Favicon.svg",
   url: "https://docs.scalekit.com",
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
   trailingSlash: false,
-
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: "scalekit-inc", // Usually your GitHub org/user name.
-  projectName: "docs", // Usually your repo name.
+  organizationName: "scalekit-inc",
+  projectName: "docs",
   deploymentBranch: "gh-pages",
   onBrokenLinks: "log",
   onBrokenMarkdownLinks: "warn",
-  clientModules: ["./iframedetector.js"],
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
+  clientModules: ["./scalekit.js"],
   i18n: { defaultLocale: "en", locales: ["en"] },
   plugins: ["plugin-image-zoom"],
   presets: [
@@ -42,42 +32,99 @@ const config: Config = {
         theme: {
           customCss: ["./src/css/scalar_theme.css", "./src/css/custom.css"],
         },
-        sitemap: {
-          lastmod: "date",
-          changefreq: "daily",
-          priority: 0.5,
-        },
       } satisfies Preset.Options,
     ],
   ],
-
   themeConfig: {
+    // Declare some <meta> tags
+    metadata: [
+      {
+        name: "keywords",
+        content:
+          "documentation, authentication, single sign-on, sso, saml, oidc, oauth2, enterprise",
+      },
+      { property: "twitter:card", content: "summary_large_image" },
+      { property: "twitter:title", content: "Home | Scalekit Docs" },
+      {
+        property: "twitter:desription",
+        content:
+          "Learn how to implement  authentication capabilities through our quick start guides, SDKs and code samples",
+      },
+      {
+        property: "twitter:image",
+        content:
+          "/assets/images/hero_docs-c5ab8170a6af6313594b9db1fdf7f9c0.png",
+      },
+      { property: "og:title", content: "Home | Scalekit Docs" },
+      {
+        property: "og:desription",
+        content:
+          "Learn how to implement  authentication capabilities through our quick start guides, SDKs and code samples",
+      },
+      {
+        property: "og:image",
+        content:
+          "/assets/images/hero_docs-c5ab8170a6af6313594b9db1fdf7f9c0.png",
+      },
+    ],
+    docs: {
+      sidebar: {
+        hideable: false,
+      },
+    },
+
     navbar: {
       // title: 'Scalekit Docs',
       logo: {
-        src: "https://cdn.scalekit.cloud/v1/scalekit-logo-dark.svg",
+        href: "/",
+        src: "/img/scalekit_docs_logo.svg",
         srcDark:
           "https://assets-global.website-files.com/65b87d98fa638289e10b8f61/65c269053d86c92e0cf91db5_scalekit-logo.svg",
       },
       items: [
         {
-          to: "/",
-          label: "Documentation",
+          to: "/sso/quickstart",
+          label: "Single Sign-on",
+          position: "left",
+          className: "sso",
+        },
+        {
+          to: "/apis",
+          label: "API Reference",
           position: "left",
         },
         {
-          to: "/integrations",
-          label: "Integrations",
+          to: "/sdks",
+          label: "SDKs",
           position: "left",
         },
-        { to: "/apis", label: "API Reference", position: "left" },
+        {
+          type: "dropdown",
+          label: "Resources",
+          position: "left",
+          items: [
+            {
+              label: "Integrations",
+              href: "/integrations",
+            },
+            {
+              label: "Blog",
+              href: "https://www.scalekit.com/blog",
+            },
+            {
+              type: "doc",
+              label: "Glossary",
+              docId: "manage-scalekit/glossary",
+            },
+          ],
+        },
         {
           type: "search",
           position: "right",
         },
         {
-          to: "https://app.scalekit.com",
-          label: "Go to Dashboard ->",
+          to: "https://www.scalekit.com/?intent=earlyaccess&utm_source=docs",
+          html: "Get Early Access &rarr;",
           position: "right",
           className: "loginLink",
         },
@@ -113,6 +160,9 @@ const config: Config = {
       theme: prismThemes.github,
       additionalLanguages: ["bash"],
     },
+    // footer: {
+    //   copyright: `Copyright © ${new Date().getFullYear()} Scalekit Inc.`,
+    // },
   } satisfies Preset.ThemeConfig,
 };
 
