@@ -52,7 +52,7 @@ const config: Config = {
       },
       {
         property: "twitter:image",
-        content: "/img/hero_docs.png",
+        content: "/img/docs_og.png",
       },
       { property: "og:title", content: "Home | Scalekit Docs" },
       {
@@ -62,7 +62,7 @@ const config: Config = {
       },
       {
         property: "og:image",
-        content: "/img/hero_docs.png",
+        content: "/img/docs_og.png",
       },
     ],
     docs: {
@@ -130,7 +130,8 @@ const config: Config = {
     },
     imageZoom: {
       // CSS selector to apply the plugin to, defaults to '.markdown img'
-      selector: ".markdown :not(.cardContainer h3) > img",
+      selector:
+        ".markdown :not(.cardContainer h3) > img,  .markdown :not(.language-row) img",
       // Optional medium-zoom options
       // see: https://www.npmjs.com/package/medium-zoom#options
       options: {
