@@ -5,7 +5,6 @@
     border: 1px solid var(--ifm-color-emphasis-200);
     background-color: var(--background-panels);
     border-radius: 4px;
-    /* box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.08); */
     color: var(--text-content);
     text-decoration: none;
     flex-basis: 0;
@@ -41,6 +40,17 @@
     transition: transform 200ms;
 }
 
+.header {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+}
+
 .title {
     font-size: 1.125rem;
     font-weight: bold;
@@ -56,6 +66,12 @@
 .description {
     margin-bottom: 0;
     font-size: 0.875rem;
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
 }
 
 .linkTextContainer {

@@ -1,14 +1,16 @@
-import React from "react";
-import clsx from "clsx";
-import styles from "./card.module.css";
-import Link from "@docusaurus/Link";
+import React from 'react';
+import clsx from 'clsx';
+import styles from './card.module.css';
+import Link from '@docusaurus/Link';
 
 export type CardType = {
   href?: string;
   title?: string;
   description?: string;
   linkText?: string;
+  icon?: React.ReactNode;
   children?: React.ReactNode;
+  disableCardClick?: boolean; // New prop to disable card click
 };
 
 type PropType = CardType;
@@ -16,8 +18,11 @@ type PropType = CardType;
 const CardContentWrapper = ({
   href,
   children,
-}: Partial<Pick<PropType, "href">> & { children: React.ReactNode }) => {
-  if (href)
+  disableCardClick,
+}: Partial<Pick<PropType, 'href' | 'disableCardClick'>> & {
+  children: React.ReactNode;
+}) => {
+  if (href && !disableCardClick)
     return (
       <Link to={href} className={clsx(styles.container)}>
         <>{children}</>
@@ -27,27 +32,23 @@ const CardContentWrapper = ({
   return <div className={clsx(styles.container)}>{children}</div>;
 };
 
-const Card = ({ href, title, description, linkText, children }: PropType) => {
+const Card = ({
+  href,
+  title,
+  description,
+  linkText,
+  icon,
+  children,
+  disableCardClick,
+}: PropType) => {
   return (
-    <CardContentWrapper href={href}>
-      {title && <h5 className={clsx(styles.title)}>{title}</h5>}
+    <CardContentWrapper href={href} disableCardClick={disableCardClick}>
+      <div className={clsx(styles.header)}>
+        {icon && <div className={clsx(styles.icon)}>{icon}</div>}
+        {title && <h5 className={clsx(styles.title)}>{title}</h5>}
+      </div>
       {description && <p className={clsx(styles.description)}>{description}</p>}
-      {children && <p className={clsx(styles.description)}>{children}</p>}
-
-      {/*
-
-      This code adds link below cards. Commenting to temporarily remove it.
-
-      {linkText && (
-        <div className={clsx(styles.linkTextContainer)}>
-          <div>
-            <span>{linkText}</span>
-            <span className={clsx(styles.rightArrow)}>→</span>
-          </div>
-        </div>
-      )}
-
-      */}
+      <div className={clsx(styles.links)}>{children}</div>
     </CardContentWrapper>
   );
 };
