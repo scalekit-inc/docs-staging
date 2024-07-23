@@ -1,55 +1,54 @@
 .productList {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
 }
 
 .productItem {
-    display: flex;
-    gap: 16px;
-    padding: 1.5rem;
-    border: 1px solid var(--ifm-color-emphasis-200);
-    border-radius: 0px;
-    background-color: var(--background-panels);
-    text-decoration: none; /* Ensure links have no underline */
-    color: inherit; /* Ensure link color is inherited */
+  display: flex;
+  gap: 16px;
+  padding: 1.5rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 0px;
+  background-color: var(--background-panels);
+  text-decoration: none; /* Ensure links have no underline */
+  color: inherit; /* Ensure link color is inherited */
 }
 
 .productItem:hover {
-    text-decoration: none;
-    box-shadow:
-        rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
-        rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-    transition: color 200ms;
-    color: var(--text-content);
+  text-decoration: none;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  transition: color 200ms;
+  color: var(--text-content);
 }
 
 .productItem:hover h3 {
-    color: var(--ifm-link-color);
-    text-decoration: underline;
+  color: var(--ifm-link-color);
+  text-decoration: none;
 }
 
 .icon {
-    padding: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--ifm-color-primary);
-    color: white;
-    border-radius: 50%;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--ifm-color-primary);
+  color: white;
+  border-radius: 50%;
 }
 
 .title {
-    font-size: 1rem; /* Updated to match cardwitharrow */
-    margin-bottom: 1.5rem;
+  font-size: 1rem; /* Updated to match cardwitharrow */
+  margin-bottom: 1.5rem;
 }
 
 .title:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .description {
-    margin-bottom: 0;
-    font-size: 0.9rem; /* Updated to match cardwitharrow */
-    color: inherit;
+  margin-bottom: 0;
+  font-size: 0.9rem; /* Updated to match cardwitharrow */
+  color: inherit;
 }
