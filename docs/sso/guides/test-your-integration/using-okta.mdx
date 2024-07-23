@@ -1,5 +1,5 @@
 ---
-description: SSO Configuration Guide for Okta
+description: Verify SSO Connection using Okta as the test identity provider
 ---
 
 import Card from "@site/src/components/Card/Card";
@@ -7,81 +7,56 @@ import CardList from "@site/src/components/CardList/CardList";
 
 # Test SSO with Okta
 
-<Subtitle>Verify SSO Connection using Okta as a test identity provider</Subtitle>
+<Subtitle>Verify SSO Connection using Okta as the identity provider</Subtitle>
 
-The role of Scalekit is to connect your app to your customer’s identity providers (IdPs) and have your users login into your application. Additionally, It also gives your app the user profile information. It is, however, crucial to ensure the success of the Single Sign-On (SSO) connection with the customer's IdPs.
+Using our [Quickstart guide](/sso/quickstart), you would have successfully integrated with Scalekit and implement Single Sign-on workflow in your application. Now, its time to test your integration for all possible customer scenarios and take them live.
 
-Now, let's proceed to create an organization (represents a customer) using the Scalekit dashboard and test Okta as the selected Identity Provider.
+Before we explain the scenarios that you need to test and validate, signup for an [Okta developer account](https://developer.okta.com/signup/) so that you can verify your SSO integration with Scalekit with Okta as the identity provider.
 
-## Create a Test Organization
+## Setup your environment for testing
 
-To emulate a customer scenario, let's create an Organization and name it "ChocolateShop". This action will consequently list "ChocolateShop" under the Organizations section, visible on the left navigation pane. Upon clicking on this item, the following details should be displayed:
+As part of setting up your environment for testing, we will simulate an actual scenario of onboarding an enterprise customer onto Scalekit so that you can recreate exactly what your customers would experience logging into your application via Single Sign-on.
 
-<figure>
-  ![Create a Test
-  Organization](@site/docs/sso/assets/single-sign-on/testing-sso/1.png)
-  <figcaption>A Test Organization, ChocolateShop</figcaption>
-</figure>
+1. Create an organization in [Scalekit Dashboard](https://app.scalekit.com) with an appropriate organization name that reflects your customer's name.
+2. Generate an <TooltippedGlossary glossary="Admin Portal" /> link in the overview section of the organization you recently created.
+3. Open the Admin Portal link and follow our [Okta Integration guide](/integrations/okta-saml) to setup an active SSO connection using Okta.
 
-- _Admin Portal_ section generates a No-Code Admin Portal that you can share with your customers.
-- _Domains_ section holds the several domains that “ChocolateShop” owns.
+:::tip
+You can [customize the admin portal](/sso/domain-and-theme-customization) and theme it according to your application's brand guidelines to give a more polished experience to your customers.
+:::
 
-Select the “SSO Connection” tab so that we can continue configuring Okta as a Identity Provider.
+Now that you have an active SSO connection, make sure that you have successfully validated the below scenarios.
 
-## Okta as a Test Identity Provider
+## Single Sign-on scenarios
 
-In the *SSO Connection* tab, choose Okta as the Identity Provider (IdP) that "ChocolateShop" employs, utilizing the SAML protocol. Typically, the IT Administrator managing "ChocolateShop" would log into the Okta Admin Console and use the [provided information to establish a connection with Scalekit](/integrations/okta-saml.mdx).
+### Scenario 1: SP Initiated SSO
 
-<figure>
-  ![Okta as a Test IdP](@site/docs/sso/assets/single-sign-on/testing-sso/2.png)
-</figure>
+In this workflow, user starts the Single Sign-on flow from your application's login page.
 
-- The details related to the Service Provider, specifically the Scalekit Authentication Platform, must be appropriately registered with Okta.
-- The attributes are the data that Okta sends to your app, representing successful authentication with the *ChocolateShop*.
-- Okta-provided Metadata is securely stored within Scalekit for facilitating auth with your app.
+During testing this scenario, you should validate the following:
 
-This step is crucial as it allows Okta to identify your app as the SSO Authentication Platform for "ChocolateShop" users.
+- User is redirected to the appropriate identity provider by Scalekit based on the authorization_url you provided.
+- After the user is authenticated by the identity provider, the user is redirected to the redirect_url endpoint provided in the authorization_url with one time authorization `code` along with `state` parameter you sent in the authorization_url.
+- Your application is able to retrieve the user profile details by exchanging the `code` you received in the above step.
 
-Ideally, any customer, such as ChocolateShop, should be able to log into your app via SSO, using their preferred Identity Providers.
+### Scenario 2: IdP Initiated SSO
 
-## Test the Connection
-
-It's time to validate the SSO connection, ensuring that _ChocolateShop_ users can seamlessly log into your app via SSO. When Scalekit receives the authenticated user information, you can consider the SSO connection as successfully established.
-
-To initiate the authentication flow, click the "Test Connection" button.
+In this workflow, user is already logged in the identity provider and starts the Single Sign-on flow from their idp. See the below diagram to understand the end-end workflow.
 
 <figure>
-  ![Test Connection - Step
-  1](@site/docs/sso/assets/single-sign-on/testing-sso/3.png)
+  ![IdP initiated SSO
+  workflow](@site/docs/sso/assets/guides/idp-initiated-sso.png)
+  <figcaption>IdP initiated SSO workflow</figcaption>
 </figure>
 
-The user will then input their credentials and follow the necessary steps for verification. Upon successful verification, Okta will sign them in.
+During testing this scenario, you should validate the following:
 
-<figure>
-  ![Test Connection - Step
-  3](@site/docs/sso/assets/single-sign-on/testing-sso/3.png)
-</figure>
+- User is redirected to the default redirect_url endpoint configured in the Scalekit Dashboard with parameters related to connection as request parameters.
+- Your application should be able to detect that this is an IdP initiated SSO based on the request parameters received in the earlier step and use those parameters to initiate a new SP initiated SSO workflow.
+- User is redirected to the appropriate identity provider by Scalekit based on the authorization_url you provided.
+- After the user is authenticated by the identity provider, the user is redirected to the redirect_url endpoint provided in the authorization_url with one time authorization `code` along with `state` parameter you sent in the authorization_url.
+- Your application is able to retrieve the user profile details by exchanging the `code` you received in the above step.
 
-Subsequently, Okta will redirect the user profile details to Scalekit. You should be able to view these details in your Scalekit dashboard.
+### Scenario 3: Handling Errors
 
-<figure>
-  ![Test Connection - Step
-  3](@site/docs/sso/assets/single-sign-on/testing-sso/3.png)
-</figure>
-
-Your app can access these details by integrating with the Scalekit SDK or the REST API.
-
-<CardList size="medium">
-
-<Card
-  title="Add SSO to your Login Page"
-  href="/sso/guides/setup-sso/build-login-page"
-  linkText="Explore"
-></Card>
-<Card
-  title="Handle User Attributes from IdP"
-  href="/sso/guides/setup-sso/handle-user-profile"
-  linkText="Explore"
-></Card>
-
-</CardList>
+### Scenario 4: Handling Custom User Attributes

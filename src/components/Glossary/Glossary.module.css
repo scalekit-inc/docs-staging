@@ -1,11 +1,13 @@
 .glossary {
-    text-decoration: underline;
+  text-decoration: underline dotted;
+  text-decoration-color: var(--scalekit-blue);
+  cursor: help;
 }
 .tooltip {
-    width: 400px;
-    background-color: #444;
-    color: white;
-    font-size: 90%;
-    padding: 4px 8px;
-    border-radius: 4px;
+  width: 400px;
+  background-color: #444;
+  color: white;
+  font-size: 90%;
+  padding: 4px 8px;
+  border-radius: 4px;
 }
