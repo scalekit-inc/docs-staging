@@ -1,5 +1,4 @@
 import type { SidebarsConfig } from "@docusaurus/plugin-content-docs";
-import { generateDocObjects } from "./src/utils/config-helper-fns";
 
 const sidebars: SidebarsConfig = {
   homeSidebar: [
@@ -178,7 +177,6 @@ const sidebars: SidebarsConfig = {
         "<span class='text--uppercase text--light sidenav-category-heading'>Identity Provider Guides</span>",
       defaultStyle: true,
     },
-
     {
       type: "doc",
       label: "Okta SAML",

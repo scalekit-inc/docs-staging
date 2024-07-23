@@ -52,8 +52,7 @@ const config: Config = {
       },
       {
         property: "twitter:image",
-        content:
-          "/assets/images/hero_docs-c5ab8170a6af6313594b9db1fdf7f9c0.png",
+        content: "/img/hero_docs.png",
       },
       { property: "og:title", content: "Home | Scalekit Docs" },
       {
@@ -63,8 +62,7 @@ const config: Config = {
       },
       {
         property: "og:image",
-        content:
-          "/assets/images/hero_docs-c5ab8170a6af6313594b9db1fdf7f9c0.png",
+        content: "/img/hero_docs.png",
       },
     ],
     docs: {

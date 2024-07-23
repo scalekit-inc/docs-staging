@@ -46,7 +46,6 @@ url="/integrations/oidc"></CardTileWithImage>
 
 <section class="row">
 
-
 <article className='col col--4 margin-bottom--lg'>
     <a className='card padding--lg cardContainer' href="/integrations/auth0">
         <h3>
