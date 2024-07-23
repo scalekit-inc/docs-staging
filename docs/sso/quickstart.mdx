@@ -3,7 +3,7 @@ displayed_sidebar: homeSidebar
 description: Step-by-step guide to implement Single Sign-on in your application using Scalekit's APIs
 ---
 
-import InstallSDK from "@site/docs/sso/templates/_install-sdk.md";
+import InstallSDK from '@site/docs/sso/templates/_install-sdk.md';
 
 # Getting Started with Single Sign-on
 
@@ -53,15 +53,15 @@ Secure your Scalekit API communication by setting up environment variables. You'
 Never hardcode secrets in your app. Use environment variables instead. Here's how to set them in a `.env` file:
 
 ```jsx title=".env"
-SCALEKIT_ENVIRONMENT_URL = "https://b2b-app-dev.scalekit.com";
-SCALEKIT_CLIENT_ID = "<COPY_CLIENT_ID_SCALEKIT_DASHBOARD>";
-SCALEKIT_CLIENT_SECRET = "<COPY_SECRET_SCALEKIT_DASHBOARD>";
+SCALEKIT_ENVIRONMENT_URL = 'https://b2b-app-dev.scalekit.com';
+SCALEKIT_CLIENT_ID = '<COPY_CLIENT_ID_SCALEKIT_DASHBOARD>';
+SCALEKIT_CLIENT_SECRET = '<COPY_SECRET_SCALEKIT_DASHBOARD>';
 ```
 
 :::tip
 
 - Never commit your <SimpleCode>.env </SimpleCode> file to version control.
-- Rotate your <SimpleCode>secret </SimpleCode>regularly. See the [best practices for managing secrets](/sso/launch-checklist#client-secrets-essentials).
+- Rotate your <SimpleCode>secret </SimpleCode>regularly. See the [best practices for managing secrets](/sso/guides/key-concepts/manage-client-secrets).
   :::
 
 Now you're ready to start integrating SSO into your app! Next, we'll cover how to use the SDK to authenticate users.
@@ -93,7 +93,7 @@ Next, construct your Authorization URL with these parameters and redirect users 
 <TabItem value="nodejs" label="Node.js">
 
 ```javascript showLineNumbers
-import { Scalekit } from "@scalekit-sdk/node";
+import { Scalekit } from '@scalekit-sdk/node';
 
 // initialize the SDK client
 const scalekit = new Scalekit(
@@ -104,18 +104,18 @@ const scalekit = new Scalekit(
 
 // Option 1: Authorization URL with the organization ID
 const authorizationURL = scalekit.getAuthorizationUrl(redirectUri, {
-  organizationId: "org_12442",
+  organizationId: 'org_12442',
   state: state, // optional
 });
 
 // Option 2: Authorization URL with login hint
 const authorizationURL = scalekit.getAuthorizationUrl(redirectUri, {
-  loginHint: "user@example.com",
+  loginHint: 'user@example.com',
 });
 
 // Option 3: Authorization URL with the connection ID
 const authorizationURL = scalekit.getAuthorizationUrl(redirectUri, {
-  connectionId: "conn_1242242",
+  connectionId: 'conn_1242242',
 });
 
 // TODO: redirect the user to this authorizationURL
@@ -217,7 +217,7 @@ if (error) {
 }
 
 // If it is an idp initiated login
-if (idp_initiated_login && idp_initiated_login === "success") {
+if (idp_initiated_login && idp_initiated_login === 'success') {
   const authorizationURL = scalekit.getAuthorizationUrl(redirectUri, {
     connectionId: connection_id,
     ...(relay_state && { state: relay_state }), // optional: pass relay state
