@@ -27,7 +27,7 @@ const DocsRating = ({ label }) => {
   return (
     <div className="docsRating">
       {haveVoted ? (
-        "Thank you for the feedback!"
+        'We appreciate you taking the time to provide feedback. Your submission has been recorded.'
       ) : (
         <div>
           Is this page helpful?
@@ -44,7 +44,7 @@ const DocsRating = ({ label }) => {
             <FaRegThumbsDown /> No
           </a>
           <TextFeedbackComponent
-            className={!showTextFeedback ? "hidden" : "shown"}
+            className={!showTextFeedback ? 'hidden' : 'shown'}
             onFeedback={(feedback) => giveFullFeedback(feedback)}
           />
         </div>

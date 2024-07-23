@@ -1314,6 +1314,8 @@ article:has(.custom_container) {
 .btn-outline {
   align-items: center;
   background-color: #fff;
+  padding-left: 8px; /* Adjusted padding */
+  padding-right: 8px; /* Adjusted padding */
 }
 
 .btn-outline svg {
