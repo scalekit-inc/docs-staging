@@ -501,7 +501,7 @@
           {
             "type": "string",
             "example": "code",
-            "description": "Value must be `openid profile`",
+            "description": "Value must be `openid email profile`",
             "name": "scope",
             "in": "query",
             "required": true

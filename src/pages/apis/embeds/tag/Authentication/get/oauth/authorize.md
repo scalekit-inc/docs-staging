@@ -9,7 +9,7 @@ curl --request GET \
   &redirect_uri=https%3A%2F%2Fmysaasapp.com%2Fredirect_uri
   &response_type=code
   &state=hf68uyjh2189iuhj56789
-  &scope=openid profile'
+  &scope=openid email profile'
 ```
 
 </TabItem>

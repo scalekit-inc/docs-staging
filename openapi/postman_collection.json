@@ -1417,7 +1417,7 @@
                                 {
                                     "disabled": false,
                                     "description": {
-                                        "content": "(Required) Value must be `openid profile`",
+                                        "content": "(Required) Value must be `openid email profile`",
                                         "type": "text/plain"
                                     },
                                     "key": "scope",
@@ -1552,7 +1552,7 @@
                                         {
                                             "disabled": false,
                                             "description": {
-                                                "content": "(Required) Value must be `openid profile`",
+                                                "content": "(Required) Value must be `openid email profile`",
                                                 "type": "text/plain"
                                             },
                                             "key": "scope",
