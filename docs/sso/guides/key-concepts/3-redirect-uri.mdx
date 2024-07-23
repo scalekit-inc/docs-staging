@@ -22,13 +22,13 @@ Since Redirect URIs can be manipulated by unauthorized parties, Scalekit require
 
 ## Validation Rules
 
-The redirect URIs that you configure in the Scalekit dashboard should pass the below validation rules for security purposes.
+Redirect URIs that are configured in the Scalekit dashboard must adhere to specific validation rules for security:
 
 | Validation Rule                                                                                                 | Development Environment                                                                                                                 | Production Environment                         |
 | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
 | Schemes Supported                                                                                               | <FcCheckmark /> <SimpleCode>http</SimpleCode><br /> <FcCheckmark /> <SimpleCode>https </SimpleCode>                                     | <FcCheckmark /> <SimpleCode>https</SimpleCode> |
 | localhost                                                                                                       | <FcCheckmark /> Allowed                                                                                                                 | <FcCancel /> Not Allowed                       |
-| Support for wildcard characters (\*)                                                                            | <FcCheckmark /> Allowed<br /><br />See [below](#wildcard-characters-in-redirect-uris) for full details about wildcard character support | <FcCancel /> Not Allowed                       |
+| Wildcard support (\*)                                                                            | <FcCheckmark /> Allowed<br /><br />See [below](#wildcard-characters-in-redirect-uris) for full details about wildcard character support | <FcCancel /> Not Allowed                       |
 | Max URI Length                                                                                                  | 256 characters                                                                                                                          | 256 characters                                 |
 | Query Parameters <br /> <SimpleCode>https:<span></span>//your-domain.com/callback?query=value</SimpleCode>      | <FcCancel /> Not Allowed                                                                                                                | <FcCancel /> Not Allowed                       |
 | Fragment Component <br /> <SimpleCode>https:<span></span>//your-domain.com/callback#fragment=value</SimpleCode> | <FcCancel /> Not Allowed                                                                                                                | <FcCancel /> Not Allowed                       |
@@ -37,7 +37,7 @@ The redirect URIs that you configure in the Scalekit dashboard should pass the b
 
 According to the OAuth 2.0 specification (<Link href="https://tools.ietf.org/html/rfc6749#section-3.1.2">section 3.1.2 of RFC 6749</Link>), a redirection URI must be an absolute URI. But, to make development and testing easier - this restriction is slightly relaxed in the DEVELOPMENT environments.
 
-However, the following rules will apply while allowing the wildcard character.
+For development, wildcards can simplify testing. However, they must follow these rules:
 
 | Validation Rule                                                                     | Example                                                                                                                                                                                                          |
 | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
