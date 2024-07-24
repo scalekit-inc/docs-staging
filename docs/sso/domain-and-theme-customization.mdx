@@ -3,40 +3,40 @@ displayed_sidebar: homeSidebar
 toc_max_heading_level: 2
 ---
 
-# Custom Domain and Theme
+# Customize Admin Portal
 
-<Subtitle>Make Scalekit your own</Subtitle>
+<Subtitle>
+  Customize configuration portal UI to fit your brand and design needs
+</Subtitle>
 
-Scalekit's default behavior uses the auto-provisioned domain and branding in your application. However, it can be customized to represent your domain and brand, as described in the rest of this page.
+Customizing the Admin Portal helps align the UI interface with your application's brand identity, ensuring a cohesive look and feel. This guide walks you through the steps to customize to suit your brand.
 
 ## Custom Domain
 
-Scalekit sets up your environment using a unique endpoint URL that ends with the <SimpleCode>scalekit.com</SimpleCode> domain. We offer an option to customize this domain using CNAME configuration.
+Scalekit sets up your environment using a unique endpoint URL that ends with the <SimpleCode>scalekit.com</SimpleCode> domain. However, you can customize this using CNAME configuration.
 
-| Before                                                            | After                                                        |
-| ----------------------------------------------------------------- | ------------------------------------------------------------ |
+Example:
+
+| Before                                                               | After                                                           |
+| -------------------------------------------------------------------- | --------------------------------------------------------------- |
 | <SimpleCode> https:<span></span>//b2b-app.scalekit.com </SimpleCode> | <SimpleCode> https:<span></span>//sso.b2b-app.com </SimpleCode> |
 
-The URL is visible in the following ways:
-
-- Organization users will see this URL in their browser’s address when they visit the [Admin Portal](/sso/quickstart-admin-portal) to configure authentication settings.
-- Organization users logging into the app using [SSO via SAML](/integrations/saml) (or) [SSO via OIDC](/integrations/oidc) will see this URL in the browser's address bar as part of redirections to their Identity Providers.
+Users will see this web address in their browser when they visit the Admin Portal or sign in using Single Sign-On (SSO)
 
 :::info
 
-1. CNAME Configuration Limitation: CNAME configuration is exclusively available for production environments.
-2. SSL Certificate Automation: Upon successful CNAME record configuration in your domain registrar, the SSL certificate for the custom domain will be automatically set up.
-3. Base URL: After successfully configuring CNAME for the production environment, ensure that the new CNAME URL is utilized as the base URL.
-
-:::
+1. CNAME Configuration Limitation: CNAME configuration is only available for production environments.
+2. SSL Certificate Automation: After successful CNAME configuration, the SSL certificate for the custom domain will be automatically set up.
+3. Base URL: Ensure the new CNAME URL is used as the base URL after configuration.
+   :::
 
 ## Custom Theme
 
-You can let your Organization's users (usually IT Administrators) configure SSO settings through a self-service Admin Portal. You can customize this portal to present your app’s brand.
+Customize the Admin Portal to match your brand. This includes:
 
-- Show your brand’s logo on the Admin Portal.
-- Match the Admin Portal with your brand’s color themes by updating its Accent Color.
-- The Favicon on the browser tab can be updated to fit your brand.
+- **Logo**: Display your brand’s logo.
+- **Colors**: Update the admin portal’s accent color to match your brand
+- **Favicon**: Update the favicon to fit your brand
 
 ### Next Steps
 
