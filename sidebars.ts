@@ -1,4 +1,4 @@
-import type { SidebarsConfig } from "@docusaurus/plugin-content-docs";
+import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
 
 const sidebars: SidebarsConfig = {
   homeSidebar: [
@@ -78,11 +78,6 @@ const sidebars: SidebarsConfig = {
     // },
     {
       type: 'doc',
-      label: 'Customize User Attributes',
-      id: 'sso/guides/setup-sso/customize-user-attributes',
-    },
-    {
-      type: 'doc',
       label: 'Customize Admin Portal',
       id: 'sso/domain-and-theme-customization',
     },
@@ -95,6 +90,11 @@ const sidebars: SidebarsConfig = {
       type: 'doc',
       label: 'Handle SSO Errors',
       id: 'sso/guides/setup-sso/error-handling',
+    },
+    {
+      type: 'doc',
+      label: 'Customize User Attributes',
+      id: 'sso/guides/setup-sso/customize-user-attributes',
     },
     // {
     //   type: "doc",

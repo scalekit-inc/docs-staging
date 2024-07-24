@@ -1,23 +1,24 @@
+# Fetch User Attributes from Identity Provider
 
-# Handle User Profile
+After initiating the Single Sign-On (SSO) process, user details are transmitted to your B2B application once they have authenticated with their Identity Provider (IdP). This guide assists in managing the authentication flow, particularly in terms of exchanging the "code" for necessary user profile details to finalize the user's login.
 
-After initiating the Single Sign-On (SSO) process, user details are transmitted to your B2B application once they have authenticated with their Identity Provider (IdP). This guide is designed to assist in managing the authentication flow, particularly in terms of exchanging the "code" for necessary user profile details to finalize the user's login to the application.
-
-Maximise your understanding of this guide by using it in conjunction with the [scalekit-nextjs-example](https://github.com/scalekit-inc/scalekit-nextjs-example) repository and [Build Login Page](/sso/guides/setup-sso/build-login-page) guide.
+:::info Note
+Use this guide in conjunction with the [scalekit-nextjs-example](https://github.com/scalekit-inc/scalekit-nextjs-example) repository and [Build Login Page](/sso/guides/setup-sso/build-login-page) guide.
+:::
 
 ## Redirection to the App
 
-The authorization URL carries a <SimpleCode>redirect_uri</SimpleCode> parameter in the first step to remember to callback your B2B app after IdP authentication. This parameter reverts to your B2B application post-IdP authentication. For instance, while working in a development environment, the redirect URL maybe <SimpleCode>http:<span></span>//localhost:3000/auth/callback</SimpleCode>
+The authorization URL carries a <SimpleCode>redirect_uri</SimpleCode> parameter to callback your B2B app after IdP authentication. For example, in a development environment, the redirect URL may be <SimpleCode>http:<span></span>//localhost:3000/auth/callback</SimpleCode>.
 
-Handle the <SimpleCode>/auth/callback</SimpleCode> route in your app. This route receives user details in the form of a token after successful authentication. If the authentication is unsuccessful, your app will receive an error response, which needs to be addressed appropriately.
+Handle the <SimpleCode>/auth/callback</SimpleCode> route in your app to receive user details in the form of a token after successful authentication. If authentication fails, your app will receive an error response that needs to be handled appropriately.
 
-For information on valid URIs, consult the [Redirect URI](/sso/guides/key-concepts/redirect-uri) section.
+Refer to the [Redirect URI](/sso/guides/key-concepts/redirect-uri) section for valid URIs
 
 ## **Handling Callback Route**
 
-During the redirection process, the callback route receives a code as query parameters. This code can be utilized with Scalekit's SDK to retrieve two key types of information: user details and an access token.
+During redirection, the callback route receives a code as query parameters. Use Scalekit's SDK to retrieve user details and an access token.
 
-The user details, which come in the form of an encoded token, provide your application with information about the user who has logged into your app. On the other hand, the access token serves a different purpose. It plays an instrumental role in facilitating subsequent requests to Scalekit API endpoints, such as the /userinfo endpoint.
+The user details, which come in the form of an encoded token, provide your application with information about the user. On the other hand, the access token plays an instrumental role in facilitating subsequent requests to Scalekit API endpoints. For example, the <SimpleCode>/userinfo</SimpleCode> endpoint.
 
 ```ts title="app/auth/callback/route.ts"
 const { user, accessToken } = await scalekit.authenticateWithCode({
@@ -26,23 +27,23 @@ const { user, accessToken } = await scalekit.authenticateWithCode({
 });
 ```
 
-You can store this information as cookies with the httpOnly attribute enabled. This allows the inclusion of this information in HTTP calls to your servers securely.
+Store this information as cookies with the <SimpleCode> httpOnly </SimpleCode> attribute enabled for secure HTTP calls:
 
 Here is a code example demonstrating this process. In this example, after setting the cookies, the user is directed to the /me path in the User Interface (UI).
 
 ```ts title="app/auth/callback/route.ts"
 const url = request.nextUrl.clone();
-url.searchParams.delete("code");
-url.pathname = "/me";
+url.searchParams.delete('code');
+url.pathname = '/me';
 const response = NextResponse.redirect(url);
 response.cookies.set({
-  name: "user",
+  name: 'user',
   value: JSON.stringify(user),
   httpOnly: true,
   ...(!isDev && { secure: true }),
 });
 response.cookies.set({
-  name: "accessToken",
+  name: 'accessToken',
   value: accessToken,
   httpOnly: true,
   ...(!isDev && { secure: true }),
@@ -50,13 +51,13 @@ response.cookies.set({
 return response;
 ```
 
-Now that we have authenticated the user using single sign on by this time. Let’s look at a step that renders a page with user information.
+After authentication, redirect the user to the client-side <SimpleCode>/me</SimpleCode> page.
 
 ## Render User Profile
 
-We saw our B2B redirect the user to client-side <SimpleCode>/me</SimpleCode> page.
-
 Consider this page welcomes the user with their first and last name, along with general option to logout from the app.
+
+The <SimpleCode>/me</SimpleCode> page welcomes the user with their first and last name and provides a logout option.
 
 Here is a Next.js example code:
 
@@ -96,14 +97,12 @@ Here is a Next.js example code:
 </Container>
 ```
 
-The <SimpleCode>user</SimpleCode> and <SimpleCode>logout</SimpleCode> methods above would invoke
-
-<SimpleCode>getUser()</SimpleCode> and <SimpleCode>logOutUser()</SimpleCode> methods
+The <SimpleCode>user</SimpleCode> and <SimpleCode>logout</SimpleCode> methods above would invoke <SimpleCode>getUser()</SimpleCode> and <SimpleCode>logOutUser()</SimpleCode> methods
 to get the cookies or even remove them accordingly.
 
 ```ts title="service/auth.ts"
 export const getUser = async (): Promise<{ user: User | null }> => {
-  const user = cookies().get("user")?.value;
+  const user = cookies().get('user')?.value;
   if (!user) {
     return { user: null };
   }
@@ -115,7 +114,9 @@ export const getUser = async (): Promise<{ user: User | null }> => {
 
 // delete the cookies when user logs out
 export const logOutUser = async (): Promise<void> => {
-  cookies().delete("user");
-  cookies().delete("accessToken");
+  cookies().delete('user');
+  cookies().delete('accessToken');
 };
 ```
+
+**Handle User Attributes**: Implement these steps to effectively handle user attributes from the Identity Provider and manage user authentication in your B2B SaaS application
