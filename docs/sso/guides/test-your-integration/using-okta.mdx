@@ -33,6 +33,11 @@ Now that you have an active SSO connection, make sure that you have successfully
 
 In this workflow, user starts the Single Sign-on flow from your application's login page.
 
+<figure>
+  ![SP initiated SSO workflow](@site/docs/sso/assets/single-sign-on/quickstart/how-sso-works.png)
+  <figcaption>SP initiated SSO workflow</figcaption>
+</figure>
+
 During testing this scenario, you should validate the following:
 
 - User is redirected to the appropriate identity provider by Scalekit based on the authorization_url you provided.
@@ -44,9 +49,8 @@ During testing this scenario, you should validate the following:
 In this workflow, user is already logged in the identity provider and starts the Single Sign-on flow from their idp. See the below diagram to understand the end-end workflow.
 
 <figure>
-  ![IdP initiated SSO
-  workflow](@site/docs/sso/assets/guides/idp-initiated-sso.png)
-  <figcaption>IdP initiated SSO workflow</figcaption>
+  ![Scalekit's recommended workflow for IdP initiated SSO](/img/idp_initiated_sso_with_scalekit.png)
+  <figcaption>Scalekit's recommended workflow for IdP initiated SSO</figcaption>
 </figure>
 
 During testing this scenario, you should validate the following:

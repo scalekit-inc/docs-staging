@@ -47,7 +47,12 @@ However, the service provider cannot verify that a malicious party didn't steal 
 ## Convert the IdP Initiated Request to SP Initiated SSO
 
 Despite the security risks, IdP initiated SSO offers significant convenience to end users, allowing them to easily log into various applications used within their organization. As such, it's important for your application to support it.
-Fortunately, you can overcome the inherent security risks of IdP initiated SSO by converting the incoming IdP initiated request to an SP initiated SSO flow.
+Fortunately, you can overcome the inherent security risks of IdP initiated SSO by converting the incoming IdP initiated request to an SP initiated SSO flow. Refer the below diagram for the recommended workflow from Scalekit.
+
+<figure>
+  ![Scalekit's recommended workflow for IdP initiated SSO](/img/idp_initiated_sso_with_scalekit.png)
+  <figcaption>Scalekit's recommended workflow for IdP initiated SSO</figcaption>
+</figure>
 
 1. When Scalekit receives an IdP initiated SSO request for one of your customers, it will ping your configured default <SimpleCode>redirect_uri</SimpleCode> with the <SimpleCode>connection_id</SimpleCode> as a request parameter:
 
