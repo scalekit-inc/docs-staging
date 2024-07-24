@@ -10,13 +10,13 @@ import { FcCancel } from 'react-icons/fc';
 
 <Subtitle></Subtitle>
 
-A Redirect URI is an endpoint URL where Scalekit redirects users post-authentication with the Identity Provider (IdP). In the Scalekit dashboard, you can configure up to 5 redirect URIs per environment.
+A Redirect URI is an endpoint where Scalekit redirects users post-authentication with the Identity Provider (IdP). In the Scalekit dashboard, you can configure up to 5 redirect URIs per environment.
 
 Since Redirect URIs can be manipulated by unauthorized parties, Scalekit requires pre-registration of all redirect URIs used in login flows. Registration can be done in the Scalekit dashboard.
 
 :::info
 
-**IdP-initiated SAML SSO Flow**: Scalekit uses the Redirect URI that's marked as default to redirect users. [Learn more about handling IdP-initiated SSO flows](/sso/guides/setup-sso/implement-idp-initiated-sso).
+**IdP-initiated SAML SSO Flow**: Scalekit uses your configured default Redirect URI to redirect users. [Learn more about handling IdP-initiated SSO flows](/sso/guides/setup-sso/implement-idp-initiated-sso).
 
 :::
 

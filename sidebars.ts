@@ -83,7 +83,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'doc',
-      label: 'Customize Admin Portal Branding',
+      label: 'Customize Admin Portal',
       id: 'sso/domain-and-theme-customization',
     },
     {
