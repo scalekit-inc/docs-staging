@@ -29,7 +29,7 @@
       "get": {
         "description": "Returns the OpenID Connect configuration values from the provider's Well-Known Configuration Endpoint, per the specification (https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationRequest). \n\nSample Response below.\n```\n{\n  \"issuer\": \"https://rexinc.scalekit.com\",\n  \"authorization_endpoint\": \"https://rexinc.scalekit.com/oauth/authorize\",\n  \"token_endpoint\": \"https://rexinc.scalekit.com/oauth/token\",\n  \"introspection_endpoint\": \"https://rexinc.scalekit.com/oauth/introspect\",\n  \"userinfo_endpoint\": \"https://rexinc.scalekit.com/userinfo\",\n  \"revocation_endpoint\": \"https://rexinc.scalekit.com/revoke\",\n  \"end_session_endpoint\": \"https://rexinc.scalekit.com/end_session\",\n  \"jwks_uri\": \"https://rexinc.scalekit.com/keys\",\n  \"scopes_supported\": [\n    \"openid\",\n    \"profile\",\n    \"offline_access\"\n  ],\n  \"response_types_supported\": [\n    \"code\"\n  ],\n  \"response_modes_supported\": [\n    \"query\"\n  ],\n  \"grant_types_supported\": [\n    \"authorization_code\",\n    \"client_credentials\",\n    \"refresh_token\"\n  ],\n  \"subject_types_supported\": [\n    \"public\"\n  ],\n  \"id_token_signing_alg_values_supported\": [\n    \"RS256\"\n  ],\n  \"request_object_signing_alg_values_supported\": [\n    \"RS256\"\n  ],\n  \"token_endpoint_auth_methods_supported\": [\n    \"none\",\n    \"client_secret_basic\",\n    \"client_secret_post\",\n    \"private_key_jwt\"\n  ],\n  \"token_endpoint_auth_signing_alg_values_supported\": [\n    \"RS256\"\n  ],\n  \"revocation_endpoint_auth_methods_supported\": [\n    \"none\",\n    \"client_secret_basic\",\n    \"client_secret_post\",\n    \"private_key_jwt\"\n  ],\n  \"revocation_endpoint_auth_signing_alg_values_supported\": [\n    \"RS256\"\n  ],\n  \"introspection_endpoint_auth_methods_supported\": [\n    \"client_secret_basic\",\n    \"private_key_jwt\"\n  ],\n  \"introspection_endpoint_auth_signing_alg_values_supported\": [\n    \"RS256\"\n  ],\n  \"claims_supported\": [\n    \"sub\",\n    \"aud\",\n    \"exp\",\n    \"iat\",\n    \"iss\",\n    \"auth_time\",\n    \"nonce\",\n    \"acr\",\n    \"amr\",\n    \"c_hash\",\n    \"at_hash\",\n    \"act\",\n    \"scopes\",\n    \"client_id\",\n    \"azp\",\n    \"preferred_username\",\n    \"name\",\n    \"family_name\",\n    \"given_name\",\n    \"locale\",\n    \"email\",\n    \"email_verified\",\n    \"phone_number\",\n    \"phone_number_verified\"\n  ],\n  \"code_challenge_methods_supported\": [\n    \"S256\"\n  ],\n  \"ui_locales_supported\": [\n    \"en\"\n  ],\n  \"request_parameter_supported\": true,\n  \"request_uri_parameter_supported\": false\n}\n\n```",
         "tags": [
-          "Single Sign-On"
+          "OpenID Metadata"
         ],
         "summary": "OpenID Provider metadata URL",
         "operationId": "OpenID_WellKnownEndpoint",
@@ -52,13 +52,13 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Organization ID for the Connection.",
+            "description": "Organization ID for the Connection",
             "name": "organization_id",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "Email domain associated with this connection",
+            "description": "Email domain associated with this connection. If domain is not empty it would return connections that are available to email domain by matching the organization associated to the domain",
             "name": "domain",
             "in": "query"
           },
@@ -418,7 +418,7 @@
         "tags": [
           "Connection"
         ],
-        "summary": "Disable a Connection for organization",
+        "summary": "Disable a Connection for an Organization",
         "operationId": "ConnectionService_DisableConnection",
         "parameters": [
           {
@@ -452,7 +452,7 @@
         "tags": [
           "Connection"
         ],
-        "summary": "Enable a Connection for organization",
+        "summary": "Enable a Connection for an Organization",
         "operationId": "ConnectionService_EnableConnection",
         "parameters": [
           {
@@ -540,7 +540,7 @@
       "get": {
         "description": "Authorization URL initiates the Login flow with Scalekit.\n\nScalekit expects atleast one of the following parameters to be present. The parameters are used to determine the SSO connection used to Login in the user. \n\n`domain` - Email domain of the user. Domain should be mapped to an Organization. The SSO connection from the org would be used to login to the app. \u003cbr/\u003e\n`connection_id` - ID of the SSO connection. If the Connection's status is `active`, the user will be redirected to the SSO Connection's identity provider configured. \u003cbr/\u003e \n`organization_id` -  ID of Organization. The user will be redirected to the SSO connection's identity provider configured for that organization. \u003cbr/\u003e\n`provider` -  ID of SSO Provider, Incase of Social Logins . e.g `google` \u003cbr/\u003e",
         "tags": [
-          "Single Sign-On"
+          "Authentication"
         ],
         "summary": "Authorization URL",
         "operationId": "OAuth_AuthorizeEndpoint",
@@ -604,8 +604,8 @@
           },
           {
             "type": "string",
-            "example": "code",
-            "description": "Value must be `openid profile`",
+            "example": "openid email profile",
+            "description": "Value must be `openid email profile`",
             "name": "scope",
             "in": "query",
             "required": true
@@ -663,30 +663,50 @@
       "post": {
         "description": "The code provided to the Redirect URI. Code can be exchanged for a ID Token containing the user details using the Token URL.",
         "tags": [
-          "Single Sign-On"
+          "Authentication"
         ],
-        "summary": "Authenticate With Code",
+        "summary": "Token URL",
         "operationId": "OAuth_TokenEndpoint",
         "parameters": [
           {
             "type": "string",
             "description": "The code received by the Redirect URI as part of the Authentication Response.",
             "name": "code",
-            "in": "query",
+            "in": "body",
             "required": true
           },
           {
             "type": "string",
-            "description": "The redirect URI where this code was received. This will used to validate the code to make the code was infact generated for this redirect_uri",
+            "description": "The redirect URI where this code was received. This will used to validate the code to make the code was infact generated for this redirect_uri.",
             "name": "redirect_uri",
-            "in": "query",
+            "in": "body",
             "required": true
           },
           {
             "type": "string",
-            "description": "Used in PKCE flow, a `code_challenge` presented at the Authorization Endpoint",
+            "description": "Unique client ID that represents your application.",
+            "name": "client_id",
+            "in": "body",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "The client secret to authorize the client.",
+            "name": "client_secret",
+            "in": "body",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "Grant Type must be `authorization_code`.",
+            "name": "grant_type",
+            "in": "body"
+          },
+          {
+            "type": "string",
+            "description": "Used in PKCE flow, code_verifier is derived from the `code_challenge` presented at the Authorization Endpoint",
             "name": "code_verifier",
-            "in": "query"
+            "in": "body"
           }
         ],
         "responses": {
@@ -1318,7 +1338,7 @@
           "type": "string",
           "format": "date-time",
           "title": "Created Time",
-          "example": "2024-001-05T14:48:00.000Z"
+          "example": "2024-01-05T14:48:00.000Z"
         },
         "display_name": {
           "description": "Display Name of the Organization",
@@ -1455,6 +1475,9 @@
     {
       "description": " Connection represents a unique Single Sign-on instance for an Organization. Connection has the configuration needed to establish an SSO and exchange user information securely between Scalekit and your customer's Identity Provider. Depending on the connection type parameter, the corresponding configuration details are found in `oidc_config` or `saml_config` parameter.\n\n**Connection Attributes**\n\n| Attribute Name | Attribute Description |\n|---|---|\n| `id`\u003cbr\u003e_string_ | Unique ID of an SSO Connection. This attribute is required for all API operations to be performed against this connection.  |\n| `provider`\u003cbr\u003e_ENUM_ | Name of the Identity Provider. Possible Values are: `OKTA`, `GOOGLE`, `MICROSOFT_AD`, `AUTH0`, `ONELOGIN`, `PING_IDENTITY`, `JUMPCLOUD`, `CUSTOM` |\n| `type`\u003cbr\u003e_ENUM_ | Protocol type that is used for this connection. Possible values are `SAML` or `OIDC` |\n| `status`\u003cbr\u003e_ENUM_ | Indicates the configuration progress status of the SSO Connection. Possible Values are `DRAFT`, `INPROGRESS`, `COMPLETED`. \u003cbr\u003e_Note_: This doesn't indicate whether this connection is active or not. |\n| `enabled`\u003cbr\u003e_boolean_ | Indicates whether this connection is active or not. Users can only login via active SSO connections. |\n| `organization_id`\u003cbr\u003e_string_ | Organization ID to which this SSO connection belongs to. |\n| `saml_config`\u003cbr\u003e_Object_ | If this connection is of type `SAML`, the configuration details are found in this object. |\n| `oidc_config`\u003cbr\u003e_Object_ | If this connection is of type `OIDC`, the configuration details are found in this object. |\n| `attribute_mapping`\u003cbr\u003e_Object_ | Array of attribute mappings using which the user information received from the Identity Provider is normalized. Example: \u003ccode\u003e \u003cbr/\u003e{ \u003cbr/\u003e\u0026nbsp;\u0026nbsp; \"email\": \"email\",\u003cbr/\u003e\u0026nbsp;\u0026nbsp; \"family_name\": \"lastName\", \u003cbr/\u003e\u0026nbsp;\u0026nbsp; \"given_name\": \"firstName\",\u003cbr/\u003e\u0026nbsp;\u0026nbsp;\u0026nbsp;\"sub\": \"nameid\" \u003cbr/\u003e} \u003c/code\u003e |\n| `create_time` | Timestamp at which this connection record was created in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. For Example: `2021-10-05T14:48:00.000Z` |\n| `update_time`\u003cbr\u003e_string_ | Timestamp at which this connection record was last updated in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. For Example: `2021-10-10T14:48:00.000Z` |",
       "name": "Connection"
+    },
+    {
+      "name": "Authentication"
     },
     {
       "name": "OpenID Metadata"
