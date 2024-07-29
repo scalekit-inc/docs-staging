@@ -1,9 +1,10 @@
 ---
 hide_table_of_contents: true
-pagination_next: integrations/saml
+pagination_next: null
+displayed_sidebar: integrationsSidebar
 ---
 
-# Integration Guides
+# Integrations Overview
 
 ## Identity Providers
 
@@ -45,11 +46,6 @@ url="/integrations/oidc"></CardTileWithImage>
 
 <section class="row">
 
-<CardTileWithImage imageSrc="https://firebase.google.com/static/downloads/brand-guidelines/SVG/logo-logomark.svg"
-title="Firebase"
-description="Integrate Scalekit in your Firebase Project"
-url="/integrations/firebase"></CardTileWithImage>
-
 <article className='col col--4 margin-bottom--lg'>
     <a className='card padding--lg cardContainer' href="/integrations/auth0">
         <h3>
@@ -60,4 +56,8 @@ url="/integrations/firebase"></CardTileWithImage>
     </a>
 </article>
 
+<CardTileWithImage imageSrc="https://firebase.google.com/static/downloads/brand-guidelines/SVG/logo-logomark.svg"
+title="Firebase"
+description="Integrate Scalekit in your Firebase Project"
+url="/integrations/firebase"></CardTileWithImage>
 </section>

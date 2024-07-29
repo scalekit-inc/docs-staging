@@ -1,0 +1,99 @@
+@media screen and (max-width: 996px) {
+  .githubText,
+  .sampleAppText {
+    display: none;
+    text-decoration: none;
+  }
+}
+.sdkList {
+  padding: 10px 0 0 0;
+  border: 0 0 1px 0;
+  justify-content: space-between;
+}
+
+.sdkItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid #ebedf0;
+}
+
+.sdkItem:last-child {
+  border-bottom: none;
+}
+
+.sdkInfo {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-right: 1rem;
+}
+
+.title {
+  font-family: 'IBM Plex Sans';
+  font-size: 1.2rem;
+  font-weight: 500; /* Updated font-weight */
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+}
+
+.links a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+
+  padding: 8px;
+  border-radius: 4px;
+  justify-content: space-between;
+  gap: 4px; /* Adjust this value to reduce the space */
+}
+
+.links a span {
+  height: 14px;
+  font-size: 12px;
+  font-weight: 450; /* Updated font-weight */
+  line-height: 14px;
+  text-align: left;
+}
+
+.githubLink {
+  color: #e7e7e8;
+  background: #0c0d16;
+  /* background: var(--scalekit-blue); */
+}
+
+.sampleAppLink {
+  /* color: var(--scalekit-blue); */
+  color: #0c0d16;
+  border: 1px solid #0c0d16;
+}
+
+.sampleAppText {
+  color: #0c0d16;
+}
+
+.githubIcon,
+.codeIcon {
+  width: 14px;
+  height: 14px;
+}
+
+svg.codeIcon {
+  fill: #0c0d16 !important;
+}
+
+.githubText {
+  color: #e7e7e8;
+}
+
+.githubLink:hover,
+.sampleAppLink:hover {
+  text-decoration: none;
+  opacity: 0.9;
+}

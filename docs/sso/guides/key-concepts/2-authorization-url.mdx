@@ -1,0 +1,145 @@
+---
+displayed_sidebar: homeSidebar
+slug: authorization-url
+---
+
+# Authorization URL
+
+Authorization URL is the first step in the Single Sign-on flow where you will redirect the user to Scalekit to authenticate the user with the appropriate Identity Provider.
+
+Your application constructs a URL with specific parameters that tell the authorization server(in this case: Scalekit) what the app is requesting. This URL looks like:
+
+```sh
+https://b2b-app.scalekit.dev/oauth/authorize?
+    response_type=code&
+    client_id=skc_1234&
+    scope=openid%20profile&
+    redirect_uri=https%3A%2F%2Fyoursaas.com%2Fcallback&
+    organization_id=org_1243412&
+    state=aHR0cHM6Ly95b3Vyc2Fhcy5jb20vZGVlcGxpbms%3D
+```
+
+## Parameters
+
+| Parameter                                                           | Requirement | Description                                                                                                                                                     |
+| ------------------------------------------------------------------- | ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <SimpleCode className="text--semibold">client_id</SimpleCode>       | Required    | Unique identifier obtained from the API Credentials page                                                                                                        |
+| <SimpleCode className="text--semibold">nonce</SimpleCode>           | Optional    | Random value for replay protection                                                                                                                              |
+| <SimpleCode className="text--semibold">organization_id</SimpleCode> | Required\*  | Identifier for the organization initiating SSO                                                                                                                  |
+| <SimpleCode className="text--semibold">connection_id</SimpleCode>   | Required\*  | Identifier for the specific SSO connection                                                                                                                      |
+| <SimpleCode className="text--semibold">domain</SimpleCode>          | Required\*  | Domain part of the email address configured for an organization                                                                                                 |
+| <SimpleCode className="text--semibold">provider</SimpleCode>        | Required\*  | Unique provider name for Social Login. <br />Currently, we support the following providers: `google`, `microsoft`, `github`, `gitlab`, `linkedin`, `salesforce` |
+| <SimpleCode className="text--semibold">response_type</SimpleCode>   | Required    | Must be set to `code`                                                                                                                                           |
+| <SimpleCode className="text--semibold">redirect_uri</SimpleCode>    | Required    | URL where the response is sent, must match an authorized value                                                                                                  |
+| <SimpleCode className="text--semibold">scope</SimpleCode>           | Required    | Must be set to `openid email profile`                                                                                                                           |
+| <SimpleCode className="text--semibold">state</SimpleCode>           | Optional    | Opaque string for request-response correlation                                                                                                                  |
+| <SimpleCode className="text--semibold">login_hint</SimpleCode>      | Optional    | Email address of the user for authentication hint                                                                                                               |
+
+\* One of <SimpleCode>organization_id</SimpleCode>, <SimpleCode>connection_id</SimpleCode>, <SimpleCode>domain</SimpleCode>, or <SimpleCode>provider</SimpleCode> must be provided.
+
+## Usage Notes
+
+1. The <SimpleCode>redirect_uri</SimpleCode> must exactly match one of the authorized redirect values set in the API Credentials page.
+2. The <SimpleCode>state</SimpleCode> parameter is recommended for security purposes, including protection against cross-site request forgery.
+3. The <SimpleCode>login_hint</SimpleCode> can be used to prefill login information at the identity provider.
+
+## SDK Usage
+
+<Tabs groupId="tech-stack" queryString>
+<TabItem value="node" label="Node.js">
+
+```javascript
+const scalekit = new Scalekit(
+  SCALEKIT_ENVIRONMENT_URL,
+  SCALEKIT_CLIENT_ID,
+  SCALEKIT_CLIENT_SECRET
+);
+
+const authorizationURL = scalekit.getAuthorizationUrl(redirectUri, {
+  loginHint: 'user@example.com',
+  organizationId: 'org_123235245',
+});
+```
+
+</TabItem>
+<TabItem value="py" label="Python">
+
+```python
+
+from scalekit import Scalekit
+
+scalekit = Scalekit(
+  SCALEKIT_ENVIRONMENT_URL,
+SCALEKIT_CLIENT_ID,
+SCALEKIT_CLIENT_SECRET
+)
+authorization_url = scalekit.get_authorization_url(redirect_uri, {
+  'login_hint': 'user@example.com',
+  'organization_id': 'org_123235245'
+})
+
+```
+
+</TabItem>
+<TabItem value="golang" label="Go">
+
+```go
+
+import (
+  "github.com/scalekit/scalekit-sdk-go"
+)
+
+func main() {
+  sc := scalekit.NewScalekitClient(
+    SCALEKIT_ENVIRONMENT_URL,
+    SCALEKIT_CLIENT_ID,
+    SCALEKIT_CLIENT_SECRET
+  )
+
+  options := scalekit.AuthorizationUrlOptions{
+    OrganizationId: "org_12345",
+    LoginHint: "user@example.com",
+  }
+
+  authorizationURL := sc.GetAuthorizationUrl(
+    redirectUrl,
+    options,
+  )
+
+```
+
+</TabItem>
+<TabItem value="java" label="Java">
+
+```java
+package com.scalekit;
+import com.scalekit.ScalekitClient;
+import com.scalekit.internal.http.AuthorizationUrlOptions;
+
+public class Main {
+  public static void main(String[] args) {
+    ScalekitClient scalekitClient = new ScalekitClient(
+      "SCALEKIT_ENVIRONMENT_URL",
+      "SCALEKIT_CLIENT_ID",
+      "SCALEKIT_CLIENT_SECRET"
+    );
+    AuthorizationUrlOptions options = new AuthorizationUrlOptions();
+    // Option 1: Authorization URL with the organization ID
+    options.setOrganizationId("org_13388706786312310");
+    // Option 2: Authorization URL with the connection ID
+    options.setConnectionId("con_13388706786312310");
+    // Option 3: Authorization URL with login hint
+    options.setLoginHint("<user@example.com>");
+
+    try {
+      String url = scalekitClient.authentication()
+        .getAuthorizationUrl(redirectUrl, options).toString();
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
+  }
+}
+```
+
+</TabItem>
+</Tabs>

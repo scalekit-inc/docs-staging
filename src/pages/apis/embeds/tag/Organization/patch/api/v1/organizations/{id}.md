@@ -48,12 +48,11 @@ organization = sc.organization.update_organization(organization_id, {
   display_name: "display_name",
   external_id: "external_id"
 })
-
 ```
 
 </TabItem>
 <TabItem value="golang" label="Go">
-  
+
   ```go showLineNumbers
   // scalekit client takes care of authentication behind the scenes.
   sc := scalekit.NewScalekitClient(
@@ -73,6 +72,25 @@ organization = sc.organization.update_organization(organization_id, {
   ```
 
 </TabItem>
+
+<TabItem value="java" label="Java">
+
+```java showLineNumbers
+ScalekitClient scalekitClient = new ScalekitClient(
+  "ENVIRONMENT_URL",
+  "CLIENT_ID",
+  "CLIENT_SECRET");
+Organization updatedOrganizationById = scalekitClient.organizations()
+  .updateById(
+    organizationId,
+    UpdateOrganization.newBuilder()
+    .setDisplayName("Updated name")
+    .build()
+  );
+```
+
+</TabItem>
+
 </Tabs>
 </CodeWithHeader>
 <CodeWithHeader title="Response">

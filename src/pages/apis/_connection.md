@@ -3,7 +3,9 @@
     <div className="col col--6">
     </div>
     <div className="col col--6">
-        <Endpoints tag="Connection" />
+        <Endpoints tag="Connection" excludeEndpoints={[
+            { method: "get", label: "/api/v1/providers" }
+        ]} />
     </div>
 </div>
 <IntersectingHeader id="tag/Connection/object" title="The Connection Object" subheading="true" classList="ApiCategoryList" />
