@@ -62,7 +62,7 @@ const {
   code,
   error,
   error_description,
-  idp_initiated_login,
+  idp_initiated_sso,
   connection_id,
   relay_state,
 } = req.query;
@@ -72,7 +72,7 @@ if (error) {
 }
 
 // check if this is an idp initiated login
-if (idp_initiated_login && idp_initiated_login === 'success') {
+if (idp_initiated_sso && idp_initiated_sso === 'success') {
   // handle idp initiated login
   const authorizationURL = scalekit.getAuthorizationUrl(redirectUri, {
     connectionId: connection_id,
