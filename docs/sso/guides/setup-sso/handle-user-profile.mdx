@@ -21,10 +21,10 @@ During redirection, the callback route receives a code as query parameters. Use 
 The user details, which come in the form of an encoded token, provide your application with information about the user. On the other hand, the access token plays an instrumental role in facilitating subsequent requests to Scalekit API endpoints. For example, the <SimpleCode>/userinfo</SimpleCode> endpoint.
 
 ```ts title="app/auth/callback/route.ts"
-const { user, accessToken } = await scalekit.authenticateWithCode({
-  redirectUri: process.env.AUTH_REDIRECT_URI!,
-  code: code,
-});
+const { user, accessToken } = await scalekit.authenticateWithCode(
+  code,
+  <redirectUri>
+);
 ```
 
 Store this information as cookies with the <SimpleCode> httpOnly </SimpleCode> attribute enabled for secure HTTP calls:

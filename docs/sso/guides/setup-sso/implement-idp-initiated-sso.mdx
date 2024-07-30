@@ -89,10 +89,10 @@ if (idp_initiated_sso && idp_initiated_sso === 'success') {
 // check if state received is same as what was sent as part of authorization-url
 
 // if there are no errors and if this is not an IdP initiated SSO, then authenticate with the code
-const res = await sc.authenticateWithCode({
-  code: code,
-  redirectUri: redirectUri,
-});
+const res = await sc.authenticateWithCode(
+  code,
+  <redirectUri>
+);
 
 // res.user has the authenticated user's details
 const userEmail = res.user.email;

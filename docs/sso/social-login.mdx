@@ -203,10 +203,10 @@ if (error) {
 // If you passed state as part of authorize flow, check if the same value is returned to you.
 // We recommend this additional state check validation to prevent CSRF vulnerabilities.
 
-const res = await scalekit.authenticateWithCode({
-  code: code,
-  redirectUri: redirectUri,
-});
+const res = await scalekit.authenticateWithCode(
+  code,
+  redirectUri,
+);
 
 // res.user has the authenticated user's details
 const userEmail = res.user.email;
