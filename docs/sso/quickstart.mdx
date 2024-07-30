@@ -241,7 +241,7 @@ const {
   code,
   error,
   error_description,
-  idp_initiated_login,
+  idp_initiated_sso,
   connection_id,
   relay_state,
 } = req.query;
@@ -251,7 +251,7 @@ if (error) {
 }
 
 // If it is an idp initiated login
-if (idp_initiated_login && idp_initiated_login === 'success') {
+if (idp_initiated_sso && idp_initiated_sso === 'success') {
   const authorizationURL = scalekit.getAuthorizationUrl(redirectUri, {
     connectionId: connection_id,
     ...(relay_state && { state: relay_state }), // optional: pass relay state
@@ -284,7 +284,7 @@ scalekit_client = ScalekitClient(<SCALEKIT_ENVIRONMENT_URL>, <SCALEKIT_CLIENT_ID
 code = request.args.get('code')
 error = request.args.get('error')
 error_description = request.args.get('error_description')
-idp_initiated_login = request.args.get('idp_initiated_login')
+idp_initiated_sso = request.args.get('idp_initiated_sso')
 connection_id = request.args.get('connection_id')
 relay_state = request.args.get('relay_state')
 
@@ -319,7 +319,7 @@ func main() {
   code := r.URL.Query().Get("code")
   error := r.URL.Query().Get("error")
   errorDescription := r.URL.Query().Get("error_description")
-  idpInitiatedLogin := r.URL.Query().Get("idp_initiated_login")
+  idpInitiatedLogin := r.URL.Query().Get("idp_initiated_sso")
   connectionID := r.URL.Query().Get("connection_id")
   relayState := r.URL.Query().Get("relay_state")
 

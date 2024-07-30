@@ -45,17 +45,18 @@ Despite the security risks, IdP initiated SSO offers significant convenience to 
 To support it securely, convert the incoming IdP-initiated request to an SP-initiated SSO flow. Refer the below diagram for the recommended workflow from Scalekit.
 
 <figure>
-  ![Scalekit's recommended workflow for IdP initiated SSO](/img/idp_initiated_sso_with_scalekit.png)
+  ![Scalekit's recommended workflow for IdP initiated
+  SSO](/img/idp_initiated_sso_with_scalekit.png)
   <figcaption>Scalekit's recommended workflow for IdP initiated SSO</figcaption>
 </figure>
 
 1. When Scalekit receives an IdP-initiated SSO request from one of your customers, it pings your configured default <SimpleCode>redirect_uri</SimpleCode> with the <SimpleCode>connection_id</SimpleCode> as a request parameter:
 
 ```sh
-https://default_redirect_uri?idp_initiated_login=success&connection_id=conn_12442
+https://default_redirect_uri?idp_initiated_sso=success&connection_id=conn_12442
 ```
 
-2. In your redirect URI handler, check for the <SimpleCode>idp_initiated_login</SimpleCode> parameter. If it's present and set to "success", construct a new authorization URL using the <SimpleCode>connection_id</SimpleCode>:
+2. In your redirect URI handler, check for the <SimpleCode>idp_initiated_sso</SimpleCode> parameter. If it's present and set to "success", construct a new authorization URL using the <SimpleCode>connection_id</SimpleCode>:
 
 ```javascript showLineNumbers title="handle_redirect_url.js"
 const {
