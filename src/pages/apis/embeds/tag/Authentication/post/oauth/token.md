@@ -26,9 +26,10 @@ const scalekit = new ScalekitClient(
 );
 
 // Handle the oauth redirect
-const { code, error_description } = req.query;
-if (error_description) {
-  return throw new Error(error_description );
+const { code, error, error_description } = req.query;
+if (error) {
+  // handle error
+  return throw new Error(error_description);
 }
 
 // fetch user details by exchanding the code received in the request params
@@ -45,21 +46,25 @@ const { user } = await scalekit.authenticateWithCode(
 ```python showLineNumbers
 from scalekit import ScalekitClient, AuthorizationUrlOptions, CodeAuthenticationOptions
 
-scalekit_client = ScalekitClient(<SCALEKIT_ENVIRONMENT_URL>, <SCALEKIT_CLIENT_ID>, <SCALEKIT_CLIENT_SECRET>)
+scalekit_client = ScalekitClient(
+  <SCALEKIT_ENVIRONMENT_URL>,
+  <SCALEKIT_CLIENT_ID>, 
+  <SCALEKIT_CLIENT_SECRET>
+)
 
 # Handle the oauth redirect_url
 # fetch code and error_description from request parameters.
 code = request.args.get('code')
 error = request.args.get('error')
 error_description = request.args.get('error_description')
-idp_initiated_login = request.args.get('idp_initiated_login')
-connection_id = request.args.get('connection_id')
-relay_state = request.args.get('relay_state')
 
 if error:
     raise Exception(error_description)
 
-result = scalekit_client.authenticate_with_code(<code>, <redirect_uri>)
+result = scalekit_client.authenticate_with_code(
+  code, 
+  <redirect_uri>
+)
 # result.user has the authenticated user's details
 user_email = result.user.email
 
@@ -74,26 +79,27 @@ import (
   "github.com/scalekit/scalekit-sdk-go"
 )
 
-func main() {
-  sc := scalekit.NewScalekitClient(
-    SCALEKIT_ENVIRONMENT_URL,
-    SCALEKIT_CLIENT_ID,
-    SCALEKIT_CLIENT_SECRET
-  )
+sc := scalekit.NewScalekitClient(
+  SCALEKIT_ENVIRONMENT_URL,
+  SCALEKIT_CLIENT_ID,
+  SCALEKIT_CLIENT_SECRET
+)
 
-  // Handle the oauth redirect
-  code := r.URL.Query().Get("code")
-  errorDescription := r.URL.Query().Get("error_description")
-  if errorDescription != "" {
-    return errors.New(errorDescription)
-  }
-
-  // fetch user details by exchanding the code received in the request params
-  user, err := sc.AuthenticateWithCode(
-    code,
-    <redirectUri>
-  )
+// Handle the oauth redirect
+code := r.URL.Query().Get("code")
+err := r.URL.Query().Get("error")
+errorDescription := r.URL.Query().Get("error_description")
+if err != "" {
+  return errors.New(errorDescription)
 }
+
+// fetch user details by exchanding the code received in the request params
+user, err := sc.AuthenticateWithCode(
+  code,
+  <redirectUri>
+)
+// user has the authenticated user's details
+userEmail := user.Email
 ```
 
 </TabItem>

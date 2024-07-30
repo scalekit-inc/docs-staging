@@ -58,7 +58,10 @@ https://default_redirect_uri?idp_initiated_sso=success&connection_id=conn_12442
 
 2. In your redirect URI handler, check for the <SimpleCode>idp_initiated_sso</SimpleCode> parameter. If it's present and set to "success", construct a new authorization URL using the <SimpleCode>connection_id</SimpleCode>:
 
-```javascript showLineNumbers title="handle_redirect_url.js"
+<Tabs groupId="tech-stack" queryString>
+<TabItem value="nodejs" label="Node.js">
+
+```javascript showLineNumbers
 const {
   code,
   error,
@@ -86,16 +89,111 @@ if (idp_initiated_sso && idp_initiated_sso === 'success') {
 // check if state received is same as what was sent as part of authorization-url
 
 // if there are no errors and if this is not an IdP initiated SSO, then authenticate with the code
-const res = await sc.authenticateWithCode({
-  code: code,
-  redirectUri: redirectUri,
-});
+const res = await sc.authenticateWithCode(
+  code,
+  <redirectUri>
+);
 
 // res.user has the authenticated user's details
 const userEmail = res.user.email;
 
 // next step is to create a session for this user and allow access to your application resources
 ```
+
+</TabItem>
+<TabItem value="python" label="Python">
+
+```python showLineNumbers
+from scalekit import ScalekitClient, AuthorizationUrlOptions, CodeAuthenticationOptions
+
+scalekit_client = ScalekitClient(
+  <SCALEKIT_ENVIRONMENT_URL>,
+  <SCALEKIT_CLIENT_ID>,
+  <SCALEKIT_CLIENT_SECRET>
+)
+
+code = request.args.get('code')
+error = request.args.get('error')
+error_description = request.args.get('error_description')
+idp_initiated_sso = request.args.get('idp_initiated_sso')
+connection_id = request.args.get('connection_id')
+relay_state = request.args.get('relay_state')
+
+if error:
+  # handle errors
+
+# check if this is an idp initiated login
+if idp_initiated_sso and idp_initiated_sso == 'success':
+  # handle idp initiated login
+  authorization_url_options = AuthorizationUrlOptions(
+    connection_id=connection_id,
+    state=relay_state
+  )
+  authorization_url = scalekit_client.get_authorization_url(
+    redirect_uri,
+    authorization_url_options
+  )
+  # next step is to redirect the user to this authorization_url
+
+result = scalekit_client.authenticate_with_code(code, <redirect_uri>)
+# result.user has the authenticated user's details
+user_email = result.user.email
+
+# next step is to create a session for this user and allow access to your application resources
+```
+
+</TabItem>
+<TabItem value="golang" label="Golang">
+
+```go showLineNumbers
+import (
+  "github.com/scalekit/scalekit-sdk-go"
+)
+
+scalekitClient := scalekit.NewScalekitClient(
+  <SCALEKIT_ENVIRONMENT_URL>,
+  <SCALEKIT_CLIENT_ID>,
+  <SCALEKIT_CLIENT_SECRET>
+)
+
+code := r.URL.Query().Get("code")
+error := r.URL.Query().Get("error")
+errorDescription := r.URL.Query().Get("error_description")
+idpInitiatedSSO := r.URL.Query().Get("idp_initiated_sso")
+connectionId := r.URL.Query().Get("connection_id")
+relayState := r.URL.Query().Get("relay_state")
+
+if error != "" {
+  // handle errors
+}
+
+// check if this is an idp initiated login
+if idpInitiatedSSO != "" && idpInitiatedSSO == "success" {
+  // handle idp initiated login
+  authorizationURLOptions := scalekit.AuthorizationURLOptions{
+    ConnectionID: connectionID,
+    State: relayState,
+  }
+  authorizationURL := scalekitClient.GetAuthorizationURL(
+    redirectURI,
+    authorizationURLOptions,
+  )
+  // next step is to redirect the user to this authorizationURL
+}
+
+result, err := scalekitClient.AuthenticateWithCode(code, redirectURI)
+if err != nil {
+  // handle errors
+}
+
+// result.User has the authenticated user's details
+userEmail := result.User.Email
+
+// next step is to create a session for this user and allow access to your application resources
+```
+</TabItem>
+
+</Tabs>
 
 ## Advantages
 

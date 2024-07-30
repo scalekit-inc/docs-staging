@@ -25,22 +25,25 @@ const scalekit = new ScalekitClient(
   SCALEKIT_CLIENT_SECRET
 );
 
-// Authorization URL with organization ID parameter and optional state parameter
-const authorizationURL = scalekit.getAuthorizationUrl(redirectUri, {
-  organizationId: 'org_12442',
-  state: state,
-});
+const options = {};
+// use one of the below strategies below to determine how to log the user in.
 
-// Authorization URL with optional login hint parameter
-const authorizationURL = scalekit.getAuthorizationUrl(redirectUri, {
-  loginHint: 'user@example.com',
-  organizationId: 'org_12442',
-});
+// If you would like to authenticate the user via connection_id
+options.connectionId = 'conn_1242242';
+
+// If you would like to authenticate the user via organization_id
+options.organizationId = 'org_12442';
+
+// If you would like to authenticate the user via their email address
+// Domain portion of the user's email address is used to detect the appropriate enterprise SSO connection
+options.loginHint = '<user@example.com>';
 
 // Authorization URL with connection ID parameter
 const authorizationURL = scalekit.getAuthorizationUrl(redirectUri, {
   connectionId: 'conn_1242242',
 });
+
+// redirect the user to the authorization url
 ```
 
 </TabItem>
@@ -58,8 +61,7 @@ scalekit_client = ScalekitClient(
 
 
 options = AuthorizationUrlOptions()
-
-# use one of the three strategies below to determine how to log the user in.
+# use one of the below strategies below to determine how to log the user in.
 
 # If you would like to authenticate the user via connection_id
 options.connection_id = 'conn_1242242'
@@ -76,7 +78,7 @@ authorization_url = scalekit_client.get_authorization_url(
   options=options
 )
 
-# TODO redirect the user to the authorization url
+# redirect the user to the authorization url
 ```
 
 </TabItem>
@@ -94,31 +96,25 @@ func main() {
     SCALEKIT_CLIENT_SECRET
   )
 
-  // Authorization URL with organization ID parameter and optional state parameter
-  authorizationURL, err := sc.GetAuthorizationUrl(
-    redirectUri,
-    scalekit.AuthorizationUrlOptions{
-      OrganizationId: "org_12442",
-      State: someState,
-    }
+  options := scalekit.AuthorizationUrlOptions{}
+  // use one of the strategies below to determine how to log the user in.
+
+  // If you would like to authenticate the user via connection_id
+  options.ConnectionId = "conn_1242242"
+
+  // If you would like to authenticate the user via organization_id
+  options.OrganizationId = "org_12442"
+
+  // If you would like to authenticate the user via their email address
+  // Domain portion of the user's email address is used to detect the appropriate enterprise SSO connection
+  options.LoginHint = "<user@example.com>"
+
+  authorizationURL := sc.GetAuthorizationUrl(
+    redirectUrl,
+    options,
   )
 
-  // Authorization URL with optional login hint parameter
-  authorizationURL, err := sc.GetAuthorizationUrl(
-    redirectUri,
-    scalekit.AuthorizationUrlOptions{
-      LoginHint: "user@example.com",
-      OrganizationId: "org_12442",
-    }
-  )
-
-  // Authorization URL with connection ID parameter
-  authorizationURL, err := sc.GetAuthorizationUrl(
-    redirectUri,
-    scalekit.AuthorizationUrlOptions{
-      ConnectionId: "conn_1242242",
-    }
-  )
+  // redirect the user to the authorization url
 }
 
 ```
