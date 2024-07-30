@@ -68,18 +68,19 @@ const scalekit = new Scalekit(
   SCALEKIT_CLIENT_SECRET
 );
 
+options = {}
+
 // Option 1: Authorization URL with the organization ID
-const authorizationURL = scalekit.getAuthorizationUrl(redirectUri, {
-  organizationId: 'org_12442',
-  state: state, // optional
-});
+options.organization_id = 'org_12442';
 
 // Option 2: Authorization URL with login hint
-const authorizationURL = scalekit.getAuthorizationUrl(redirectUri, {
-  loginHint: 'user@example.com',
-});
+options.login_hint = '<user@example.com>';
 
-// TODO: redirect the user to this authorizationURL
+authorizationURL = scalekit.getAuthorizationUrl(
+  redirect_uri,
+  options
+);
+// next step is to redirect the user to this authorizationURL
 ```
 
 </TabItem>
@@ -107,6 +108,8 @@ authorization_url = scalekit_client.get_authorization_url(
   redirect_uri=<redirect_uri>,
   options=options
 )
+
+  // next step is to redirect the user to this authorization_url
 ```
 
 </TabItem>
