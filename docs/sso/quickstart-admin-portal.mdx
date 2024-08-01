@@ -3,7 +3,8 @@ import InstallSDK from '@site/docs/sso/templates/_install-sdk.md';
 # Admin Portal
 
 <Subtitle>
-  Empower your customers to configure and manage SSO connections by themselves
+  Empower your customers to configure and manage SSO connections by
+  themselves
 </Subtitle>
 
 The Admin Portal is a self-service interface designed to empower your customers' IT admins to configure SSO independently, thereby reducing the overhead on your engineering and support teams. Fully hosted and managed by Scalekit, the admin portal simplifies the SSO setup process with comprehensive IdP-specific documentation, ensuring a fast and secure integration with just a few lines of code.
@@ -34,7 +35,7 @@ Use the Generate Portal Link API to generate an Admin Portal link that is unique
 ```javascript showLineNumbers
 const link = await sc.organization.generatePortalLink('org_1233222');
 
-// link.location is the Admin Portal url
+// link.location is the Admin Portal URL
 ```
 
  </TabItem>
@@ -44,8 +45,7 @@ const link = await sc.organization.generatePortalLink('org_1233222');
 # generate admin portal link by sending organization id as a parameter
 link = sc.organization.generate_portal_link('org_1233222')
 
-# link['location'] is the Admin Portal url
-
+# link['location'] is the Admin Portal URL
 ```
 
  </TabItem>
@@ -55,10 +55,10 @@ link = sc.organization.generate_portal_link('org_1233222')
 // generate admin portal link by sending organization id as a parameter
 link, err := sc.Organization.GeneratePortalLink(
   ctx,
-  "org_1233222",
+  "<org_1233222>",
 )
 
-// link.Location is the Admin Portal url
+// link.Location is the Admin Portal URL
 ```
 
  </TabItem>
@@ -67,7 +67,11 @@ link, err := sc.Organization.GeneratePortalLink(
 
 ```java
 // generate admin portal link by sending organization id as a parameter
-Link response = client.organizations().generatePortalLink("org_12345");
+Link response = client
+  .organizations()
+  .generatePortalLink("org_12345");
+// response.getLocation() has the Admin Portal URL
+
 ```
 
 </TabItem>
