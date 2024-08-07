@@ -1,6 +1,40 @@
-import { themes as prismThemes } from "prism-react-renderer";
+
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
+import rehypeShiki, { RehypeShikiOptions } from '@shikijs/rehype';
+ import { bundledLanguages } from 'shiki';
+ import {
+   transformerMetaHighlight,
+   transformerNotationDiff,
+   transformerNotationHighlight,
+   transformerNotationFocus,
+ } from '@shikijs/transformers';
+
+ const rehypeShikiPlugin = [
+   rehypeShiki,
+   {
+     themes: {
+       dark: 'github-dark',
+       light: 'github-light-default',
+     },
+     transformers: [
+       {
+         name: 'meta',
+         code(node) {
+           const language = this.options.lang ?? 'plaintext';
+           this.addClassToHast(node, `language-${language}`);
+           return node;
+         },
+       },
+       transformerMetaHighlight(),
+       transformerNotationDiff(),
+       transformerNotationHighlight(),
+       transformerNotationFocus(),
+     ],
+     langs: [
+       ...(Object.keys(bundledLanguages) as Array<keyof typeof bundledLanguages>)],
+   } as RehypeShikiOptions,
+ ];
 
 const config: Config = {
   title: "Scalekit Docs",
@@ -87,6 +121,10 @@ const config: Config = {
           sidebarCollapsible: false,
           sidebarPath: "./sidebars.ts",
           routeBasePath: "/",
+          beforeDefaultRehypePlugins: [rehypeShikiPlugin],
+        },
+        pages: {
+          beforeDefaultRehypePlugins: [rehypeShikiPlugin],
         },
         blog: false,
         theme: {
@@ -214,10 +252,6 @@ const config: Config = {
       contextualSearch: false,
       insights: true,
       searchPagePath: false,
-    },
-    prism: {
-      theme: prismThemes.github,
-      additionalLanguages: ["bash", "java", "groovy"],
     },
     // footer: {
     //   copyright: `Copyright © ${new Date().getFullYear()} Scalekit Inc.`,
