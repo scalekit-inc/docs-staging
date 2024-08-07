@@ -17,7 +17,7 @@ pip install scalekit-sdk-python
 </TabItem>
 <TabItem value="golang" label="Go">
 
-```go
+```shell
 go get -u github.com/scalekit-inc/scalekit-sdk-go
 ```
 
