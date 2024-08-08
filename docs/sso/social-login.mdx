@@ -11,11 +11,7 @@ Single Sign-On (SSO) enhances B2B SaaS application security and user experience 
 
 Scalekit enables your users login to your application with any of the social identity providers through OAuth 2.0. This quickstart guide will show you how to add Social Login (e.g., Login with Google) functionality to your application with just a few lines of code.
 
-<figure>
-  ![How Scalekit
-  works](@site/docs/sso/assets/single-sign-on/quickstart/scalekit_social.png)
-  <figcaption>Login with Social Providers via Scalekit</figcaption>
-</figure>
+<figure>![How Scalekit works](@site/docs/sso/assets/single-sign-on/quickstart/scalekit_social.png) <figcaption>Login with Social Providers via Scalekit</figcaption></figure>
 
 ## 1. Environment Setup
 
@@ -50,7 +46,7 @@ Never hardcode secrets in your app. Use environment variables instead. Here's ho
 
 <CodeWithHeader title=".env">
 
-```jsx
+```dotenv
 SCALEKIT_ENVIRONMENT_URL = 'https://b2b-app-dev.scalekit.com';
 SCALEKIT_CLIENT_ID = '<CLIENT_ID_FROM_SCALEKIT_DASHBOARD>';
 SCALEKIT_CLIENT_SECRET = '<SECRET_FROM_SCALEKIT_DASHBOARD>';

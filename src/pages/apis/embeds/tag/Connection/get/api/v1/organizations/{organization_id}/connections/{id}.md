@@ -79,7 +79,7 @@ Connection connection = client
 </CodeWithHeader>
 <CodeWithHeader title="Response">
 
-```js
+```json
 {
   "id": "conn_2123312131125533",
   "organization_id": "org_1232434",

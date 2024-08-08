@@ -74,7 +74,7 @@ ListConnectionsResponse response = scalekitClient
 </CodeWithHeader>
 <CodeWithHeader title="Response">
 
-```js
+```json
 {
   "connections": [
     {

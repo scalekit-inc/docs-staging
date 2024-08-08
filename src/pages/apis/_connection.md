@@ -114,7 +114,7 @@
     <div className="col col--6">
         <div className="scalar-card-sticky">
             <CodeWithHeader title="Connection Object">
-                ```js
+                ```json
                 {
                     "id": "conn_2123312131125533",
                     "organization_id": "org_1232434",

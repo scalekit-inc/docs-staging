@@ -67,7 +67,7 @@ Organization represents a customer or a tenant of your application. Use this to 
     <div className="scalar-card-sticky">
         <CodeWithHeader title="Organization Object">
 
-```js
+```json
 {
     "id": "org_2123312131125533",
     "display_name": "Acme Corp",

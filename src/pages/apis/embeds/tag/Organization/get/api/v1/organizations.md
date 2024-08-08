@@ -82,7 +82,7 @@ ListOrganizationsResponse organizations = scalekitClient
 </CodeWithHeader>
 <CodeWithHeader title="Response">
 
-```js
+```json
 {
   "next_page_token": "…",
   "organizations": [

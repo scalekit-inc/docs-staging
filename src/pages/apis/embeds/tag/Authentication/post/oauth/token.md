@@ -134,7 +134,7 @@ try {
 </CodeWithHeader>
 <CodeWithHeader title="Response">
 
-```js
+```json
 {
   "access_token": "ey ... vPnyWBQ",
   "expires_in": 899,
