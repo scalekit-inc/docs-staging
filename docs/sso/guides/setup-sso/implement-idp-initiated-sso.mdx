@@ -52,165 +52,208 @@ To support it securely, convert the incoming IdP-initiated request to an SP-init
   </figcaption>
 </figure>
 
-1. When Scalekit receives an IdP-initiated SSO request from one of your customers, it pings your configured default <SimpleCode>redirect_uri</SimpleCode> with the <SimpleCode>connection_id</SimpleCode> as a request parameter:
+1. When Scalekit receives an IdP-initiated SSO request from a customer, it sends a request to your configured default <SimpleCode>redirect_uri</SimpleCode> (located in Scalekit Dashboard > API Config > Redirect URIs) with <SimpleCode>idp_initiated_login</SimpleCode> included as a request parameter.
+
+<CodeWithHeader>
 
 ```sh
-https://default_redirect_uri?idp_initiated_sso=success&connection_id=conn_12442
+https://b2b-app.com/default-redirect-uri
+  ?idp_initiated_login=<encoded_jwt_token>
 ```
 
-2. In your redirect URI handler, check for the <SimpleCode>idp_initiated_sso</SimpleCode> parameter. If it's present and set to "success", construct a new authorization URL using the <SimpleCode>connection_id</SimpleCode>:
+</CodeWithHeader>
+
+2. The <SimpleCode>idp_initiated_login</SimpleCode> request parameter is a signed JWT token containing all necessary details to identify the organization, SSO connection, and user information, enabling you to initiate a new authorization request.
+
+<CodeWithHeader>
+
+```js
+{
+  "organization_id": "org_225336910XXXX588",
+  "connection_id": "conn_22533XXXXX575236",
+  "login_hint": "name@example.com",
+  "exp": 1723042087,
+  "nbf": 1723041787,
+  "iat": 1723041787,
+  "iss": "https://b2b-app.com"
+}
+```
+
+</CodeWithHeader>
+
+3. You can use any of these three parameters to initiate a new SSO request. Since the user is already logged into their Identity Provider, they are not prompted to authenticate again, providing a seamless experience while addressing potential security vulnerabilities associated with IdP-initiated SSO.
 
 <Tabs groupId="tech-stack" queryString>
 <TabItem value="nodejs" label="Node.js">
 
 ```javascript showLineNumbers
-const {
-  code,
-  error,
-  error_description,
-  idp_initiated_sso,
-  connection_id,
-  relay_state,
-} = req.query;
+// 1. Default redirect URL is callback with JWT
+const { code, error_description, idp_initiated_login } = req.query;
 
-if (error) {
-  // Handle errors
-}
+  if (error_description) {
+    return res.status(400).json({ message: error_description });
+  }
 
-// check if this is an idp initiated login
-if (idp_initiated_sso && idp_initiated_sso === 'success') {
-  // handle idp initiated login
-  const authorizationURL = scalekit.getAuthorizationUrl(redirectUri, {
-    connectionId: connection_id,
-    ...(relay_state && { state: relay_state }), // Pass relay state
-  });
+let options = {};
 
-  // Next step is to redirect the user to this authorization URL
-}
+// 2. Decode the JWT
+if (idp_initiated_login) {
+    const {
+    connection_id,
+    organization_id,
+    login_hint,
+    relay_state
+  } = await scalekit.getIdpInitiatedLoginClaims(idp_initiated_login);
 
-// Check: if state received is same as what was sent as part of authorization-url
-
-const res = await sc.authenticateWithCode(
-  code,
-  <redirectUri>
-);
-
-// res.user has the authenticated user's details
-const userEmail = res.user.email;
-
-// next step is to create a session for this user and allow access to your application resources
+    // 3. Generate Authorization URL
+    const url = scalekit.getAuthorizationUrl(
+      process.env.AUTH_REDIRECT_URI!,
+      {
+	      // Either ONE of the following properties
+        connectionId: connection_id,
+        organizationId: organization_id,
+        loginHint: login_hint,
+      }
+    )
+    return res.redirect(url);
+  }
 ```
 
 </TabItem>
 <TabItem value="python" label="Python">
 
 ```python showLineNumbers
+# 1. Default redirect URL is callback with JWT
 code = request.args.get('code')
-error = request.args.get('error')
 error_description = request.args.get('error_description')
-idp_initiated_sso = request.args.get('idp_initiated_sso')
-connection_id = request.args.get('connection_id')
-relay_state = request.args.get('relay_state')
+idp_initiated_login = request.args.get('idp_initiated_login')
+options = AuthorizationUrlOptions()
 
-if error:
-  # Handle errors
 
-# check if this is an idp initiated login
-if idp_initiated_sso and idp_initiated_sso == 'success':
-  # handle idp initiated login
-  authorization_url_options = AuthorizationUrlOptions(
-    connection_id=connection_id,
-    state=relay_state
-  )
-  authorization_url = scalekit_client.get_authorization_url(
-    redirect_uri,
-    authorization_url_options
-  )
-  # next step is to redirect the user to this authorization_url
+if error_description:
+    # Handle Error
 
-result = scalekit_client.authenticate_with_code(code, <redirect_uri>)
-# result.user has the authenticated user's details
-user_email = result.user.email
+# 2. Decode the JWT
+if idp_initiated_login:
+    claims = await scalekit.get_idp_initiated_login_claims(idp_initiated_login)
+    connection_id = claims.get('connection_id', None)
+    organization_id = claims.get('organization_id', None)
+    login_hint = claims.get('login_hint', None)
+    relay_state = claims.get('relay_state', None)
+    options.connection_id=connection_id
+    options.state=relay_state
 
-# next step is to create a session for this user and allow access to your application resources
+    # 3. Generate Authorization URL
+    authorization_url = scalekit_client.get_authorization_url(
+      redirect_uri=redirect_uri,
+      options=options
+    )
+
+    return redirect(url)
 ```
 
 </TabItem>
 <TabItem value="golang" label="Go">
 
 ```go showLineNumbers
+// 1. Default redirect URL is callback with JWT
 code := r.URL.Query().Get("code")
-error := r.URL.Query().Get("error")
-errorDescription := r.URL.Query().Get("error_description")
-idpInitiatedSSO := r.URL.Query().Get("idp_initiated_sso")
-connectionId := r.URL.Query().Get("connection_id")
-relayState := r.URL.Query().Get("relay_state")
-
-if error != "" {
-  // Handle errors
+err_description := r.URL.Query().Get("error_description")
+if err_description != "" {
+		http.Error(w, err_description, http.StatusBadRequest)
+		return
 }
 
-// check if this is an idp initiated login
-if idpInitiatedSSO != "" && idpInitiatedSSO == "success" {
-  // handle idp initiated login
-  authorizationURLOptions := scalekitClient.AuthorizationURLOptions{
-    ConnectionID: connectionID,
-    State: relayState,
-  }
-  authorizationURL := scalekitClient.GetAuthorizationURL(
-    redirectURI,
-    authorizationURLOptions,
-  )
-   // Next step is to redirect the user to this authorization URL
+// 2. Decode the JWT
+if idpInitiatedLogin := r.URL.Query().Get("idp_initiated_login"); idpInitiatedLogin != "" {
+	claims, err := a.scalekit.GetIdpInitiatedLoginClaims(idpInitiatedLogin)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	// 3. Generate Authorization URL
+	options := scalekit.AuthorizationUrlOptions{
+		// Either ONE of the following properties
+		ConnectionId:   claims.ConnectionID,
+		OrganizationId: claims.OrganizationID,
+		LoginHint:      claims.LoginHint,
+	}
+	authUrl, err := a.scalekit.GetAuthorizationUrl(a.redirectUrl, options)
+
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	http.Redirect(w, r, authUrl.String(), http.StatusFound)
 }
-
-result, err := scalekitClient.AuthenticateWithCode(code, redirectURI)
-if err != nil {
-  // Handle errors
-}
-
-// result.User has the authenticated user's details
-userEmail := result.User.Email
-
-// Next step is to create a session for this user and allow access to your application resources
 ```
 
 </TabItem>
 <TabItem value="java" label="Java">
 
 ```java showLineNumbers
-// Handle oauth redirect_url, fetch code and error_description from request params
-String code = request.getParameter("code");
-String error = request.getParameter("error");
-String errorDescription = request.getParameter("error_description");
-String idpInitiatedSso = request.getParameter("idp_initiated_sso");
-String connectionID = request.getParameter("connection_id");
-String relayState = request.getParameter("relay_state");
+// 1. Default redirect URL is callback with JWT
+@GetMapping("/callback")
+public RedirectView callbackHandler(
+    @RequestParam(required = false) String code,
+    @RequestParam(required = false,
+        name = "error_description") String errorDescription,
+    @RequestParam(required = false,
+        name = "idp_initiated_login") String idpInitiatedLoginToken,
 
-if (error != null && !error.isEmpty()) {
-    // Handle errors
-    return;
-}
+    HttpServletResponse response) throws IOException {
+  if (errorDescription != null) {
+    // Handle Errors
+    }
 
-// Check: if it is an idp initiated login
-if (idpInitiatedSso != null && idpInitiatedSso.equals("success")) {
-    String authorizationURL = scalekitClient.authentication().getAuthorizationUrl(redirectUrl, connectionID, relayState);
-     // Next step is to redirect the user to this authorization URL
-    return;
-}
+  // 2. Decode the JWT
+  if (idpInitiatedLoginToken != null) {
+    IdpInitiatedLoginClaims idpInitiatedLoginClaims =
+        scalekit.authentication().getIdpInitiatedLoginClaims(
+            idpInitiatedLoginToken);
+    if (idpInitiatedLoginClaims == null) {
+      response.sendError(HttpStatus.BAD_REQUEST.value(),
+          "Invalid idp_initiated_login token");
+      return null;
+    }
+    // Either ONE of the following
+    AuthorizationUrlOptions options = new AuthorizationUrlOptions();
+    if (idpInitiatedLoginClaims.getConnectionID() != null) {
+      options.setConnectionId(
+          idpInitiatedLoginClaims.getConnectionID());
+    }
+    if (idpInitiatedLoginClaims.getOrganizationID() != null) {
+      options.setOrganizationId(
+          idpInitiatedLoginClaims.getOrganizationID());
+    }
+    if (idpInitiatedLoginClaims.getLoginHint() != null) {
+      options.setLoginHint(idpInitiatedLoginClaims.getLoginHint());
+    }
 
-try {
-    AuthenticationResponse res = scalekitClient.authentication().authenticateWithCode(code, redirectUrl);
-    String userEmail = res.getIdTokenClaims().getEmail();
-
-    // Next step: create a session for this user and allow access
-} catch (Exception e) {
-    // Handle errors
-}
+    // 3. Generate Authorization URL
+    String url = scalekit.authentication()
+                     .getAuthorizationUrl(redirectUrl, options)
+                     .toString();
+    response.sendRedirect(url);
+    return null;
+  }
 ```
 
 </TabItem>
 </Tabs>
+
+In case of error, the redirect URI will receive a callback containing the error information as query parameters.
+
+<CodeWithHeader>
+
+```sh
+https://b2b-app.com/callback
+	?error=<error_category>
+	&error_description=<details>
+```
+
+</CodeWithHeader>
 
 ## Advantages
 
