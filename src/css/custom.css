@@ -77,7 +77,7 @@
   --scalar-sidebar-color-active: #000;
   --scalar-sidebar-item-active-background: #f0f0f0;
   --scalar-background-accent: #f0f0f0;
-  --scalar-docsearch-boxshadow: none;
+  --scalar-docsearch-boxshadow: none; /* not used anywhere else, yet*/
   --ifm-pre-border-radius: 10;
   --ifm-code-border-radius: 10;
   --ifm-global-shadow-lw: none;
@@ -528,7 +528,7 @@ p {
     min-width: 75%;
   }
 
-  .page_right_hint{
+  .page_right_hint {
     position: fixed;
     top: 10vw;
     /*Together, the right and width occupy 22% of the screen width. vw dynamically calculates the viewport's width*/
@@ -666,14 +666,14 @@ ul.table-of-contents.table-of-contents__left-border:before {
 }
 
 [data-theme='light'] .DocSearch {
-  /* --docsearch-primary-color: var(--ifm-color-primary); */
-  /* --docsearch-text-color: var(--ifm-font-color-base); */
+  --docsearch-primary-color: var(--ifm-color-primary);
+  --docsearch-text-color: var(--ifm-font-color-base);
   --docsearch-muted-color: var(--ifm-color-secondary-darkest);
   --docsearch-container-background: rgba(94, 100, 112, 0.7);
   /* Modal */
   --docsearch-modal-background: var(--ifm-color-secondary-lighter);
   /* Search box */
-  --docsearch-searchbox-background: #f9f9f9;
+  --docsearch-searchbox-background: #fdfdfe;
   --docsearch-searchbox-focus-background: var(--ifm-color-white);
   /* Hit */
   --docsearch-hit-color: var(--ifm-font-color-base);
@@ -710,6 +710,10 @@ ul.table-of-contents.table-of-contents__left-border:before {
   border-radius: 5px !important;
   border: 1px solid;
   height: 32px;
+}
+
+.DocSearch-Form {
+  box-shadow: #00bcd4;
 }
 
 .DocSearch.DocSearch-Button:active,
@@ -973,10 +977,10 @@ svg {
   transition-duration: 300ms;
 }
 
-/* temporarily hide the category from search results till we fix it. */
+/* // temporarily hide the category from search results till we fix it.
 .DocSearch-Hit-source {
   display: none;
-}
+} */
 
 /* Docs Rating Box */
 
