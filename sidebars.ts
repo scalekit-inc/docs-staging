@@ -1,7 +1,7 @@
 import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
 
 const sidebars: SidebarsConfig = {
-  homeSidebar: [
+  ssoSidebar: [
     {
       type: 'html',
       value:
@@ -169,6 +169,19 @@ const sidebars: SidebarsConfig = {
       label: 'Manage Client Secrets',
       id: 'sso/guides/key-concepts/manage-client-secrets',
     },
+  ],
+  dirSyncSidebar: [
+    {
+      type: 'html',
+      value:
+        "<span class='text--uppercase text--light sidenav-category-heading'>Getting Started</span>",
+      defaultStyle: true,
+    },
+    {
+      type: 'doc',
+      label: 'Quickstart',
+      id: 'dir-sync/quickstart',
+    }
   ],
   integrationsSidebar: [
     {
