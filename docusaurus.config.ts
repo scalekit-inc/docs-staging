@@ -147,6 +147,12 @@ const config: Config = {
           className: "sso",
         },
         {
+          to: "/dir-sync/quickstart",
+          label: "Directory Sync",
+          position: "left",
+          className: "sso",
+        },
+        {
           to: "/apis",
           label: "API Reference",
           position: "left",
