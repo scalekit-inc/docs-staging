@@ -193,6 +193,11 @@ const sidebars: SidebarsConfig = {
       label: 'Events',
       id: 'dir-sync/events',
     },
+    {
+      type: 'doc',
+      label: 'Group Based Access Control',
+      id: 'dir-sync/gbac',
+    },
   ],
   integrationsSidebar: [
     {
