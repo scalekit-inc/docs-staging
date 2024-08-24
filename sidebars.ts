@@ -2,6 +2,12 @@ import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
 
 const sidebars: SidebarsConfig = {
   ssoSidebar: [
+    // {
+    //   type: 'html',
+    //   value:
+    //     '<select class="sso-dropdown"><option value="sso"><a href="/apis">API Refences</a></option><option value="dir-sync"><a href="/sdks">SDKs</a></option></select>', // The link label
+    //   defaultStyle: true,
+    // },
     {
       type: 'html',
       value:
@@ -181,7 +187,12 @@ const sidebars: SidebarsConfig = {
       type: 'doc',
       label: 'Quickstart',
       id: 'dir-sync/quickstart',
-    }
+    },
+    {
+      type: 'doc',
+      label: 'Events',
+      id: 'dir-sync/events',
+    },
   ],
   integrationsSidebar: [
     {

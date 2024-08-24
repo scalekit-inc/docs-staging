@@ -710,6 +710,7 @@ ul.table-of-contents.table-of-contents__left-border:before {
   border-radius: 5px !important;
   border: 1px solid;
   height: 32px;
+  width: 30vw;
 }
 
 .DocSearch.DocSearch-Button:active,
