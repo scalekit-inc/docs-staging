@@ -15,3 +15,11 @@ Directory Sync, also known as User Provisioning or SCIM (System for Cross-domain
 Directory Sync is particularly valuable when dealing with enterprise customers who have a large number of users and require streamlined user lifecycle management. By implementing Directory Sync, you can offer a more attractive solution to enterprise clients, potentially increasing adoption and reducing churn.
 
 In the following sections, we'll guide you through the process of setting up and implementing Directory Sync in your B2B application using Scalekit.
+
+| Business Use Case | Webhooks to listen for changes in the directory service | Description |
+|----------|----------|----------|
+| Automated User Provisioning         | scalekit.dir.user.create         | Triggered when a new user is added to the directory         |
+| Automated User Profile Updates         | scalekit.dir.user.update         | Triggered when a user's information is modified in the directory         |
+| Automated User Deprovisioning         | scalekit.dir.user.delete         | Triggered when a user is removed from the directory         |
+| Automated User Role Assignment         | scalekit.dir.user.update         | To implement automated role assignment, you must enable the "Group Based Access Control" setting in the Scalekit Dashboard and configure all the available roles in your application. <br /><br />As part of your customer's Directory Sync configuration, your customers would configure the mapping between the Groups in their Directory Provider and the Roles in your application. <br /><br />Scalekit will automatically listen to the changes of user and group assignment in your customer's Directory Provider and based on your customer's configuration, we will update the `roles` attribute of the user. You can use the `scalekit.dir.user.update` webhook to listen for changes in the directory and update the user's roles in your application         |
+|          |          |          |
