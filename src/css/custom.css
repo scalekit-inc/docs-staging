@@ -528,7 +528,7 @@ p {
     min-width: 75%;
   }
 
-  .page_right_hint{
+  .page_right_hint {
     position: fixed;
     top: 10vw;
     /*Together, the right and width occupy 22% of the screen width. vw dynamically calculates the viewport's width*/
@@ -710,6 +710,7 @@ ul.table-of-contents.table-of-contents__left-border:before {
   border-radius: 5px !important;
   border: 1px solid;
   height: 32px;
+  width: 30vw;
 }
 
 .DocSearch.DocSearch-Button:active,
