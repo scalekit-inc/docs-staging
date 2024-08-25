@@ -1,0 +1,37 @@
+# Understanding Directory Sync - Basics
+
+Directory Sync is a powerful feature that enables B2B applications to automatically synchronize user data between an organization's identity provider (IdP) or directory service and the application. This synchronization process ensures that user accounts, their attributes, and group memberships are consistently maintained across systems, reducing manual effort and improving security.
+
+At the core of Directory Sync is the System for Cross-domain Identity Management (SCIM) protocol. SCIM is an open standard designed to simplify user provisioning and deprovisioning processes across various systems. It provides a standardized way for applications to exchange user identity information, making it easier for organizations to manage user lifecycles across multiple platforms.
+
+Here's how Directory Sync typically works:
+
+1. Initial Setup: The B2B application enables Directory Sync support and provides necessary endpoints and credentials to the customer's IdP.
+
+2. User Provisioning: When a new user is added to the IdP, it sends a SCIM request to create the user in the B2B application.
+
+3. User Updates: Any changes to user attributes or group memberships in the IdP trigger SCIM requests to update the corresponding information in the B2B application.
+
+4. User Deprovisioning: When a user is removed from the IdP or loses access rights, a SCIM request is sent to deactivate or remove the user from the B2B application.
+
+5. Group Management: SCIM also supports group operations, allowing for the synchronization of group memberships and attributes.
+
+The advantages of implementing Directory Sync for a B2B application are numerous:
+
+1. **Automated User Lifecycle Management**: Directory Sync eliminates the need for manual user creation, updates, and deletions, reducing administrative overhead and the potential for human error.
+
+2. **Enhanced Security**: By ensuring that user access is promptly revoked when employees leave an organization, Directory Sync helps maintain a strong security posture.
+
+3. **Improved User Experience**: New employees can gain immediate access to necessary applications without waiting for manual account creation, leading to a smoother onboarding process.
+
+4. **Reduced IT Workload**: IT administrators no longer need to manage user accounts across multiple systems manually, freeing up time for more strategic tasks.
+
+5. **Consistency Across Systems**: Directory Sync ensures that user information is consistent across the IdP and the B2B application, reducing discrepancies and potential security risks.
+
+6. **Scalability**: As organizations grow and user numbers increase, Directory Sync can handle the increased load without requiring additional manual effort.
+
+7. **Compliance Support**: By maintaining accurate and up-to-date user records, Directory Sync can help organizations meet various compliance requirements related to user access and data protection.
+
+8. **Customization and Flexibility**: SCIM allows for the mapping of custom attributes, enabling B2B applications to sync specialized user data that may be unique to their use case.
+
+By implementing Directory Sync, B2B applications can offer a more attractive solution to enterprise clients, potentially increasing adoption rates and reducing churn. It demonstrates a commitment to security, efficiency, and enterprise-grade functionality, which are crucial factors for businesses when selecting software solutions.

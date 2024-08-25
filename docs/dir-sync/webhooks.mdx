@@ -1,8 +1,8 @@
-# Events and Webhooks
+# Webhooks
 
-Events and webhooks are powerful tools that allow your application to receive real-time notifications about specific occurrences within the ScaleKit Directory Sync system. Events represent specific actions or changes, while webhooks are the mechanism used to deliver these event notifications to your specified endpoint.
+Webhooks are powerful tools that allow your application to receive real-time notifications about specific occurrences within the ScaleKit Directory Sync system. Events represent specific actions or changes, while webhooks are the mechanism used to deliver these event notifications to your specified endpoint.
 
-By leveraging webhooks, you can build responsive and dynamic integrations that react immediately to changes in your directory sync data, enabling you to keep your systems in sync and automate various processes.
+By leveraging webhooks, you can build responsive and dynamic integrations that react immediately to changes in your directory sync data, enabling you to keep your systems in sync and automate user provisioning and deprovisioning.
 
 ## Available Webhooks
 
@@ -19,7 +19,7 @@ ScaleKit sends the following webhooks to notify you about important events in th
 
 These webhooks provide you with comprehensive visibility into the state of your directory and allow you to respond to changes in real-time.
 
-### Sample Event Payload
+### Sample Webhooks Payload
 
 Here's an explanation of the sample event payload for a developer:
 
@@ -51,9 +51,9 @@ This payload represents a webhook event for a user creation in the directory syn
    - `phone_number`: User's work phone number.
    - `address`: Object containing various address fields.
    - `custom_attributes`: Object for any custom attributes defined for the user.
-   - `raw_attributes`: Contains the original SCIM payload received from the identity provider.
+   - `raw_attributes`: Contains the original payload received from the identity provider.
 
-This comprehensive payload allows developers to access a wide range of user information, enabling them to update their systems or trigger specific actions based on the user creation event.
+This comprehensive payload allows you to access a wide range of user information, enabling you to update your systems or trigger specific actions based on the user creation event.
 
 ```js
 {
@@ -74,8 +74,8 @@ This comprehensive payload allows developers to access a wide range of user info
     "name": "John Doe",
     "roles": [
       {
-        "role": "role_name",
-        "name": "Baap Hoon mai"
+        "role": "billing_admin",
+        "name": "Billing Admin"
       }
     ],
     "groups": [
@@ -90,9 +90,9 @@ This comprehensive payload allows developers to access a wide range of user info
     "picture": "https://image.com/profile.jpg",
     "phone_number": "1234567892",
     "address": {
-      "postal_code": "600123",
-      "state": "Karnataka",
-      "formatted": "Karnataka"
+      "postal_code": "64112",
+      "state": "Missouri",
+      "formatted": "Missouri"
     },
     "custom_attributes": {
       "attribute1": "value1",
