@@ -185,18 +185,39 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'doc',
-      label: 'Quickstart',
+      label: 'Directory Sync - Basics',
+      id: 'dir-sync/basics',
+    },
+    {
+      type: 'doc',
+      label: 'Quickstart Guide',
       id: 'dir-sync/quickstart',
     },
     {
       type: 'doc',
-      label: 'Events',
-      id: 'dir-sync/events',
+      label: 'Automated Role Assignment (GBAC)',
+      id: 'dir-sync/gbac',
+    },
+    {
+      type: 'html',
+      value: '<div />', // The link label
+      defaultStyle: true,
+    },
+    {
+      type: 'html',
+      value:
+        "<span class='text--uppercase text--light sidenav-category-heading'>Events & Webhooks</span>",
+      defaultStyle: true,
     },
     {
       type: 'doc',
-      label: 'Group Based Access Control',
-      id: 'dir-sync/gbac',
+      label: 'Webhooks',
+      id: 'dir-sync/webhooks',
+    },
+    {
+      type: 'doc',
+      label: 'Directory User Profile',
+      id: 'dir-sync/user_profile',
     },
   ],
   integrationsSidebar: [
