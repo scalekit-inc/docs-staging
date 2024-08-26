@@ -286,6 +286,11 @@ figure img {
   margin-top: 0px;
 }
 
+/* Adds space between the last item and the bottom of the sidebar */
+.menu__list:last-child {
+  margin-bottom: 50px;
+}
+
 .menu__list-item:not(:first-child) {
   margin-top: 0px;
 }
@@ -327,10 +332,11 @@ figure img {
   font-weight: 600;
   font-size: 0.875rem;
 }
-
+.menu__link {
+  border-left: 2px solid transparent;
+}
 .menu__link--active:not(.menu__link--sublist) {
-  /* background: none; */
-  border-left: 2px solid;
+  border-left: 2px solid var(--scalekit-blue);
   border-radius: 0;
   color: var(--scalekit-blue);
 }
