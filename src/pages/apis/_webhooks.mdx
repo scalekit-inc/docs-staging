@@ -22,6 +22,12 @@ import { Endpoint } from "@site/src/components/endpoint";
                     method='webhook'
                     label='scalekit.dir.user.update'
                 />
+                <Endpoint
+                    key='scalekit.dir.user.delete'
+                    href='#tag/Webhooks/scalekit.dir.user.delete'
+                    method='webhook'
+                    label='scalekit.dir.user.delete'
+                />
             </div>
         </CodeWithHeader>
     </div>
@@ -166,7 +172,10 @@ import { Endpoint } from "@site/src/components/endpoint";
 <IntersectingHeader id="tag/Webhooks/scalekit.dir.user.update" title="scalekit.dir.user.update" subheading="true" classList='ApiCategoryList webhook method'/>
 <div className="row section">
     <div className="col col--6">
-       This webhook is triggered when a directory user is updated.
+       This webhook is triggered when a directory user is updated. Usually, directory user data is updated in any of the following scenarios:
+       1. User Profile is updated in the Directory Provider (IdP) system.
+       2. User is added to or removed from a group.
+       3. If [GBAC](/dir-sync/gbac) is enabled, User is assigned or removed from a role based on the group membership.
        <ul className="ApiReference-Parameters">
             <li className="ApiReference-Parameter header">Event Data</li>
             <Parameter attrKey="id" type="string" description="Unique ID of the Directory User." />
@@ -215,12 +224,12 @@ import { Endpoint } from "@site/src/components/endpoint";
         </ul>
     </div>
     <div className="col col--6">
-        <CodeWithHeader title="scalekit.dir.user.create">
+        <CodeWithHeader title="scalekit.dir.user.update">
         ```js
         {
           "event_spec_ver": "1",
           "category": "dir",
-          "type": "scalekit.dir.user.create",
+          "type": "scalekit.dir.user.update",
           "occured_at": "2024-08-21T10:20:17.072Z",
           "source": "scalekit",
           "object": "directory_user",
@@ -264,6 +273,40 @@ import { Endpoint } from "@site/src/components/endpoint";
             "old_data": {
               // Old data of the directory user before the update
             }
+          }
+        }
+        ```
+        </CodeWithHeader>
+    </div>
+</div>
+
+<IntersectingHeader id="tag/Webhooks/scalekit.dir.user.delete" title="scalekit.dir.user.delete" subheading="true" classList='ApiCategoryList webhook method'/>
+<div className="row section">
+    <div className="col col--6">
+       This webhook is triggered when a directory user is deleted.
+       <ul className="ApiReference-Parameters">
+            <li className="ApiReference-Parameter header">Event Data</li>
+            <Parameter attrKey="id" type="string" description="Unique ID of the Directory User." />
+            <Parameter attrKey="organization_id" type="string" description="Unique ID of the Organization to which this directory user belongs." />
+            <Parameter attrKey="dp_id" type="string" description="Unique ID of the User in the Directory Provider (IdP) system." />
+            <Parameter attrKey="email" type="string" description="Email of the directory user." />
+        </ul>
+    </div>
+    <div className="col col--6">
+        <CodeWithHeader title="scalekit.dir.user.delete">
+        ```js
+        {
+          "event_spec_ver": "1",
+          "category": "dir",
+          "type": "scalekit.dir.user.delete",
+          "occured_at": "2024-08-21T10:20:17.072Z",
+          "source": "scalekit",
+          "object": "directory_user",
+          "data": {
+            "id": "diruser_12312312312312",
+            "organization_id": "org_12312312312312",
+            "dp_id": "<scim_external_id>",
+            "email": "john.doe@example.com"
           }
         }
         ```
