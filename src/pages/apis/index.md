@@ -7,6 +7,7 @@ import InstallSDK from '@site/docs/sso/templates/\_install-sdk.md';
 import ConnectionTag from './\_connection.md';
 import AdminPortalTag from './\_adminPortal.md';
 import OrganizationTag from './\_organization.md';
+import WebhooksTag from './\_webhooks.mdx';
 import SidebarWrapper from '@site/src/components/SidebarWrapper';
 
 import SidebarItems from '@site/src/components/SidebarItems';
@@ -272,7 +273,8 @@ More details about the Single Sign-on flow is described <Link href="/sso/quickst
 <!-- Connections Tag -->
 
 <ConnectionTag></ConnectionTag>
-
+<!-- Webhooks Tag -->
+<WebhooksTag></WebhooksTag>
 </div>
 </div>
 </SidebarWrapper>

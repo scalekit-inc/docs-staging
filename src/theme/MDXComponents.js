@@ -1,26 +1,32 @@
-import LabeledCheckbox from "@site/src/components/checkbox";
-import Parameters, { Parameter } from "@site/src/components/parameters";
-import Endpoints from "@site/src/components/endpoint";
-import CodeWithHeader from "@site/src/components/CodeWithHeader";
-import Subtitle from "@site/src/components/custom";
-import { CardTileWithImage, SimpleCode } from "@site/src/components/custom";
+import LabeledCheckbox from '@site/src/components/checkbox';
+import Parameters, {
+  Parameter,
+} from '@site/src/components/parameters';
+import Endpoints from '@site/src/components/endpoint';
+import { Endpoint } from '@site/src/components/endpoint';
+import CodeWithHeader from '@site/src/components/CodeWithHeader';
+import Subtitle from '@site/src/components/custom';
+import {
+  CardTileWithImage,
+  SimpleCode,
+} from '@site/src/components/custom';
 // Import the original mapper
-import MDXComponents from "@theme-original/MDXComponents";
-import CodeBlock from "@theme/CodeBlock";
-import TabItem from "@theme/TabItem";
-import Tabs from "@theme/Tabs";
-import IntersectingHeader from "@site/src/components/IntersectingHeader";
-import { APIEndpoint } from "@site/src/components/APIEndpoint";
-import Link from "@docusaurus/Link";
-import Markdown from "react-markdown";
-import { SimpleCard } from "@site/src/components/ProductList/ProductList";
-import { FancyLink } from "@site/src/components/Card/CardWithArrow";
-import QuickLinkStack from "@site/src/components/QuickLinkStack";
-import ScalekitFooterComponent from "@site/src/components/DocsRating";
+import MDXComponents from '@theme-original/MDXComponents';
+import CodeBlock from '@theme/CodeBlock';
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+import IntersectingHeader from '@site/src/components/IntersectingHeader';
+import { APIEndpoint } from '@site/src/components/APIEndpoint';
+import Link from '@docusaurus/Link';
+import Markdown from 'react-markdown';
+import { SimpleCard } from '@site/src/components/ProductList/ProductList';
+import { FancyLink } from '@site/src/components/Card/CardWithArrow';
+import QuickLinkStack from '@site/src/components/QuickLinkStack';
+import ScalekitFooterComponent from '@site/src/components/DocsRating';
 import {
   GlossaryListing,
   TooltippedGlossary,
-} from "@site/src/components/Glossary/Glossary";
+} from '@site/src/components/Glossary/Glossary';
 
 export default {
   // Re-use the default mapping
@@ -35,6 +41,7 @@ export default {
   TabItem,
   CodeBlock,
   Endpoints,
+  Endpoint,
   CodeWithHeader,
   Parameters,
   Parameter,

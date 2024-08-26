@@ -1087,6 +1087,12 @@ svg {
   color: var(--scalar-color-orange);
 }
 
+.scalar-card-header-title span.method.put,
+.endpoint span.webhook {
+  text-transform: uppercase;
+  color: var(--scalar-color-purple);
+}
+
 .scalar-card-header-title span.endpoint {
   text-transform: none;
   color: var(--scalar-color-1);
@@ -1247,6 +1253,11 @@ svg {
 .ApiCategoryList.put a:after {
   content: 'PUT';
   --method-color: var(--scalar-color-orange);
+}
+
+.ApiCategoryList.webhook a:after {
+  content: 'WEBHOOK';
+  --method-color: var(--scalar-color-purple);
 }
 
 .sidebarContainer {
