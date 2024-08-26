@@ -7,7 +7,7 @@ const config: Config = {
   tagline: 'Enterprise Ready Authentiction Platform for SaaS',
   favicon: 'img/Favicon.svg',
   url: 'https://docs-staging.scalekit.com',
-  baseUrl: '/',
+  baseUrl: '/docs-staging',
   trailingSlash: false,
   organizationName: 'scalekit-inc',
   projectName: 'docs-staging',
