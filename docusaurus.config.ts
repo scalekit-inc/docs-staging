@@ -153,7 +153,7 @@ const config: Config = {
           to: '/dir-sync/quickstart',
           label: 'Directory Sync',
           position: 'left',
-          className: 'sso',
+          className: 'dir-sync',
         },
         {
           to: '/apis',

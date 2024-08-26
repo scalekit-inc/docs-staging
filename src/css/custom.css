@@ -810,10 +810,15 @@ code {
   font-size: smaller !important;
 }
 
+label:has(.persist_chkbox) {
+  line-height: 1.5rem;
+}
 /*CSS for checkbox*/
 .persist_chkbox {
+  width: 18px;
+  height: 18px;
   vertical-align: middle;
-  margin: 2px 4px 4px 2px;
+  display: inline-block;
   accent-color: var(--ifm-color-primary);
 }
 
