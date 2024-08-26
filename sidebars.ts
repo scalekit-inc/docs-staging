@@ -199,6 +199,16 @@ const sidebars: SidebarsConfig = {
       id: 'dir-sync/gbac',
     },
     {
+      type: 'doc',
+      label: 'Admin Portal',
+      id: 'dir-sync/admin-portal',
+    },
+    {
+      type: 'doc',
+      label: 'Launch Checklist',
+      id: 'dir-sync/checklist',
+    },
+    {
       type: 'html',
       value: '<div />', // The link label
       defaultStyle: true,
@@ -206,7 +216,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'html',
       value:
-        "<span class='text--uppercase text--light sidenav-category-heading'>Events & Webhooks</span>",
+        "<span class='text--uppercase text--light sidenav-category-heading'>Learning Guides</span>",
       defaultStyle: true,
     },
     {
