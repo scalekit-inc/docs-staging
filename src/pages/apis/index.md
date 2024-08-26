@@ -30,7 +30,7 @@ import SidebarItems from '@site/src/components/SidebarItems';
 </aside>
 
 <div className="theme-doc-markdown markdown">
-<IntersectingHeader id="introduction" title="Introduction" initialInView="true" classList=""/>
+<IntersectingHeader id="introduction" title="Introduction" initialInView="true" classList="undefined"/>
 <div className="row section">
 <div className="col col--6">
 Scalekit API is modeled around the [REST](https://en.wikipedia.org/wiki/REST) architecture style. That means, our API has predictable resource-oriented URLs, accepts form-encoded request bodies and produces JSON formatted responses, uses standard HTTP verbs and error codes.

@@ -8,13 +8,19 @@ import { Endpoint } from "@site/src/components/endpoint";
         By leveraging webhooks, you can build responsive and dynamic integrations that react immediately to changes in your directory sync data, enabling you to keep your systems in sync and automate user provisioning and deprovisioning.
     </div>
     <div className="col col--6">
-        <CodeWithHeader title="Endpoints">
+        <CodeWithHeader title="Webhook Types">
             <div className="endpoints">
                 <Endpoint
                     key='scalekit.dir.user.create'
                     href='#tag/Webhooks/scalekit.dir.user.create'
                     method='webhook'
                     label='scalekit.dir.user.create'
+                />
+                <Endpoint
+                    key='scalekit.dir.user.update'
+                    href='#tag/Webhooks/scalekit.dir.user.update'
+                    method='webhook'
+                    label='scalekit.dir.user.update'
                 />
             </div>
         </CodeWithHeader>
@@ -51,7 +57,6 @@ import { Endpoint } from "@site/src/components/endpoint";
             "organization_id": "org_12312312312312",
             "dp_id": "<scim_external_id>",
             "preferrred_username": "<idp_user_name>",
-            "user_id": "usr_121312312312312",
             "email": "john.doe@example.com",
             "active": true,
             "name": "John Doe",
@@ -99,22 +104,40 @@ import { Endpoint } from "@site/src/components/endpoint";
             <li className="ApiReference-Parameter header">Event Data</li>
             <Parameter attrKey="id" type="string" description="Unique ID of the Directory User." />
             <Parameter attrKey="organization_id" type="string" description="Unique ID of the Organization to which this directory user belongs." />
-            <Parameter attrKey="dp_id" type="string" description="Unique ID of the Directory Provider (IdP) to which this directory user belongs." />
+            <Parameter attrKey="dp_id" type="string" description="Unique ID of the User in the Directory Provider (IdP) system." />
             <Parameter attrKey="preferrred_username" type="string" description="Preferred username of the directory user." />
-            <Parameter attrKey="user_id" type="string" description="Unique ID of the user in your system." />
             <Parameter attrKey="email" type="string" description="Email of the directory user." />
             <Parameter attrKey="active" type="boolean" description="Indicates if the directory user is active." />
             <Parameter attrKey="name" type="string" description="Fully formatted name of the directory user." />
-            <Parameter attrKey="roles" type="array" description="Array of roles assigned to the directory user." />
-            <Parameter attrKey="groups" type="array" description="Array of groups to which the directory user belongs." />
+            <Parameter attrKey="roles" type="array" description="Array of roles assigned to the directory user.">
+                <details>
+                    <summary>Child Attributes</summary>
+                    <Parameter attrKey="role" type="string" description="Role of the directory user." />
+                    <Parameter attrKey="name" type="string" description="Name of the directory user." />
+                </details>
+            </Parameter>
+            <Parameter attrKey="groups" type="array" description="Array of groups to which the directory user belongs.">
+                <details>
+                    <summary>Child Attributes</summary>
+                    <Parameter attrKey="id" type="string" description="ID of the directory group." />
+                    <Parameter attrKey="name" type="string" description="Name of the directory group." />
+                </details>
+            </Parameter>
             <Parameter attrKey="given_name" type="string" description="Given name of the directory user." />
             <Parameter attrKey="family_name" type="string" description="Family name of the directory user." />
             <Parameter attrKey="nickname" type="string" description="Nickname of the directory user." />
             <Parameter attrKey="picture" type="string" description="URL of the directory user's profile picture." />
             <Parameter attrKey="phone_number" type="string" description="Phone number of the directory user." />
-            <Parameter attrKey="address" type="object" description="Address of the directory user." />
+            <Parameter attrKey="address" type="object" description="Address of the directory user.">
+                <details>
+                    <summary>Child Attributes</summary>
+                    <Parameter attrKey="postal_code" type="string" description="Postal code of the directory user address." />
+                    <Parameter attrKey="state" type="string" description="State of the directory user address." />
+                    <Parameter attrKey="formatted" type="string" description="Formatted address of the directory user." />
+                </details>
+            </Parameter>
             <Parameter attrKey="custom_attributes" type="object" description="Custom attributes of the directory user." />
-            <Parameter attrKey="raw_attributes" type="object" description="Raw SCIM attributes of the directory user." />
+            <Parameter attrKey="raw_attributes" type="object" description="Raw attributes of the directory user as received from the Directory Provider (IdP)." />
         </ul>
     </div>
     <div className="col col--6">
@@ -132,7 +155,6 @@ import { Endpoint } from "@site/src/components/endpoint";
             "organization_id": "org_12312312312312",
             "dp_id": "<scim_external_id>",
             "preferrred_username": "<idp_user_name>",
-            "user_id": "usr_121312312312312",
             "email": "john.doe@example.com",
             "active": true,
             "name": "John Doe",
@@ -156,7 +178,7 @@ import { Endpoint } from "@site/src/components/endpoint";
             "address": {
               "postal_code": "64112",
               "state": "Missouri",
-              "formatted": "Missouri"
+              "formatted": "123, Oxford Lane, Kansas City, Missouri, 64112"
             },
             "custom_attributes": {
               "attribute1": "value1",
@@ -164,6 +186,114 @@ import { Endpoint } from "@site/src/components/endpoint";
             },
             "raw_attributes": {
               // SCIM payload
+            }
+          }
+        }
+        ```
+        </CodeWithHeader>
+    </div>
+</div>
+
+<IntersectingHeader id="tag/Webhooks/scalekit.dir.user.update" title="scalekit.dir.user.update" subheading="true" classList='ApiCategoryList webhook method'/>
+<div className="row section">
+    <div className="col col--6">
+       This webhook is triggered when a directory user is updated.
+       <ul className="ApiReference-Parameters">
+            <li className="ApiReference-Parameter header">Event Data</li>
+            <Parameter attrKey="id" type="string" description="Unique ID of the Directory User." />
+            <Parameter attrKey="organization_id" type="string" description="Unique ID of the Organization to which this directory user belongs." />
+            <Parameter attrKey="dp_id" type="string" description="Unique ID of the User in the Directory Provider (IdP) system." />
+            <Parameter attrKey="preferrred_username" type="string" description="Preferred username of the directory user." />
+            <Parameter attrKey="email" type="string" description="Email of the directory user." />
+            <Parameter attrKey="active" type="boolean" description="Indicates if the directory user is active." />
+            <Parameter attrKey="name" type="string" description="Fully formatted name of the directory user." />
+            <Parameter attrKey="roles" type="array" description="Array of roles assigned to the directory user.">
+                <details>
+                    <summary>Child Attributes</summary>
+                    <Parameter attrKey="role" type="string" description="Role of the directory user." />
+                    <Parameter attrKey="name" type="string" description="Name of the directory user." />
+                </details>
+            </Parameter>
+            <Parameter attrKey="groups" type="array" description="Array of groups to which the directory user belongs.">
+                <details>
+                    <summary>Child Attributes</summary>
+                    <Parameter attrKey="id" type="string" description="ID of the directory group." />
+                    <Parameter attrKey="name" type="string" description="Name of the directory group." />
+                </details>
+            </Parameter>
+            <Parameter attrKey="given_name" type="string" description="Given name of the directory user." />
+            <Parameter attrKey="family_name" type="string" description="Family name of the directory user." />
+            <Parameter attrKey="nickname" type="string" description="Nickname of the directory user." />
+            <Parameter attrKey="picture" type="string" description="URL of the directory user's profile picture." />
+            <Parameter attrKey="phone_number" type="string" description="Phone number of the directory user." />
+            <Parameter attrKey="address" type="object" description="Address of the directory user.">
+                <details>
+                    <summary>Child Attributes</summary>
+                    <Parameter attrKey="postal_code" type="string" description="Postal code of the directory user address." />
+                    <Parameter attrKey="state" type="string" description="State of the directory user address." />
+                    <Parameter attrKey="formatted" type="string" description="Formatted address of the directory user." />
+                </details>
+            </Parameter>
+            <Parameter attrKey="custom_attributes" type="object" description="Custom attributes of the directory user." />
+            <Parameter attrKey="raw_attributes" type="object" description="Raw attributes of the directory user as received from the Directory Provider (IdP)." />
+            <Parameter attrKey="old_data" type="object" description="Old data of the directory user before the update.">
+                <details>
+                    <summary>Child Attributes</summary>
+                    <Parameter attrKey="role" type="string" description="Role of the directory user." />
+                    <Parameter attrKey="name" type="string" description="Name of the directory user." />
+                </details>
+            </Parameter>
+        </ul>
+    </div>
+    <div className="col col--6">
+        <CodeWithHeader title="scalekit.dir.user.create">
+        ```js
+        {
+          "event_spec_ver": "1",
+          "category": "dir",
+          "type": "scalekit.dir.user.create",
+          "occured_at": "2024-08-21T10:20:17.072Z",
+          "source": "scalekit",
+          "object": "directory_user",
+          "data": {
+            "id": "diruser_12312312312312",
+            "organization_id": "org_12312312312312",
+            "dp_id": "<scim_external_id>",
+            "preferrred_username": "<idp_user_name>",
+            "email": "john.doe@example.com",
+            "active": true,
+            "name": "John Doe",
+            "roles": [
+              {
+                "role": "billing_admin",
+                "name": "Billing Admin"
+              }
+            ],
+            "groups": [
+              {
+                "id": "dirgroup_12312312312312",
+                "name": "Group Name"
+              }
+            ],
+            "given_name": "John",
+            "family_name": "Doe",
+            "nickname": "Jhonny boy",
+            "picture": "https://image.com/profile.jpg",
+            "phone_number": "1234567892",
+            "address": {
+              "postal_code": "64112",
+              "state": "Missouri",
+              "formatted": "123, Oxford Lane, Kansas City, Missouri, 64112"
+            },
+            "custom_attributes": {
+              "attribute1": "value1",
+              "attribute2": "value2"
+            },
+            "raw_attributes": {
+              // SCIM payload
+            },
+            "old_data": {
+              // Old data of the directory user before the update
             }
           }
         }

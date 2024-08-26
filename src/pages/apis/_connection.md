@@ -1,4 +1,4 @@
-<IntersectingHeader id="tag/Connection" title="Connection" />
+<IntersectingHeader id="tag/Connection" title="SSO Connection" />
 <div className="row section">
     <div className="col col--6">
     </div>
