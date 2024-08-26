@@ -2,6 +2,10 @@ import InstallSDK from '@site/docs/sso/templates/_install-sdk.md';
 
 # Directory Sync Quickstart Guide
 
+<Subtitle>
+    Learn how to implement Directory Sync in your B2B application using Scalekit.
+</Subtitle>
+
 Directory Sync, is a crucial feature for B2B applications to help their customers manage their user provisioning and deprovisioning at scale. This capability allows for automatic synchronization of user data between an organization's identity provider (IdP) or directory service and your application. Directory Sync is particularly valuable when dealing with enterprise customers who have a large number of users and require streamlined user lifecycle management. By implementing Directory Sync, you can offer a more attractive solution to enterprise clients, potentially increasing adoption and reducing churn.
 
 <!-- TODO: Add SCIM Diagram -->
@@ -74,12 +78,12 @@ For realtime updates about users and their group memership changes, you can conf
 
 ### Important Event Types
 
-| Use Case | Event Type | Description |
+| Event Type | Use Case | Description |
 |----------|----------|----------|
-| Automated User Provisioning         | scalekit.dir.user.create         | Triggered when a new user is added to the directory         |
-| Automated User Profile Updates         | scalekit.dir.user.update         | Triggered when a user's information is modified in the directory. <br /><br />For detailed list of directory user profile details, see [here](/dir-sync/events)        |
-| Automated User Deprovisioning         | scalekit.dir.user.delete         | Triggered when a user is removed from the directory. <br/><br />Also triggered when a user's status is marked as `inactive` in the directory or if the user is removed from all groups assigned to this application.        |
-| Automated User Role Assignment         | scalekit.dir.user.update         | To implement automated role assignment, you must enable the "Group Based Access Control" setting in the Scalekit Dashboard and configure all the available roles in your application. <br /><br />As part of your customer's Directory Sync configuration, your customers would configure the mapping between the Groups in their Directory Provider and the Roles in your application. <br /><br />Scalekit will automatically listen to the changes of user and group assignment in your customer's Directory Provider and based on your customer's configuration, we will update the `roles` attribute of the user. You can use the `scalekit.dir.user.update` webhook to listen for changes in the directory and update the user's roles in your application         |
+| <SimpleCode>scalekit.dir.user.create</SimpleCode>         | Automated User Provisioning         | Triggered when a new user is added to the directory         |
+| <SimpleCode>scalekit.dir.user.update</SimpleCode>         | Automated User Profile Updates         | Triggered when a user's information is modified in the directory. <br /><br />For detailed list of directory user profile details, see [here](/dir-sync/events)        |
+| <SimpleCode>scalekit.dir.user.delete</SimpleCode>         | Automated User Deprovisioning         | Triggered when a user is removed from the directory. <br/><br />Also triggered when a user's status is marked as `inactive` in the directory or if the user is removed from all groups assigned to this application.        |
+| <SimpleCode>scalekit.dir.user.update</SimpleCode>         | Automated User Role Assignment         | To implement automated role assignment, you must enable the "Group Based Access Control" setting in the Scalekit Dashboard and configure all the available roles in your application. <br /><br />As part of your customer's Directory Sync configuration, your customers would configure the mapping between the Groups in their Directory Provider and the Roles in your application. <br /><br />Scalekit will automatically listen to the changes of user and group assignment in your customer's Directory Provider and based on your customer's configuration, we will update the `roles` attribute of the user. You can use the `scalekit.dir.user.update` webhook to listen for changes in the directory and update the user's roles in your application         |
 
 ## 3. (Optional) Fetch Directory Users via API
 
