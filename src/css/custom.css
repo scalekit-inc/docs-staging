@@ -1205,9 +1205,11 @@ svg {
 .headingWithStickyNavBar {
   scroll-margin-top: calc(var(--ifm-navbar-height) + 0.5rem);
 }
-.menu__list-item.undefined {
-  font-weight: bold;
+
+.menu__list-item.undefined .menu__link {
+  font-weight: 600;
 }
+
 .ApiCategoryList {
   padding-left: 14px;
 }

@@ -3,7 +3,7 @@ import { Endpoint } from "@site/src/components/endpoint";
 <IntersectingHeader id="tag/Webhooks" title="Webhooks"/>
 <div className="row section">
     <div className="col col--6">
-       Webhooks are powerful tools that allow your application to receive real-time notifications about specific occurrences within the ScaleKit Directory Sync system. Events represent specific actions or changes, while webhooks are the mechanism used to deliver these event notifications to your specified endpoint.
+        A webhook (also called a web callback or HTTP push API) is a way for Scalekit to provide your applications with real-time information. A webhook delivers data to your applications as it happens, meaning you get data immediately, unlike typical APIs where you would need to poll for data very frequently to get it in real-time. Events represent specific actions or changes, while webhooks are the mechanism used to deliver these event notifications to your specified endpoint.
 
         By leveraging webhooks, you can build responsive and dynamic integrations that react immediately to changes in your directory sync data, enabling you to keep your systems in sync and automate user provisioning and deprovisioning.
     </div>
@@ -39,11 +39,12 @@ import { Endpoint } from "@site/src/components/endpoint";
             <Parameter attrKey="source" type="string" description="The origin of the event (always 'scalekit' in this case)." />
             <Parameter attrKey="object" type="string" description="The type of object affected (Example: 'directory_user')." />
             <li className="ApiReference-Parameter header">Event Data</li>
-            <Parameter attrKey="data" type="object" description="Contains detailed data payload about the event." />
+            <Parameter attrKey="data" type="object" description="Contains latest object data after the event." />
+            <Parameter attrKey="old_data" type="object" description="Contains object data before the event." />
         </ul>
     </div>
     <div className="col col--6">
-        <CodeWithHeader title="Sample Webhook: scalekit.dir.user.create">
+        <CodeWithHeader title="Sample Webhook">
         ```js
         {
           "event_spec_ver": "1",
@@ -53,42 +54,10 @@ import { Endpoint } from "@site/src/components/endpoint";
           "source": "scalekit",
           "object": "directory_user",
           "data": {
-            "id": "diruser_12312312312312",
-            "organization_id": "org_12312312312312",
-            "dp_id": "<scim_external_id>",
-            "preferrred_username": "<idp_user_name>",
-            "email": "john.doe@example.com",
-            "active": true,
-            "name": "John Doe",
-            "roles": [
-              {
-                "role": "billing_admin",
-                "name": "Billing Admin"
-              }
-            ],
-            "groups": [
-              {
-                "id": "dirgroup_12312312312312",
-                "name": "Group Name"
-              }
-            ],
-            "given_name": "John",
-            "family_name": "Doe",
-            "nickname": "Jhonny boy",
-            "picture": "https://image.com/profile.jpg",
-            "phone_number": "1234567892",
-            "address": {
-              "postal_code": "64112",
-              "state": "Missouri",
-              "formatted": "Missouri"
-            },
-            "custom_attributes": {
-              "attribute1": "value1",
-              "attribute2": "value2"
-            },
-            "raw_attributes": {
-              // SCIM payload
-            }
+            // Event Data
+          },
+          "old_data": {
+            // Old data of the object whenever applicable.
           }
         }
         ```

@@ -1,4 +1,8 @@
-# Automated Role Assignemnt (Group Based Access Control)
+# Automated Role Assignment (Group Based Access Control)
+
+<Subtitle>
+    Learn how to implement Group Based Access Control (GBAC) in your B2B application using Scalekit.
+</Subtitle>
 
 Group Based Access Control (GBAC) is a powerful feature in Scalekit that allows you to automatically assign roles to users based on their group memberships in the directory provider. This functionality streamlines the process of managing user permissions and access rights within your application.
 
@@ -14,11 +18,7 @@ Group Based Access Control (GBAC) is a powerful feature in Scalekit that allows 
 
 To implement Group Based Access Control using Scalekit APIs, follow these steps:
 
-### 1. Set Up Group-Role Mappings
-
-First, you need to create mappings between directory groups and roles in your application. Use the Scalekit API to create these mappings:
-
-### 2. Configure GBAC in Scalekit Dashboard
+### 1. Configure GBAC in Scalekit Dashboard
 
 Before implementing GBAC, you need to configure it in the Scalekit Dashboard:
 
@@ -39,7 +39,7 @@ Before implementing GBAC, you need to configure it in the Scalekit Dashboard:
 
 3. **Set Default Role**: Choose a default role that will be assigned to users when no group-role mappings match their group memberships.
 
-### 3. IT Admin Configuration
+### 2. IT Admin Configuration
 
 IT Admins can configure GBAC settings for their organization:
 
@@ -55,6 +55,6 @@ IT Admins can configure GBAC settings for their organization:
    }
    ```
 
-### 4. Handling Role Assignments
+### 3. Handling Role Assignments
 
 When users are synchronized from the directory provider, Scalekit will automatically assign roles based on the configured mappings. You can retrieve these role assignments using the User API:
