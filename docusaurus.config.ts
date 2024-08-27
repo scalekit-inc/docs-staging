@@ -144,16 +144,25 @@ const config: Config = {
       },
       items: [
         {
-          to: '/sso/quickstart',
-          label: 'Single Sign-on',
+          type: 'dropdown',
           position: 'left',
-          className: 'sso',
-        },
-        {
-          to: '/dir-sync/quickstart',
-          label: 'Directory Sync',
-          position: 'left',
-          className: 'dir-sync',
+          label: 'Product',
+          items: [
+            {
+              html: '<span class="product-dropdown-label">Choose a product</span>',
+              to: '#',
+            },
+            {
+              to: '/sso/quickstart',
+              label: 'Single Sign-on',
+              className: 'sso',
+            },
+            {
+              to: '/dir-sync/quickstart',
+              label: 'Directory Sync',
+              className: 'dir-sync',
+            },
+          ],
         },
         {
           to: '/apis',

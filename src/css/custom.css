@@ -494,6 +494,16 @@ p {
   font-weight: 600;
 }
 
+a.dropdown__link:has(span.product-dropdown-label) {
+  color: gray;
+  cursor: default;
+  pointer-events: none;
+}
+
+a.dropdown__link:has(span.product-dropdown-label):hover {
+  background: none;
+}
+
 @media screen and (max-width: 996px) {
   :root {
     --ifm-font-size-base: 16px;
