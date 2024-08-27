@@ -5,7 +5,7 @@ import { Endpoint } from "@site/src/components/endpoint";
     <div className="col col--6">
         A webhook (also called a web callback or HTTP push API) is a way for Scalekit to provide your applications with real-time information. A webhook delivers data to your applications as it happens, meaning you get data immediately, unlike typical APIs where you would need to poll for data very frequently to get it in real-time. Events represent specific actions or changes, while webhooks are the mechanism used to deliver these event notifications to your specified endpoint.
 
-        By leveraging webhooks, you can build responsive and dynamic integrations that react immediately to changes in your directory sync data, enabling you to keep your systems in sync and automate user provisioning and deprovisioning.
+        By leveraging webhooks, you can build responsive and dynamic integrations that react immediately to changes in Scalekit System, enabling you to keep your systems in sync and automate user lifecycle management and other related use cases.
     </div>
     <div className="col col--6">
         <CodeWithHeader title="Webhook Types">
@@ -214,13 +214,7 @@ import { Endpoint } from "@site/src/components/endpoint";
             </Parameter>
             <Parameter attrKey="custom_attributes" type="object" description="Custom attributes of the directory user." />
             <Parameter attrKey="raw_attributes" type="object" description="Raw attributes of the directory user as received from the Directory Provider (IdP)." />
-            <Parameter attrKey="old_data" type="object" description="Old data of the directory user before the update.">
-                <details>
-                    <summary>Child Attributes</summary>
-                    <Parameter attrKey="role" type="string" description="Role of the directory user." />
-                    <Parameter attrKey="name" type="string" description="Name of the directory user." />
-                </details>
-            </Parameter>
+
         </ul>
     </div>
     <div className="col col--6">
@@ -269,10 +263,10 @@ import { Endpoint } from "@site/src/components/endpoint";
             },
             "raw_attributes": {
               // SCIM payload
-            },
-            "old_data": {
-              // Old data of the directory user before the update
             }
+          },
+          "old_data": {
+            // Old data of the directory user before the update
           }
         }
         ```
