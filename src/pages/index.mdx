@@ -29,7 +29,7 @@ import { FaArrowRight } from 'react-icons/fa6';
 </div>
 </div>
 
-<div className="row padding-vert--lg">
+<div className="row padding-vert--lg section">
 <div className="col col--5">
 # Single Sign-on
 
@@ -60,9 +60,9 @@ items={[{
 </div>
 </div>
 <!-- Directory Sync -->
-<div className="row padding-vert--lg">
+<div className="row padding-vert--lg section">
 <div className="col col--5">
-# Directory Sync
+# Directory Sync <span className="badge badge--success">NEW</span>
 
 Implement Directory Sync with our easy to follow quick start guides.
 
@@ -74,9 +74,9 @@ items={[{
   description: "Implement Directory Sync in hours. Connect your application to any of your customers directory providers through SCIM v2",
   href: "/dir-sync/quickstart",
 },{
-  title: "Webhooks",
-  description: "Get real-time updates on user and group changes in your customer's directory provider",
-  href: "/dir-sync/webhooks",
+  title: "GBAC",
+  description: " Implement Group Based Access Control in your application with our easy to follow quick start guides",
+  href: "/dir-sync/gbac",
 }]}>
 
 </ProductList>
@@ -91,13 +91,17 @@ Get up and running with SDKs, API References, and integration tools.
 <div className="col col--7">
 <ProductList
 items={[{
-  title: "SDKs",
-  description: "Official Scalekit client libraries in Node.JS, Python, Go and Java",
-  href: "/sdks",
-},{
   title: "API Reference",
   description: "Go through our well documented REST APIs and code samples in Node.JS, Python, Go and Java",
   href: "/apis",
+},{
+  title: "SDKs",
+  description: "Official Scalekit client libraries in Node.JS, Python, Go and Java",
+  href: "/sdks",
+}, {
+  title: "Webhooks",
+  description: "Get real-time updates on user and group changes in your customer's directory provider",
+  href: "/apis#tag/Webhooks",
 }]}>
 
 </ProductList>
