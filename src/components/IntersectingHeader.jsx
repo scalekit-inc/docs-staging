@@ -1,13 +1,13 @@
-import { InView } from "react-intersection-observer";
-import {useEffect} from "react";
-import {useHeaderContext} from "@site/src/components/SidebarWrapper";
+import { InView } from 'react-intersection-observer';
+import { useEffect } from 'react';
+import { useHeaderContext } from '@site/src/components/SidebarWrapper';
 
-const activeLinkClass = "menu__link--active";
+const activeLinkClass = 'menu__link--active';
 let currentActiveLink,
   sidebarItems = [];
 function highlightIntersectingSection(id) {
   var newActiveLink = document.querySelector(
-    ".menu__list a[href='#" + id + "']"
+    ".menu__list a[href='#" + id + "']",
   );
   if (!newActiveLink) {
     return;
@@ -18,10 +18,8 @@ function highlightIntersectingSection(id) {
   currentActiveLink = newActiveLink;
 }
 
-
 export default function IntersectingHeader({ ...props }) {
-
-  const {addItem} = useHeaderContext()
+  const { addItem } = useHeaderContext();
 
   useEffect(() => {
     addItem(props);
@@ -59,4 +57,3 @@ export default function IntersectingHeader({ ...props }) {
     </InView>
   );
 }
-
