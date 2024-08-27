@@ -4,22 +4,26 @@ export function onRouteDidUpdate({ location, previousLocation }) {
       document.location.href.includes('/integrations/') &&
       window.parent !== window;
   }
-  var ssoLink = document.querySelector(
-    'a.navbar__item.navbar__link.sso',
-  );
+  var ssoLink = document.querySelector('a.dropdown__link.sso');
   var dirSyncLink = document.querySelector(
-    'a.navbar__item.navbar__link.dir-sync',
+    'a.dropdown__link.dir-sync',
   );
+  var dropdownNavbarItem = document.querySelector('a.navbar__link');
+
   if (ssoLink) {
     if (document.location.href.includes('/sso/')) {
       ssoLink.classList.add('navbar__link--active');
       dirSyncLink.classList.remove('navbar__link--active');
+      console.log(dropdownNavbarItem.innerHTML);
+      dropdownNavbarItem.innerHTML = 'Single Sign-On';
     } else if (document.location.href.includes('/dir-sync/')) {
       dirSyncLink.classList.add('navbar__link--active');
       ssoLink.classList.remove('navbar__link--active');
+      dropdownNavbarItem.innerHTML = 'Directory Sync';
     } else {
       ssoLink.classList.remove('navbar__link--active');
       dirSyncLink.classList.remove('navbar__link--active');
+      dropdownNavbarItem.innerHTML = 'Products';
     }
   }
 }
