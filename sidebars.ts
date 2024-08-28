@@ -2,12 +2,6 @@ import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
 
 const sidebars: SidebarsConfig = {
   ssoSidebar: [
-    // {
-    //   type: 'html',
-    //   value:
-    //     '<select class="sso-dropdown"><option value="sso"><a href="/apis">API Refences</a></option><option value="dir-sync"><a href="/sdks">SDKs</a></option></select>', // The link label
-    //   defaultStyle: true,
-    // },
     {
       type: 'html',
       value:
@@ -225,9 +219,20 @@ const sidebars: SidebarsConfig = {
       id: 'dir-sync/webhooks',
     },
     {
+      type: 'html',
+      value: '<div />', // The link label
+      defaultStyle: true,
+    },
+    {
+      type: 'html',
+      value:
+        "<span class='text--uppercase text--light sidenav-category-heading'>SCIM</span>",
+      defaultStyle: true,
+    },
+    {
       type: 'doc',
-      label: 'Directory User Profile',
-      id: 'dir-sync/user_profile',
+      label: 'Overview',
+      id: 'dir-sync/scim/overview',
     },
   ],
   integrationsSidebar: [

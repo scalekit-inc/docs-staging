@@ -235,7 +235,7 @@ const config: Config = {
     },
     prism: {
       theme: prismThemes.github,
-      additionalLanguages: ['bash', 'java', 'groovy'],
+      additionalLanguages: ['bash', 'java', 'groovy', 'http'],
     },
     // footer: {
     //   copyright: `Copyright © ${new Date().getFullYear()} Scalekit Inc.`,
