@@ -1,5 +1,6 @@
 import { InView } from 'react-intersection-observer';
 import { useEffect } from 'react';
+import Link from '@docusaurus/Link';
 import { useHeaderContext } from '@site/src/components/SidebarWrapper';
 
 const activeLinkClass = 'menu__link--active';
@@ -43,6 +44,14 @@ export default function IntersectingHeader({ ...props }) {
               className="headingWithStickyNavBar anchor"
             >
               {props.title}
+              <Link
+                href={`#${props.id}`}
+                className="hash-link"
+                aria-label={`Direct link to ${props.title}`}
+                title={`Direct link to ${props.title}`}
+              >
+                ​
+              </Link>
             </h3>
           )
         : ({ inView, ref, entry }) => (
@@ -52,6 +61,14 @@ export default function IntersectingHeader({ ...props }) {
               className="headingWithStickyNavBar anchor"
             >
               {props.title}
+              <Link
+                href={`#${props.id}`}
+                className="hash-link"
+                aria-label={`Direct link to ${props.title}`}
+                title={`Direct link to ${props.title}`}
+              >
+                ​
+              </Link>
             </h2>
           )}
     </InView>
