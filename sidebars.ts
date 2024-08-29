@@ -239,17 +239,14 @@ const sidebars: SidebarsConfig = {
     {
       type: 'doc',
       label: 'Overview',
+      className:
+        'text--uppercase text--light sidenav-category-heading',
       id: 'integrations/integrations',
     },
     {
       type: 'html',
-      value: '<div />', // The link label
-      defaultStyle: true,
-    },
-    {
-      type: 'html',
       value:
-        "<span class='text--uppercase text--light sidenav-category-heading'>Identity Provider Guides</span>",
+        "<span class='text--uppercase text--light sidenav-category-heading'>Identity Providers</span>",
       defaultStyle: true,
     },
     {
@@ -290,7 +287,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'html',
       value:
-        "<span class='text--uppercase text--light sidenav-category-heading'>Integration with Auth System</span>",
+        "<span class='text--uppercase text--light sidenav-category-heading'>Auth Systems</span>",
       defaultStyle: true,
     },
     {
@@ -305,49 +302,29 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'html',
-      value: '<div />', // The link label
-      defaultStyle: true,
-    },
-    {
-      type: 'html',
       value:
-        "<span class='text--uppercase text--light sidenav-category-heading'>Social Connectors</span>",
+        "<span class='text--uppercase text--light sidenav-category-heading'>Directory Providers</span>",
       defaultStyle: true,
     },
     {
       type: 'doc',
-      label: 'Google',
-      id: 'integrations/social-connections/google',
+      label: 'Okta',
+      id: 'integrations/okta-scim',
     },
     {
       type: 'doc',
-      label: 'Github',
-      id: 'integrations/social-connections/github',
+      label: 'Azure AD',
+      id: 'integrations/azure-scim',
     },
     {
       type: 'doc',
-      label: 'Gitlab',
-      id: 'integrations/social-connections/gitlab',
+      label: 'JumpCloud',
+      id: 'integrations/jumpcloud-scim',
     },
     {
       type: 'doc',
-      label: 'Microsoft',
-      id: 'integrations/social-connections/microsoft',
-    },
-    {
-      type: 'doc',
-      label: 'Salesforce',
-      id: 'integrations/social-connections/salesforce',
-    },
-    {
-      type: 'doc',
-      label: 'LinkedIn',
-      id: 'integrations/social-connections/linkedin',
-    },
-    {
-      type: 'html',
-      value: '<div />', // The link label
-      defaultStyle: true,
+      label: 'OneLogin',
+      id: 'integrations/onelogin-scim',
     },
   ],
   guidesSidebar: [
