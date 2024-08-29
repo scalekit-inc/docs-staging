@@ -183,7 +183,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'doc',
-      label: 'Quickstart Guide',
+      label: 'Quickstart',
       id: 'dir-sync/quickstart',
     },
     {

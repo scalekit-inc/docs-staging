@@ -1,27 +1,37 @@
 import InstallSDK from '@site/docs/sso/templates/_install-sdk.md';
 
-# Directory Sync Quickstart Guide
+# Quickstart
 
-<Subtitle>
-  Learn how to implement Directory Sync in your B2B application using
-  Scalekit.
-</Subtitle>
+<Subtitle>Get onboarded in no time and effortlessly manage user access and roles in real-time</Subtitle>
 
-Directory Sync is a crucial feature for B2B applications to help their customers manage their user provisioning and deprovisioning at scale. This capability allows for automatic synchronization of user data between an organization's identity provider (IdP) or directory service and your application. Directory Sync is particularly valuable when dealing with enterprise customers who have a large number of users and require streamlined user lifecycle management. By implementing Directory Sync, you can offer a more attractive solution to enterprise clients, potentially increasing adoption and reducing churn.
+Directory Sync is a crucial feature for B2B applications to help their customers manage their user provisioning and
+deprovisioning at scale. This capability allows for automatic synchronization of user data between an organization's
+identity provider (IdP) or directory service and your application. Directory Sync isparticularly valuable when dealing
+with enterprise customers who have a large number of users and require streamlined user lifecycle management. By
+implementing Directory Sync, you can offer a more attractive solution to enterprise clients, potentially increasing
+adoption and reducing churn.
 
 /_ TODO: Add SCIM Diagram _/
 
 Implementing Directory Sync in your B2B application involves several steps. Here's a quick overview of the process:
 
-1. **Enable Directory Sync**: As a B2B App Developer, enable Directory Sync for your application in the Scalekit Dashboard. This determines whether Directory Sync configurations will be available to IT Admins.
+1. **Enable Directory Sync**: As a B2B App Developer, enable Directory Sync for your application in the Scalekit
+   Dashboard. This determines whether Directory Sync configurations will be available to IT Admins.
 
-2. **Configure Webhooks**: As a B2B App Developer, you can configure webhooks to listen for changes in the directory service. This involves setting up the webhook details in the Scalekit Dashboard. For detailed list of events and the corresponding payload, see below:
+2. **Configure Webhooks**: As a B2B App Developer, you can configure webhooks to listen for changes in the directory
+   service. This involves setting up the webhook details in the Scalekit Dashboard. For detailed list of events and the
+   corresponding payload, see below:
 
-3. **Configure Directory Sync**: IT Admins can configure Directory Sync for your application via the Admin Portal. This involves setting up the directory sync details in their organization's identity provider (IdP) or directory service.
+3. **Configure Directory Sync**: IT Admins can configure Directory Sync for your application via the Admin Portal. This
+   involves setting up the directory sync details in their organization's identity provider (IdP) or directory service.
 
-4. **Create Role Mappings (Optional)**: IT Admins create role mappings between the groups in their organization's identity provider and the roles in your application. This allows for automated role assignment based on group memberships.
+4. **Create Role Mappings (Optional)**: IT Admins create role mappings between the groups in their organization's
+   identity provider and the roles in your application. This allows for automated role assignment based on group
+   memberships.
 
-5. **Test and Validate**: After configuring Directory Sync, test and validate the integration to ensure that it is working as expected. This involves creating, updating, and deleting users in the identity provider and observing the corresponding actions in your application.
+5. **Test and Validate**: After configuring Directory Sync, test and validate the integration to ensure that it is
+   working as expected. This involves creating, updating, and deleting users in the identity provider and observing the
+   corresponding actions in your application.
 
 ## 1. Environment Setup
 
@@ -32,17 +42,20 @@ Before diving in, make sure you have:
 
 ### Install the Scalekit SDK
 
-Scalekit offers language-specific SDKs for fast SSO integration. Use the installation instructions below for your technology stack.
+Scalekit offers language-specific SDKs for fast SSO integration. Use the installation instructions below for your
+technology stack.
 
 <InstallSDK />
 
 ### Set up API credentials
 
-Secure your Scalekit API communication by setting up environment variables. You'll need three key pieces of information from your Scalekit Dashboard:
+Secure your Scalekit API communication by setting up environment variables. You'll need three key pieces of information
+from your Scalekit Dashboard:
 
 1. **Environment URL**: The base URL for API calls. Each environment (dev, staging, prod) has a unique URL.
 2. **Client ID**: Your app's unique identifier for Scalekit communications.
-3. **Client Secret**: A private key to authenticate your API requests. For security purposes, this is generated only when you request using the Scalekit Dashboard.
+3. **Client Secret**: A private key to authenticate your API requests. For security purposes, this is generated only
+   when you request using the Scalekit Dashboard.
 
 #### Get Your Credentials
 
@@ -56,18 +69,19 @@ Never hardcode secrets in your app. Use environment variables instead. Here's ho
 
 <CodeWithHeader title=".env">
 
-```jsx
-SCALEKIT_ENVIRONMENT_URL = 'https://b2b-app-dev.scalekit.com';
-SCALEKIT_CLIENT_ID = '<CLIENT_ID_FROM_SCALEKIT_DASHBOARD>';
-SCALEKIT_CLIENT_SECRET = '<SECRET_FROM_SCALEKIT_DASHBOARD>';
+```sh
+SCALEKIT_ENVIRONMENT_URL=https://b2b-app-dev.scalekit.com
+SCALEKIT_CLIENT_ID=<CLIENT_ID_FROM_SCALEKIT_DASHBOARD>
+SCALEKIT_CLIENT_SECRET=<SECRET_FROM_SCALEKIT_DASHBOARD>
 ```
 
 </CodeWithHeader>
 
 :::tip
 
-- Never commit your <SimpleCode>.env </SimpleCode> file to version control.
-- Rotate your <SimpleCode>secret </SimpleCode>regularly. See the [best practices for managing secrets](/sso/guides/key-concepts/manage-client-secrets).
+- Never commit your <SimpleCode>.env</SimpleCode> file to version control.
+- Rotate your <SimpleCode>secret </SimpleCode>regularly. See the
+  [best practices for managing secrets](/sso/guides/key-concepts/manage-client-secrets).
 
   :::
 
@@ -75,7 +89,9 @@ Now you're ready to start integrating SSO into your app! Next, we'll cover how t
 
 ## 2. Configure Webhooks
 
-For realtime updates about users and their group memership changes, you can configure webhooks to listen for changes in the directory service. This involves setting up the webhook details in the Scalekit Dashboard. For detailed list of directory user related events and the corresponding payload, see [Important Event Types](#important-event-types).
+For realtime updates about users and their group memership changes, you can configure webhooks to listen for changes in
+the directory service. This involves setting up the webhook details in the Scalekit Dashboard. For detailed list of
+directory user related events and the corresponding payload, see [Important Event Types](#important-event-types).
 
 ### Important Event Types
 
@@ -94,6 +110,8 @@ For realtime updates about users and their group memership changes, you can conf
 
 ## Next Steps
 
-After following the steps above, you have successfully implemented Directory Sync in your application. Next, you can configure the Directory Sync for your customers and test the integration.
+After following the steps above, you have successfully implemented Directory Sync in your application. Next, you can
+configure the Directory Sync for your customers and test the integration.
 
-If you would like to enable automated role assignment for the Directory Users based on their group memberships, you can follow the [Group Based Access Control (GBAC) Quickstart Guide](/dir-sync/gbac).
+If you would like to enable automated role assignment for the Directory Users based on their group memberships, you can
+follow the [Group Based Access Control (GBAC) Quickstart Guide](/dir-sync/gbac).
