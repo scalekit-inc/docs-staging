@@ -13,7 +13,7 @@ Its intent is to reduce the cost and complexity of user management operations by
 
 ## SCIM Protocol: Key Components
 
-SCIM is a HTTP based protocol and uses structured [JSON](https://datatracker.ietf.org/doc/html/rfc7159) payloads to exchange resource information between the SCIM client and server. To identify the SCIM protocol resources, the `application/scim+json` media type is used.
+SCIM is a HTTP based protocol and uses structured [JSON](https://datatracker.ietf.org/doc/html/rfc7159) payloads to exchange resource information between the SCIM client and service provider. To identify the SCIM protocol resources, the `application/scim+json` media type is used.
 
 ### SCIM Service Provider
 
@@ -88,9 +88,9 @@ While SCIM User Resource has the basic attributes of a user like email address, 
 
 SCIM schema is the core of the SCIM protocol. It is a JSON schema that defines the structure of the SCIM resources. The following are the most common SCIM schemas:
 
-- [Core SCIM Schema](https://datatracker.ietf.org/doc/html/rfc7643#section-2)
-- [Enterprise User Schema](https://datatracker.ietf.org/doc/html/rfc7643#section-3)
-- [Group Schema](https://datatracker.ietf.org/doc/html/rfc7643#section-4)
+- [Core SCIM User Schema](https://datatracker.ietf.org/doc/html/rfc7643#section-4.1)
+- [Enterprise User Schema](https://datatracker.ietf.org/doc/html/rfc7643#section-4.3)
+- [Group Schema](https://datatracker.ietf.org/doc/html/rfc7643#section-4.2)
 
 ## Putting Everything Together
 
