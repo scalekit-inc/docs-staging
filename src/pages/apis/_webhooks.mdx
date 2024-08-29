@@ -1,4 +1,4 @@
-import { Endpoint } from "@site/src/components/endpoint";
+import { Endpoint } from '@site/src/components/endpoint';
 
 <IntersectingHeader id="tag/Webhooks" title="Webhooks"/>
 <div className="row section">
@@ -8,31 +8,32 @@ import { Endpoint } from "@site/src/components/endpoint";
         By leveraging webhooks, you can build responsive and dynamic integrations that react immediately to changes in Scalekit System, enabling you to keep your systems in sync and automate user lifecycle management and other related use cases.
     </div>
     <div className="col col--6">
-        <CodeWithHeader title="Webhook Types">
+        <CodeWithHeader title="List of Events">
             <div className="endpoints">
                 <Endpoint
                     key='scalekit.dir.user.create'
                     href='#tag/Webhooks/scalekit.dir.user.create'
-                    method='webhook'
+                    method='event'
                     label='scalekit.dir.user.create'
                 />
                 <Endpoint
                     key='scalekit.dir.user.update'
                     href='#tag/Webhooks/scalekit.dir.user.update'
-                    method='webhook'
+                    method='event'
                     label='scalekit.dir.user.update'
                 />
                 <Endpoint
                     key='scalekit.dir.user.delete'
                     href='#tag/Webhooks/scalekit.dir.user.delete'
-                    method='webhook'
+                    method='event'
                     label='scalekit.dir.user.delete'
                 />
             </div>
         </CodeWithHeader>
     </div>
+
 </div>
-<IntersectingHeader id="tag/Webhooks/object" title="Webhook Structure" subheading="true" classList="ApiCategoryList"/>
+<IntersectingHeader id="tag/Webhooks/object" title="Event Object" subheading="true" classList="ApiCategoryList"/>
 <div className="row section">
     <div className="col col--6">
        Every webhook payload has two key components: Event Metadata and Event Data.
@@ -50,7 +51,7 @@ import { Endpoint } from "@site/src/components/endpoint";
         </ul>
     </div>
     <div className="col col--6">
-        <CodeWithHeader title="Sample Webhook">
+        <CodeWithHeader title="Sample Event Payload">
 
         ```js
         {
@@ -275,6 +276,7 @@ import { Endpoint } from "@site/src/components/endpoint";
         ```
         </CodeWithHeader>
     </div>
+
 </div>
 
 <IntersectingHeader id="tag/Webhooks/scalekit.dir.user.delete" title="scalekit.dir.user.delete" subheading="true" classList='ApiCategoryList webhook method'/>

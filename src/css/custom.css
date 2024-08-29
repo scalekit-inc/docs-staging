@@ -1135,7 +1135,7 @@ svg {
 }
 
 .scalar-card-header-title span.method.put,
-.endpoint span.webhook {
+.endpoint span.event {
   text-transform: uppercase;
   color: var(--scalar-color-purple);
 }
@@ -1307,7 +1307,7 @@ svg {
 }
 
 .ApiCategoryList.webhook a:after {
-  content: 'WEBHOOK';
+  content: 'EVENT';
   --method-color: var(--scalar-color-purple);
 }
 
