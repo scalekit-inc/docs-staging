@@ -143,7 +143,6 @@ const sidebars: SidebarsConfig = {
         "<span class='text--uppercase text--light sidenav-category-heading'>Learning Guides</span>",
       defaultStyle: true,
     },
-
     {
       type: 'doc',
       label: 'Authorization URL',
@@ -189,13 +188,8 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'doc',
-      label: 'Automated Role Assignment (GBAC)',
-      id: 'dir-sync/gbac',
-    },
-    {
-      type: 'doc',
-      label: 'Admin Portal',
-      id: 'dir-sync/admin-portal',
+      label: 'Explore Sample Apps',
+      id: 'dir-sync/explore-sample-apps',
     },
     {
       type: 'doc',
@@ -204,8 +198,35 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'html',
-      value: '<div />', // The link label
+      value:
+        "<span class='text--uppercase text--light sidenav-category-heading'>Manage</span>",
       defaultStyle: true,
+    },
+    {
+      type: 'doc',
+      label: 'Onboard a Customer',
+      id: 'dir-sync/admin-portal',
+    },
+    {
+      type: 'doc',
+      label: 'Map Roles in Your App',
+      id: 'dir-sync/modify-user-attributes',
+    },
+    {
+      type: 'html',
+      value:
+        "<span class='text--uppercase text--light sidenav-category-heading'>Implementation</span>",
+      defaultStyle: true,
+    },
+    {
+      type: 'doc',
+      label: 'Listening to Events',
+      id: 'dir-sync/modify-user-attributes',
+    },
+    {
+      type: 'doc',
+      label: 'Handle Inactive Users',
+      id: 'dir-sync/modify-user-attributes',
     },
     {
       type: 'html',
@@ -219,20 +240,19 @@ const sidebars: SidebarsConfig = {
       id: 'dir-sync/webhooks',
     },
     {
-      type: 'html',
-      value: '<div />', // The link label
-      defaultStyle: true,
-    },
-    {
-      type: 'html',
-      value:
-        "<span class='text--uppercase text--light sidenav-category-heading'>SCIM</span>",
-      defaultStyle: true,
+      type: 'doc',
+      label: 'Automated Role Assignment (GBAC)',
+      id: 'dir-sync/gbac',
     },
     {
       type: 'doc',
-      label: 'Overview',
+      label: 'SCIM Overview',
       id: 'dir-sync/scim/overview',
+    },
+    {
+      type: 'html',
+      value: '<div />', // The link label
+      defaultStyle: true,
     },
   ],
   integrationsSidebar: [
