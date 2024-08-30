@@ -4,8 +4,7 @@ const sidebars: SidebarsConfig = {
   ssoSidebar: [
     {
       type: 'html',
-      value:
-        "<span class='text--uppercase text--light sidenav-category-heading'>Getting Started</span>",
+      value: "<span class='text--uppercase text--light sidenav-category-heading'>Getting Started</span>",
       defaultStyle: true,
     },
     {
@@ -41,8 +40,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'html',
-      value:
-        "<span class='text--uppercase text--light sidenav-category-heading'>Login with Social</span>",
+      value: "<span class='text--uppercase text--light sidenav-category-heading'>Login with Social</span>",
       defaultStyle: true,
     },
     {
@@ -57,8 +55,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'html',
-      value:
-        "<span class='text--uppercase text--light sidenav-category-heading'>How-to Guides</span>",
+      value: "<span class='text--uppercase text--light sidenav-category-heading'>How-to Guides</span>",
       defaultStyle: true,
     },
     {
@@ -113,8 +110,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'html',
-      value:
-        "<span class='text--uppercase text--light sidenav-category-heading'>Integration Resources</span>",
+      value: "<span class='text--uppercase text--light sidenav-category-heading'>Integration Resources</span>",
       defaultStyle: true,
     },
     {
@@ -139,8 +135,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'html',
-      value:
-        "<span class='text--uppercase text--light sidenav-category-heading'>Learning Guides</span>",
+      value: "<span class='text--uppercase text--light sidenav-category-heading'>Learning Guides</span>",
       defaultStyle: true,
     },
     {
@@ -172,8 +167,7 @@ const sidebars: SidebarsConfig = {
   dirSyncSidebar: [
     {
       type: 'html',
-      value:
-        "<span class='text--uppercase text--light sidenav-category-heading'>Getting Started</span>",
+      value: "<span class='text--uppercase text--light sidenav-category-heading'>Getting Started</span>",
       defaultStyle: true,
     },
     {
@@ -188,7 +182,12 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'doc',
-      label: 'Explore Sample Apps',
+      label: 'Sample Apps',
+      id: 'dir-sync/explore-sample-apps',
+    },
+    {
+      type: 'doc',
+      label: 'Simulate Directory Events',
       id: 'dir-sync/explore-sample-apps',
     },
     {
@@ -198,13 +197,12 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'html',
-      value:
-        "<span class='text--uppercase text--light sidenav-category-heading'>Manage</span>",
+      value: "<span class='text--uppercase text--light sidenav-category-heading'>Manage</span>",
       defaultStyle: true,
     },
     {
       type: 'doc',
-      label: 'Onboard a Customer',
+      label: 'Admin Portal',
       id: 'dir-sync/admin-portal',
     },
     {
@@ -214,8 +212,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'html',
-      value:
-        "<span class='text--uppercase text--light sidenav-category-heading'>Implementation</span>",
+      value: "<span class='text--uppercase text--light sidenav-category-heading'>Implementation</span>",
       defaultStyle: true,
     },
     {
@@ -230,8 +227,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'html',
-      value:
-        "<span class='text--uppercase text--light sidenav-category-heading'>Learning Guides</span>",
+      value: "<span class='text--uppercase text--light sidenav-category-heading'>Learning Guides</span>",
       defaultStyle: true,
     },
     {
@@ -259,14 +255,12 @@ const sidebars: SidebarsConfig = {
     {
       type: 'doc',
       label: 'Overview',
-      className:
-        'text--uppercase text--light sidenav-category-heading',
+      className: 'text--uppercase text--light sidenav-category-heading',
       id: 'integrations/integrations',
     },
     {
       type: 'html',
-      value:
-        "<span class='text--uppercase text--light sidenav-category-heading'>Identity Providers</span>",
+      value: "<span class='text--uppercase text--light sidenav-category-heading'>Identity Providers</span>",
       defaultStyle: true,
     },
     {
@@ -306,8 +300,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'html',
-      value:
-        "<span class='text--uppercase text--light sidenav-category-heading'>Auth Systems</span>",
+      value: "<span class='text--uppercase text--light sidenav-category-heading'>Auth Systems</span>",
       defaultStyle: true,
     },
     {
@@ -322,8 +315,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'html',
-      value:
-        "<span class='text--uppercase text--light sidenav-category-heading'>Directory Providers</span>",
+      value: "<span class='text--uppercase text--light sidenav-category-heading'>Directory Providers</span>",
       defaultStyle: true,
     },
     {

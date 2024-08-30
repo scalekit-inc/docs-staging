@@ -4,50 +4,66 @@ import InstallSDK from '@site/docs/sso/templates/_install-sdk.md';
 
 <Subtitle>Get onboarded in no time and effortlessly manage user access and roles in real-time</Subtitle>
 
-Directory Sync is a crucial feature for B2B applications to help their customers manage their user provisioning and
-deprovisioning at scale. This capability allows for automatic synchronization of user data between an organization's
-identity provider (IdP) or directory service and your application. Directory Sync isparticularly valuable when dealing
-with enterprise customers who have a large number of users and require streamlined user lifecycle management. By
-implementing Directory Sync, you can offer a more attractive solution to enterprise clients, potentially increasing
-adoption and reducing churn.
+Directory sync allows your app to automatically provision and deprovision user accounts based on events from your
+customers' directory provider**s.** Implementing directory sync involves three main steps:
 
-/_ TODO: Add SCIM Diagram _/
+1. **Enable Directory Sync**: In the Scalekit console, go to the list of organizations and select the desired
+   organization that has the directory provider you want to integrate with.
+2. **Configure Directory Sync**: Generate a self-serve admin portal link in the Scalekit console. Provide this link to
+   your customer's IT admin so they can configure their directory provider to send events to Scalekit. Scalekit provides
+   integration guides for supported providers.
+3. **Receive Directory Events**: Create a webhook endpoint and register it in the "Webhooks" section of the Scalekit
+   console. Scalekit will send normalized payloads about directory events to this endpoint in real-time, allowing your
+   app to take actions like creating or removing user accounts.
 
-Implementing Directory Sync in your B2B application involves several steps. Here's a quick overview of the process:
+Broadly, directory sync works by having your customers' directory providers send events to Scalekit, which then
+normalizes the information and forwards it to your app via webhook endpoint**.** This allows your app to automatically
+manage user accounts based on data from any supported directory provider.
 
-1. **Enable Directory Sync**: As a B2B App Developer, enable Directory Sync for your application in the Scalekit
-   Dashboard. This determines whether Directory Sync configurations will be available to IT Admins.
+## Configure Directory Connection
 
-2. **Configure Webhooks**: As a B2B App Developer, you can configure webhooks to listen for changes in the directory
-   service. This involves setting up the webhook details in the Scalekit Dashboard. For detailed list of events and the
-   corresponding payload, see below:
+**To set up directory sync in Scalekit, follow these steps:**
 
-3. **Configure Directory Sync**: IT Admins can configure Directory Sync for your application via the Admin Portal. This
-   involves setting up the directory sync details in their organization's identity provider (IdP) or directory service.
+1. **Switch Environment**: In the Scalekit console, switch to your desired environment.
+2. **Access Organizations**: Click “Organizations” in the left sidebar to view the list of organizations.
+3. **Select Organization**: Choose the organization that uses a directory provider. If experimenting, create an
+   organization using the “Create Organization” button. For example, "MegaSoft Inc."
+4. **Enable Directory Sync**: Open the organization details page and click “Enable now” in the *Directory Sync* tab.
 
-4. **Create Role Mappings (Optional)**: IT Admins create role mappings between the groups in their organization's
-   identity provider and the roles in your application. This allows for automated role assignment based on group
-   memberships.
+<figure>
+  ![Setting Up Directory Sync for MegaSoft Inc in Scalekit Dashboard](@site/docs/dir-sync/assets/quickstart-1.png)
+  <figcaption>Setting Up Directory Sync for MegaSoft Inc in Scalekit Dashboard</figcaption>
+</figure>
 
-5. **Test and Validate**: After configuring Directory Sync, test and validate the integration to ensure that it is
-   working as expected. This involves creating, updating, and deleting users in the identity provider and observing the
-   corresponding actions in your application.
+After enabling directory sync:
 
-## 1. Environment Setup
+**Select Directory Provider:** View the list of directory providers and select one to obtain the **Endpoint URL** and
+**Bearer token**. Use this information with our integration guides for further configuration.
+
+:::tip
+
+Empower Customers: Share a link from Overview > Admin Portal > Generate link with your customers. This allows them to
+configure the directory connection themselves using the integration guides.
+
+:::
+
+## Receive Directory Events
+
+### 1. Environment Setup
 
 Before diving in, make sure you have:
 
 - Access to your Scalekit account and API credentials
 - Your app's codebase for implementing and testing changes
 
-### Install the Scalekit SDK
+#### Install the Scalekit SDK
 
 Scalekit offers language-specific SDKs for fast SSO integration. Use the installation instructions below for your
 technology stack.
 
 <InstallSDK />
 
-### Set up API credentials
+#### Set up API credentials
 
 Secure your Scalekit API communication by setting up environment variables. You'll need three key pieces of information
 from your Scalekit Dashboard:
@@ -57,13 +73,13 @@ from your Scalekit Dashboard:
 3. **Client Secret**: A private key to authenticate your API requests. For security purposes, this is generated only
    when you request using the Scalekit Dashboard.
 
-#### Get Your Credentials
+##### Get Your Credentials
 
 1. Log into your Scalekit Dashboard.
 2. Select the "Development" environment.
 3. Click on "API Config" to view your credentials.
 
-#### Store Credentials Securely
+##### Store Credentials Securely
 
 Never hardcode secrets in your app. Use environment variables instead. Here's how to set them in a `.env` file:
 
@@ -87,7 +103,7 @@ SCALEKIT_CLIENT_SECRET=<SECRET_FROM_SCALEKIT_DASHBOARD>
 
 Now you're ready to start integrating SSO into your app! Next, we'll cover how to use the SDK to authenticate users.
 
-## 2. Configure Webhooks
+### 2. Configure Webhooks
 
 For realtime updates about users and their group memership changes, you can configure webhooks to listen for changes in
 the directory service. This involves setting up the webhook details in the Scalekit Dashboard. For detailed list of
@@ -102,7 +118,7 @@ directory user related events and the corresponding payload, see [Important Even
 | <SimpleCode>scalekit.dir.user.delete</SimpleCode> | Automated User Deprovisioning  | Triggered when a user is removed from the directory. <br/><br />Also triggered when a user's status is marked as `inactive` in the directory or if the user is removed from all groups assigned to this application.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | <SimpleCode>scalekit.dir.user.update</SimpleCode> | Automated User Role Assignment | To implement automated role assignment, you must enable the "Group Based Access Control" setting in the Scalekit Dashboard and configure all the available roles in your application. <br /><br />As part of your customer's Directory Sync configuration, your customers would configure the mapping between the Groups in their Directory Provider and the Roles in your application. <br /><br />Scalekit will automatically listen to the changes of user and group assignment in your customer's Directory Provider and based on your customer's configuration, we will update the `roles` attribute of the user. You can use the `scalekit.dir.user.update` webhook to listen for changes in the directory and update the user's roles in your application |
 
-## 3. (Optional) Fetch Directory Users via API
+## Directory Sync API
 
 ### List Directory Users
 
