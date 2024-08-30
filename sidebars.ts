@@ -206,24 +206,24 @@ const sidebars: SidebarsConfig = {
       id: 'dir-sync/admin-portal',
     },
     {
-      type: 'doc',
-      label: 'Map User Attributes',
-      id: 'dir-sync/map-user-attributes',
-    },
-    {
       type: 'html',
       value: "<span class='text--uppercase text--light sidenav-category-heading'>Implementation</span>",
       defaultStyle: true,
     },
     {
       type: 'doc',
+      label: 'User Attributes',
+      id: 'dir-sync/map-user-attributes',
+    },
+    {
+      type: 'doc',
       label: 'Listening to Events',
-      id: 'dir-sync/modify-user-attributes',
+      id: 'dir-sync/map-user-attributes',
     },
     {
       type: 'doc',
       label: 'Handle Inactive Users',
-      id: 'dir-sync/modify-user-attributes',
+      id: 'dir-sync/map-user-attributes',
     },
     {
       type: 'html',
