@@ -188,7 +188,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'doc',
       label: 'Simulate Directory Events',
-      id: 'dir-sync/explore-sample-apps',
+      id: 'dir-sync/simulate-directory-events',
     },
     {
       type: 'doc',
