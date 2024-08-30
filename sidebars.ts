@@ -207,8 +207,8 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'doc',
-      label: 'Map Roles in Your App',
-      id: 'dir-sync/modify-user-attributes',
+      label: 'Map User Attributes',
+      id: 'dir-sync/map-user-attributes',
     },
     {
       type: 'html',
