@@ -206,14 +206,19 @@ const sidebars: SidebarsConfig = {
       id: 'dir-sync/admin-portal',
     },
     {
+      type: 'doc',
+      label: 'Map Custom Attributes',
+      id: 'dir-sync/map-user-attributes',
+    },
+    {
       type: 'html',
       value: "<span class='text--uppercase text--light sidenav-category-heading'>Implementation</span>",
       defaultStyle: true,
     },
     {
       type: 'doc',
-      label: 'User Attributes',
-      id: 'dir-sync/map-user-attributes',
+      label: 'User Attributes in Sync',
+      id: 'dir-sync/user-attributes-in-sync',
     },
     {
       type: 'doc',
