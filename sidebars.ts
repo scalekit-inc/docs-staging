@@ -222,13 +222,13 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'doc',
-      label: 'Listening to Events',
+      label: 'Handle Inactive Users',
       id: 'dir-sync/map-user-attributes',
     },
     {
       type: 'doc',
-      label: 'Handle Inactive Users',
-      id: 'dir-sync/map-user-attributes',
+      label: 'Automated Role Assignment (GBAC)',
+      id: 'dir-sync/gbac',
     },
     {
       type: 'html',
