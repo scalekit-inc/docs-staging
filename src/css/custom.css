@@ -716,6 +716,7 @@ ul.table-of-contents.table-of-contents__left-border:before {
   border-radius: 4px !important;
   border: 1.1px solid;
   height: 32px;
+  width: 30vw;
   border-color: var(--scalekit-blue);
   font-family: var(--ifm-font-family-base);
 }

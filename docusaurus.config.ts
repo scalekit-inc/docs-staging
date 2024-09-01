@@ -6,19 +6,11 @@ const config: Config = {
   title: 'Scalekit Docs',
   tagline: 'Enterprise Ready Authentiction Platform for SaaS',
   favicon: 'img/Favicon.svg',
-<<<<<<< HEAD
   url: 'https://docs-staging.scalekit.com',
   baseUrl: '/docs-staging',
   trailingSlash: false,
   organizationName: 'scalekit-inc',
   projectName: 'docs-staging',
-=======
-  url: 'https://docs.scalekit.com',
-  baseUrl: '/',
-  trailingSlash: false,
-  organizationName: 'scalekit-inc',
-  projectName: 'docs',
->>>>>>> 0c61016 (chore: Standardize single quotes in `docusaurus.config.ts` and update CSS styles)
   deploymentBranch: 'gh-pages',
   onBrokenLinks: 'log',
   onBrokenMarkdownLinks: 'warn',
