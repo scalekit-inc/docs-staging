@@ -11,6 +11,13 @@ const config: Config = {
   trailingSlash: false,
   organizationName: 'scalekit-inc',
   projectName: 'docs-staging',
+=======
+  url: 'https://docs.scalekit.com',
+  baseUrl: '/',
+  trailingSlash: false,
+  organizationName: 'scalekit-inc',
+  projectName: 'docs',
+>>>>>>> 0c61016 (chore: Standardize single quotes in `docusaurus.config.ts` and update CSS styles)
   deploymentBranch: 'gh-pages',
   onBrokenLinks: 'log',
   onBrokenMarkdownLinks: 'warn',
@@ -226,9 +233,9 @@ const config: Config = {
       respectPrefersColorScheme: false,
     },
     algolia: {
-      appId: "7554BDRAJD",
-      apiKey: "0a906499d09119c83fd6d0568e7f8517",
-      indexName: "scalekit",
+      appId: '7554BDRAJD',
+      apiKey: '0a906499d09119c83fd6d0568e7f8517',
+      indexName: 'scalekit-staging',
       contextualSearch: false,
       insights: true,
       searchPagePath: false,
