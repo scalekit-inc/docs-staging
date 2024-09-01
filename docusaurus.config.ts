@@ -6,11 +6,19 @@ const config: Config = {
   title: 'Scalekit Docs',
   tagline: 'Enterprise Ready Authentiction Platform for SaaS',
   favicon: 'img/Favicon.svg',
+<<<<<<< HEAD
   url: 'https://docs-staging.scalekit.com',
   baseUrl: '/docs-staging',
   trailingSlash: false,
   organizationName: 'scalekit-inc',
   projectName: 'docs-staging',
+=======
+  url: 'https://docs.scalekit.com',
+  baseUrl: '/',
+  trailingSlash: false,
+  organizationName: 'scalekit-inc',
+  projectName: 'docs',
+>>>>>>> 0c61016 (chore: Standardize single quotes in `docusaurus.config.ts` and update CSS styles)
   deploymentBranch: 'gh-pages',
   onBrokenLinks: 'log',
   onBrokenMarkdownLinks: 'warn',
@@ -228,7 +236,7 @@ const config: Config = {
     algolia: {
       appId: '7554BDRAJD',
       apiKey: '0a906499d09119c83fd6d0568e7f8517',
-      indexName: 'scalekit-staging',
+      indexName: 'scalekit',
       contextualSearch: false,
       insights: true,
       searchPagePath: false,
