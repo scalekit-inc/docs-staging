@@ -1,0 +1,104 @@
+# Automatically Assign Roles in B2B Apps
+
+B2B apps use role-based access control to manage user permissions. This system assigns users to specific roles, each
+with predefined access levels. For example:
+
+- GitHub uses a "maintainer" role for code repositories
+- Maintainers cannot delete repositories, limiting their power
+
+This guide explains how to automatically assign user roles when organizations add your app to their SaaS subscriptions
+via directory providers.
+
+## Group-Based Access Control (GBAC)
+
+Directory administrators manage users and groups within their organizations. GBAC allows them to control app access by
+assigning users to specific groups.
+
+- Users: Any member of the organization
+- Groups: Departments like sales, engineering, or marketing
+- Access control: Based on group membership
+
+Administrators can easily grant or revoke app access by adding or removing users from groups.
+
+<figure>
+  ![How Scalekit works](@site/docs/dir-sync/assets/automatically-assign-roles-1.png)
+  <figcaption>Administrators map users to roles for streamlined app permissions.</figcaption>
+</figure>
+
+## **Implementing Roles in Your App**
+
+B2B SaaS applications often define roles such as _Member_, _Administrator_ or _Owner_
+
+To enable automatic role assignment based on groups (in directory):
+
+1. Go to Scalekit Dashboard
+2. Select Configuration > "Roles"
+3. Toggle "Group Based Role Assignment"
+4. Declare your app's roles
+
+<figure>
+  ![How Scalekit works](@site/docs/dir-sync/assets/automatically-assign-roles-2.png)
+  <figcaption>Adding roles in Scalekit dashboard.</figcaption>
+</figure>
+
+This setup allows administrators to map their directory provider groups to your app's roles using the Admin Portal.
+
+Scalekit uses these mappings to include role information in directory event payloads:
+
+<CodeWithHeader title=".env">
+
+```js
+{
+    "userName": "johndoe123",
+    "name": {
+        "formatted": "Dr. John Michael Doe Jr.",
+        "familyName": "Doe",
+        "givenName": "John",
+        "middleName": "Michael",
+        "honorificPrefix": "Dr.",
+        "honorificSuffix": "Jr."
+    },
+    "displayName": "John Doe",
+    "nickName": "Johnny",
+    "profileUrl": "https://example.com/profiles/johndoe123",
+    "title": "Senior Software Engineer",
+    "userType": "Employee",
+    "preferredLanguage": "en-US",
+    "locale": "en-US",
+    "timezone": "America/New_York",
+    "active": true,
+    "password": null,
+    "emails": ["john.doe@example.com", "johndoe123@gmail.com"],
+    "phoneNumbers": ["+1-555-555-1234", "+1-555-555-5678"],
+    "photos": ["https://example.com/photos/johndoe123.jpg"],
+    "addresses": [{
+        "formatted": "123 Main St, Apt 4B, New York, NY 10001, USA",
+        "streetAddress": "123 Main St, Apt 4B",
+        "locality": "New York",
+        "region": "NY",
+        "postalCode": "10001",
+        "country": "USA"
+    }],
+    "groups": ["engineering", "project-alpha"],
+    "entitlements": ["jira-access", "github-enterprise"],
+    "roles": ["Senior Engineer", "Team Lead"]
+}
+```
+
+</CodeWithHeader>
+
+To implement into your app:
+
+1. Read about User Attributes
+2. Set up Directory Sync
+3. Configure your app to listen for directory events
+4. Use role information to personalize user experiences
+
+## Benefits of GBAC
+
+- Easy access management for customers
+- Flexible role mapping
+- Enhanced trust and access control
+- No need for custom solutions for individual customers
+
+For more details on implementing these features, refer to our documentation on User Attributes and Directory Sync setup.

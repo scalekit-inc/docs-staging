@@ -172,7 +172,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'doc',
-      label: 'Directory Sync - Basics',
+      label: 'What is Directory Sync?',
       id: 'dir-sync/basics',
     },
     {
@@ -187,8 +187,8 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'doc',
-      label: 'Simulate Directory Events',
-      id: 'dir-sync/simulate-directory-events',
+      label: 'Setup Directory Events',
+      id: 'dir-sync/setup-directory-events',
     },
     {
       type: 'doc',
@@ -222,13 +222,8 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'doc',
-      label: 'Handle Inactive Users',
-      id: 'dir-sync/map-user-attributes',
-    },
-    {
-      type: 'doc',
-      label: 'Automated Role Assignment (GBAC)',
-      id: 'dir-sync/gbac',
+      label: 'Automatically Assign Roles',
+      id: 'dir-sync/automatically-assign-roles',
     },
     {
       type: 'html',
@@ -247,7 +242,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'doc',
-      label: 'SCIM Overview',
+      label: 'System for Cross-domain Identity Management (SCIM)',
       id: 'dir-sync/scim/overview',
     },
     {
