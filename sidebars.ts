@@ -187,13 +187,28 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'doc',
+      label: 'Launch Checklist',
+      id: 'dir-sync/checklist',
+    },
+    {
+      type: 'html',
+      value: "<span class='text--uppercase text--light sidenav-category-heading'>Implementation</span>",
+      defaultStyle: true,
+    },
+    {
+      type: 'doc',
       label: 'Setup Directory Events',
       id: 'dir-sync/setup-directory-events',
     },
     {
       type: 'doc',
-      label: 'Launch Checklist',
-      id: 'dir-sync/checklist',
+      label: 'User Attributes in Sync',
+      id: 'dir-sync/user-attributes-in-sync',
+    },
+    {
+      type: 'doc',
+      label: 'Automatically Assign Roles',
+      id: 'dir-sync/automatically-assign-roles',
     },
     {
       type: 'html',
@@ -212,21 +227,6 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'html',
-      value: "<span class='text--uppercase text--light sidenav-category-heading'>Implementation</span>",
-      defaultStyle: true,
-    },
-    {
-      type: 'doc',
-      label: 'User Attributes in Sync',
-      id: 'dir-sync/user-attributes-in-sync',
-    },
-    {
-      type: 'doc',
-      label: 'Automatically Assign Roles',
-      id: 'dir-sync/automatically-assign-roles',
-    },
-    {
-      type: 'html',
       value: "<span class='text--uppercase text--light sidenav-category-heading'>Learning Guides</span>",
       defaultStyle: true,
     },
@@ -235,11 +235,11 @@ const sidebars: SidebarsConfig = {
       label: 'Webhooks',
       id: 'dir-sync/webhooks',
     },
-    {
-      type: 'doc',
-      label: 'Automated Role Assignment (GBAC)',
-      id: 'dir-sync/gbac',
-    },
+    // {
+    //   type: 'doc',
+    //   label: 'Automated Role Assignment (GBAC)',
+    //   id: 'dir-sync/gbac',
+    // },
     {
       type: 'doc',
       label: 'System for Cross-domain Identity Management (SCIM)',
