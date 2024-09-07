@@ -92,7 +92,7 @@ Organization createdOrganization = scalekitClient
 </CodeWithHeader>
 <CodeWithHeader title="Response">
 
-```js
+```json
 {
     "create_time": "2024-01-05T14:48:00.000Z",
     "display_name": "Acme Corp",

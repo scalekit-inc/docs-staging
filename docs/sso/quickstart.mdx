@@ -57,10 +57,17 @@ Never hardcode secrets in your app. Use environment variables instead. Here's ho
 
 <CodeWithHeader title=".env">
 
+<<<<<<< HEAD
 ```jsx
 SCALEKIT_ENVIRONMENT_URL='https://b2b-app-dev.scalekit.com'
 SCALEKIT_CLIENT_ID='<CLIENT_ID_FROM_SCALEKIT_DASHBOARD>'
 SCALEKIT_CLIENT_SECRET='<SECRET_FROM_SCALEKIT_DASHBOARD>'
+=======
+```dotenv
+SCALEKIT_ENVIRONMENT_URL = 'https://b2b-app-dev.scalekit.com';
+SCALEKIT_CLIENT_ID = '<CLIENT_ID_FROM_SCALEKIT_DASHBOARD>';
+SCALEKIT_CLIENT_SECRET = '<SECRET_FROM_SCALEKIT_DASHBOARD>';
+>>>>>>> 1dec91e (fixing some minor formatting issues)
 ```
 
 </CodeWithHeader>
@@ -100,6 +107,7 @@ https://auth.scalekit.com/authorize?
 See our [Authorization URL Parameters Guide](/sso/guides/key-concepts/authorization-url) for a full list of accepted parameters.
 
 Next, construct your Authorization URL with these parameters and redirect users to this URL when they try to log in.
+<CodeWithHeader title="Construct Authorization URL">
 
 <Tabs groupId="tech-stack" queryString>
 <TabItem value="nodejs" label="Node.js">
@@ -246,7 +254,7 @@ public class Main {
 </TabItem>
 
 </Tabs>
-
+</CodeWithHeader>
 Finally, handle the callback at your <SimpleCode>redirect_uri</SimpleCode> to complete the Authentication. Understand user authorization procedure through a NextJS example for [adding SSO to the Login Page](/sso/guides/setup-sso/build-login-page)
 
 ## 3. Fetch User Details
@@ -254,7 +262,7 @@ Finally, handle the callback at your <SimpleCode>redirect_uri</SimpleCode> to co
 After a successful SSO, Scalekit redirects the user to your <SimpleCode>redirect_uri</SimpleCode> with a unique <SimpleCode>code</SimpleCode> in the browser. Exchange the <SimpleCode>code</SimpleCode> for user profile details (on the serverside).
 
 Here's how to turn that <SimpleCode>code</SimpleCode> into user data:
-
+<CodeWithHeader title="Fetch user profile">
 <Tabs groupId="tech-stack" queryString>
 <TabItem value="nodejs" label="Node.js">
 
@@ -450,3 +458,4 @@ try {
 </TabItem>
 
 </Tabs>
+</CodeWithHeader>
