@@ -4,25 +4,26 @@ import InstallSDK from '@site/docs/sso/templates/_install-sdk.md';
 
 <Subtitle>Get onboarded in no time and effortlessly manage user access and roles in real-time</Subtitle>
 
-Directory sync allows your app to automatically provision and deprovision user accounts based on events from your
-customers' directory provider**s.** Implementing directory sync involves three main steps:
+<TermTip jargon="Directory Sync" /> allows your app to automatically provision and deprovision user accounts based on events
+from your <TermTip jargon="Customer" />
+'s <TermTip jargon="Directory Provider" />. Implementing directory sync involves three main steps:
 
 1. **Enable Directory Sync**: In the Scalekit dashboard, go to the list of organizations and select the desired
-   organization that has the directory provider you want to integrate with.
-2. **Configure Directory Sync**: Generate a self-serve admin portal link in the Scalekit dashboard. Provide this link to
-   your customer's IT admin so they can configure their directory provider to send events to Scalekit. Scalekit provides
-   integration guides for supported providers.
+   organization that you want to integrate with.
+2. **Configure Directory Sync**: Select the organization to set up directory sync and follow the instructions to
+   configure the directory provider. You can share [access to the self-serve portal](/dir-sync/admin-portal) with your
+   customers so they can configure the directory provider themselves.
 3. **Receive Directory Events**: Create a webhook endpoint and register it in the "Webhooks" section of the Scalekit
-   console. Scalekit will send normalized payloads about directory events to this endpoint in real-time, allowing your
-   app to take actions like creating or removing user accounts.
+   console. Scalekit will send <TermTip jargon="normalized payload" />s about directory events to this endpoint in
+   real-time, allowing your app to take actions like creating or removing user accounts.
 
 Broadly, directory sync works by having your customers' directory providers send events to Scalekit, which then
 normalizes the information and forwards it to your app via webhook endpoint. This allows your app to automatically
-manage user accounts based on data from any supported directory provider.
+manage user accounts based on data from any supported directory provider
 
 ## Configure Directory Connection
 
-**To set up directory sync in Scalekit, follow these steps:**
+To set up directory sync in Scalekit, follow these steps:
 
 1. **Switch Environment**: In the Scalekit dashboard, switch to your desired environment.
 2. **Access Organizations**: Click “Organizations” in the left sidebar to view the list of organizations.

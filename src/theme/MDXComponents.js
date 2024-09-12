@@ -18,7 +18,7 @@ import { SimpleCard } from '@site/src/components/ProductList/ProductList';
 import { FancyLink } from '@site/src/components/Card/CardWithArrow';
 import QuickLinkStack from '@site/src/components/QuickLinkStack';
 import ScalekitFooterComponent from '@site/src/components/DocsRating';
-import { GlossaryListing, TooltippedGlossary } from '@site/src/components/Glossary/Glossary';
+import { GlossaryListing, TermTip } from '@site/src/components/Glossary/Glossary';
 
 export default {
   // Re-use the default mapping
@@ -45,6 +45,6 @@ export default {
   FancyLink,
   QuickLinkStack,
   GlossaryListing,
-  TooltippedGlossary,
+  TermTip,
   ScalekitFooterComponent,
 };

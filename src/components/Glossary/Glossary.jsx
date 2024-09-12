@@ -17,8 +17,12 @@ import {
   FloatingPortal,
 } from '@floating-ui/react';
 
-export const TooltippedGlossary = ({ glossary }) => {
+export const TermTip = ({ jargon }) => {
+  const glossary = jargon.toLowerCase();
   const [isOpen, setIsOpen] = useState(false);
+  const glossary_items = Object.fromEntries(
+    Object.entries(require('./term-explorer.json')).map(([key, value]) => [key.toLowerCase(), value]),
+  );
 
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
@@ -48,7 +52,7 @@ export const TooltippedGlossary = ({ glossary }) => {
   return (
     <>
       <span ref={refs.setReference} {...getReferenceProps()} className={styles.glossary}>
-        {glossary}
+        {jargon}
       </span>
       <FloatingPortal>
         {isOpen && (
