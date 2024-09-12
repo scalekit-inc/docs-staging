@@ -1,5 +1,5 @@
 .glossary {
-  text-decoration: underline dashed;
+  /* text-decoration: underline dashed; */
   text-decoration-color: var(--secondary-blue-normal-hover);
   cursor: help;
 }
