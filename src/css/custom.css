@@ -80,6 +80,7 @@
   --ifm-list-paragraph-margin: 10px;
   --ifm-paragraph-margin-bottom: 10px;
   --ifm-table-border-color: #e8e8e8;
+  --shiki-highlight-codelines-light: rgba(200, 200, 255, 0.3);
 }
 
 html {
@@ -1467,7 +1468,8 @@ h1 .badge {
 }
 
 .shiki .line.highlighted {
-  background-color: var(--wasmcloud-code-highlight);
+  /* background-color: yellow; */
+  background-color: rgba(200, 200, 255, 0.3);
 }
 
 /* diff */

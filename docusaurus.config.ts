@@ -1,40 +1,43 @@
-
-import type { Config } from "@docusaurus/types";
-import type * as Preset from "@docusaurus/preset-classic";
+import type { Config } from '@docusaurus/types';
+import type * as Preset from '@docusaurus/preset-classic';
 import rehypeShiki, { RehypeShikiOptions } from '@shikijs/rehype';
- import { bundledLanguages } from 'shiki';
- import {
-   transformerMetaHighlight,
-   transformerNotationDiff,
-   transformerNotationHighlight,
-   transformerNotationFocus,
- } from '@shikijs/transformers';
+import { bundledLanguages } from 'shiki';
+import {
+  transformerMetaHighlight,
+  transformerNotationDiff,
+  transformerNotationHighlight,
+  transformerNotationFocus,
+  transformerMetaWordHighlight,
+  transformerNotationErrorLevel,
+} from '@shikijs/transformers';
 
- const rehypeShikiPlugin = [
-   rehypeShiki,
-   {
-     themes: {
-       dark: 'github-dark',
-       light: 'github-light-default',
-     },
-     transformers: [
-       {
-         name: 'meta',
-         code(node) {
-           const language = this.options.lang ?? 'plaintext';
-           this.addClassToHast(node, `language-${language}`);
-           return node;
-         },
-       },
-       transformerMetaHighlight(),
-       transformerNotationDiff(),
-       transformerNotationHighlight(),
-       transformerNotationFocus(),
-     ],
-     langs: [
-       ...(Object.keys(bundledLanguages) as Array<keyof typeof bundledLanguages>)],
-   } as RehypeShikiOptions,
- ];
+const rehypeShikiPlugin = [
+  rehypeShiki,
+  {
+    themes: {
+      dark: 'github-dark',
+      light: 'one-light',
+    },
+    transformers: [
+      {
+        name: 'meta',
+        code(node) {
+          const language = this.options.lang ?? 'plaintext';
+          this.addClassToHast(node, `language-${language}`);
+          return node;
+        },
+      },
+      transformerMetaHighlight(),
+      transformerNotationDiff(),
+      transformerNotationHighlight(),
+      transformerNotationFocus(),
+      transformerMetaWordHighlight(),
+      transformerNotationErrorLevel(),
+      transformerMetaHighlight(),
+    ],
+    langs: [...(Object.keys(bundledLanguages) as Array<keyof typeof bundledLanguages>)],
+  } as RehypeShikiOptions,
+];
 
 const config: Config = {
   title: 'Scalekit Docs',
@@ -65,10 +68,7 @@ const config: Config = {
             to: '/sso/quickstart-admin-portal',
           },
           {
-            from: [
-              '/admin-portal/custom-domain',
-              '/admin-portal/branding-theming',
-            ],
+            from: ['/admin-portal/custom-domain', '/admin-portal/branding-theming'],
             to: '/sso/domain-and-theme-customization',
           },
           {
@@ -128,10 +128,7 @@ const config: Config = {
         },
         blog: false,
         theme: {
-          customCss: [
-            './src/css/scalar_theme.css',
-            './src/css/custom.css',
-          ],
+          customCss: ['./src/css/scalar_theme.css', './src/css/custom.css'],
         },
       } satisfies Preset.Options,
     ],
@@ -141,8 +138,7 @@ const config: Config = {
     metadata: [
       {
         name: 'keywords',
-        content:
-          'documentation, authentication, single sign-on, sso, saml, oidc, oauth2, enterprise',
+        content: 'documentation, authentication, single sign-on, sso, saml, oidc, oauth2, enterprise',
       },
       { property: 'twitter:card', content: 'summary_large_image' },
       { property: 'twitter:title', content: 'Home | Scalekit Docs' },
@@ -246,8 +242,7 @@ const config: Config = {
     },
     imageZoom: {
       // CSS selector to apply the plugin to, defaults to '.markdown img'
-      selector:
-        '.markdown :not(.cardContainer h3) > img,  .markdown :not(.language-row) img',
+      selector: '.markdown :not(.cardContainer h3) > img,  .markdown :not(.language-row) img',
       // Optional medium-zoom options
       // see: https://www.npmjs.com/package/medium-zoom#options
       options: {

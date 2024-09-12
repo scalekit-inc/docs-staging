@@ -1,17 +1,41 @@
 ---
 slug: authorization-url
-title: "Authorization URL in Scalekit: Initiating Single Sign-On (SSO) Flow"
-description: "Learn how to construct the authorization URL in Scalekit to initiate the Single Sign-On (SSO) flow. Understand the required and optional parameters, usage notes, and see code examples for integrating Scalekit's authorization URL in your application using various SDKs."
-keywords: ["Scalekit", "Authorization URL", "Single Sign-On", "SSO", "OAuth", "OpenID Connect", "OIDC", "Identity Provider", "IdP", "Authentication", "SDK", "Node.js", "Python", "Go", "Java"]
+title: 'Authorization URL in Scalekit: Initiating Single Sign-On (SSO) Flow'
+description:
+  "Learn how to construct the authorization URL in Scalekit to initiate the Single Sign-On (SSO) flow. Understand the
+  required and optional parameters, usage notes, and see code examples for integrating Scalekit's authorization URL in
+  your application using various SDKs."
+keywords:
+  [
+    'Scalekit',
+    'Authorization URL',
+    'Single Sign-On',
+    'SSO',
+    'OAuth',
+    'OpenID Connect',
+    'OIDC',
+    'Identity Provider',
+    'IdP',
+    'Authentication',
+    'SDK',
+    'Node.js',
+    'Python',
+    'Go',
+    'Java',
+  ]
 ---
 
 # Authorization URL
 
-Authorization URL is the first step in the Single Sign-on flow where you will redirect the user to Scalekit to authenticate the user with the appropriate Identity Provider.
+Authorization URL is the first step in the Single Sign-on flow where you will redirect the user to Scalekit to
+authenticate the user with the appropriate Identity Provider.
 
-Your application constructs a URL with specific parameters that tell the authorization server(in this case: Scalekit) what the app is requesting. This URL looks like:
+Your application constructs a URL with specific parameters that tell the authorization server(in this case: Scalekit)
+what the app is requesting. This URL looks like:
 
-```graphql
+<CodeWithHeader title="Authorization URL">
+
+```xml
 https://b2b-app.scalekit.dev/oauth/authorize?
     response_type=code&
     client_id=skc_1234&
@@ -20,6 +44,8 @@ https://b2b-app.scalekit.dev/oauth/authorize?
     organization_id=org_1243412&
     state=aHR0cHM6Ly95b3Vyc2Fhcy5jb20vZGVlcGxpbms%3D
 ```
+
+</CodeWithHeader>
 
 ## Parameters
 
@@ -37,12 +63,16 @@ https://b2b-app.scalekit.dev/oauth/authorize?
 | <SimpleCode className="text--semibold">state</SimpleCode>           | Optional    | Opaque string for request-response correlation                                                                                                                  |
 | <SimpleCode className="text--semibold">login_hint</SimpleCode>      | Optional    | Email address of the user for authentication hint                                                                                                               |
 
-\* One of <SimpleCode>organization_id</SimpleCode>, <SimpleCode>connection_id</SimpleCode>, <SimpleCode>domain</SimpleCode>, or <SimpleCode>provider</SimpleCode> must be provided.
+\* One of <SimpleCode>organization_id</SimpleCode>, <SimpleCode>connection_id</SimpleCode>,
+
+<SimpleCode>domain</SimpleCode>, or <SimpleCode>provider</SimpleCode> must be provided.
 
 ## Usage Notes
 
-1. The <SimpleCode>redirect_uri</SimpleCode> must exactly match one of the authorized redirect values set in the API Credentials page.
-2. The <SimpleCode>state</SimpleCode> parameter is recommended for security purposes, including protection against cross-site request forgery.
+1. The <SimpleCode>redirect_uri</SimpleCode> must exactly match one of the authorized redirect values set in the API
+   Credentials page.
+2. The <SimpleCode>state</SimpleCode> parameter is recommended for security purposes, including protection against
+   cross-site request forgery.
 3. The <SimpleCode>login_hint</SimpleCode> can be used to prefill login information at the identity provider.
 
 ## SDK Usage
@@ -53,21 +83,14 @@ https://b2b-app.scalekit.dev/oauth/authorize?
 ```javascript
 import { ScalekitClient } from '@scalekit-sdk/node';
 
-const scalekit = new ScalekitClient(
-  '<SCALEKIT_ENVIRONMENT_URL>',
-  '<SCALEKIT_CLIENT_ID>',
-  '<SCALEKIT_CLIENT_SECRET>',
-);
+const scalekit = new ScalekitClient('<SCALEKIT_ENVIRONMENT_URL>', '<SCALEKIT_CLIENT_ID>', '<SCALEKIT_CLIENT_SECRET>');
 
 const options = {
   loginHint: 'user@example.com',
   organizationId: 'org_123235245',
 };
 
-const authorizationURL = scalekit.getAuthorizationUrl(
-  redirectUri,
-  options,
-);
+const authorizationURL = scalekit.getAuthorizationUrl(redirectUri, options);
 ```
 
 </TabItem>
@@ -150,10 +173,7 @@ public class Main {
     options.setLoginHint("user@example.com");
 
     try {
-      String url = scalekitClient
-        .authentication()
-        .getAuthorizationUrl(redirectUrl, options)
-        .toString();
+      String url = scalekitClient.authentication().getAuthorizationUrl(redirectUrl, options).toString();
     } catch (Exception e) {
       System.out.println(e.getMessage());
     }
