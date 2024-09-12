@@ -24,6 +24,7 @@ keywords:
 ---
 
 import InstallSDK from '@site/docs/sso/templates/_install-sdk.md';
+import { TermTip } from '@site/src/components/Glossary/Glossary';
 
 # Admin Portal
 
@@ -59,7 +60,7 @@ configure SSO for their organization.
 <Tabs groupId="tech-stack">
 <TabItem value="nodejs" label="Node.js">
 
-```javascript showLineNumbers
+```js /link/
 const link = await sc.organization.generatePortalLink('org_1233222');
 
 // link.location is the Admin Portal URL

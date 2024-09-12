@@ -210,3 +210,18 @@ scenario and proceed
 
 After validating all scenarios, you are ready to go live. Visit our [Launch Checklist](/sso/launch-checklist) guide
 before you start onboarding real customers in your production environment.
+
+```ts twoslash
+interface Todo {
+  title: string;
+}
+// ---cut---
+const todo: Readonly<Todo> = {
+  title: 'Delete inactive users'.toUpperCase(),
+};
+//    ^?
+
+todo.title = 'Hello';
+Number.parseInt('123', 10);
+//      ^?
+```
