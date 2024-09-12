@@ -112,14 +112,14 @@
   --primary-purple-400: #7151b3;
   --primary-purple-500: #62469c;
 
-  /* Primary Palette - Blue */
-  --primary-blue-50: #fdfdfe;
-  --primary-blue-75: #f7f7f9;
-  --primary-blue-100: #f4f3f6;
-  --primary-blue-200: #eefef3;
-  --primary-blue-300: #ecebf0;
-  --primary-blue-400: #a5a5a8;
-  --primary-blue-500: #908f92;
+  /* Primary Palette - Grey */
+  --primary-grey-50: #fdfdfe;
+  --primary-grey-75: #f7f7f9;
+  --primary-grey-100: #f4f3f6;
+  --primary-grey-200: #eefef3;
+  --primary-grey-300: #ecebf0;
+  --primary-grey-400: #a5a5a8;
+  --primary-grey-500: #908f92;
 }
 
 :root {
@@ -182,6 +182,11 @@
   --secondary-blue-dark-hover-2: #18738b;
   --secondary-blue-dark-active-2: #125668;
   --secondary-blue-darker-2: #0e4351;
+
+  /*Semantic Palette*/
+  --semantic-palette-green: #36b37e;
+  --semantic-palette-orange: #ff5631;
+  --semantic-palette-purple: #6554c0;
 }
 
 :root {
@@ -534,11 +539,11 @@ p {
 }
 
 .admonition-tip {
-  --tblr-alert-color: #2fb344;
+  --tblr-alert-color: var(--semantic-palette-green);
 }
 
 .admonition-info {
-  --tblr-alert-color: #4299e1;
+  --tblr-alert-color: var(--semantic-palette-purple);
 }
 
 .theme-admonition {
