@@ -443,7 +443,6 @@ p {
 .theme-admonition {
   background: none;
   border-radius: 0;
-  font-size: 0.9rem;
   margin: 1.5rem 0 !important;
 }
 
@@ -1060,7 +1059,7 @@ svg {
   border-bottom: 1px solid var(--scalar-border-color);
   color: var(--scalar-color-3);
   flex-shrink: 0;
-  font-size: var(--scalar-mini);
+  font-size: var(--scalar-small);
   font-weight: var(--scalar-semibold);
   padding: 9px 0 9px 12px;
 }
@@ -1463,9 +1462,9 @@ h1 .badge {
   min-width: 100%;
 }
 
+/* display additional space so that empty lines don't collapse */
+/* note that this is only visual and content does not get copied */
 .shiki .line:not(:last-child):empty::after {
-  /* display additional space so that empty lines don't collapse */
-  /* note that this is only visual and content does not get copied */
   content: ' ';
 }
 
@@ -1542,7 +1541,7 @@ h1 .badge {
 .shiki code .line::before {
   content: counter(step);
   counter-increment: step;
-  width: 1rem;
+  width: 1.4rem;
   margin-right: 1.5rem;
   display: inline-block;
   text-align: right;
