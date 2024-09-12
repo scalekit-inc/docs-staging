@@ -1,17 +1,38 @@
 ---
 slug: user-profile
-title: "Normalized User Profile in Scalekit"
-description: "Discover how Scalekit simplifies SSO integration by normalizing user profile information across various identity providers. Learn about the standardized fields and attributes that facilitate seamless identity workflows."
-keywords: ["Normalized User Profile", "Scalekit", "SSO", "Identity Provider", "User Profile Attributes", "OAuth", "OIDC", "SAML", "Unified SSO", "Identity Workflows"]
+title: 'Normalized User Profile in Scalekit'
+description:
+  'Discover how Scalekit simplifies SSO integration by normalizing user profile information across various identity
+  providers. Learn about the standardized fields and attributes that facilitate seamless identity workflows.'
+keywords:
+  [
+    'Normalized User Profile',
+    'Scalekit',
+    'SSO',
+    'Identity Provider',
+    'User Profile Attributes',
+    'OAuth',
+    'OIDC',
+    'SAML',
+    'Unified SSO',
+    'Identity Workflows',
+  ]
 ---
 
 # Normalized User Profile
 
-When a user logs in with SSO, each identity provider shares the user profile information in their own format. This adds complexity for the application developers to parse the user profile info and code related identity workflows. To make this seamless for developers, Scalekit normalizes the user profile info into a standard set of fields across all identity providers.
+When a user logs in with SSO, each identity provider shares the user profile information in their own format. This adds
+complexity for the application developers to parse the user profile info and code related identity workflows. To make
+this seamless for developers, Scalekit normalizes the user profile info into a standard set of fields across all
+identity providers.
 
-This means that you'd always receive the user profile payload in a fixed set of fields, irrespective of the identity provider and protocol you interact with. This is one of our foundational aspects of the Unified SSO solution.
+This means that you'd always receive the user profile payload in a fixed set of fields, irrespective of the identity
+provider and protocol you interact with. This is one of our foundational aspects of the Unified SSO solution.
 
-```js wordWrap=true title="Sample Normalized User Profile"
+<CodeWithHeader title="Sample Normalized User Profile">
+
+```json wordWrap=true
+{
 {
     "email": "john.doe@acmecorp.com",
     "email_verified": true,
@@ -52,6 +73,8 @@ This means that you'd always receive the user profile payload in a fixed set of 
 
 ```
 
+</CodeWithHeader>
+
 ## Full list of User Profile attributes
 
 | Profile Attribute                                                  | Data Type                                                | Description                                                                                               |
@@ -79,6 +102,9 @@ This means that you'd always receive the user profile payload in a fixed set of 
 
 **Notes**
 
-- The <SimpleCode className="text--semibold">sub</SimpleCode> field is a concatenation of the <SimpleCode className="text--semibold">connection_id</SimpleCode> and a unique identifier assigned to the user by the identity provider.
+- The <SimpleCode className="text--semibold">sub</SimpleCode> field is a concatenation of the
+  <SimpleCode className="text--semibold">connection_id</SimpleCode> and a unique identifier assigned to the user by the identity
+  provider.
 - The identities array may contain multiple objects if the user has authenticated through different methods.
-- The <SimpleCode className="text--semibold">provider_raw_attributes</SimpleCode> object contains all original data from the Identity Provider, which may vary based on the provider and connection type.
+- The <SimpleCode className="text--semibold">provider_raw_attributes</SimpleCode> object contains all original data from
+  the Identity Provider, which may vary based on the provider and connection type.
