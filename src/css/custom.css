@@ -32,7 +32,7 @@
   --ifm-menu-color-active: #202020;
   --ifm-heading-font-family: 'IBM Plex Sans', sans-serif;
   --ifm-heading-font-weight: 500;
-  --ifm-font-weight-bold: 600;
+  --ifm-font-weight-bold: 550;
   --ifm-font-family-base: system-ui, 'Inter', sans-serif;
   --ifm-font-family-monospace: 'Roboto Mono', monospace, monospace;
   --scalekit-blue: #4f5eff;
@@ -81,6 +81,7 @@
   --ifm-paragraph-margin-bottom: 10px;
   --ifm-table-border-color: #e8e8e8;
   --shiki-highlight-codelines-light: rgba(200, 200, 255, 0.3);
+  --ifm-boundary-subtle-color: #4f5eff;
 }
 
 :root {
@@ -483,7 +484,7 @@ p {
   color: var(--ifm-color-primary);
   margin: 0 0.5rem;
   border-radius: 4px;
-  font-size: 1rem;
+  font-size: 14px;
 }
 
 .navbar__link--active {
@@ -976,7 +977,7 @@ svg {
   padding-left: 12px;
   padding-top: 4px;
   padding-bottom: 4px;
-  border: 1px solid #cecece;
+  border: 1px solid var(--ifm-boundary-subtle-color);
   border-radius: 5px;
   margin-right: 20px;
   margin-left: 20px;
