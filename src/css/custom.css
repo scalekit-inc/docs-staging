@@ -83,9 +83,10 @@
   --shiki-highlight-codelines-light: rgba(200, 200, 255, 0.3);
 }
 
-html {
-  font-size: 0.899rem;
+:root {
+  font-size: 16px;
 }
+
 .button--primary {
   --ifm-button-background-color: var(--scalekit-blue);
   --ifm-button-border-color: var(--scalekit-blue);
@@ -160,6 +161,12 @@ figure img {
 .navbar {
   /* display: none; */
   border-bottom: 1px solid var(--ifm-toc-border-color);
+}
+
+.limited-width {
+  max-width: 100%;
+  width: 65%; /* Adjust this value as needed */
+  margin: 0 auto; /* Center the figure */
 }
 
 .sidebar-group-item:has(.active_page) .sidebar-group-item__folder {
@@ -835,7 +842,11 @@ pre {
 code {
   white-space: pre-wrap;
   overflow-wrap: break-word;
-  font-size: smaller !important;
+}
+
+code,
+pre code {
+  font-size: 0.9rem;
 }
 
 label:has(.persist_chkbox) {
