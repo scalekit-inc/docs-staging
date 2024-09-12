@@ -808,7 +808,7 @@ pre {
 
 code {
   white-space: pre-wrap;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
   font-size: smaller !important;
 }
 
