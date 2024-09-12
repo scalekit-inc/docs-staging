@@ -1,12 +1,11 @@
 :root {
-  --docsearch-primary-color: #4f5eff;
+  --docsearch-primary-color: var(--ifm-boundary-subtle-color);
   --docsearch-text-color: var(--ifm-font-color-base);
 }
 
 .DocSearch-Button {
   margin: 0;
-  transition: all var(--ifm-transition-fast)
-    var(--ifm-transition-timing-default);
+  transition: all var(--ifm-transition-fast) var(--ifm-transition-timing-default);
 }
 
 .DocSearch-Container {
