@@ -12,3 +12,19 @@
   padding: 8px;
   border-radius: 8px;
 }
+
+.glossaryTitle {
+  font-style: italic;
+}
+
+.glossaryList dt {
+  font-weight: 500;
+  font-size: 1.1em;
+  color: #07080d;
+  margin-top: 1em;
+}
+
+.glossaryList dd {
+  margin-left: 1em;
+  margin-bottom: 1em;
+}
