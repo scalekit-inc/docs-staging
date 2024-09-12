@@ -88,18 +88,13 @@ authenticate users.
 To start login with social connections, your app must redirect users to the Scalekit Authorization URL with appropriate
 social connection provider details.
 
-Construct the Authorization URL using the following query parameters: | Parameter | Details | | | |
-|------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|---|---|
-| <SimpleCode className="text--semibold">redirect_uri</SimpleCode> | Where Scalekit sends users after IdP
-authentication. <br />Example: <SimpleCode>https:<span></span>//your-saas-app.com/auth/callback</SimpleCode> After the
-user is logged into the social provider, Scalekit redirects the user to this URI with one time authorization `code`. In
-the later section, we will explain how to use this unique `code` to fetch user details | | | | |
-<SimpleCode className="text--semibold">client_id</SimpleCode> | Your app's unique Scalekit identifier which is mandatory
-for all requests. This uniquely identifies both your app and the environment (staging, prod). | | | | |
-<SimpleCode className="text--semibold">provider</SimpleCode> | Informs Scalekit which Social Provider to use. You can
-use <SimpleCode>provider</SimpleCode> as the request parameter with value being the unique code of the provider. For
-e.g., `microsoft`. <br />Currently, we support the following providers: `google`, `microsoft`, `github`, `gitlab`,
-`linkedin`, `salesforce` | | | |
+Construct the Authorization URL using the following query parameters:
+
+| Parameter                                                        | Details                                                                                                                                                                                                                                                                                                                                                                    |
+| :--------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <SimpleCode className="text--semibold">redirect_uri</SimpleCode> | Where Scalekit sends users after IdP authentication. <br />Example: <SimpleCode>https:<span></span>//your-saas-app.com/auth/callback</SimpleCode> After the user is logged into the social provider, Scalekit redirects the user to this URI with one time authorization `code`. In the later section, we will explain how to use this unique `code` to fetch user details |
+| <SimpleCode className="text--semibold">client_id</SimpleCode>    | Your app's unique Scalekit identifier which is mandatory for all requests. This uniquely identifies both your app and the environment (staging, prod).                                                                                                                                                                                                                     |
+| <SimpleCode className="text--semibold">provider</SimpleCode>     | Informs Scalekit which Social Provider to use. You can use <SimpleCode>provider</SimpleCode> as the request parameter with value being the unique code of the provider. For e.g., `microsoft`. <br />Currently, we support the following providers: `google`, `microsoft`, `github`, `gitlab`, `linkedin`, `salesforce`                                                    |
 
 <CodeWithHeader title="Example Authorization URL">
 
@@ -225,8 +220,9 @@ Finally, handle the callback at your <SimpleCode>redirect_uri</SimpleCode> to co
 ## 3. Fetch User Details
 
 After a successful SSO, Scalekit redirects the user to your <SimpleCode>redirect_uri</SimpleCode> with a unique
-<SimpleCode>code</SimpleCode> in the browser. Exchange the <SimpleCode>code</SimpleCode> for user profile details (on
-the serverside).
+
+<SimpleCode>code</SimpleCode> in the browser. Exchange the <SimpleCode>code</SimpleCode> for user profile details (on the
+serverside).
 
 Here's how to turn that <SimpleCode>code</SimpleCode> into user data:
 
