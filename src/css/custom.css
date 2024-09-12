@@ -85,6 +85,106 @@
 }
 
 :root {
+  /* Primary Palette - Indigo Blue */
+  --primary-indigo-blue-50: #edefff;
+  --primary-indigo-blue-75: #b7bdff;
+  --primary-indigo-blue-100: #99a2ff;
+  --primary-indigo-blue-200: #6d79ff;
+  --primary-indigo-blue-300: #4f5eff;
+  --primary-indigo-blue-400: #3742b3;
+  --primary-indigo-blue-500: #30399c;
+
+  /* Primary Palette - Graphite */
+  --primary-graphite-50: #e7e7e8;
+  --primary-graphite-75: #9b9c9f;
+  --primary-graphite-100: #727378;
+  --primary-graphite-200: #35363e;
+  --primary-graphite-300: #0c0d16;
+  --primary-graphite-400: #08090f;
+  --primary-graphite-500: #07080d;
+
+  /* Primary Palette - Purple */
+  --primary-purple-50: #f6f1ff;
+  --primary-purple-75: #d8c6ff;
+  --primary-purple-100: #c4aeff;
+  --primary-purple-200: #b1b8ff;
+  --primary-purple-300: #a173ff;
+  --primary-purple-400: #7151b3;
+  --primary-purple-500: #62469c;
+
+  /* Primary Palette - Blue */
+  --primary-blue-50: #fdfdfe;
+  --primary-blue-75: #f7f7f9;
+  --primary-blue-100: #f4f3f6;
+  --primary-blue-200: #eefef3;
+  --primary-blue-300: #ecebf0;
+  --primary-blue-400: #a5a5a8;
+  --primary-blue-500: #908f92;
+}
+
+:root {
+  /* Secondary Palette - Yellow */
+  --secondary-yellow-light: #fffce7;
+  --secondary-yellow-light-hover: #fffddb;
+  --secondary-yellow-light-active: #fffbd5;
+  --secondary-yellow-normal: #ffe110;
+  --secondary-yellow-normal-hover: #e6cb0e;
+  --secondary-yellow-normal-active: #ccb40d;
+  --secondary-yellow-dark: #fba90c;
+  --secondary-yellow-dark-hover: #99870a;
+  --secondary-yellow-dark-active: #736507;
+  --secondary-yellow-darker: #594f06;
+
+  /* Secondary Palette - Green */
+  --secondary-green-light: #ecfbeb;
+  --secondary-green-light-hover: #e2f8e1;
+  --secondary-green-light-active: #c4f1c2;
+  --secondary-green-normal: #40d239;
+  --secondary-green-normal-hover: #3abd33;
+  --secondary-green-normal-active: #33a82e;
+  --secondary-green-dark: #309e2b;
+  --secondary-green-dark-hover: #267e22;
+  --secondary-green-dark-active: #1d5e1a;
+  --secondary-green-darker: #164a14;
+
+  /* Secondary Palette - Orange */
+  --secondary-orange-light: #ffefe6;
+  --secondary-orange-light-hover: #ffe7d9;
+  --secondary-orange-light-active: #ffceb1;
+  --secondary-orange-normal: #ff6002;
+  --secondary-orange-normal-hover: #e65002;
+  --secondary-orange-normal-active: #cc4002;
+  --secondary-orange-dark: #bf4802;
+  --secondary-orange-dark-hover: #993a01;
+  --secondary-orange-dark-active: #732b01;
+  --secondary-orange-darker: #592201;
+
+  /* Secondary Palette - Blue */
+  --secondary-blue-light: #e7edf6;
+  --secondary-blue-light-hover: #dbe4f2;
+  --secondary-blue-light-active: #b4c4e4;
+  --secondary-blue-normal: #0e4a89;
+  --secondary-blue-normal-hover: #0d4198;
+  --secondary-blue-normal-active: #0b3a87;
+  --secondary-blue-dark: #0b367f;
+  --secondary-blue-dark-hover: #082b65;
+  --secondary-blue-dark-active: #062d4c;
+  --secondary-blue-darker: #05193b;
+
+  /* Secondary Palette - Blue (Second Set) */
+  --secondary-blue-light-2: #eaf9fd;
+  --secondary-blue-light-hover-2: #dff5fc;
+  --secondary-blue-light-active-2: #bcebf8;
+  --secondary-blue-normal-2: #28bfe8;
+  --secondary-blue-normal-hover-2: #24acd1;
+  --secondary-blue-normal-active-2: #209b9a;
+  --secondary-blue-dark-2: #1e8fae;
+  --secondary-blue-dark-hover-2: #18738b;
+  --secondary-blue-dark-active-2: #125668;
+  --secondary-blue-darker-2: #0e4351;
+}
+
+:root {
   font-size: 16px;
 }
 
