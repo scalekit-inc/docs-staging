@@ -1,15 +1,10 @@
 import LabeledCheckbox from '@site/src/components/checkbox';
-import Parameters, {
-  Parameter,
-} from '@site/src/components/parameters';
+import Parameters, { Parameter } from '@site/src/components/parameters';
 import Endpoints from '@site/src/components/endpoint';
 import { Endpoint } from '@site/src/components/endpoint';
 import CodeWithHeader from '@site/src/components/CodeWithHeader';
 import Subtitle from '@site/src/components/custom';
-import {
-  CardTileWithImage,
-  SimpleCode,
-} from '@site/src/components/custom';
+import { CardTileWithImage, SimpleCode } from '@site/src/components/custom';
 // Import the original mapper
 import MDXComponents from '@theme-original/MDXComponents';
 import CodeBlock from '@theme/CodeBlock';
@@ -23,10 +18,7 @@ import { SimpleCard } from '@site/src/components/ProductList/ProductList';
 import { FancyLink } from '@site/src/components/Card/CardWithArrow';
 import QuickLinkStack from '@site/src/components/QuickLinkStack';
 import ScalekitFooterComponent from '@site/src/components/DocsRating';
-import {
-  GlossaryListing,
-  TooltippedGlossary,
-} from '@site/src/components/Glossary/Glossary';
+import { GlossaryListing, TooltippedGlossary } from '@site/src/components/Glossary/Glossary';
 
 export default {
   // Re-use the default mapping

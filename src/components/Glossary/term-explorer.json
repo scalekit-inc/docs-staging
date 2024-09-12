@@ -1,0 +1,11 @@
+{
+  "Workspace": "Your Scalekit account, where you manage all your applications and settings.",
+  "Application": "A software product or service that you offer to your customers. You can have multiple applications in your Scalekit workspace.",
+  "Environment": "A specific version or instance of your application, such as development, testing, or production. Each environment has its own settings and is kept separate from others for security and organization.",
+  "Team Member": "Anyone from your company who uses Scalekit to manage your application. This could include developers, product managers, or customer support staff.",
+  "Dashboard": "The main control panel in Scalekit where your team members can configure settings, view analytics, and manage integrations for your application.",
+  "Organization": "A group of users who belong to one of your customers. For example, if you sell to businesses, each business would be an organization.",
+  "Admin Portal": "A customizable web interface provided by Scalekit that allows your customers' IT administrators to set up and manage their Single Sign-On (SSO) connections. This can be a standalone website or integrated into your application's settings.",
+  "User": "An individual who uses your application. Users are typically part of a customer organization and may have different roles or permissions within your application.",
+  "Connection": "A link between your application and a customer's identity provider (like Okta or Azure AD) that enables Single Sign-On. Each customer organization can have its own unique connection."
+}
