@@ -457,6 +457,12 @@ figure img {
   margin-bottom: 1rem;
 }
 
+.badge--success {
+  font-size: 0.85rem;
+  background-color: var(--semantic-palette-green);
+  color: #fff;
+}
+
 .sidebar-heading.active_page .sidebar-heading-type,
 .sidebar-heading-type-active {
   color: color-mix(in srgb, var(--method-color, var(--scalar-color-1)), transparent 0%);
