@@ -265,22 +265,22 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'doc',
-      label: 'Okta SAML',
+      label: 'Okta (SAML)',
       id: 'integrations/okta-saml',
     },
     {
       type: 'doc',
-      label: 'Azure AD SAML',
+      label: 'Azure AD (SAML)',
       id: 'integrations/azure-ad-saml',
     },
     {
       type: 'doc',
-      label: 'OneLogin SAML',
+      label: 'OneLogin (SAML)',
       id: 'integrations/onelogin-saml',
     },
     {
       type: 'doc',
-      label: 'JumpCloud SAML',
+      label: 'JumpCloud (SAML)',
       id: 'integrations/jumpcloud-saml',
     },
     {
@@ -362,6 +362,11 @@ const sidebars: SidebarsConfig = {
       type: 'doc',
       label: 'Github',
       id: 'integrations/github-social',
+    },
+    {
+      type: 'doc',
+      label: 'Gitlab',
+      id: 'integrations/gitlab-social',
     },
     {
       type: 'doc',
