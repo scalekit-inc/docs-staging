@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Glossary.module.css';
-import glossary_items from './term-explorer.json';
+import glossary_items from './term-explorer-eli5.json';
 
 import { useState } from 'react';
 import {
@@ -21,7 +21,7 @@ export const TermTip = ({ jargon }) => {
   const glossary = jargon.toLowerCase();
   const [isOpen, setIsOpen] = useState(false);
   const glossary_items = Object.fromEntries(
-    Object.entries(require('./term-explorer.json')).map(([key, value]) => [key.toLowerCase(), value]),
+    Object.entries(require('./term-explorer-eli5.json')).map(([key, value]) => [key.toLowerCase(), value]),
   );
 
   const { refs, floatingStyles, context } = useFloating({

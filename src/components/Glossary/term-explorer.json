@@ -1,14 +1,16 @@
 {
   "Workspace": "Your Scalekit account, where you manage all your applications and settings.",
   "Application": "A software product or service that you offer to your customers. You can have multiple applications in your Scalekit workspace.",
+  "App": "A software product or service that you offer to your customers. You can have multiple applications in your Scalekit workspace.",
   "Environment": "A specific version or instance of your application, such as development, testing, or production. Each environment has its own settings and is kept separate from others for security and organization.",
   "Team Member": "Anyone from your company who uses Scalekit to manage your application. This could include developers, product managers, or customer support staff.",
   "Dashboard": "The main control panel in Scalekit where your team members can configure settings, view analytics, and manage integrations for your application.",
-  "Organization": "A group of users who belong to one of your customers. For example, if you sell to businesses, each business would be an organization.",
+  "Organization": "Your customers. For example, if you sell to businesses, each business would be an organization and there are users in each organization.",
   "Admin Portal": "A customizable web interface provided by Scalekit that allows your customers' IT administrators to set up and manage their Single Sign-On (SSO) connections. This can be a standalone website or integrated into your application's settings.",
   "User": "An individual who uses your application. Users are typically part of a customer organization and may have different roles or permissions within your application.",
   "Connection": "A link between your application and a customer's identity provider (like Okta or Azure AD) that enables Single Sign-On. Each customer organization can have its own unique connection.",
   "B2B App": "A business-to-business (B2B) application that enables your customers, which are typically organizations or businesses, to utilize your product or service.",
+  "B2B SaaS App": "Your business-to-business (B2B) software as a service that enables your customers, which are typically organizations or businesses, to utilize your product or service.",
   "Customer": "In B2B, a customer is a business or organization that uses your application to streamline operations, enhance productivity, or achieve specific objectives. B2B customers have unique requirements compared to individual consumers in B2C.",
   "Administrator": "Typically an IT administrator or an employee with IT responsibilities in a customer organization who is responsible for managing the organization's identity provider and configuring Single Sign-On (SSO) connections.",
   "IdP Simulator": "A tool that mimics the behavior of an identity provider, allowing you to test and validate your application's integration with various identity providers without the need for a real IdP. This can be useful for development, testing, or demonstration purposes.",
@@ -28,5 +30,6 @@
   "Identity Provider (IdP)": "An identity provider is a service that verifies the identity of a user and provides information about the user's attributes and permissions. In the context of Single Sign-On (SSO), an identity provider is responsible for authenticating the user and providing the necessary information to the service provider (your application).",
   "Identity Provider": "An identity provider is a service that verifies the identity of a user and provides information about the user's attributes and permissions. In the context of Single Sign-On (SSO), an identity provider is responsible for authenticating the user and providing the necessary information to the service provider (your application).",
   "IdP": "An identity provider is a service that verifies the identity of a user and provides information about the user's attributes and permissions. In the context of Single Sign-On (SSO), an identity provider is responsible for authenticating the user and providing the necessary information to the service provider (your application).",
-  "Webhook": "A webhook is a way for your application to receive notifications or updates from Scalekit. You can use webhooks to receive events about your customers' organizations, users, and other relevant information."
+  "Webhook": "A webhook is a way for your application to receive notifications or updates from Scalekit. You can use webhooks to receive events about your customers' organizations, users, and other relevant information.",
+  "SCIM": "SCIM (System for Cross-domain Identity Management) is a standard protocol for automating the provisioning and deprovisioning of user accounts and their attributes between an identity provider and a service provider. It allows for the synchronization of user data, such as roles and group memberships, between your application and your customers' identity providers."
 }
