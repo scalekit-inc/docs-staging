@@ -553,21 +553,32 @@ p {
 }
 
 .theme-admonition.theme-admonition-warning {
-  border-top: 1px solid var(--ifm-color-warning-dark);
-  border-right: 1px solid var(--ifm-color-warning-dark);
-  border-bottom: 1px solid var(--ifm-color-warning-dark);
+  border-top: 1px solid var(--secondary-orange-normal);
+  border-right: 1px solid var(--secondary-orange-normal);
+  border-bottom: 1px solid var(--secondary-orange-normal);
 }
 
 .theme-admonition.theme-admonition-info {
-  border-top: 1px solid var(--ifm-color-info-dark);
-  border-right: 1px solid var(--ifm-color-info-dark);
-  border-bottom: 1px solid var(--ifm-color-info-dark);
+  border-top: 1px solid var(--secondary-purple-normal);
+  border-right: 1px solid var(--secondary-purple-normal);
+  border-bottom: 1px solid var(--secondary-purple-normal);
 }
 
 .theme-admonition.theme-admonition-tip {
-  border-top: 1px solid var(--ifm-color-success-dark);
-  border-right: 1px solid var(--ifm-color-success-dark);
-  border-bottom: 1px solid var(--ifm-color-success-dark);
+  border-top: 1px solid var(--secondary-green-normal);
+  border-right: 1px solid var(--secondary-green-normal);
+  border-bottom: 1px solid var(--secondary-green-normal);
+}
+
+.theme-admonition.theme-admonition-note {
+  border-top: 1px solid var(--primary-grey-500);
+  border-right: 1px solid var(--primary-grey-500);
+  border-bottom: 1px solid var(--primary-grey-500);
+  border-left-color: var(--primary-grey-500);
+  svg {
+    color: var(--primary-grey-500);
+    transform: scale(0.8);
+  }
 }
 
 .request-card-footer {
