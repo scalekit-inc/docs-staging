@@ -315,6 +315,11 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'html',
+      value: '<div />', // The link label
+      defaultStyle: true,
+    },
+    {
+      type: 'html',
       value: "<span class='text--uppercase text--light sidenav-category-heading'>Directory Providers</span>",
       defaultStyle: true,
     },
@@ -337,6 +342,21 @@ const sidebars: SidebarsConfig = {
       type: 'doc',
       label: 'OneLogin',
       id: 'integrations/onelogin-scim',
+    },
+    {
+      type: 'html',
+      value: '<div />', // The link label
+      defaultStyle: true,
+    },
+    {
+      type: 'html',
+      value: "<span class='text--uppercase text--light sidenav-category-heading'>Social Connectors</span>",
+      defaultStyle: true,
+    },
+    {
+      type: 'html',
+      value: '<div />', // The link label
+      defaultStyle: true,
     },
   ],
   guidesSidebar: [

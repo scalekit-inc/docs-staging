@@ -4,85 +4,8 @@
  * work well for content-centric websites.
  */
 /* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
-  --ifm-color-primary: #fff;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-}
 
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
-
-:root {
-  --ifm-h1-font-size: 2rem;
-  --ifm-color-primary: #202020;
-  --ifm-line-height-base: 1.5rem;
-  --ifm-color-primary-dark: rgb(33, 175, 144);
-  --ifm-color-primary-darker: rgb(31, 165, 136);
-  --ifm-color-primary-darkest: rgb(26, 136, 112);
-  --ifm-color-primary-light: rgb(70, 203, 174);
-  --ifm-color-primary-lighter: rgb(102, 212, 189);
-  --ifm-color-primary-lightest: rgb(146, 224, 208);
-  --ifm-code-font-size: 100%;
-  --ifm-menu-color: #202020;
-  --ifm-menu-color-active: #202020;
-  --ifm-heading-font-family: 'IBM Plex Sans', sans-serif;
-  --ifm-heading-font-weight: 500;
-  --ifm-font-weight-bold: 550;
-  --ifm-font-family-base: system-ui, 'Inter', sans-serif;
-  --ifm-font-family-monospace: 'Roboto Mono', monospace, monospace;
-  --scalekit-blue: #4f5eff;
-  --tblr-blue: #206bc4;
-  --tblr-azure: #4299e1;
-  --tblr-indigo: #4263eb;
-  --tblr-purple: #ae3ec9;
-  --tblr-pink: #d6336c;
-  --tblr-red: #d63939;
-  --tblr-orange: #f76707;
-  --tblr-yellow: #f59f00;
-  --tblr-lime: #74b816;
-  --tblr-green: #2fb344;
-  --tblr-teal: #0ca678;
-  --tblr-cyan: #17a2b8;
-  --tblr-primary: #206bc4;
-  --tblr-secondary: #656d77;
-  --tblr-success: #2fb344;
-  --tblr-info: #4299e1;
-  --tblr-warning: #f76707;
-  --tblr-danger: #d63939;
-  --tblr-light: #f4f6fa;
-  --tblr-dark: #232e3c;
-  --tblr-font-sans-serif: 'IBM Plex Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --tblr-font-monospace: monospace;
-  --tblr-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
-  --doc-sidebar-width: 280px !important;
-  --ifm-link-color: #3e63dd;
-  --ifm-menu-color-background-active: #f0f0f0;
-  --ifm-link-menu-color-background-hover: #f9f9f9;
-  --ifm-menu-link-padding-horizontal: 16px;
-  --ifm-menu-link-padding-vertical: 10px;
-  --ifm-tabs-padding-vertical: 2px;
-  --ifm-tabs-padding-horizontal: 5px;
-  --ifm-toc-border-color: #e8e8e8;
-  --scalar-color-accent: #f0f0f0;
-  --scalar-sidebar-color-active: #000;
-  --scalar-sidebar-item-active-background: #f0f0f0;
-  --scalar-background-accent: #f0f0f0;
-  --scalar-docsearch-boxshadow: none; /* not used anywhere else, yet*/
-  --ifm-pre-border-radius: 10;
-  --ifm-code-border-radius: 10;
-  --ifm-global-shadow-lw: none;
-  --ifm-table-head-font-weight: 500;
-  --ifm-list-paragraph-margin: 10px;
-  --ifm-paragraph-margin-bottom: 10px;
-  --ifm-table-border-color: #e8e8e8;
-  --shiki-highlight-codelines-light: rgba(200, 200, 255, 0.3);
-  --ifm-boundary-subtle-color: #4f5eff;
-}
+/* Brand Guidelines */
 
 :root {
   /* Primary Palette - Indigo Blue */
@@ -187,6 +110,86 @@
   --semantic-palette-green: #36b37e;
   --semantic-palette-orange: #ff5631;
   --semantic-palette-purple: #6554c0;
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #fff;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+:root {
+  --ifm-h1-font-size: 2rem;
+  --ifm-color-primary: #202020;
+  --ifm-line-height-base: 1.5rem;
+  --ifm-color-primary-dark: rgb(33, 175, 144);
+  --ifm-color-primary-darker: rgb(31, 165, 136);
+  --ifm-color-primary-darkest: rgb(26, 136, 112);
+  --ifm-color-primary-light: rgb(70, 203, 174);
+  --ifm-color-primary-lighter: rgb(102, 212, 189);
+  --ifm-color-primary-lightest: rgb(146, 224, 208);
+  --ifm-code-font-size: 100%;
+  --ifm-menu-color: #202020;
+  --ifm-menu-color-active: #202020;
+  --ifm-heading-font-family: 'IBM Plex Sans', sans-serif;
+  --ifm-heading-font-weight: 500;
+  --ifm-font-weight-bold: 550;
+  --ifm-font-family-base: system-ui, 'Inter', sans-serif;
+  --ifm-font-family-monospace: 'Roboto Mono', monospace, monospace;
+  --scalekit-blue: #4f5eff;
+  --tblr-blue: #206bc4;
+  --tblr-azure: #4299e1;
+  --tblr-indigo: #4263eb;
+  --tblr-purple: #ae3ec9;
+  --tblr-pink: #d6336c;
+  --tblr-red: #d63939;
+  --tblr-orange: #f76707;
+  --tblr-yellow: #f59f00;
+  --tblr-lime: #74b816;
+  --tblr-green: #2fb344;
+  --tblr-teal: #0ca678;
+  --tblr-cyan: #17a2b8;
+  --tblr-primary: #206bc4;
+  --tblr-secondary: #656d77;
+  --tblr-success: #2fb344;
+  --tblr-info: #4299e1;
+  --tblr-warning: #f76707;
+  --tblr-danger: #d63939;
+  --tblr-light: #f4f6fa;
+  --tblr-dark: #232e3c;
+  --tblr-font-sans-serif: 'IBM Plex Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --tblr-font-monospace: monospace;
+  --tblr-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+  --doc-sidebar-width: 280px !important;
+  --ifm-link-color: #3e63dd;
+  --ifm-menu-color-background-active: #f0f0f0;
+  --ifm-link-menu-color-background-hover: #f9f9f9;
+  --ifm-menu-link-padding-horizontal: 16px;
+  --ifm-menu-link-padding-vertical: 10px;
+  --ifm-tabs-padding-vertical: 2px;
+  --ifm-tabs-padding-horizontal: 5px;
+  --ifm-toc-border-color: #e8e8e8;
+  --scalar-color-accent: #f0f0f0;
+  --scalar-sidebar-color-active: #000;
+  --scalar-sidebar-item-active-background: #f0f0f0;
+  --scalar-background-accent: #f0f0f0;
+  --scalar-docsearch-boxshadow: none; /* not used anywhere else, yet*/
+  --ifm-pre-border-radius: 10;
+  --ifm-code-border-radius: 10;
+  --ifm-global-shadow-lw: none;
+  --ifm-table-head-font-weight: 500;
+  --ifm-list-paragraph-margin: 10px;
+  --ifm-paragraph-margin-bottom: 10px;
+  --ifm-table-border-color: #e8e8e8;
+  --shiki-highlight-codelines-light: rgba(200, 200, 255, 0.3);
+  --ifm-boundary-subtle-color: #4f5eff;
 }
 
 :root {
@@ -1559,7 +1562,7 @@ h1 .badge {
 
 .sidenav-category-heading {
   font-weight: 600;
-  color: var(--ifm-color-emphasis-800);
+  color: var(--primary-graphite-300);
   font-size: small;
   font-family: var(--ifm-heading-font-family);
   letter-spacing: 0.5px;
