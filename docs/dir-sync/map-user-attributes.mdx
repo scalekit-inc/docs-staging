@@ -4,8 +4,8 @@ Custom attributes are admin-defined data properties that can tailor and enhance 
 They allow you to personalize content, features, and functionalities based on specific user characteristics or
 preferences.
 
-For example, if your B2B app offers analytics dashboards, you can show relevant dashboards based on each employee's
-department. However, your customer's directory provider might label this attribute as
+For example, if your <TermTip jargon="app" /> offers analytics dashboards, you can show relevant dashboards based on
+each employee's department. However, your customer's directory provider might label this attribute as
 
 <SimpleCode>employee_department</SimpleCode>, while your app expects <SimpleCode>department</SimpleCode> in the payload.
 
@@ -20,14 +20,14 @@ Scalekit solves this problem by letting customers map their attribute names to t
   </figcaption>
 </figure>
 
-**Before you start, ensure the Directory Sync feature is enabled for your customers:**
+Before you start, ensure the <TermTip jargon="Directory Sync" /> module is enabled for your customers:
 
 1. Select "Organizations" from the left sidebar
 2. Choose the organization
 3. Go to the "Directory Sync" tab
 4. Enable Directory Sync
 
-## **Enable Attribute Mapping**
+## Enable Attribute Mapping
 
 Declare the attributes your B2B SaaS app expects in the Scalekit Dashboard. Scalekit will then collect these attributes
 from the customer's directory provider and send them to your app.
@@ -47,12 +47,12 @@ from the customer's directory provider and send them to your app.
 
 Once saved, this attribute will be available for your customers to map to their directory provider attributes.
 
-## **Map Custom Attributes**
+## Map Custom Attributes
 
 After declaring the expected attributes in the Scalekit Dashboard, you or your customers can map them to the directory
 provider attributes.
 
-**Option 1: Customer-mapped attributes**
+### Option 1: Customer-mapped attributes
 
 - Share a link to the admin portal where customers can map attributes at their convenience
 - Pro Tip: Embed this portal in your B2B app for easy discovery and configuration
@@ -62,7 +62,7 @@ provider attributes.
   <figcaption>Placeholder</figcaption>
 </figure>
 
-**Option 2: Collect and map attributes yourself**
+### Option 2: Collect and map attributes yourself
 
 - Gather the custom attribute labels from customers through your usual communication channels
 - Map the attributes yourself for each organization
@@ -72,12 +72,12 @@ provider attributes.
   <figcaption>Placeholder</figcaption>
 </figure>
 
-## **Verify Attribute Mapping**
+## Verify Attribute Mapping
 
 After creating custom attributes and mapping them, verify that everything works as expected:
 
 1. Go to the "Events" tab in the Scalekit Dashboard
 2. Send a test event to confirm the new attributes are sent to your app
 
-By following these steps, you can ensure that your B2B app receives the custom attributes it needs to deliver
-personalized experiences to your customers' users.
+By following these steps, you can ensure that your <TermTip jargon="B2B app" /> receives the custom attributes it needs
+to deliver personalized experiences to your customers' users.
