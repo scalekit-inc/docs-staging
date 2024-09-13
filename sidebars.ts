@@ -354,6 +354,26 @@ const sidebars: SidebarsConfig = {
       defaultStyle: true,
     },
     {
+      type: 'doc',
+      label: 'Google',
+      id: 'integrations/google-social',
+    },
+    {
+      type: 'doc',
+      label: 'Github',
+      id: 'integrations/github-social',
+    },
+    {
+      type: 'doc',
+      label: 'Microsoft',
+      id: 'integrations/microsoft-social',
+    },
+    {
+      type: 'doc',
+      label: 'Salesforce',
+      id: 'integrations/salesforce-social',
+    },
+    {
       type: 'html',
       value: '<div />', // The link label
       defaultStyle: true,
