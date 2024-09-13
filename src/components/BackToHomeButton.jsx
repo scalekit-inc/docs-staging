@@ -3,10 +3,7 @@ import Link from '@docusaurus/Link';
 
 function BackToHomeButton() {
   return (
-    <Link
-      to="/"
-      className="button button--outline button--sm margin-bottom--md"
-    >
+    <Link to="/" className="button button--outline button--sm margin-bottom--md">
       Back to Home
     </Link>
   );
