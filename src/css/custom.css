@@ -128,7 +128,7 @@
 
 :root {
   --ifm-h1-font-size: 2rem;
-  --ifm-color-primary: #202020;
+  --ifm-color-primary: #07080d;
   --ifm-line-height-base: 1.5rem;
   --ifm-color-primary-dark: rgb(33, 175, 144);
   --ifm-color-primary-darker: rgb(31, 165, 136);
@@ -139,7 +139,7 @@
   --ifm-code-font-size: 100%;
   --ifm-menu-color: #202020;
   --ifm-menu-color-active: #202020;
-  --ifm-heading-font-family: 'IBM Plex Sans', sans-serif;
+  --ifm-heading-font-family: Inter ,'IBM Plex Sans', sans-serif;
   --ifm-heading-font-weight: 500;
   --ifm-font-weight-bold: 550;
   --ifm-font-family-base: system-ui, 'Inter', sans-serif;
@@ -159,7 +159,7 @@
   --tblr-cyan: #17a2b8;
   --tblr-primary: #206bc4;
   --tblr-secondary: #656d77;
-  --tblr-success: #2fb344;
+  --tblr-success: #36b37e;
   --tblr-info: #4299e1;
   --tblr-warning: #f76707;
   --tblr-danger: #d63939;
@@ -169,7 +169,7 @@
   --tblr-font-monospace: monospace;
   --tblr-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
   --doc-sidebar-width: 280px !important;
-  --ifm-link-color: #3e63dd;
+  --ifm-link-color: #1e8fae;
   --ifm-menu-color-background-active: #f0f0f0;
   --ifm-link-menu-color-background-hover: #f9f9f9;
   --ifm-menu-link-padding-horizontal: 16px;
