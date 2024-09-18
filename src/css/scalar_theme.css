@@ -45,7 +45,7 @@
 
 /* basic theme */
 html[data-theme="light"] {
-  --scalar-color-1: var(--ifm-font-color-base, #1c1e21);
+  --scalar-color-1: var(--ifm-font-color-base, #35363e);
   --scalar-color-2: var(--ifm-color-emphasis-700, #606770);
   --scalar-color-3: var(--ifm-color-emphasis-600, #8d949e);
   --scalar-color-accent: var(--ifm-menu-color-active, #277148);
