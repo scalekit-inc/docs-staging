@@ -128,20 +128,21 @@
 
 :root {
   --ifm-h1-font-size: 2rem;
-  --ifm-color-primary: #07080d;
-  --ifm-line-height-base: 1.5rem;
-  --ifm-color-primary-dark: rgb(33, 175, 144);
-  --ifm-color-primary-darker: rgb(31, 165, 136);
-  --ifm-color-primary-darkest: rgb(26, 136, 112);
-  --ifm-color-primary-light: rgb(70, 203, 174);
-  --ifm-color-primary-lighter: rgb(102, 212, 189);
-  --ifm-color-primary-lightest: rgb(146, 224, 208);
+  --ifm-color-primary: #08090f;
+  --ifm-font-color-base: #0c0d16;
+  --ifm-line-height-base: 1.4;
+  --ifm-color-primary-dark: #4f5eff;
+  --ifm-color-primary-darker: #3742b3;
+  --ifm-color-primary-darkest: #30399c;
+  --ifm-color-primary-light: #b7bdff;
+  --ifm-color-primary-lighter: #99a2ff;
+  --ifm-color-primary-lightest: #6d79ff;
   --ifm-code-font-size: 100%;
-  --ifm-menu-color: #202020;
-  --ifm-menu-color-active: #202020;
-  --ifm-heading-font-family: Inter ,'IBM Plex Sans', sans-serif;
-  --ifm-heading-font-weight: 500;
-  --ifm-font-weight-bold: 550;
+  --ifm-menu-color: #0c0d16;
+  --ifm-menu-color-active: #0b3a87;
+  --ifm-heading-font-family: 'Inter', 'IBM Plex Sans', sans-serif;
+  --ifm-heading-font-weight: 550;
+  --ifm-font-weight-bold: 500;
   --ifm-font-family-base: system-ui, 'Inter', sans-serif;
   --ifm-font-family-monospace: 'Fira Code', 'Roboto Mono', monospace, monospace;
   --scalekit-blue: #4f5eff;
@@ -169,9 +170,9 @@
   --tblr-font-monospace: monospace;
   --tblr-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
   --doc-sidebar-width: 280px !important;
-  --ifm-link-color: #1e8fae;
+  --ifm-link-color: #4f5eff;
   --ifm-menu-color-background-active: #f0f0f0;
-  --ifm-link-menu-color-background-hover: #f9f9f9;
+  --ifm-link-menu-color-background-hover: #0d4198;
   --ifm-menu-link-padding-horizontal: 16px;
   --ifm-menu-link-padding-vertical: 10px;
   --ifm-tabs-padding-vertical: 2px;
