@@ -142,7 +142,7 @@
   --ifm-menu-color-active: #0b3a87;
   --ifm-heading-font-family: 'Inter', 'IBM Plex Sans', sans-serif;
   --ifm-heading-font-weight: 550;
-  --ifm-font-weight-bold: 500;
+  --ifm-font-weight-bold: 400;
   --ifm-font-family-base: system-ui, 'Inter', sans-serif;
   --ifm-font-family-monospace: 'Fira Code', 'Roboto Mono', monospace, monospace;
   --scalekit-blue: #4f5eff;
@@ -177,8 +177,8 @@
   --ifm-menu-link-padding-vertical: 10px;
   --ifm-tabs-padding-vertical: 2px;
   --ifm-tabs-padding-horizontal: 5px;
-  --ifm-toc-border-color: #e8e8e8;
-  --scalar-color-accent: #f0f0f0;
+  --ifm-toc-border-color: #b1b8ff;
+  --scalar-color-accent: #f4f3f6;
   --scalar-sidebar-color-active: #000;
   --scalar-sidebar-item-active-background: #f0f0f0;
   --scalar-background-accent: #f0f0f0;
@@ -199,13 +199,14 @@
 }
 
 .button--primary {
-  --ifm-button-background-color: var(--scalekit-blue);
-  --ifm-button-border-color: var(--scalekit-blue);
+  --ifm-button-background-color: var(--primary-purple-300);
+  --ifm-button-border-color: var(--primary-purple-300);
+  padding: 0.75rem 1.5rem;
 }
 :where(.button--primary):not(.button--outline):hover {
-  --ifm-button-background-color: var(--scalekit-blue);
+  --ifm-button-background-color: var(--primary-purple-300);
   opacity: 0.9;
-  --ifm-button-border-color: var(--scalekit-blue);
+  --ifm-button-border-color: var(--primary-purple-200);
 }
 
 .homepage {
@@ -292,12 +293,21 @@ figure img {
   color: #000 !important;
 }
 
+.table-of-contents {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.table-of-contents__link {
+  font-family: 'Inter', 'IBM Plex Sans', sans-serif;
+}
+
 .table-of-contents__link--active,
 .table-of-contents__link--active code,
 .table-of-contents__link:hover,
 .table-of-contents__link:hover code {
-  font-weight: 500;
-  color: var(--scalekit-blue);
+  font-weight: 400;
+  color: #0d4198;
 }
 
 .menu.thin-scrollbar,
@@ -435,15 +445,15 @@ figure img {
 
 .menu__list-item,
 .sidebar-group-item {
-  font-size: 0.875rem;
+  font-size: 14px;
   font-weight: 400;
   margin-left: 6px;
 }
 
 .menu__link--active,
 .active_page {
-  font-weight: 600;
-  font-size: 0.875rem;
+  font-weight: 500;
+  font-size: inherit;
 }
 .menu__link {
   border-left: 2px solid transparent;
