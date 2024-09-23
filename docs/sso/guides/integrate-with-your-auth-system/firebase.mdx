@@ -114,27 +114,37 @@ Modify your app's login page to invoke SSO and send the request to Scalekit with
 <CodeWithHeader title="Login.js">
 
 ```javascript title="Login.js" showLineNumbers
-
-// Initialize Scalekit as OIDC provider
+// Initialize Scalekit as an OpenID Connect (OIDC) provider
 const scalekitProvider = new OAuthProvider('oidc.scalekit');
 
-// Add custom parameters (organization_id, connection_id, or domain)
-scalekitProvider.setCustomParameters({domain: 'email@yourcustomer.com'});
+// Set custom parameters for SSO authentication
+// You can use 'domain', 'organization_id', or 'connection_id' based on your setup
+scalekitProvider.setCustomParameters({
+  domain: 'customer@megasoft.org'
+});
 
-// When user clicks Login with SSO
-loginbtn.onclick() {
-  // Start sign-in and get user details
+// Handle the SSO login button click event
+loginbtn.onclick = () => {
+  // Initiate the sign-in process with a popup
   signInWithPopup(auth, scalekitProvider)
     .then((result) => {
-      // Get OAuth access token and ID token
+      // Extract the OAuth credential from the authentication result
       const credential = OAuthProvider.credentialFromResult(result);
+
+      // Get the authenticated user's information
       const user = result.user.providerData[0];
-      // Access user details via user.email, user.displayName, etc.
+
+      // You can now access user details such as:
+      // user.email, user.displayName, user.uid, etc.
+
+      // Perform any additional actions with the user data here
     })
     .catch((error) => {
-      // Handle errors
+      // Handle any errors that occur during the sign-in process
+      console.error('Authentication error:', error);
+      // Implement appropriate error handling and user feedback
     });
-}
+};
 ```
 
 </CodeWithHeader>
