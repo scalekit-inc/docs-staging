@@ -944,6 +944,7 @@ html[data-inside-iframe='true'] .theme-doc-breadcrumbs {
 
 html {
   scroll-behavior: smooth;
+  line-height: 28px;
 }
 
 div.narrow-references-container > div:nth-child(2) > section > div > div > div:nth-child(2) {
