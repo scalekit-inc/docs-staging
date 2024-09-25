@@ -222,18 +222,28 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'doc',
+      label: 'Inspect Event Logs',
+      id: 'dir-sync/inspect-event-logs',
+    },
+    {
+      type: 'doc',
       label: 'Map Custom Attributes',
       id: 'dir-sync/map-user-attributes',
     },
     {
       type: 'html',
-      value: "<span class='text--uppercase text--light sidenav-category-heading'>Learning Guides</span>",
+      value: "<span class='text--uppercase text--light sidenav-category-heading'>Guides</span>",
       defaultStyle: true,
     },
     {
       type: 'doc',
       label: 'Webhooks',
       id: 'dir-sync/webhooks',
+    },
+    {
+      type: 'doc',
+      label: 'Listen Directory Events',
+      id: 'dir-sync/listen-directory-events',
     },
     // {
     //   type: 'doc',
