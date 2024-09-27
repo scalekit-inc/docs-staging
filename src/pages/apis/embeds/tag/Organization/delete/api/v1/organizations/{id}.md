@@ -69,6 +69,6 @@ scalekitClient.organizations().deleteById(organizationId);
 </CodeWithHeader>
 <CodeWithHeader title="Response">
 
-<JsonViewer src={{}} />
+<JsonViewer src={ {} } />
 
 </CodeWithHeader>

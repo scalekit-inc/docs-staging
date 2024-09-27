@@ -62,9 +62,7 @@ ScalekitClient scalekitClient = new ScalekitClient(
   "<SCALEKIT_CLIENT_SECRET>"
 );
 
-Link response = scalekitClient
-  .organizations()
-  .generatePortalLink(organizationId);
+Link response = scalekitClient.organizations().generatePortalLink(organizationId);
 
 ```
 
@@ -73,14 +71,12 @@ Link response = scalekitClient
 </CodeWithHeader>
 <CodeWithHeader title="Response">
 
-```js
-{
+<JsonViewer src={{
   "link": {
     "id": "lnk_123123123123123",
     "location": "https://scalekit.com/portal/lnk_123123123123123",
     "expire_time": "2024-02-06T14:48:00.000Z"
   }
-}
-```
+}} />
 
 </CodeWithHeader>

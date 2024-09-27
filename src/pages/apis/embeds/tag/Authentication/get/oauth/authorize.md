@@ -20,16 +20,12 @@ curl --request GET \
 import { ScalekitClient } from '@scalekit-sdk/node';
 
 // Initialize the SDK client
-const scalekit = new ScalekitClient(
-  '<SCALEKIT_ENVIRONMENT_URL>',
-  '<SCALEKIT_CLIENT_ID>',
-  '<SCALEKIT_CLIENT_SECRET>',
-);
+const scalekit = new ScalekitClient('<SCALEKIT_ENVIRONMENT_URL>', '<SCALEKIT_CLIENT_ID>', '<SCALEKIT_CLIENT_SECRET>');
 
 const options = {};
 
 // Option 1: Authorization URL with the organization ID
-options["organizationId"] = 'org_15421144869927830';
+options['organizationId'] = 'org_15421144869927830';
 
 // Option 2: Authorization URL with login hint
 options.connectionId = 'conn_15696105471768821';
@@ -37,10 +33,7 @@ options.connectionId = 'conn_15696105471768821';
 // Option 3: Authorization URL with login hint
 options.loginHint = 'user@example.com';
 
-const authorizationURL = scalekit.getAuthorizationUrl(
-  redirectUrl,
-  options,
-);
+const authorizationURL = scalekit.getAuthorizationUrl(redirectUrl, options);
 ```
 
 </TabItem>
@@ -144,10 +137,7 @@ public class Main {
     // User's email domain detects the correct enterprise SSO connection.
     options.setLoginHint("user@example.com");
     try {
-      String url = scalekitClient
-        .authentication()
-        .getAuthorizationUrl(redirectUrl, options)
-        .toString();
+      String url = scalekitClient.authentication().getAuthorizationUrl(redirectUrl, options).toString();
     } catch (Exception e) {
       System.out.println(e.getMessage());
     }
@@ -163,6 +153,7 @@ public class Main {
 </CodeWithHeader>
 <CodeWithHeader title="Response">
 
-User will be redirected to the appropriate Identity provider's login page based on either organization_id, or connection_id or domain.
+User will be redirected to the appropriate Identity provider's login page based on either organization_id, or
+connection_id or domain.
 
 </CodeWithHeader>
