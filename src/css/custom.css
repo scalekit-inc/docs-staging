@@ -450,7 +450,6 @@ figure img {
 
 .menu__list-item,
 .sidebar-group-item {
-  font-size: 14px;
   font-weight: 400;
   margin-left: 6px;
 }
@@ -952,6 +951,7 @@ div.narrow-references-container > div:nth-child(2) > section > div > div > div:n
 
 pre {
   overflow: visible;
+  background-color: #f6f6f6;
 }
 
 code {
@@ -961,7 +961,7 @@ code {
 
 code,
 pre code {
-  font-size: 0.9rem;
+  font-size: 14px;
 }
 
 label:has(.persist_chkbox) {
@@ -1312,7 +1312,7 @@ svg {
 }
 
 .scalar-card-content p {
-  font-size: smaller;
+  font-size: 14px;
   padding: 12px;
   margin: 0;
 }
@@ -1324,13 +1324,14 @@ svg {
   row-gap: 16px;
   align-items: stretch;
   padding: 0;
+
 }
 
 .ApiReference-Parameter {
   list-style: none;
   border-bottom: 1px solid var(--scalar-border-color);
-  font-size: var(--scalar-small);
   padding-bottom: 1rem;
+  font-size: 14px;
 }
 
 .ApiReference-Parameter:last-child {
@@ -1353,12 +1354,11 @@ svg {
 .ApiReference-Parameter .attr .key {
   font-family: var(--ifm-font-family-monospace);
   font-weight: 500;
-  font-size: 0.9rem;
 }
 
 .ApiReference-Parameter .attr .required {
   text-transform: uppercase;
-  color: var(--tblr-warning);
+  color: var(--semantic-palette-orange);
   font-weight: 500;
   font-size: smaller;
 }

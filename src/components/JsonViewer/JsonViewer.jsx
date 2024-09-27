@@ -7,7 +7,7 @@ const JsonViewer = ({ src }) => {
     return <div>No data available</div>;
   }
 
-  return <JsonEditor data={src} className="json-editor-viewer" />;
+  return <JsonEditor data={src} className="json-editor-viewer" theme="default" />;
 };
 
 export default JsonViewer;
