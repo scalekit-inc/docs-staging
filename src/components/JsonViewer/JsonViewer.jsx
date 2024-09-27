@@ -1,4 +1,5 @@
 import React from 'react';
+import BrowserOnly from '@docusaurus/BrowserOnly';
 import { JsonEditor } from 'json-edit-react';
 import './JsonViewer.css';
 
@@ -7,7 +8,11 @@ const JsonViewer = ({ src }) => {
     return <div>No data available</div>;
   }
 
-  return <JsonEditor data={src} className="json-editor-viewer" theme="default" />;
+  return (
+    <BrowserOnly fallback={<div>Loading...</div>}>
+      {() => <JsonEditor data={src} className="json-editor-viewer" theme="default" />}
+    </BrowserOnly>
+  );
 };
 
 export default JsonViewer;
