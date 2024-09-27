@@ -78,14 +78,11 @@ ScalekitClient scalekitClient = new ScalekitClient(
   "<SCALEKIT_CLIENT_SECRET>"
 );
 
-UpdateOrganization updateOrganization =
-  UpdateOrganization.newBuilder()
-    .setDisplayName("Updated Organization Name")
-    .build();
+UpdateOrganization updateOrganization = UpdateOrganization.newBuilder()
+  .setDisplayName("Updated Organization Name")
+  .build();
 
-Organization updatedOrganizationById = scalekitClient
-  .organizations()
-  .updateById(organizationId, updateOrganization);
+Organization updatedOrganizationById = scalekitClient.organizations().updateById(organizationId, updateOrganization);
 
 ```
 
@@ -95,18 +92,16 @@ Organization updatedOrganizationById = scalekitClient
 </CodeWithHeader>
 <CodeWithHeader title="Response">
 
-```json
-{
-    "create_time": "2024-01-05T14:48:00.000Z",
-    "display_name": "Acme Corp",
-    "external_id": "my_unique_id",
-    "id": "org_2123312131125533",
-    "metadata": {
-        "someKey": "…"
-    },
-    "region_code": "US",
-    "update_time": "…"
-}
-```
+<JsonViewer src={{
+  "create_time": "2024-01-05T14:48:00.000Z",
+  "display_name": "Acme Corp",
+  "external_id": "my_unique_id",
+  "id": "org_2123312131125533",
+  "metadata": {
+    "someKey": "…"
+  },
+  "region_code": "US",
+  "update_time": "…"
+}} />
 
 </CodeWithHeader>

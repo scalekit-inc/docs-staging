@@ -3,12 +3,9 @@ hide_table_of_contents: true
 title: 'API Reference'
 ---
 
-import InstallSDK from '@site/docs/sso/templates/\_install-sdk.md';
-import ConnectionTag from './\_connection.md';
-import AdminPortalTag from './\_adminPortal.md';
-import OrganizationTag from './\_organization.md';
-import WebhooksTag from './\_webhooks.mdx';
-import SidebarWrapper from '@site/src/components/SidebarWrapper';
+import InstallSDK from '@site/docs/sso/templates/\_install-sdk.md'; import ConnectionTag from './\_connection.md';
+import AdminPortalTag from './\_adminPortal.md'; import OrganizationTag from './\_organization.md'; import WebhooksTag
+from './\_webhooks.mdx'; import SidebarWrapper from '@site/src/components/SidebarWrapper';
 
 import SidebarItems from '@site/src/components/SidebarItems';
 
@@ -35,7 +32,8 @@ import SidebarItems from '@site/src/components/SidebarItems';
 <div className="col col--6">
 Scalekit API is modeled around the [REST](https://en.wikipedia.org/wiki/REST) architecture style. That means, our API has predictable resource-oriented URLs, accepts form-encoded request bodies and produces JSON formatted responses, uses standard HTTP verbs and error codes.
 
-Apart from REST APIs, we have published SDKs in some of the popular languages as shown below. You can use these SDKs and integrate with Scalekit much faster.
+Apart from REST APIs, we have published SDKs in some of the popular languages as shown below. You can use these SDKs and
+integrate with Scalekit much faster.
 
 Some additional instructions around using our APIs
 
@@ -48,8 +46,7 @@ Read below to understand more about how to authenticate the API calls and how to
 <div className="col col--6">
 **Just getting Started?**
 
-Refer to our <Link href="/sso/quickstart" target="_blank">Quick Start Guide</Link>
-<br />
+Refer to our <Link href="/sso/quickstart" target="_blank">Quick Start Guide</Link> <br />
 
 <InstallSDK />
 
@@ -80,7 +77,8 @@ You will need the following information to authenticate with Scalekit APIs
 - Client Secret
 - Environment URL
 
-You can obtain a secure token by making `POST` call to the `https://{ENV_URL}/oauth/token` endpoint and sending client_id and client_secret as part of the request body.
+You can obtain a secure token by making `POST` call to the `https://{ENV_URL}/oauth/token` endpoint and sending
+client_id and client_secret as part of the request body.
 
 </div>
 <div className="col col--6">
@@ -103,11 +101,7 @@ $ curl https://{ENV_URL}/oauth/token \
 ```js showLineNumbers
 import { Scalekit } from '@scalekit-sdk/node';
 
-const scalekit = new Scalekit(
-  '<SCALEKIT_ENVIRONMENT_URL>',
-  '<SCALEKIT_CLIENT_ID>',
-  '<SCALEKIT_CLIENT_SECRET>',
-);
+const scalekit = new Scalekit('<SCALEKIT_ENVIRONMENT_URL>', '<SCALEKIT_CLIENT_ID>', '<SCALEKIT_CLIENT_SECRET>');
 ```
 
 </TabItem>
@@ -183,11 +177,14 @@ public class Main {
     <div className="col col--6">
 The `access_token` is the OAuth access token you need to use for all subsequent API calls to Scalekit.
 
-To make a request to one of our APIs, you need to include the access token in the Authorization header of the request as Bearer 'access_token'.
+To make a request to one of our APIs, you need to include the access token in the Authorization header of the request as
+Bearer 'access_token'.
 
-Please make sure that you keep your Client Secrets safely. Do not share your client secret in publicly accessible areas such as GitHub, client-side code, etc.
+Please make sure that you keep your Client Secrets safely. Do not share your client secret in publicly accessible areas
+such as GitHub, client-side code, etc.
 
-Our SDKs will automatically handle the API authentication and error handling to make the job of using our APIs much easier for you.
+Our SDKs will automatically handle the API authentication and error handling to make the job of using our APIs much
+easier for you.
 
 </div>
 <div className="col col--6">
@@ -210,7 +207,8 @@ $ curl --request GET "https://{ENV_URL}/api/v1/organizations" \
     <div className="col col--6">
 As mentioned earlier, Scalekit APIs return appropriate HTTP Status Codes along with the detailed error messages in case of invalid usage of APIs.
 
-You can see the list of different HTTP Status Codes and the error message format in the right pane. We strongly recommend you to handle errors gracefully while writing code using our SDKs.
+You can see the list of different HTTP Status Codes and the error message format in the right pane. We strongly
+recommend you to handle errors gracefully while writing code using our SDKs.
 
 </div>
 <div className="col col--6">
@@ -273,8 +271,11 @@ More details about the Single Sign-on flow is described <Link href="/sso/quickst
 <!-- Connections Tag -->
 
 <ConnectionTag></ConnectionTag>
+
 <!-- Webhooks Tag -->
+
 <WebhooksTag></WebhooksTag>
+
 </div>
 </div>
 </SidebarWrapper>

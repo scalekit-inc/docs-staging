@@ -68,9 +68,7 @@ ScalekitClient scalekitClient = new ScalekitClient(
   "<SCALEKIT_CLIENT_SECRET>"
 );
 
-Connection connection = client
-  .connections()
-  .getConnectionById(connectionId, organizationId);
+Connection connection = client.connections().getConnectionById(connectionId, organizationId);
 
 ```
 

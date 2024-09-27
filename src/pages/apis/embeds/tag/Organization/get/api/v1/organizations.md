@@ -70,9 +70,7 @@ ScalekitClient scalekitClient = new ScalekitClient(
   "<SCALEKIT_CLIENT_SECRET>"
 );
 
-ListOrganizationsResponse organizations = scalekitClient
-  .organizations()
-  .listOrganizations(10, "");
+ListOrganizationsResponse organizations = scalekitClient.organizations().listOrganizations(10, "");
 
 ```
 
@@ -82,10 +80,7 @@ ListOrganizationsResponse organizations = scalekitClient
 </CodeWithHeader>
 <CodeWithHeader title="Response">
 
-
-
-```json
-{
+<JsonViewer src={{
   "next_page_token": "…",
   "organizations": [
     {
@@ -101,7 +96,6 @@ ListOrganizationsResponse organizations = scalekitClient
     }
   ],
   "total_size": 1
-}
-```
+}} />
 
 </CodeWithHeader>
