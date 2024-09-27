@@ -19,6 +19,7 @@ import { FancyLink } from '@site/src/components/Card/CardWithArrow';
 import QuickLinkStack from '@site/src/components/QuickLinkStack';
 import ScalekitFooterComponent from '@site/src/components/DocsRating';
 import { GlossaryListing, TermTip } from '@site/src/components/Glossary/Glossary';
+import JsonViewer from '@site/src/components/JsonViewer/JsonViewer';
 
 export default {
   // Re-use the default mapping
@@ -47,4 +48,5 @@ export default {
   GlossaryListing,
   TermTip,
   ScalekitFooterComponent,
+  JsonViewer,
 };

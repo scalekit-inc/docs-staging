@@ -25,6 +25,7 @@
     "@shikijs/transformers": "^1.12.1",
     "clsx": "^2.0.0",
     "gray-matter": "^4.0.3",
+    "json-edit-react": "^1.16.3",
     "lodash": "^4.17.21",
     "plugin-image-zoom": "github:flexanalytics/plugin-image-zoom",
     "posthog-js": "^1.146.2",

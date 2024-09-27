@@ -923,9 +923,8 @@ ul.table-of-contents.table-of-contents__left-border:before {
   height: auto;
   font: 1rem var(--ifm-font-family-monospace);
   margin-left: 2px;
-}A
-
-.DocSearch-Button-Keys .DocSearch-Button-Key:last-child {
+}
+A .DocSearch-Button-Keys .DocSearch-Button-Key:last-child {
   font-size: 0.85rem;
 }
 
@@ -1054,7 +1053,6 @@ footer {
 
 svg {
   vertical-align: text-bottom;
-  margin-right: 4px;
 }
 
 .font_large {

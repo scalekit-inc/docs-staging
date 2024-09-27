@@ -78,12 +78,9 @@ ScalekitClient scalekitClient = new ScalekitClient(
   "<SCALEKIT_CLIENT_SECRET>"
 );
 
-CreateOrganization createOrganization =
-  CreateOrganization.newBuilder().setDisplayName("Test Org").build();
+CreateOrganization createOrganization = CreateOrganization.newBuilder().setDisplayName("Test Org").build();
 
-Organization createdOrganization = scalekitClient
-  .organizations()
-  .create(createOrganization);
+Organization createdOrganization = scalekitClient.organizations().create(createOrganization);
 
 ```
 
@@ -92,18 +89,16 @@ Organization createdOrganization = scalekitClient
 </CodeWithHeader>
 <CodeWithHeader title="Response">
 
-```json
-{
-    "create_time": "2024-01-05T14:48:00.000Z",
-    "display_name": "Acme Corp",
-    "external_id": "my_unique_id",
-    "id": "org_2123312131125533",
-    "metadata": {
-        "someKey": "…"
-    },
-    "region_code": "US",
-    "update_time": "…"
-}
-```
+<JsonViewer src={{
+  "create_time": "2024-01-05T14:48:00.000Z",
+  "display_name": "Acme Corp",
+  "external_id": "my_unique_id",
+  "id": "org_2123312131125533",
+  "metadata": {
+    "someKey": "…"
+  },
+  "region_code": "US",
+  "update_time": "…"
+}} />
 
 </CodeWithHeader>
