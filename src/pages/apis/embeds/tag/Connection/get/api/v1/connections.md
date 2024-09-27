@@ -57,15 +57,9 @@ connections, err := sc.Connection.ListConnections(
 <TabItem value="java" label="Java">
 
 ```java showLineNumbers
-ScalekitClient scalekitClient = new ScalekitClient(
-  "<ENVIRONMENT_URL>",
-  "<CLIENT_ID>",
-  "<CLIENT_SECRET>"
-);
+ScalekitClient scalekitClient = new ScalekitClient("<ENVIRONMENT_URL>", "<CLIENT_ID>", "<CLIENT_SECRET>");
 
-ListConnectionsResponse response = scalekitClient
-  .connections()
-  .listConnectionsByOrganization(organizationId);
+ListConnectionsResponse response = scalekitClient.connections().listConnectionsByOrganization(organizationId);
 
 ```
 

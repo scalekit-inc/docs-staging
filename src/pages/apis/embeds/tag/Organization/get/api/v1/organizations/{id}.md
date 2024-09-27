@@ -62,9 +62,7 @@ ScalekitClient scalekitClient = new ScalekitClient(
   "<SCALEKIT_CLIENT_SECRET>"
 );
 
-Organization organization = scalekitClient
-  .organizations()
-  .getById(organizationId);
+Organization organization = scalekitClient.organizations().getById(organizationId);
 
 ```
 
@@ -73,8 +71,7 @@ Organization organization = scalekitClient
 </CodeWithHeader>
 <CodeWithHeader title="Response">
 
-```json
-{
+<JsonViewer src={{
   "create_time": "2024-01-05T14:48:00.000Z",
   "display_name": "Acme Corp",
   "external_id": "my_unique_id",
@@ -84,7 +81,6 @@ Organization organization = scalekitClient
   },
   "region_code": "US",
   "update_time": "…"
-}
-```
+}} />
 
 </CodeWithHeader>

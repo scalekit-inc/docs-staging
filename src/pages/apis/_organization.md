@@ -67,19 +67,17 @@ Organization represents a customer or a tenant of your application. Use this to 
     <div className="scalar-card-sticky">
         <CodeWithHeader title="Organization Object">
 
-```json
-{
-    "id": "org_2123312131125533",
-    "display_name": "Acme Corp",
-    "create_time": "2024-01-05T14:48:00.000Z",
-    "external_id": "my_unique_id",
-    "metadata": {
-      "someKey": "somevalue"
-    },
-    "region_code": "US",
-    "update_time": "…"
-}
-```
+<JsonViewer src={{
+  "id": "org_2123312131125533",
+  "display_name": "Acme Corp",
+  "create_time": "2024-01-05T14:48:00.000Z",
+  "external_id": "my_unique_id",
+  "metadata": {
+    "someKey": "somevalue"
+  },
+  "region_code": "US",
+  "update_time": "…"
+}} />
 
 </CodeWithHeader>
 </div>
