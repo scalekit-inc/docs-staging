@@ -18,6 +18,7 @@ keywords:
     'Identity Workflows',
   ]
 ---
+import JsonViewer from '@site/src/components/JsonViewer/JsonViewer';
 
 # Normalized User Profile
 
@@ -30,6 +31,46 @@ This means that you'd always receive the user profile payload in a fixed set of 
 provider and protocol you interact with. This is one of our foundational aspects of the Unified SSO solution.
 
 <CodeWithHeader title="Sample Normalized User Profile">
+<JsonViewer src={{
+    "email": "john.doe@acmecorp.com",
+    "email_verified": true,
+    "family_name": "Doe",
+    "given_name": "John",
+    "locale": "en",
+    "name": "John Doe",
+    "picture": "https://lh3.googleusercontent.com/a/ACg8ocKNE4TZ...iEma17URCEf=s96-c",
+    "sub": "conn_17576372041941092;google-oauth2|104630259163176101050",
+    "identities": [
+        {
+            "connection_id": "conn_17576372041941092",
+            "organization_id": "org_17002852291444836",
+            "connection_type": "OIDC",
+            "provider_name": "AUTH0",
+            "social": false,
+            "provider_raw_attributes": {
+                "aud": "ztTgHijLLguDXJQab0oiPyIcDLXXrJX6",
+                "email": "john.doe@acmecorp.com",
+                "email_verified": true,
+                "exp": 1714580633,
+                "family_name": "Doe",
+                "given_name": "John",
+                "iat": 1714544633,
+                "iss": "https://dev-rmmfmus2g7vverbf.us.auth0.com/",
+                "locale": "en",
+                "name": "John Doe",
+                "nickname": "john.doe",
+                "nonce": "Lof9SpxEzs9dhUlJzgrrbQ==",
+                "picture": "https://lh3.googleusercontent.com/a/ACg8ocKNE4T...17URCEf=s96-c",
+                "sid": "5yqRJIfjPh8c7lr1s2N-IbY6WR8VyaIZ",
+                "sub": "google-oauth2|104630259163176101050",
+                "updated_at": "2024-04-30T10:02:30.988Z"
+            }
+        }
+    ]
+}} />
+</CodeWithHeader>
+
+{/* <CodeWithHeader title="Sample Normalized User Profile">
 
 ```json wordWrap=true
 {
@@ -73,7 +114,7 @@ provider and protocol you interact with. This is one of our foundational aspects
 
 ```
 
-</CodeWithHeader>
+</CodeWithHeader> */}
 
 ## Full list of User Profile attributes
 

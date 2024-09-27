@@ -45,45 +45,43 @@ This setup allows administrators to map their directory provider groups to your 
 
 Scalekit uses these mappings to include role information in directory event payloads:
 
-<CodeWithHeader title=".env">
+<CodeWithHeader title="Sample Directory Event Payload">
 
-```json
-{
-    "userName": "johndoe123",
-    "name": {
-        "formatted": "Dr. John Michael Doe Jr.",
-        "familyName": "Doe",
-        "givenName": "John",
-        "middleName": "Michael",
-        "honorificPrefix": "Dr.",
-        "honorificSuffix": "Jr."
-    },
-    "displayName": "John Doe",
-    "nickName": "Johnny",
-    "profileUrl": "https://example.com/profiles/johndoe123",
-    "title": "Senior Software Engineer",
-    "userType": "Employee",
-    "preferredLanguage": "en-US",
-    "locale": "en-US",
-    "timezone": "America/New_York",
-    "active": true,
-    "password": null,
-    "emails": ["john.doe@example.com", "johndoe123@gmail.com"],
-    "phoneNumbers": ["+1-555-555-1234", "+1-555-555-5678"],
-    "photos": ["https://example.com/photos/johndoe123.jpg"],
-    "addresses": [{
-        "formatted": "123 Main St, Apt 4B, New York, NY 10001, USA",
-        "streetAddress": "123 Main St, Apt 4B",
-        "locality": "New York",
-        "region": "NY",
-        "postalCode": "10001",
-        "country": "USA"
-    }],
-    "groups": ["engineering", "project-alpha"],
-    "entitlements": ["jira-access", "github-enterprise"],
-    "roles": ["Senior Engineer", "Team Lead"]
-}
-```
+<JsonViewer src={{
+        "userName": "johndoe123",
+        "name": {
+          "formatted": "Dr. John Michael Doe Jr.",
+          "familyName": "Doe",
+          "givenName": "John",
+          "middleName": "Michael",
+          "honorificPrefix": "Dr.",
+          "honorificSuffix": "Jr."
+        },
+        "displayName": "John Doe",
+        "nickName": "Johnny",
+        "profileUrl": "https://example.com/profiles/johndoe123",
+        "title": "Senior Software Engineer",
+        "userType": "Employee",
+        "preferredLanguage": "en-US",
+        "locale": "en-US",
+        "timezone": "America/New_York",
+        "active": true,
+        "password": null,
+        "emails": ["john.doe@example.com", "johndoe123@gmail.com"],
+        "phoneNumbers": ["+1-555-555-1234", "+1-555-555-5678"],
+        "photos": ["https://example.com/photos/johndoe123.jpg"],
+        "addresses": [{
+          "formatted": "123 Main St, Apt 4B, New York, NY 10001, USA",
+          "streetAddress": "123 Main St, Apt 4B",
+          "locality": "New York",
+          "region": "NY",
+          "postalCode": "10001",
+          "country": "USA"
+        }],
+        "groups": ["engineering", "project-alpha"],
+        "entitlements": ["jira-access", "github-enterprise"],
+        "roles": ["Senior Engineer", "Team Lead"]
+      }} />
 
 </CodeWithHeader>
 

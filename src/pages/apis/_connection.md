@@ -143,6 +143,7 @@
             </CodeWithHeader>
         </div>
     </div>
+
 </div>
 <APIEndpoint tag="Connection" method="get" endpoint="/api/v1/connections" />
 <APIEndpoint tag="Connection" method="get" endpoint="/api/v1/organizations/{organization_id}/connections/{id}" />
