@@ -338,11 +338,11 @@ const sidebars: SidebarsConfig = {
       label: 'Okta',
       id: 'integrations/okta-scim',
     },
-    // {
-    //   type: 'doc',
-    //   label: 'Azure AD',
-    //   id: 'integrations/azure-scim',
-    // },
+    {
+      type: 'doc',
+      label: 'Azure AD',
+      id: 'integrations/azure-scim',
+    },
     // {
     //   type: 'doc',
     //   label: 'JumpCloud',
