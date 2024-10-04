@@ -10,7 +10,7 @@ const JsonViewer = ({ src }) => {
 
   return (
     <BrowserOnly fallback={<div>Loading...</div>}>
-      {() => <JsonEditor data={src} className="json-editor-viewer" theme="default" />}
+      {() => <JsonEditor data={src} className="json-editor-viewer" theme="default" rootName="" />}
     </BrowserOnly>
   );
 };

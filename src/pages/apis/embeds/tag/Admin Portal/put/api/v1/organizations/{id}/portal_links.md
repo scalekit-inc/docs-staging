@@ -4,7 +4,7 @@
 
 ```bash showLineNumbers
 curl --location --request PUT 'https://$ENV_URL/api/v1/organizations/{id}/portal_links' \
---header 'Accept: application/json'
+--header 'Authorization: Bearer {access_token}'
 ```
 
 </TabItem>

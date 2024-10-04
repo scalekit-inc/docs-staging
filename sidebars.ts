@@ -207,7 +207,7 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'doc',
-      label: 'Automatically Assign Roles',
+      label: 'Automated Role Assignment',
       id: 'dir-sync/automatically-assign-roles',
     },
     {
