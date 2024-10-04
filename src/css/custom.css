@@ -249,6 +249,10 @@ figure.width-50 {
   width: 50%;
 }
 
+figure.width-75 {
+  width: 75%;
+}
+
 figure {
   margin: 1.5rem auto;
   text-align: center;
