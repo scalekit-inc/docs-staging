@@ -242,16 +242,6 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'doc',
-      label: 'Listen Directory Events',
-      id: 'dir-sync/listen-directory-events',
-    },
-    // {
-    //   type: 'doc',
-    //   label: 'Automated Role Assignment (GBAC)',
-    //   id: 'dir-sync/gbac',
-    // },
-    {
-      type: 'doc',
       label: 'The SCIM Protocol',
       id: 'dir-sync/scim/overview',
     },
