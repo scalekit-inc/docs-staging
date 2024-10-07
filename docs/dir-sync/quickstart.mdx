@@ -21,7 +21,7 @@ Scalekit enables you to sync user accounts with the latest data in the directory
 
 ## Realtime User Provisioning with Webhooks
 
-### Create a Webhook Endpoint
+### 1. Create a Webhook Endpoint
 
 To receive realtime events from directory providers, create a webhook endpoint and register it in the Scalekit dashboard.
 
@@ -62,7 +62,7 @@ In this example, the endpoint URL is  `https://www.hero-saas.app/api/webhook/use
 
 When the endpoint receives an HTTP POST request with event data, it extracts the name and email from the payload and calls <SimpleCode>createUserAccount()</SimpleCode> to perform the necessary business logic — in this case, creating a user account.
 
-### Register Webhook Endpoint
+### 2. Register Webhook Endpoint
 
 First, navigate to the "Webhooks" tab in the Scalekit Dashboard. Click on the "+Add Endpoint" button and enter the endpoint URL along with a meaningful description. Finally, select the desired event types, such as <SimpleCode>scalekit.dir.user.*</SimpleCode>, to subscribe to the relevant events.
 
@@ -75,7 +75,7 @@ Refer to the [API reference](/apis#tag/Webhooks) for the list of all available e
 
 Click "Create." Once registered, the webhook endpoint will start receiving event payloads from the directory providers.
 
-### Receive Event Payloads
+### 3. Receive Event Payloads
 
 Scalekit sends event payloads to your app for consumption and standardizes the payload structure across different directory providers your customers may use. Since we subscribed to user events, let's log an example of a new hire gaining access to your app when Scalekit sends a user creation event.
 
