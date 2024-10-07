@@ -6,7 +6,7 @@ Organizations rely on Directory Providers as the source of truth for user inform
 your app receives real-time updates, ensuring it remains current with this source. Scalekit normalizes data from
 Directory Providers that adhere to the SCIM protocol.
 
-<figure>
+<figure className="width-50">
   ![SCIM User Provisioning Flow Directory to Scalekit to Your B2B
   App](@site/docs/dir-sync/assets/user-attributes-in-sync.png)
   <figcaption>SCIM User Provisioning Flow Directory to Scalekit to Your B2B App</figcaption>
@@ -19,8 +19,8 @@ guidance on the next steps.
 
 :::
 
-Your app can [register a Webhook endpoint](https://www.example.org) to listen to these directory events. See the
-[Events Reference](https://www.example.org) for more information. Each Event Object has a Directory User Object as part
+Your app can [register a Webhook endpoint](docs/dir-sync/setup-directory-events.mdx) to listen to these directory events. See the
+[Events Reference](/apis#tag/Webhooks) for more information. Each Event Object has a Directory User Object as part
 of its payload.
 
 ## Directory User Object Attributes
@@ -102,7 +102,7 @@ experiences. These attributes allow for the personalization of content, features
 user characteristics or preferences. For example, if your B2B SaaS app offers analytics dashboards, you can use a custom
 attribute like <SimpleCode>department</SimpleCode> to display relevant dashboards to users.
 
-[Learn more about mapping the necessary attributes from the directory provider](https://www.example.org).
+[Learn more about mapping the necessary attributes from the directory provider](docs/dir-sync/map-user-attributes.mdx).
 
 ## Raw Attributes
 
