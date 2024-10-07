@@ -50,15 +50,15 @@ export async function POST(req: NextRequest) {
   // Call a function to perform business logic
   await createUserAccount(email, name);
 
-  // Return a JSON response with a status code of 200
-  return NextResponse.json({ status: 200 });
+  // Return a JSON response with a status code of 201
+  return NextResponse.json({ message: "User account created" }, { status: 201 });
 }
 ```
 
 </TabItem>
 </Tabs>
 
-In this example, the endpoint URL is  `https://www.hero-saas.app/api/webhook/user-access`.
+In this example, the endpoint URL is  <SimpleCode>https://<span></span>www<span></span>.hero-saas.<span></span>app/api/webhook/user-access</SimpleCode>
 
 When the endpoint receives an HTTP POST request with event data, it extracts the name and email from the payload and calls <SimpleCode>createUserAccount()</SimpleCode> to perform the necessary business logic — in this case, creating a user account.
 

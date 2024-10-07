@@ -6,7 +6,7 @@ keywords: ["Directory Sync deployment", "Directory Sync production", "Directory 
 # Launch Checklist
 
 <Subtitle>
-    Check these recommended steps before taking Directory Sync in production
+    Check these recommended steps before taking automated user provisioning in production
 </Subtitle>
 
 As you get ready to deploy your Directory Sync implementation to production, it's important to double-check that everything is properly configured for optimal security and a seamless user experience. The checklist below outlines recommended steps to ensure your Directory Sync integration is robust, efficient, and maintainable in a live environment.
@@ -22,19 +22,19 @@ As you go through the checklist below, feel free to tick off the items that you 
 
 */}
 
-<LabeledCheckbox id="1"> **Use appropriate environment variables** </LabeledCheckbox>
+<LabeledCheckbox id="1"> Use appropriate environment variables </LabeledCheckbox>
 
 Switch from development to production credentials, including the Client ID, Client Secret, and Environment URL.
 
-<LabeledCheckbox id="2"> **Secure the Client Secret** </LabeledCheckbox>
+<LabeledCheckbox id="2"> Secure the Client Secret </LabeledCheckbox>
 
 Your client secret is akin to a key to your application. Secure it with the utmost care. Go through our [best practices guide](/sso/guides/key-concepts/manage-client-secrets) to learn how to manage the client secrets safely and securely.
 
-<LabeledCheckbox id="3"> **Configure Webhooks** </LabeledCheckbox>
+<LabeledCheckbox id="3"> Configure Webhooks </LabeledCheckbox>
 
 Ensure you have configured webhooks to receive real-time updates on user and group changes. Please go through our [webhook security guide](/dir-sync/webhooks#webhook-security) to learn how to secure your webhooks.
 
-<LabeledCheckbox id="4"> **Test the Directory Sync flows** </LabeledCheckbox>
+<LabeledCheckbox id="4"> Test the Directory Sync flows </LabeledCheckbox>
 
 Ensure that you have implemented and tested all possible Directory Sync workflows between your application and your customer's Identity providers. Especially, ensure you have validated for the following business cases:
 
@@ -42,16 +42,16 @@ Ensure that you have implemented and tested all possible Directory Sync workflow
 - Automated User De-provisioning
 - Automated User Profile Update
 - Automated Group Membership Update
-- Automated User Role Assignment (GBAC)
+- Automated User Role Assignment
 
-<LabeledCheckbox id="5"> **Finalize Branding & Theming** </LabeledCheckbox>
+<LabeledCheckbox id="5"> Finalize Branding & Theming </LabeledCheckbox>
 
 For a consistent and professional user experience, confirm your branding (logos, accent colors, etc) is applied to the admin portal.
 
-<LabeledCheckbox id="6"> **Review Admin Portal URL** </LabeledCheckbox>
+<LabeledCheckbox id="6"> Review Admin Portal URL </LabeledCheckbox>
 
 Customize the admin portal URL to match your domain (for example, <SimpleCode>https:<span></span>//sso.b2b-app.com </SimpleCode>) for a seamless brand experience. Also, Remember to update <SimpleCode>.env</SimpleCode> file post-CNAME configuration.
 
-<LabeledCheckbox id="7"> **Graceful Error Handling** </LabeledCheckbox>
+<LabeledCheckbox id="7"> Graceful Error Handling </LabeledCheckbox>
 
 Test your integration thoroughly across all possible edge cases, including incomplete, invalid, or duplicate data submissions.
