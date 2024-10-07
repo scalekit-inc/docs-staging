@@ -546,6 +546,34 @@ import { Endpoint } from '@site/src/components/endpoint';
 <div className="row section">
     <div className="col col--6">
        This webhook is triggered when a directory group is deleted.
+       <ul className="ApiReference-Parameters">
+    <li className="ApiReference-Parameter header">Event Data</li>
+    <Parameter attrKey="directory_id" type="string" description="Unique identifier for the directory." />
+    <Parameter attrKey="display_name" type="string" description="Display name of the directory group." />
+    <Parameter attrKey="dp_id" type="string" description="Unique identifier for the group in the directory provider system." />
+    <Parameter attrKey="id" type="string" description="Unique identifier for the directory group." />
+    <Parameter attrKey="organization_id" type="string" description="Identifier for the organization associated with the group." />
+    <Parameter attrKey="raw_attributes" type="object" description="Raw attributes of the directory group as received from the provider.">
+        <details>
+            <summary>Child Attributes</summary>
+            <Parameter attrKey="displayName" type="string" description="Display name of the group as received from the directory provider." />
+            <Parameter attrKey="externalId" type="string" description="External identifier for the group in the directory provider system." />
+            <Parameter attrKey="members" type="array" description="Array of members in the group.">
+                <details>
+                    <summary>Child Attributes</summary>
+                    <Parameter attrKey="value" type="string" description="Unique identifier for the group member." />
+                </details>
+            </Parameter>
+        </details>
+    </Parameter>
+    <Parameter attrKey="environment_id" type="string" description="Identifier for the environment where the event occurred." />
+    <Parameter attrKey="id" type="string" description="Unique identifier for the event." />
+    <Parameter attrKey="object" type="string" description="Type of object the event relates to." />
+    <Parameter attrKey="occurred_at" type="string" description="Timestamp when the event occurred." />
+    <Parameter attrKey="organization_id" type="string" description="Identifier for the organization associated with the event." />
+    <Parameter attrKey="spec_version" type="string" description="Specification version of the event." />
+    <Parameter attrKey="type" type="string" description="Type of the event, indicating the action that occurred." />
+</ul>
     </div>
     <div className='col col--6'>
           <CodeWithHeader title="scalekit.dir.group.delete">
