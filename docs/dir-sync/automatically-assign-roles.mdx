@@ -1,7 +1,9 @@
-# Automatically Assign Roles in B2B Apps
+# Automated Role Assignment
 
-B2B apps use role-based access control to manage user permissions. This system assigns users to specific roles, each
-with predefined access levels. For example:
+You can use role-based access control to manage user permissions. This system assigns users to specific roles, each
+with predefined access levels.
+
+For example:
 
 - GitHub uses a "maintainer" role for code repositories
 - Maintainers cannot delete repositories, limiting their power
@@ -9,7 +11,7 @@ with predefined access levels. For example:
 This guide explains how to automatically assign user roles when organizations add your app to their SaaS subscriptions
 via directory providers.
 
-## Group-Based Access Control (GBAC)
+## Group-Based Access Control
 
 Directory administrators manage users and groups within their organizations. GBAC allows them to control app access by
 assigning users to specific groups.
@@ -20,12 +22,12 @@ assigning users to specific groups.
 
 Administrators can easily grant or revoke app access by adding or removing users from groups.
 
-<figure>
+<figure className='width-50'>
   ![How Scalekit works](@site/docs/dir-sync/assets/automatically-assign-roles-1.png)
   <figcaption>Administrators map users to roles for streamlined app permissions.</figcaption>
 </figure>
 
-## **Implementing Roles in Your App**
+## Implementing Roles in Your App
 
 B2B SaaS applications often define roles such as _Member_, _Administrator_ or _Owner_
 
@@ -36,12 +38,12 @@ To enable automatic role assignment based on groups (in directory):
 3. Toggle "Group Based Role Assignment"
 4. Declare your app's roles
 
-<figure>
+<figure className='width-75'>
   ![How Scalekit works](@site/docs/dir-sync/assets/automatically-assign-roles-2.png)
   <figcaption>Adding roles in Scalekit dashboard.</figcaption>
 </figure>
 
-This setup allows administrators to map their directory provider groups to your app's roles using the Admin Portal.
+This setup allows administrators to map their directory provider groups to your app's roles using the Admin Portal. For more details on how they can do this see [Mapping User Attributes](docs/dir-sync/map-user-attributes.mdx).
 
 Scalekit uses these mappings to include role information in directory event payloads:
 

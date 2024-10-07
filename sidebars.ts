@@ -172,11 +172,6 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'doc',
-      label: 'What is Directory Sync?',
-      id: 'dir-sync/basics',
-    },
-    {
-      type: 'doc',
       label: 'Quickstart',
       id: 'dir-sync/quickstart',
     },
@@ -197,13 +192,13 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'doc',
-      label: 'Setup Directory Events',
+      label: 'Setup Webhooks',
       id: 'dir-sync/setup-directory-events',
     },
     {
       type: 'doc',
-      label: 'User Attributes in Sync',
-      id: 'dir-sync/user-attributes-in-sync',
+      label: 'Directory User Object',
+      id: 'dir-sync/directory-user-object',
     },
     {
       type: 'doc',
@@ -220,11 +215,11 @@ const sidebars: SidebarsConfig = {
       label: 'Admin Portal',
       id: 'dir-sync/admin-portal',
     },
-    {
-      type: 'doc',
-      label: 'Inspect Event Logs',
-      id: 'dir-sync/inspect-event-logs',
-    },
+    // {
+    //   type: 'doc',
+    //   label: 'Inspect Event Logs',
+    //   id: 'dir-sync/inspect-event-logs',
+    // },
     {
       type: 'doc',
       label: 'Map Custom Attributes',
@@ -234,6 +229,11 @@ const sidebars: SidebarsConfig = {
       type: 'html',
       value: "<span class='text--uppercase text--light sidenav-category-heading'>Guides</span>",
       defaultStyle: true,
+    },
+    {
+      type: 'doc',
+      label: 'What is Directory Sync?',
+      id: 'dir-sync/basics',
     },
     {
       type: 'doc',
@@ -252,7 +252,7 @@ const sidebars: SidebarsConfig = {
     // },
     {
       type: 'doc',
-      label: 'System for Cross-domain Identity Management (SCIM)',
+      label: 'The SCIM Protocol',
       id: 'dir-sync/scim/overview',
     },
     {
