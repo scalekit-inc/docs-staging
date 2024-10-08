@@ -178,7 +178,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'link',
       label: 'Sample Apps',
-      href: 'https://github.com/search?q=topic:examples+org:scalekit-inc+fork:true&type=repositories',
+      href: 'dir-sync/explore-sample-apps',
     },
     {
       type: 'doc',
@@ -215,15 +215,15 @@ const sidebars: SidebarsConfig = {
       label: 'Admin Portal',
       id: 'dir-sync/admin-portal',
     },
-    // {
-    //   type: 'doc',
-    //   label: 'Inspect Event Logs',
-    //   id: 'dir-sync/inspect-event-logs',
-    // },
     {
       type: 'doc',
-      label: 'Map Custom Attributes',
+      label: 'Attribute Mapping',
       id: 'dir-sync/map-user-attributes',
+    },
+    {
+      type: 'doc',
+      label: 'Customize Admin Portal',
+      id: 'dir-sync/domain-and-theme-customization',
     },
     {
       type: 'html',
