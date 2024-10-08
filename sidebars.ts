@@ -176,9 +176,9 @@ const sidebars: SidebarsConfig = {
       id: 'dir-sync/quickstart',
     },
     {
-      type: 'doc',
+      type: 'link',
       label: 'Sample Apps',
-      id: 'dir-sync/explore-sample-apps',
+      href: 'https://github.com/search?q=topic:examples+org:scalekit-inc+fork:true&type=repositories',
     },
     {
       type: 'doc',
