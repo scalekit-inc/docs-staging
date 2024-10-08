@@ -207,6 +207,12 @@ const config: Config = {
           to: '/sdks',
           label: 'SDKs',
           position: 'right',
+          items: [
+            {
+              label: 'Code Samples',
+              href: 'https://github.com/search?q=topic:examples+org:scalekit-inc+fork:true&type=repositories',
+            },
+          ],
         },
         {
           type: 'dropdown',
@@ -216,10 +222,6 @@ const config: Config = {
             {
               label: 'Integrations',
               href: '/integrations',
-            },
-            {
-              label: 'Blog',
-              href: 'https://www.scalekit.com/blog',
             },
             {
               type: 'doc',
