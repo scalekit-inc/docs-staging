@@ -196,7 +196,7 @@
 }
 
 :root {
-  font-size: 16px;
+  font-size: 14.4px;
 }
 
 .button--primary {
@@ -303,7 +303,7 @@ figure img {
 }
 
 .table-of-contents {
-  font-size: 14px;
+  font-size: 12px;
   line-height: 24px;
 }
 
@@ -473,6 +473,7 @@ figure img {
   line-height: 20px;
   color: var(--primary-graphite-300);
   padding: 8px 16px;
+  font-size: 13px;
 }
 .menu__link--active:not(.menu__link--sublist) {
   border-left: 2px solid var(--primary-purple-400);
@@ -636,7 +637,7 @@ p {
   color: var(--ifm-color-primary);
   margin: 0 0.5rem;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .navbar__link--active {
@@ -973,7 +974,7 @@ code {
 
 code,
 pre code {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 label:has(.persist_chkbox) {
