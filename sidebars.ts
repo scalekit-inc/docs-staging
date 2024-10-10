@@ -187,6 +187,11 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'html',
+      value: '<div />', // The link label
+      defaultStyle: true,
+    },
+    {
+      type: 'html',
       value: "<span class='text--uppercase text--light sidenav-category-heading'>Implementation</span>",
       defaultStyle: true,
     },
@@ -204,6 +209,11 @@ const sidebars: SidebarsConfig = {
       type: 'doc',
       label: 'Automated Role Assignment',
       id: 'dir-sync/automatically-assign-roles',
+    },
+    {
+      type: 'html',
+      value: '<div />', // The link label
+      defaultStyle: true,
     },
     {
       type: 'html',
@@ -227,6 +237,11 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'html',
+      value: '<div />', // The link label
+      defaultStyle: true,
+    },
+    {
+      type: 'html',
       value: "<span class='text--uppercase text--light sidenav-category-heading'>Guides</span>",
       defaultStyle: true,
     },
@@ -244,11 +259,6 @@ const sidebars: SidebarsConfig = {
       type: 'doc',
       label: 'The SCIM Protocol',
       id: 'dir-sync/scim/overview',
-    },
-    {
-      type: 'html',
-      value: '<div />', // The link label
-      defaultStyle: true,
     },
   ],
   integrationsSidebar: [
