@@ -192,9 +192,9 @@ const config: Config = {
               className: 'sso',
             },
             {
-              to: '/dir-sync/quickstart',
-              label: 'Directory Sync',
-              className: 'dir-sync',
+              to: '/scim/quickstart',
+              label: 'SCIM Provisioning',
+              className: 'scim',
             },
           ],
         },
