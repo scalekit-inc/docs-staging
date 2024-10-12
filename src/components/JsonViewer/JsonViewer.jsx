@@ -1,5 +1,6 @@
 import React from 'react';
 import { JsonEditor } from 'json-edit-react';
+import BrowserOnly from '@docusaurus/BrowserOnly';
 import './JsonViewer.css';
 
 const JsonViewer = ({ src }) => {
