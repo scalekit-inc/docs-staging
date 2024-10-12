@@ -176,9 +176,9 @@ const sidebars: SidebarsConfig = {
       id: 'scim/quickstart',
     },
     {
-      type: 'link',
+      type: 'doc',
       label: 'Sample Apps',
-      href: 'scim/explore-sample-apps',
+      id: 'scim/explore-sample-apps',
     },
     {
       type: 'doc',
