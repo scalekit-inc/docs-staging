@@ -8,15 +8,19 @@ const JsonViewer = ({ src }) => {
   }
 
   return (
-    <JsonEditor
-      data={src}
-      className="json-editor-viewer"
-      theme="default"
-      rootName=""
-      restrictEdit={true}
-      restrictAdd={true}
-      restrictDelete={true}
-    />
+    <BrowserOnly fallback={<div>Loading...</div>}>
+      {() => (
+        <JsonEditor
+          data={src}
+          className="json-editor-viewer"
+          theme="default"
+          rootName=""
+          restrictEdit={true}
+          restrictAdd={true}
+          restrictDelete={true}
+        />
+      )}
+    </BrowserOnly>
   );
 };
 
