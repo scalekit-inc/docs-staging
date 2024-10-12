@@ -1,13 +1,18 @@
 # Map User Attributes
 
-Custom attributes are admin-defined data properties that can tailor and enhance user experiences in your application.
-They allow you to personalize content, features, and functionalities based on specific user characteristics or
+Custom attributes are admin-defined data properties that can tailor and enhance
+user experiences in your application. They allow you to personalize content,
+features, and functionalities based on specific user characteristics or
 preferences.
 
-For example, if your <TermTip jargon="app" /> offers analytics dashboards, you can show relevant dashboards based on
-each employee's department. However, your customer's directory provider might label this attribute as <SimpleCode>employee_department</SimpleCode>, while your app expects <SimpleCode>department</SimpleCode> in the payload.
+For example, if your <TermTip jargon="app" /> offers analytics dashboards, you
+can show relevant dashboards based on each employee's department. However, your
+customer's directory provider might label this attribute as
+<SimpleCode>employee_department</SimpleCode>, while your app expects
+<SimpleCode>department</SimpleCode> in the payload.
 
-Scalekit solves this problem by letting customers map their attribute names to the ones your app expects.
+Scalekit solves this problem by letting customers map their attribute names to
+the ones your app expects.
 
 <figure className='width-50'>
   ![Custom attribute mapping workflow: Your App creates department attribute, customers map employee_department in Admin
@@ -18,7 +23,8 @@ Scalekit solves this problem by letting customers map their attribute names to t
   </figcaption>
 </figure>
 
-Before you start, ensure the <TermTip jargon="Directory Sync" /> module is enabled for your customers:
+Before you start, ensure the <TermTip jargon="Directory Sync" /> module is
+enabled for your customers:
 
 1. Select "Organizations" from the left sidebar
 2. Choose the organization
@@ -27,8 +33,9 @@ Before you start, ensure the <TermTip jargon="Directory Sync" /> module is enabl
 
 ## Enable Attribute Mapping
 
-Declare the attributes your B2B SaaS app expects in the Scalekit Dashboard. Scalekit will then collect these attributes
-from the customer's directory provider and send them to your app.
+Declare the attributes your B2B SaaS app expects in the Scalekit Dashboard.
+Scalekit will then collect these attributes from the customer's directory
+provider and send them to your app.
 
 1. In the Scalekit Dashboard, select "User Attributes" from the left sidebar
 2. Choose "Directory Sync" attributes
@@ -43,39 +50,30 @@ from the customer's directory provider and send them to your app.
   </figcaption>
 </figure>
 
-Once saved, this attribute will be available for your customers to map to their directory provider attributes.
+Once saved, this attribute will be available for your customers to map to their
+directory provider attributes.
 
 ## Map Custom Attributes
 
-After declaring the expected attributes in the Scalekit Dashboard, you or your customers can map them to the directory
-provider attributes.
+After declaring the expected attributes in the Scalekit Dashboard,your customers
+can map them to the directory provider attributes.
 
-### Option 1: Customer-mapped attributes
-
-- Share a link to the admin portal where customers can map attributes at their convenience
-- Pro Tip: Embed this portal in your B2B app for easy discovery and configuration
-
-<figure className='width-50'>
-  ![](@site/docs/dir-sync/assets/placeholder.png)
-  <figcaption>Placeholder</figcaption>
-</figure>
-
-### Option 2: Collect and map attributes yourself
-
-- Gather the custom attribute labels from customers through your usual communication channels
-- Map the attributes yourself for each organization
-
-<figure className='width-50'>
+<figure className='width-75'>
   ![](@site/docs/dir-sync/assets/map-user-attributes-4.png)
   <figcaption>Placeholder</figcaption>
 </figure>
 
+Refer to the [Admin Portal](./admin-portal.mdx) section to learn more about the
+Admin Portal and how to share a link to it with your customers.
+
 ## Verify Attribute Mapping
 
-After creating custom attributes and mapping them, verify that everything works as expected:
+After creating custom attributes and mapping them, verify that everything works
+as expected:
 
 1. Go to the "Events" tab in the Scalekit Dashboard
 2. Send a test event to confirm the new attributes are sent to your app
 
-By following these steps, you can ensure that your <TermTip jargon="B2B app" /> receives the custom attributes it needs
-to deliver personalized experiences to your customers' users.
+By following these steps, you can ensure that your <TermTip jargon="B2B app" />
+receives the custom attributes it needs to deliver personalized experiences to
+your customers' users.

@@ -1,18 +1,29 @@
 # Best Practices for Webhooks
 
-Webhooks are HTTP endpoints that you register with a system, allowing that system to inform your application about events by sending HTTP POST requests with event information in the body.
+Webhooks are HTTP endpoints that you register with a system, allowing that
+system to inform your application about events by sending HTTP POST requests
+with event information in the body.
 
-Developers register their applications' webhook endpoints with Scalekit to listen to events from the directory providers of their enterprise customers. Here are some common best practices developers follow to ensure their apps are secure and performant:
+Developers register their applications' webhook endpoints with Scalekit to
+listen to events from the directory providers of their enterprise customers.
+Here are some common best practices developers follow to ensure their apps are
+secure and performant:
 
 ## Subscribe to the Minimum Number of Events
 
-While you can listen to all events from Scalekit, it's best to subscribe only to the events your app needs. This approach has several benefits:
+While you can listen to all events from Scalekit, it's best to subscribe only to
+the events your app needs. This approach has several benefits:
+
 - Your app doesn't have to process every event
-- You can avoid overloading a single execution context by handling every event type
+- You can avoid overloading a single execution context by handling every event
+  type
 
 ## Verify Webhook Signatures
 
-Scalekit sends POST requests to your registered webhook endpoint. To ensure the request is coming from Scalekit and not a malicious actor, you should verify the request using the Signing Secret found in the Scalekit Dashboard > Webhook > _Any Endpoint_.
+Scalekit sends POST requests to your registered webhook endpoint. To ensure the
+request is coming from Scalekit and not a malicious actor, you should verify the
+request using the Signing Secret found in the Scalekit Dashboard > Webhook >
+_Any Endpoint_.
 
 Here's an example of how to verify webhooks using the Svix library:
 
@@ -22,15 +33,15 @@ Here's an example of how to verify webhooks using the Svix library:
 <TabItem label="Next.js" value="Next">
 
 ```javascript
-import { Webhook } from "svix";
+import { Webhook } from 'svix';
 
-const secret = "<WEBHOOK_SIGNING_SECRET>";
+const secret = '<WEBHOOK_SIGNING_SECRET>';
 
 // Grab the headers from the incoming POST Webhook Request
 const headers = {
-  "svix-id": "msg_p5jXN8AQM9LWM0D4loKWxJek",
-  "svix-timestamp": "1614265330",
-  "svix-signature": "v1,g0hM9SsE+OTPJTGt/tmIKtSyZlE3uFJELVlNIOLJ1OE=",
+  'svix-id': 'msg_p5jXN8AQM9LWM0D4loKWxJek',
+  'svix-timestamp': '1614265330',
+  'svix-signature': 'v1,g0hM9SsE+OTPJTGt/tmIKtSyZlE3uFJELVlNIOLJ1OE=',
 };
 
 const payload = '{"event": "directory_payload"}';
@@ -119,13 +130,17 @@ webhook.verify(payload, headers)
 
 :::note
 
-Scalekit uses Svix to deliver webhooks, so you can use the Svix library to automatically verify incoming webhooks. [Find instructions to install the Svix library](https://docs.svix.com/setup).
+Scalekit uses Svix to deliver webhooks, so you can use the Svix library to
+automatically verify incoming webhooks.
+[Find instructions to install the Svix library](https://docs.svix.com/setup).
 
 :::
 
 ## Check the Event Type Before Processing
 
-Make sure to check the event.type before consuming the data received by the webhook endpoint. This ensures that your application relies on accurate information, even if more events are added in the future.
+Make sure to check the event.type before consuming the data received by the
+webhook endpoint. This ensures that your application relies on accurate
+information, even if more events are added in the future.
 
 <CodeWithHeader title="">
 
@@ -153,13 +168,19 @@ export async function POST(req: NextRequest) {
 
 ## Redeliver Missed Events
 
-If your app experiences downtime and misses events sent by Scalekit, you can redeliver those events from the Scalekit Dashboard:
+If your app experiences downtime and misses events sent by Scalekit, you can
+redeliver those events from the Scalekit Dashboard:
+
 1. Navigate to Webhooks
 2. Click the three dots and select "Replay"
-3. Choose "Resent all failed message since" to resend all messages your app failed to acknowledge during its downtime
+3. Choose "Resent all failed message since" to resend all messages your app
+   failed to acknowledge during its downtime
 
 ## Avoid Webhook Timeouts
 
-To avoid unnecessary timeouts, respond to the webhook trigger with a response code of 201 and process the event asynchronously.
+To avoid unnecessary timeouts, respond to the webhook trigger with a response
+code of 201 and process the event asynchronously.
 
-By following these best practices, you can ensure that your application effectively handles events from Scalekit, maintaining optimal performance and security.
+By following these best practices, you can ensure that your application
+effectively handles events from Scalekit, maintaining optimal performance and
+security.
