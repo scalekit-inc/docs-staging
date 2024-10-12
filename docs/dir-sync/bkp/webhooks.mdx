@@ -23,8 +23,7 @@ ensure the authenticity and integrity of the incoming webhook.
 Every incoming webhook is signed with a secret key. This secret key is available
 in the Scalekit Dashboard under the "Webhooks" section.
 
-{/_ ![Webhook Signature Verification](/img/webhook-signature-verification.png)
-_/}
+
 
 A cryptographic hash is generated for the payload containing webhook id, webhook
 body and the timestamp with the webhook secret as a key using the HMAC-SHA256
@@ -70,7 +69,7 @@ timestamp and ensure that the webhook is within a tolerance window of 60
 seconds. Our SDKs and libraries provide helper functions to verify the webhook
 timestamp automatically as part of the webhook signature verification process.
 
-{/\* ## Directory Sync Webhooks
+ ## Directory Sync Webhooks
 
 Below are the list of Directory Sync webhooks that you can use to listen for
 changes in the directory and update the user's roles in your application.
