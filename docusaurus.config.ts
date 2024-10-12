@@ -225,7 +225,7 @@ const config: Config = {
             },
             {
               type: 'doc',
-              label: 'Term Explorer',
+              label: 'Glossary',
               docId: 'manage-scalekit/glossary',
             },
           ],
