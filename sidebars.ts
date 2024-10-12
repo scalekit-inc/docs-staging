@@ -164,7 +164,7 @@ const sidebars: SidebarsConfig = {
       id: 'sso/guides/key-concepts/manage-client-secrets',
     },
   ],
-  dirSyncSidebar: [
+  scimSidebar: [
     {
       type: 'html',
       value: "<span class='text--uppercase text--light sidenav-category-heading'>Getting Started</span>",
@@ -173,17 +173,17 @@ const sidebars: SidebarsConfig = {
     {
       type: 'doc',
       label: 'Quickstart',
-      id: 'dir-sync/quickstart',
+      id: 'scim/quickstart',
     },
     {
       type: 'link',
       label: 'Sample Apps',
-      href: 'dir-sync/explore-sample-apps',
+      href: 'scim/explore-sample-apps',
     },
     {
       type: 'doc',
       label: 'Launch Checklist',
-      id: 'dir-sync/checklist',
+      id: 'scim/checklist',
     },
     {
       type: 'html',
@@ -198,17 +198,17 @@ const sidebars: SidebarsConfig = {
     {
       type: 'doc',
       label: 'Setup Webhooks',
-      id: 'dir-sync/setup-directory-events',
+      id: 'scim/setup-directory-events',
     },
     {
       type: 'doc',
       label: 'Directory User Object',
-      id: 'dir-sync/directory-user-object',
+      id: 'scim/directory-user-object',
     },
     {
       type: 'doc',
       label: 'Automated Role Assignment',
-      id: 'dir-sync/automatically-assign-roles',
+      id: 'scim/automatically-assign-roles',
     },
     {
       type: 'html',
@@ -223,17 +223,17 @@ const sidebars: SidebarsConfig = {
     {
       type: 'doc',
       label: 'Admin Portal',
-      id: 'dir-sync/admin-portal',
+      id: 'scim/admin-portal',
     },
     {
       type: 'doc',
       label: 'Attribute Mapping',
-      id: 'dir-sync/map-user-attributes',
+      id: 'scim/map-user-attributes',
     },
     {
       type: 'doc',
       label: 'Customize Admin Portal',
-      id: 'dir-sync/domain-and-theme-customization',
+      id: 'scim/domain-and-theme-customization',
     },
     {
       type: 'html',
@@ -248,17 +248,17 @@ const sidebars: SidebarsConfig = {
     {
       type: 'doc',
       label: 'What is Directory Sync?',
-      id: 'dir-sync/basics',
+      id: 'scim/basics',
     },
     {
       type: 'doc',
       label: 'Webhooks',
-      id: 'dir-sync/webhooks',
+      id: 'scim/webhooks',
     },
     {
       type: 'doc',
       label: 'The SCIM Protocol',
-      id: 'dir-sync/scim/overview',
+      id: 'scim/scim-protocol',
     },
   ],
   integrationsSidebar: [
