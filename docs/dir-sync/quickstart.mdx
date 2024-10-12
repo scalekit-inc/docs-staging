@@ -1,11 +1,16 @@
-import InstallSDK from '@site/docs/sso/templates/_install-sdk.md';
+import InstallSDK from '@site/docs/sso/templates/\_install-sdk.md';
 
 # Quickstart
+
 <Subtitle>Automate User Provisioning and Deprovisioning</Subtitle>
 
-Enterprises need to automatically provision and de-provision employee access to applications to ensure security. Scalekit simplifies this process by providing a single interface to your app, abstracting the complexities of various directory providers.
+Enterprises need to automatically provision and de-provision employee access to
+applications to ensure security. Scalekit simplifies this process by providing a
+single interface to your app, abstracting the complexities of various directory
+providers.
 
 With Scalekit, you can:
+
 - Use **Webhooks** to listen to events from your customer's directory provider
 - Consume **REST APIs** to list users, groups, and directories on-demand
 
@@ -14,7 +19,9 @@ With Scalekit, you can:
 <figcaption></figcaption>
 </figure>
 
-Scalekit enables you to sync user accounts with the latest data in the directory provider. This allows you to:
+Scalekit enables you to sync user accounts with the latest data in the directory
+provider. This allows you to:
+
 - Create accounts for new hires during onboarding
 - Deactivate accounts when employees depart
 - Adjust access levels as employees change roles
@@ -23,7 +30,8 @@ Scalekit enables you to sync user accounts with the latest data in the directory
 
 ### 1. Create a Webhook Endpoint
 
-To receive realtime events from directory providers, create a webhook endpoint and register it in the Scalekit dashboard.
+To receive realtime events from directory providers, create a webhook endpoint
+and register it in the Scalekit dashboard.
 
 <Tabs groupId="tech-stack" queryString>
 <TabItem value="nodejs" label="Next.js">
@@ -58,33 +66,45 @@ export async function POST(req: NextRequest) {
 </TabItem>
 </Tabs>
 
-In this example, the endpoint URL is  <SimpleCode>https://<span></span>www<span></span>.hero-saas.<span></span>app/api/webhook/user-access</SimpleCode>
+In this example, the endpoint URL is
+<SimpleCode>https://<span></span>www<span></span>.hero-saas.<span></span>app/api/webhook/user-access</SimpleCode>
 
-When the endpoint receives an HTTP POST request with event data, it extracts the name and email from the payload and calls <SimpleCode>createUserAccount()</SimpleCode> to perform the necessary business logic — in this case, creating a user account.
+When the endpoint receives an HTTP POST request with event data, it extracts the
+name and email from the payload and calls
+<SimpleCode>createUserAccount()</SimpleCode> to perform the necessary business
+logic — in this case, creating a user account.
 
 ### 2. Register Webhook Endpoint
 
-First, navigate to the "Webhooks" tab in the Scalekit Dashboard. Click on the "+Add Endpoint" button and enter the endpoint URL along with a meaningful description. Finally, select the desired event types, such as <SimpleCode>scalekit.dir.user.*</SimpleCode>, to subscribe to the relevant events.
+First, navigate to the "Webhooks" tab in the Scalekit Dashboard. Click on the
+"+Add Endpoint" button and enter the endpoint URL along with a meaningful
+description. Finally, select the desired event types, such as
+<SimpleCode>scalekit.dir.user.\*</SimpleCode>, to subscribe to the relevant
+events.
 
 <figure className="width-75">
   ![](@site/docs/dir-sync/assets/2-quickstart-dir-sync.png)
 </figure>
 
+Refer to the [API reference](/apis#tag/Webhooks) for the list of all available
+event types.
 
-Refer to the [API reference](/apis#tag/Webhooks) for the list of all available event types.
-
-Click "Create." Once registered, the webhook endpoint will start receiving event payloads from the directory providers.
+Click "Create." Once registered, the webhook endpoint will start receiving event
+payloads from the directory providers.
 
 ### 3. Receive Event Payloads
 
-Scalekit sends event payloads to your app for consumption and standardizes the payload structure across different directory providers your customers may use. Since we subscribed to user events, let's log an example of a new hire gaining access to your app when Scalekit sends a user creation event.
+Scalekit sends event payloads to your app for consumption and standardizes the
+payload structure across different directory providers your customers may use.
+Since we subscribed to user events, let's log an example of a new hire gaining
+access to your app when Scalekit sends a user creation event.
 
 <Tabs groupId="tech-stack" queryString>
 <TabItem value="nextjs" label="Next.js">
 
 ```javascript showLineNumbers
 const event = await req.json();
-console.log(event)
+console.log(event);
 ```
 
 </TabItem>
@@ -93,16 +113,16 @@ console.log(event)
 
 ```javascript showLineNumbers
 const event = await req.json();
-console.log(event)
+console.log(event);
 ```
 
 </TabItem>
 </Tabs>
 
-Here is the response you receive from Scalekit when a new user is assigned access to your app:
+Here is the response you receive from Scalekit when a new user is assigned
+access to your app:
 
 <CodeWithHeader title="User Creation Event Payload">
-
 
 <JsonViewer src={{
   "data": {
@@ -145,7 +165,9 @@ Here is the response you receive from Scalekit when a new user is assigned acces
 
 </CodeWithHeader>
 
-You have successfully created a webhook endpoint in your app, registered it with Scalekit, and received event payloads to support your business use cases. Now, let's explore another approach where we use APIs instead of Webhooks!
+You have successfully created a webhook endpoint in your app, registered it with
+Scalekit, and received event payloads to support your business use cases. Now,
+let's explore another approach where we use APIs instead of Webhooks!
 
 ## On-Demand User Provisioning with REST APIs
 
