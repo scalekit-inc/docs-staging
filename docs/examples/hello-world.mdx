@@ -1,0 +1,56 @@
+---
+hide_table_of_contents: true
+---
+
+# Built-in TypeScript support
+
+<Subtitle>
+Deno natively understands TypeScript code with no compiler to configure. Start writing code in .ts files, and the runtime will work with them just fine.
+</Subtitle>
+
+<div className="row">
+<div className="col col--4">
+
+_lorem ipsum dolor sit amet_
+
+
+
+_lorem ipsum dolor sit amet_
+
+</div>
+
+
+<div className="col col--6">
+
+<CodeWithHeader>
+
+<Tabs>
+
+<TabItem value="ts">
+
+```ts
+
+interface Person {
+  name: string;
+  age: number;
+}
+function greet(person: Person) {
+  return "Hello, " + person.name + "!";
+}
+console.log(greet({ name: "Alice", age: 36 }));
+
+```
+
+</TabItem>
+
+</Tabs>
+
+
+</CodeWithHeader>
+
+</div>
+</div>
+
+### Additional Resources
+
+[IdP Simulator](docs/scim/admin-portal.mdx)
