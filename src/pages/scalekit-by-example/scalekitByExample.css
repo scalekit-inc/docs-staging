@@ -1,0 +1,24 @@
+.col-demo h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.col-demo ul {
+  list-style: none;
+  padding: 0;
+}
+
+.col-demo li {
+  margin-bottom: 5px;
+}
+
+.col-demo a {
+  text-decoration: none;
+  color: var(--ifm-link-color); /* Use brand color */
+  transition: color 0.3s;
+}
+
+.col-demo a:hover {
+  color: var(--ifm-link-hover-color); /* Use brand hover color */
+  text-decoration: underline;
+}
