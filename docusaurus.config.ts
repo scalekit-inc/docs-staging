@@ -209,8 +209,8 @@ const config: Config = {
           position: 'right',
           items: [
             {
-              label: 'Code Samples',
-              href: 'https://github.com/search?q=topic:examples+org:scalekit-inc+fork:true&type=repositories',
+              to: 'scalekit-by-example/scalekit-by-example',
+              label: 'Examples',
             },
           ],
         },
