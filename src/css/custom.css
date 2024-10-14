@@ -643,14 +643,14 @@ p {
 }
 
 .navbar__link {
-  color: var(--ifm-color-primary);
+  color: var(--primary-graphite-400);
   margin: 0 0.5rem;
   border-radius: 4px;
   font-size: 13px;
 }
 
 .navbar__link--active {
-  background-color: var(--ifm-menu-color-background-active);
+  background-color: var(--secondary-blue-light);
   font-weight: 600;
 }
 
@@ -887,7 +887,7 @@ ul.table-of-contents.table-of-contents__left-border:before {
   border: 1.1px solid;
   height: 32px;
   width: 30vw;
-  border-color: var(--scalekit-blue);
+  border-color: var(--primary-grey-300);
   font-family: var(--ifm-font-family-base);
 }
 
@@ -900,7 +900,7 @@ ul.table-of-contents.table-of-contents__left-border:before {
 .DocSearch.DocSearch-Button:hover {
   outline: 0;
   box-shadow: none;
-  border: 1.5px solid var(--scalekit-blue);
+  border: 1.5px solid var(--primary-grey-400);
   color: var(--docsearch-muted-color);
 }
 
@@ -1113,7 +1113,7 @@ svg {
   padding-left: 12px;
   padding-top: 4px;
   padding-bottom: 4px;
-  border: 1px solid var(--ifm-boundary-subtle-color);
+  border: 1px solid var(--primary-grey-300);
   border-radius: 5px;
   margin-right: 20px;
   margin-left: 20px;
