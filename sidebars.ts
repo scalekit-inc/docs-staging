@@ -354,6 +354,11 @@ const sidebars: SidebarsConfig = {
       id: 'integrations/onelogin-scim',
     },
     {
+      type: 'doc',
+      label: 'SCIM',
+      id: 'integrations/scim',
+    },
+    {
       type: 'html',
       value: '<div />', // The link label
       defaultStyle: true,
@@ -387,6 +392,11 @@ const sidebars: SidebarsConfig = {
       type: 'doc',
       label: 'Salesforce',
       id: 'integrations/salesforce-social',
+    },
+    {
+      type: 'doc',
+      label: 'LinkedIn',
+      id: 'integrations/linkedin-social',
     },
     {
       type: 'html',
