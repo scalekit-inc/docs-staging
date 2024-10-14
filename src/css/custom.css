@@ -789,6 +789,12 @@ ul.table-of-contents.table-of-contents__left-border:before {
   height: var(--ifm-navbar-height);
 }
 
+@media screen and (max-width: 1200px) {
+  .navbar__logo {
+    height: calc(var(--ifm-navbar-height) * 0.8); /* Adjust the multiplier as needed */
+  }
+}
+
 .alert a {
   color: inherit;
 }
