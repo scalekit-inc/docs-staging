@@ -6,6 +6,7 @@ import ListOrganizations from '@site/src/pages/apis/embeds/tag/Organization/get/
 import CreateOrganization from '@site/src/pages/apis/embeds/tag/Organization/post/api/v1/organizations.md';
 import GetOrganization from '@site/src/pages/apis/embeds/tag/Organization/get/api/v1/organizations/{id}.md';
 import UpdateOrganization from '@site/src/pages/apis/embeds/tag/Organization/patch/api/v1/organizations/{id}.md';
+import UpdateOrganizationSettings from '@site/src/pages/apis/embeds/tag/Organization/patch/api/v1/organizations/{id}/settings.md';
 import DeleteOrganization from '@site/src/pages/apis/embeds/tag/Organization/delete/api/v1/organizations/{id}.md';
 import OauthToken from '@site/src/pages/apis/embeds/tag/Authentication/post/oauth/token.md';
 import OauthAuthorize from '@site/src/pages/apis/embeds/tag/Authentication/get/oauth/authorize.md';
@@ -37,9 +38,7 @@ const endpointData = {
     return 'Description not available';
   },
   filename: (endpoint, method, tag) => {
-    return (
-      '@site/src/pages/apis/embeds/tag/' + tag + '/' + method + endpoint + '.md'
-    );
+    return '@site/src/pages/apis/embeds/tag/' + tag + '/' + method + endpoint + '.md';
   },
 };
 
@@ -60,9 +59,7 @@ export function APIEndpoint({ endpoint, method, tag }) {
         </div>
         <div className="col col--6">
           <div className="scalar-card-sticky">
-            <APIEndpointCodeSamples
-              filename={endpointData.filename(endpoint, method, tag)}
-            />
+            <APIEndpointCodeSamples filename={endpointData.filename(endpoint, method, tag)} />
           </div>
         </div>
       </div>
@@ -82,6 +79,8 @@ const APIEndpointCodeSamples = ({ filename }) => {
       return <DeleteOrganization />;
     case '@site/src/pages/apis/embeds/tag/Organization/patch/api/v1/organizations/{id}.md':
       return <UpdateOrganization />;
+    case '@site/src/pages/apis/embeds/tag/Organization/patch/api/v1/organizations/{id}/settings.md':
+      return <UpdateOrganizationSettings />;
     case '@site/src/pages/apis/embeds/tag/Authentication/post/oauth/token.md':
       return <OauthToken />;
     case '@site/src/pages/apis/embeds/tag/Authentication/get/oauth/authorize.md':

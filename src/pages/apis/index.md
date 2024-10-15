@@ -69,16 +69,17 @@ https://auth.yoursaas.com
 
 <div className="row section">
     <div className="col col--6">
-Scalekit API uses [OAuth2 Client Credentials](https://www.oauth.com/oauth2-servers/access-tokens/client-credentials) based authentication. You can view and manage the necessary information from your `API Config` section in the Scalekit Dashboard.
+      Scalekit API uses [OAuth2 Client Credentials](https://www.oauth.com/oauth2-servers/access-tokens/client-credentials) based authentication. You can view and manage the necessary information from your `API Config` section in the Scalekit Dashboard.
 
-You will need the following information to authenticate with Scalekit APIs
+      You will need the following information to authenticate with Scalekit APIs
 
-- Client ID
-- Client Secret
-- Environment URL
+      - Client ID
+      - Client Secret
+      - Environment URL
 
-You can obtain a secure token by making `POST` call to the `https://{ENV_URL}/oauth/token` endpoint and sending
-client_id and client_secret as part of the request body.
+      You can obtain a secure token by making <SimpleCode>POST</SimpleCode> call to the `https://<ENV_URL>/oauth/token`
+      endpoint and sending <SimpleCode>client_id</SimpleCode> and <SimpleCode>client_secret</SimpleCode> as part of the
+      request body.
 
 </div>
 <div className="col col--6">
