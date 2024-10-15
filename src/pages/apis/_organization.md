@@ -2,7 +2,7 @@
 
 <div className="row section">
     <div className="col col--6">
-        Organization represents a customer or a tenant of your application. Use this to create enterprise Single Sign-on connections or Admin Portal links for your customers.
+Organization represents a customer or a tenant of your application. Use this to create enterprise Single Sign-on connections or Admin Portal links for your customers.
     </div>
     <div className="col col--6">
         <Endpoints
@@ -19,7 +19,7 @@
 
 <div className="row section">
     <div className="col col--6">
-    <ul className="ApiReference-Parameters">
+<ul className="ApiReference-Parameters">
       <li className="ApiReference-Parameter header">Attributes</li>
       <Parameter
         attrKey="id"
@@ -66,36 +66,27 @@
     <div className="col col--6">
     <div className="scalar-card-sticky">
         <CodeWithHeader title="Organization Object">
-            <JsonViewer src={{
-              "organization": {
-                  "id": "org_4064931723483971",
-                  "create_time": "2024-10-07T10:14:37.250Z",
-                  "update_time": "2024-10-10T09:43:15.411873Z",
-                  "display_name": "Megasoft Inc",
-                  "region_code": "EU",
-                  "metadata": {},
-                  "settings": {
-                      "features": [
-                          {
-                              "name": "sso",
-                              "enabled": true
-                          },
-                          {
-                              "name": "dir_sync",
-                              "enabled": true
-                          }
-                      ]
-                  }
-              }
-            }} />
+
+```js
+{
+    "id": "org_2123312131125533",
+    "display_name": "Acme Corp",
+    "create_time": "2024-01-05T14:48:00.000Z",
+    "external_id": "my_unique_id",
+    "metadata": {
+      "someKey": "somevalue"
+    },
+    "region_code": "US",
+    "update_time": "…"
+}
+```
+
 </CodeWithHeader>
 </div>
+    </div>
 </div>
-</div>
-
 <APIEndpoint tag="Organization" method="get" endpoint="/api/v1/organizations" />
 <APIEndpoint tag="Organization" method="post" endpoint="/api/v1/organizations" />
 <APIEndpoint tag="Organization" method="get" endpoint="/api/v1/organizations/{id}" />
 <APIEndpoint tag="Organization" method="patch" endpoint="/api/v1/organizations/{id}" />
-<APIEndpoint tag="Organization" method="patch" endpoint="/api/v1/organizations/{id}/settings" />
 <APIEndpoint tag="Organization" method="delete" endpoint="/api/v1/organizations/{id}" />

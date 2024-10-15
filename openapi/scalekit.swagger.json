@@ -387,7 +387,7 @@
     "/api/v1/organizations/{organization_id}/directories": {
       "get": {
         "tags": ["Directory"],
-        "summary": "List Directories for an Organization",
+        "summary": "List Directories",
         "operationId": "DirectoryService_ListDirectories",
         "parameters": [
           {
