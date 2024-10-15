@@ -14,4 +14,113 @@
     </div>
 </div>
 
-<APIEndpoint tag="Directory" method="get" endpoint="/api/v1/organizations/{organization_id}/directories" />
+<IntersectingHeader
+    id="tag/Directory/object"
+    title="The Directory Object"
+    subheading="true"
+    classList="ApiCategoryList"
+ />
+
+<div className="row section">
+    <div className="col col--6">
+        Lorem ipsum
+    </div>
+    <div className="col col--6">
+       <div className="scalar-card-sticky">
+       <CodeWithHeader title="Directory Object">
+       <JsonViewer src={{
+                "directory": {
+                    "attribute_mappings": {
+                    "attributes": [
+                        {
+                        "key": "string",
+                        "map_to": "string"
+                        }
+                    ]
+                    },
+                    "directory_endpoint": "string",
+                    "directory_provider": "OKTA",
+                    "directory_type": "SCIM",
+                    "enabled": true,
+                    "id": "string",
+                    "last_synced_at": "2019-08-24T14:15:22Z",
+                    "mappings": [
+                    {
+                        "display_name": "string",
+                        "key": "string",
+                        "map_to": "string"
+                    }
+                    ],
+                    "name": "string",
+                    "organization_id": "string",
+                    "role_assignments": {
+                    "assignments": [
+                        {
+                        "group_id": "dirgroup_121312434123",
+                        "role_id": "role_12131243412331"
+                        }
+                    ]
+                    },
+                    "secrets": [
+                    {
+                        "create_time": "2019-08-24T14:15:22Z",
+                        "directory_id": "string",
+                        "expire_time": "2019-08-24T14:15:22Z",
+                        "id": "string",
+                        "last_used_time": "2019-08-24T14:15:22Z",
+                        "secret_suffix": "string",
+                        "status": "INACTIVE"
+                    }
+                    ],
+                    "source": "string",
+                    "stats": {
+                    "group_updated_at": "2019-08-24T14:15:22Z",
+                    "total_groups": 0,
+                    "total_users": 0,
+                    "user_updated_at": "2019-08-24T14:15:22Z"
+                    },
+                    "status": "DRAFT",
+                    "total_groups": 0,
+                    "total_users": 0
+                }
+            }} />
+       </CodeWithHeader>
+       </div>
+    </div>
+</div>
+
+<APIEndpoint
+    tag="Directory"
+    method="patch"
+    endpoint="/api/v1/organizations/{organization_id}/directories/{id}:disable"
+/>
+
+<APIEndpoint
+    tag="Directory"
+    method="patch"
+    endpoint="/api/v1/organizations/{organization_id}/directories/{id}:enable"
+/>
+
+<APIEndpoint
+    tag="Directory"
+    method="get"
+    endpoint="/api/v1/organizations/{organization_id}/directories"
+/>
+
+<APIEndpoint
+    tag="Directory"
+    method="get"
+    endpoint="/api/v1/organizations/{organization_id}/directories/{directory_id}/groups"
+/>
+
+<APIEndpoint
+    tag="Directory"
+    method="get"
+    endpoint="/api/v1/organizations/{organization_id}/directories/{directory_id}/users"
+/>
+
+<APIEndpoint
+    tag="Directory"
+    method="get"
+    endpoint="/api/v1/organizations/{organization_id}/directories/{id}"
+/>
