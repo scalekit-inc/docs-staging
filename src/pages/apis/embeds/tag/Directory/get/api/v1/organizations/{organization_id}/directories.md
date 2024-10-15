@@ -1,4 +1,4 @@
-<CodeWithHeader method="get" endpoint="/api/v1/organizations/{id}/portal_links">
+<CodeWithHeader method="get" endpoint="/api/v1/organizations/{organization_id}/directories">
 <Tabs groupId="tech-stack" querystring>
 <TabItem value="curl" label="cURL">
 
