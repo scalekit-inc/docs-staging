@@ -1,0 +1,17 @@
+<IntersectingHeader id="tag/Directory" title="Directory" />
+
+<div className="row section">
+     <div className="col col--6">
+     Lorem ipsum
+    </div>
+    <div className="col col--6">
+        <Endpoints tag="Directory"
+            excludeEndpoints={[
+                { method: "post", label: "/api/v1/organizations/{organization_id}/directories/{directory_id}/secrets" },
+                { method: "post", label: "/api/v1/organizations/{organization_id}/directories/{directory_id}/secrets:regenerate" },
+            ]}
+        />
+    </div>
+</div>
+
+<APIEndpoint tag="Directory" method="get" endpoint="/api/v1/organizations/{organization_id}/directories" />

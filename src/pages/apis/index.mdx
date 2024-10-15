@@ -3,11 +3,14 @@ hide_table_of_contents: true
 title: 'API Reference'
 ---
 
-import InstallSDK from '@site/docs/sso/templates/\_install-sdk.md'; import ConnectionTag from './\_connection.md';
-import AdminPortalTag from './\_adminPortal.md'; import OrganizationTag from './\_organization.md'; import WebhooksTag
-from './\_webhooks.mdx'; import SidebarWrapper from '@site/src/components/SidebarWrapper';
-
+import InstallSDK from '@site/docs/sso/templates/\_install-sdk.md';
+import ConnectionTag from './\_connection.md';
+import AdminPortalTag from './\_adminPortal.md';
+import OrganizationTag from './\_organization.md';
+import WebhooksTag from './\_webhooks.mdx';
+import SidebarWrapper from '@site/src/components/SidebarWrapper';
 import SidebarItems from '@site/src/components/SidebarItems';
+import DirectoryTag from './\_directory.mdx';
 
 <SidebarWrapper>
 <div className="custom_container">
@@ -244,6 +247,7 @@ recommend you to handle errors gracefully while writing code using our SDKs.
 </div>
 
 <!-- Single Sign-on Section -->
+
 <IntersectingHeader id="tag/Authentication" title="Single Sign-on"/>
 <div className="row section">
     <div className="col col--6">
@@ -261,19 +265,23 @@ More details about the Single Sign-on flow is described <Link href="/sso/quickst
 <APIEndpoint method="get" endpoint="/oauth/authorize" tag="Authentication" />
 <APIEndpoint method="post" endpoint="/oauth/token" tag="Authentication" />
 
-<!-- Organization Tag -->
+ {/* Organization Tag */}
 
 <OrganizationTag></OrganizationTag>
 
-<!-- Admin Portal Tag -->
+{/* <!-- Admin Portal Tag --> */}
 
 <AdminPortalTag></AdminPortalTag>
 
-<!-- Connections Tag -->
+{/* <!-- Connections Tag --> */}
 
 <ConnectionTag></ConnectionTag>
 
-<!-- Webhooks Tag -->
+{/* <!-- Directory Tag --> */}
+
+<DirectoryTag></DirectoryTag>
+
+{/* <!-- Webhooks Tag --> */}
 
 <WebhooksTag></WebhooksTag>
 
