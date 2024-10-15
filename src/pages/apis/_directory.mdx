@@ -28,7 +28,7 @@
     <div className="col col--6">
        <div className="scalar-card-sticky">
        <CodeWithHeader title="Directory Object">
-       <JsonViewer src={{
+            <JsonViewer src={{
                 "directory": {
                     "attribute_mappings": {
                     "attributes": [
@@ -110,6 +110,12 @@
 <APIEndpoint
     tag="Directory"
     method="get"
+    endpoint="/api/v1/organizations/{organization_id}/directories/{id}"
+/>
+
+<APIEndpoint
+    tag="Directory"
+    method="get"
     endpoint="/api/v1/organizations/{organization_id}/directories/{directory_id}/groups"
 />
 
@@ -117,10 +123,4 @@
     tag="Directory"
     method="get"
     endpoint="/api/v1/organizations/{organization_id}/directories/{directory_id}/users"
-/>
-
-<APIEndpoint
-    tag="Directory"
-    method="get"
-    endpoint="/api/v1/organizations/{organization_id}/directories/{id}"
 />
