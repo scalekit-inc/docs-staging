@@ -16,21 +16,25 @@ import DirectoryTag from './\_directory.mdx';
 <div className="custom_container">
 
 <aside>
-<div className="sidebar">
-<div className="sidebarContainer">
-<nav className="menu thin-scrollbar">
-<ul className="theme-doc-sidebar-menu menu__list">
-
-<SidebarItems></SidebarItems>
-
-</ul>
-</nav>
-</div>
-</div>
+  <div className="sidebar">
+    <div className="sidebarContainer">
+      <nav className="menu thin-scrollbar">
+        <ul className="theme-doc-sidebar-menu menu__list">
+          <SidebarItems></SidebarItems>
+        </ul>
+      </nav>
+    </div>
+  </div>
 </aside>
 
 <div className="theme-doc-markdown markdown">
-<IntersectingHeader id="introduction" title="Introduction" initialInView="true" classList="undefined"/>
+
+<IntersectingHeader
+    id="introduction"
+    title="Introduction"
+    initialInView="true"
+    classList="undefined"
+/>
 <div className="row section">
 <div className="col col--6">
 Scalekit API is modeled around the [REST](https://en.wikipedia.org/wiki/REST) architecture style. That means, our API has predictable resource-oriented URLs, accepts form-encoded request bodies and produces JSON formatted responses, uses standard HTTP verbs and error codes.
@@ -179,19 +183,18 @@ public class Main {
 
 <div className="row section">
     <div className="col col--6">
-The `access_token` is the OAuth access token you need to use for all subsequent API calls to Scalekit.
+      The `access_token` is the OAuth access token you need to use for all subsequent API calls to Scalekit.
 
-To make a request to one of our APIs, you need to include the access token in the Authorization header of the request as
-Bearer 'access_token'.
+      To make a request to one of our APIs, you need to include the access token in the Authorization header of the request as
+      Bearer 'access_token'.
 
-Please make sure that you keep your Client Secrets safely. Do not share your client secret in publicly accessible areas
-such as GitHub, client-side code, etc.
+      Please make sure that you keep your Client Secrets safely. Do not share your client secret in publicly accessible areas
+      such as GitHub, client-side code, etc.
 
-Our SDKs will automatically handle the API authentication and error handling to make the job of using our APIs much
-easier for you.
-
-</div>
-<div className="col col--6">
+      Our SDKs will automatically handle the API authentication and error handling to make the job of using our APIs much
+      easier for you.
+    </div>
+    <div className="col col--6">
 <CodeWithHeader title="Using Bearer Token">
 
 ```shell showLineNumbers
@@ -246,7 +249,7 @@ recommend you to handle errors gracefully while writing code using our SDKs.
 </div>
 </div>
 
-<!-- Single Sign-on Section -->
+{/* <!-- Single Sign-on Section --> */}
 
 <IntersectingHeader id="tag/Authentication" title="Single Sign-on"/>
 <div className="row section">

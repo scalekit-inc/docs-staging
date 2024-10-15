@@ -433,7 +433,7 @@
     "/api/v1/organizations/{organization_id}/directories/{directory_id}/groups": {
       "get": {
         "tags": ["Directory"],
-        "summary": "List Groups in Directory",
+        "summary": "List Groups",
         "operationId": "DirectoryService_ListDirectoryGroups",
         "parameters": [
           {
@@ -542,7 +542,7 @@
     "/api/v1/organizations/{organization_id}/directories/{directory_id}/users": {
       "get": {
         "tags": ["Directory"],
-        "summary": "List Users in Directory",
+        "summary": "List Users",
         "operationId": "DirectoryService_ListDirectoryUsers",
         "parameters": [
           {

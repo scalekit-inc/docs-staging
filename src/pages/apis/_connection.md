@@ -145,6 +145,27 @@
 </div>
 
 <APIEndpoint tag="Connection" method="get" endpoint="/api/v1/connections" />
-<APIEndpoint tag="Connection" method="get" endpoint="/api/v1/organizations/{organization_id}/connections/{id}" />
-<APIEndpoint tag="Connection" method="patch" endpoint="/api/v1/organizations/{organization_id}/connections/{id}:disable" />
-<APIEndpoint tag="Connection" method="patch" endpoint="/api/v1/organizations/{organization_id}/connections/{id}:enable" />
+
+<APIEndpoint
+    tag="Connection"
+    method="get"
+    endpoint="/api/v1/organizations/{organization_id}/connections/{id}"
+/>
+
+<APIEndpoint
+    tag="Connection"
+    method="patch"
+    endpoint="/api/v1/organizations/{organization_id}/connections/{id}:disable"
+/>
+
+<APIEndpoint
+    tag="Connection"
+    method="patch"
+    endpoint="/api/v1/organizations/{organization_id}/connections/{id}:enable"
+/>
+
+<APIEndpoint
+    tag="Connection"
+    method="patch"
+    endpoint="/api/v1/organizations/{organization_id}/connections/{id}:enable"
+/>
