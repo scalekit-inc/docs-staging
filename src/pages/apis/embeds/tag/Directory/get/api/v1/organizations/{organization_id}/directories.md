@@ -1,9 +1,9 @@
-<CodeWithHeader method="get" endpoint="/api/v1/organizations/{organization_id}/directories">
+<CodeWithHeader method="patch" endpoint="/api/v1/organizations/{organization_id}/connections/{id}:enable">
 <Tabs groupId="tech-stack" querystring>
 <TabItem value="curl" label="cURL">
 
 ```bash showLineNumbers
-curl --location 'https://$ENV_URL/api/v1/organizations/{id}/portal_links' \
+curl --location --request PATCH 'https://$ENV_URL/api/v1/organizations/{organization_id}/connections/{id}:enable' \
 --header 'Accept: application/json'
 ```
 
@@ -17,7 +17,7 @@ const sc = new ScalekitClient(
   <SCALEKIT_CLIENT_SECRET>
 );
 
-const links = sc.organization.getPortalLinks(organization_id);
+await sc.connection.enableConnection(organizationId, connectionId);
 ```
 
 </TabItem>
@@ -31,10 +31,10 @@ sc = ScalekitClient(
   <SCALEKIT_CLIENT_SECRET>
 )
 
-links = sc.organization.get_portal_links(
-  organization_id
+sc.connection.enable_connection(
+  organization_id,
+  connection_id,
 )
-
 ```
 
 </TabItem>
@@ -47,41 +47,37 @@ sc := scalekit.NewScalekitClient(
   <SCALEKIT_CLIENT_SECRET>
 )
 
-links, err := sc.Organization.GetPortalLinks(
+err := sc.Connection.EnableConnection(
   ctx,
-  organizationId
+  organizationId,
+  connectionId,
 )
-
 ```
 
 </TabItem>
 
 <TabItem value="java" label="Java">
 
-```java
+```java showLineNumbers
 ScalekitClient scalekitClient = new ScalekitClient(
   "<SCALEKIT_ENVIRONMENT_URL>",
   "<SCALEKIT_CLIENT_ID>",
   "<SCALEKIT_CLIENT_SECRET>"
 );
 
-Link response = scalekitClient.organizations().generatePortalLink(organizationId);
+ToggleConnectionResponse response = client.connections().enableConnection(connectionId, organizationId);
 
 ```
 
 </TabItem>
+
 </Tabs>
 </CodeWithHeader>
 <CodeWithHeader title="Response">
 
 <JsonViewer src={{
-  "links": [
-    {
-      "id": "lnk_123123123123123",
-      "location": "https://scalekit.com/portal/lnk_123123123123123",
-      "expire_time": "2024-02-06T14:48:00.000Z"
-    }
-  ]
+  "enabled": true,
+  "error_message": ""
 }} />
 
 </CodeWithHeader>
