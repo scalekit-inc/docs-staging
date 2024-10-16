@@ -3,7 +3,7 @@
 <TabItem value="curl" label="cURL">
 
 ```bash showLineNumbers
-curl --location --request PATCH 'https://$ENV_URL/api/v1/organizations/{organization_id}/connections/{id}:enable' \
+curl --location --request PATCH 'https://$ENV_URL/api/v1/organizations/{organization_id}/connections/{id}:enable'\
 --header 'Accept: application/json'
 ```
 

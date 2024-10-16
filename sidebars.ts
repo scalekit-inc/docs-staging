@@ -371,32 +371,32 @@ const sidebars: SidebarsConfig = {
     {
       type: 'doc',
       label: 'Google',
-      id: 'integrations/google-social',
+      id: 'integrations/social-connections/google',
     },
     {
       type: 'doc',
       label: 'Github',
-      id: 'integrations/github-social',
+      id: 'integrations/social-connections/github',
     },
     {
       type: 'doc',
       label: 'Gitlab',
-      id: 'integrations/gitlab-social',
+      id: 'integrations/social-connections/gitlab',
     },
     {
       type: 'doc',
       label: 'Microsoft',
-      id: 'integrations/microsoft-social',
+      id: 'integrations/social-connections/microsoft',
     },
     {
       type: 'doc',
       label: 'Salesforce',
-      id: 'integrations/salesforce-social',
+      id: 'integrations/social-connections/salesforce',
     },
     {
       type: 'doc',
       label: 'LinkedIn',
-      id: 'integrations/linkedin-social',
+      id: 'integrations/social-connections/linkedin',
     },
     {
       type: 'html',
