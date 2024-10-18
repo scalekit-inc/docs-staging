@@ -2,8 +2,9 @@
 
 <div className="row section">
      <div className="col col--6">
-     Lorem ipsum
-    </div>
+     The Directory object represents a connection to a <TermTip jargon="directory provider" />. You can programmatically enable or disable directories for an organization using the Directory API.
+Scalekit synchronizes and stores the users and groups from connected directories. The Directory API allows you to fetch users and groups from the directory on demand.
+        </div>
     <div className="col col--6">
         <Endpoints tag="Directory"
             excludeEndpoints={[
@@ -23,7 +24,263 @@
 
 <div className="row section">
     <div className="col col--6">
-        Lorem ipsum
+
+        <ul className="ApiReference-Parameters">
+        <li className="ApiReference-Parameter header">Attributes</li>
+
+        <Parameter
+            attrKey="id"
+            type="string"
+            description="Unique identifier for the directory."
+        />
+
+        <Parameter
+            attrKey="name"
+            type="string"
+            description="The name of the directory."
+        />
+
+        <Parameter
+            attrKey="directory_provider"
+            type="enum"
+            description="The directory provider.">
+            <details>
+            <summary>Possible values</summary>
+            <Parameter attrKey="OKTA" />
+            </details>
+        </Parameter>
+
+        <Parameter
+            attrKey="directory_type"
+            type="enum"
+            description="The protocol used to connect to the directory.">
+            <details>
+            <summary>Possible values</summary>
+            <Parameter attrKey="SCIM" />
+            </details>
+        </Parameter>
+
+        <Parameter
+            attrKey="directory_endpoint"
+            type="string"
+            description="The URL endpoint for connecting to the directory."
+        />
+
+        <Parameter
+            attrKey="enabled"
+            type="boolean"
+            description="Indicates if the directory connection is enabled."
+        />
+
+        <Parameter
+            attrKey="status"
+            type="enum"
+            description="The status of the directory connection.">
+            <details>
+            <summary>Possible values</summary>
+            <Parameter attrKey="DRAFT" />
+            </details>
+        </Parameter>
+
+        <Parameter
+            attrKey="organization_id"
+            type="string"
+            description="The ID of the organization the directory belongs to."
+        />
+
+        <Parameter
+            attrKey="source"
+            type="string"
+            description="The source of the directory."
+        />
+
+        <Parameter
+            attrKey="last_synced_at"
+            type="string"
+            description="Timestamp of when the directory was last synced in ISO 8601 format."
+        />
+
+        <Parameter
+            attrKey="total_users"
+            type="integer"
+            description="The total number of users in the directory."
+        />
+
+        <Parameter
+            attrKey="total_groups"
+            type="integer"
+            description="The total number of groups in the directory."
+        />
+
+        <Parameter
+            attrKey="mappings"
+            type="array"
+            description="An array of attribute mappings between the directory and Scalekit.">
+            <details>
+            <summary>Attributes</summary>
+            <ul className="ApiReference-Parameters">
+                <Parameter
+                attrKey="key"
+                type="string"
+                description="The attribute key in the directory."
+                />
+                <Parameter
+                attrKey="map_to"
+                type="string"
+                description="The attribute to map to in Scalekit."
+                />
+                <Parameter
+                attrKey="display_name"
+                type="string"
+                description="The display name for the mapped attribute."
+                />
+            </ul>
+            </details>
+        </Parameter>
+
+        <Parameter
+            attrKey="attribute_mappings"
+            type="object"
+            description="Object containing attribute mappings.">
+            <details>
+            <summary>Attributes</summary>
+            <ul className="ApiReference-Parameters">
+                <Parameter
+                attrKey="attributes"
+                type="array"
+                description="Array of attribute mappings.">
+                <details>
+                    <summary>Attributes</summary>
+                    <ul className="ApiReference-Parameters">
+                    <Parameter
+                        attrKey="key"
+                        type="string"
+                        description="The attribute key."
+                    />
+                    <Parameter
+                        attrKey="map_to"
+                        type="string"
+                        description="The attribute to map to."
+                    />
+                    </ul>
+                </details>
+                </Parameter>
+            </ul>
+            </details>
+        </Parameter>
+
+        <Parameter
+            attrKey="role_assignments"
+            type="object"
+            description="Object containing role assignments.">
+            <details>
+            <summary>Attributes</summary>
+            <ul className="ApiReference-Parameters">
+                <Parameter
+                attrKey="assignments"
+                type="array"
+                description="Array of role assignments.">
+                <details>
+                    <summary>Attributes</summary>
+                    <ul className="ApiReference-Parameters">
+                    <Parameter
+                        attrKey="group_id"
+                        type="string"
+                        description="The ID of the group to assign the role to."
+                    />
+                    <Parameter
+                        attrKey="role_id"
+                        type="string"
+                        description="The ID of the role to assign."
+                    />
+                    </ul>
+                </details>
+                </Parameter>
+            </ul>
+            </details>
+        </Parameter>
+
+        <Parameter
+            attrKey="secrets"
+            type="array"
+            description="An array of secrets associated with the directory.">
+            <details>
+            <summary>Attributes</summary>
+            <ul className="ApiReference-Parameters">
+                <Parameter
+                attrKey="id"
+                type="string"
+                description="The ID of the secret."
+                />
+                <Parameter
+                attrKey="directory_id"
+                type="string"
+                description="The ID of the directory the secret belongs to."
+                />
+                <Parameter
+                attrKey="secret_suffix"
+                type="string"
+                description="The suffix of the secret."
+                />
+                <Parameter
+                attrKey="status"
+                type="enum"
+                description="The status of the secret.">
+                <details>
+                    <summary>Possible values</summary>
+                    <Parameter attrKey="INACTIVE" />
+                </details>
+                </Parameter>
+                <Parameter
+                attrKey="create_time"
+                type="string"
+                description="Timestamp of when the secret was created in ISO 8601 format."
+                />
+                <Parameter
+                attrKey="expire_time"
+                type="string"
+                description="Timestamp of when the secret expires in ISO 8601 format."
+                />
+                <Parameter
+                attrKey="last_used_time"
+                type="string"
+                description="Timestamp of when the secret was last used in ISO 8601 format."
+                />
+            </ul>
+            </details>
+        </Parameter>
+
+        <Parameter
+            attrKey="stats"
+            type="object"
+            description="Object containing directory statistics.">
+            <details>
+            <summary>Attributes</summary>
+            <ul className="ApiReference-Parameters">
+                <Parameter
+                attrKey="total_users"
+                type="integer"
+                description="The total number of users in the directory."
+                />
+                <Parameter
+                attrKey="total_groups"
+                type="integer"
+                description="The total number of groups in the directory."
+                />
+                <Parameter
+                attrKey="user_updated_at"
+                type="string"
+                description="Timestamp of when the user stats were last updated in ISO 8601 format."
+                />
+                <Parameter
+                attrKey="group_updated_at"
+                type="string"
+                description="Timestamp of when the group stats were last updated in ISO 8601 format."
+                />
+            </ul>
+            </details>
+        </Parameter>
+        </ul>
     </div>
     <div className="col col--6">
        <div className="scalar-card-sticky">
