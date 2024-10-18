@@ -21,13 +21,13 @@
   "paths": {
     "/.well-known/openid-configurations": {
       "get": {
-        "description": "Returns the OpenID Connect configuration values from the provider's Well-Known Configuration Endpoint, per the specification (https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationRequest). \n\nSample Response below.\n```\n{\n  \"issuer\": \"https://rexinc.scalekit.com\",\n  \"authorization_endpoint\": \"https://rexinc.scalekit.com/oauth/authorize\",\n  \"token_endpoint\": \"https://rexinc.scalekit.com/oauth/token\",\n  \"introspection_endpoint\": \"https://rexinc.scalekit.com/oauth/introspect\",\n  \"userinfo_endpoint\": \"https://rexinc.scalekit.com/userinfo\",\n  \"revocation_endpoint\": \"https://rexinc.scalekit.com/revoke\",\n  \"end_session_endpoint\": \"https://rexinc.scalekit.com/end_session\",\n  \"jwks_uri\": \"https://rexinc.scalekit.com/keys\",\n  \"scopes_supported\": [\n    \"openid\",\n    \"profile\",\n    \"offline_access\"\n  ],\n  \"response_types_supported\": [\n    \"code\"\n  ],\n  \"response_modes_supported\": [\n    \"query\"\n  ],\n  \"grant_types_supported\": [\n    \"authorization_code\",\n    \"client_credentials\",\n    \"refresh_token\"\n  ],\n  \"subject_types_supported\": [\n    \"public\"\n  ],\n  \"id_token_signing_alg_values_supported\": [\n    \"RS256\"\n  ],\n  \"request_object_signing_alg_values_supported\": [\n    \"RS256\"\n  ],\n  \"token_endpoint_auth_methods_supported\": [\n    \"none\",\n    \"client_secret_basic\",\n    \"client_secret_post\",\n    \"private_key_jwt\"\n  ],\n  \"token_endpoint_auth_signing_alg_values_supported\": [\n    \"RS256\"\n  ],\n  \"revocation_endpoint_auth_methods_supported\": [\n    \"none\",\n    \"client_secret_basic\",\n    \"client_secret_post\",\n    \"private_key_jwt\"\n  ],\n  \"revocation_endpoint_auth_signing_alg_values_supported\": [\n    \"RS256\"\n  ],\n  \"introspection_endpoint_auth_methods_supported\": [\n    \"client_secret_basic\",\n    \"private_key_jwt\"\n  ],\n  \"introspection_endpoint_auth_signing_alg_values_supported\": [\n    \"RS256\"\n  ],\n  \"claims_supported\": [\n    \"sub\",\n    \"aud\",\n    \"exp\",\n    \"iat\",\n    \"iss\",\n    \"auth_time\",\n    \"nonce\",\n    \"acr\",\n    \"amr\",\n    \"c_hash\",\n    \"at_hash\",\n    \"act\",\n    \"scopes\",\n    \"client_id\",\n    \"azp\",\n    \"preferred_username\",\n    \"name\",\n    \"family_name\",\n    \"given_name\",\n    \"locale\",\n    \"email\",\n    \"email_verified\",\n    \"phone_number\",\n    \"phone_number_verified\"\n  ],\n  \"code_challenge_methods_supported\": [\n    \"S256\"\n  ],\n  \"ui_locales_supported\": [\n    \"en\"\n  ],\n  \"request_parameter_supported\": true,\n  \"request_uri_parameter_supported\": false\n}\n\n```",
+        "description": "Retrieve the OpenID Connect configuration values from the provider's Well-Known Configuration Endpoint. This endpoint adheres to the OpenID Connect Discovery specification, providing essential metadata for OpenID Connect clients.",
         "tags": ["OpenID Metadata"],
-        "summary": "OpenID Provider metadata URL",
+        "summary": "Fetch OpenID Provider Metadata",
         "operationId": "OpenID_WellKnownEndpoint",
         "responses": {
           "200": {
-            "description": "Success . Please refer to the OpenID Provider Metadata properties here ( https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata )",
+            "description": "Successful retrieval of OpenID Provider Metadata. Refer to the OpenID Provider Metadata properties for detailed information.",
             "schema": {}
           }
         }
@@ -35,20 +35,20 @@
     },
     "/api/v1/connections": {
       "get": {
-        "description": "Get a filtered list of connections",
+        "description": "Retrieve a list of connections filtered by the specified query parameters. This endpoint allows you to filter connections based on organization ID or email domain.",
         "tags": ["Connection"],
-        "summary": "List Connections",
+        "summary": "Retrieve Filtered Connections List",
         "operationId": "ConnectionService_ListConnections",
         "parameters": [
           {
             "type": "string",
-            "description": "Organization ID for the Connection",
+            "description": "The ID of the organization associated with the connection.",
             "name": "organization_id",
             "in": "query"
           },
           {
             "type": "string",
-            "description": "Email domain associated with this connection. If domain is not empty it would return connections that are available to email domain by matching the organization associated to the domain",
+            "description": "The email domain associated with the connection. Returns connections available to the specified email domain.",
             "name": "domain",
             "in": "query"
           },
@@ -60,7 +60,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Successfully retrieved the list of connections.",
             "schema": {
               "$ref": "#/definitions/connectionsListConnectionsResponse"
             }
@@ -70,15 +70,15 @@
     },
     "/api/v1/organizations": {
       "get": {
-        "description": "List all Organizations in the Environment. The results are paginated. The response contains page_token that can be used to access the next page of results.",
+        "description": "Retrieve a paginated list of all organizations within the environment. Use the page_token from the response to access subsequent pages of results.",
         "tags": ["Organization"],
-        "summary": "List Organizations",
+        "summary": "List All Organizations",
         "operationId": "OrganizationService_ListOrganization",
         "parameters": [
           {
             "type": "integer",
             "format": "int64",
-            "description": "Number of results to be returned. Max supported page_size is 30",
+            "description": "The maximum number of results to return. The maximum supported page size is 30.",
             "name": "page_size",
             "in": "query",
             "required": true
@@ -91,7 +91,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Successfully retrieved the list of organizations.",
             "schema": {
               "$ref": "#/definitions/organizationsListOrganizationsResponse"
             }
@@ -99,25 +99,24 @@
         }
       },
       "post": {
-        "description": "Creates an Organization. An Organization represents a tenant in the your application",
+        "description": "Create a new organization, representing a tenant in your application. Provide the necessary organization details in the request body.",
         "tags": ["Organization"],
-        "summary": "Create Organization",
+        "summary": "Create a New Organization",
         "operationId": "OrganizationService_CreateOrganization",
         "parameters": [
           {
-            "description": "Organization details",
+            "description": "Details of the organization to be created.",
             "name": "organization",
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Organization details",
               "$ref": "#/definitions/v1organizationsCreateOrganization"
             }
           }
         ],
         "responses": {
           "201": {
-            "description": "Created Successfully",
+            "description": "Organization created successfully.",
             "schema": {
               "$ref": "#/definitions/organizationsCreateOrganizationResponse"
             }
@@ -128,26 +127,26 @@
     "/api/v1/organizations/{id}": {
       "get": {
         "tags": ["Organization"],
-        "summary": "Get Organization",
+        "summary": "Retrieve Organization Details",
         "operationId": "OrganizationService_GetOrganization",
         "parameters": [
           {
             "type": "string",
-            "description": "Id of the Org",
+            "description": "The unique identifier of the organization.",
             "name": "id",
             "in": "path",
             "required": true
           },
           {
             "type": "string",
-            "description": "External Id of the Org",
+            "description": "The external identifier of the organization.",
             "name": "external_id",
             "in": "query"
           }
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Successfully retrieved the organization details.",
             "schema": {
               "$ref": "#/definitions/organizationsGetOrganizationResponse"
             }
@@ -156,38 +155,38 @@
       },
       "delete": {
         "tags": ["Organization"],
-        "summary": "Delete Organization",
+        "summary": "Delete an Organization",
         "operationId": "OrganizationService_DeleteOrganization",
         "parameters": [
           {
             "type": "string",
-            "description": "Id of the Org to update",
+            "description": "The unique identifier of the organization to be deleted.",
             "name": "id",
             "in": "path",
             "required": true
           },
           {
             "type": "string",
-            "description": "External Id of the Org to update",
+            "description": "The external identifier of the organization to be deleted.",
             "name": "external_id",
             "in": "query"
           }
         ],
         "responses": {
           "200": {
-            "description": "Deleted Successfully",
+            "description": "Organization deleted successfully.",
             "schema": {}
           }
         }
       },
       "patch": {
         "tags": ["Organization"],
-        "summary": "Update Organization",
+        "summary": "Update Organization Details",
         "operationId": "OrganizationService_UpdateOrganization",
         "parameters": [
           {
             "type": "string",
-            "description": "Id of the Org to update",
+            "description": "The unique identifier of the organization to be updated.",
             "name": "id",
             "in": "path",
             "required": true
@@ -197,20 +196,19 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Organization Parameters to be updated",
               "$ref": "#/definitions/v1organizationsUpdateOrganization"
             }
           },
           {
             "type": "string",
-            "description": "External Id of the Org to update",
+            "description": "The external identifier of the organization to be updated.",
             "name": "external_id",
             "in": "query"
           }
         ],
         "responses": {
           "200": {
-            "description": "Updated Successfully",
+            "description": "Organization updated successfully.",
             "schema": {
               "$ref": "#/definitions/organizationsUpdateOrganizationResponse"
             }
@@ -220,14 +218,14 @@
     },
     "/api/v1/organizations/{id}/portal_links": {
       "put": {
-        "description": "Generates a Admin Portal link. The Admin Portal will be used by the IT Admins to create and manage the SSO connection in their Org. The link generated via API will be valid for 1 week.",
+        "description": "Generate an Admin Portal link for IT Admins to create and manage SSO connections within their organization. The generated link is valid for one week.",
         "tags": ["Admin Portal"],
-        "summary": "Generate Portal link",
+        "summary": "Generate Admin Portal Link",
         "operationId": "OrganizationService_GeneratePortalLink",
         "parameters": [
           {
             "type": "string",
-            "description": "Organization ID",
+            "description": "The unique identifier of the organization.",
             "name": "id",
             "in": "path",
             "required": true
@@ -245,7 +243,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Create Admin Portal Link",
+            "description": "Admin Portal link generated successfully.",
             "schema": {
               "$ref": "#/definitions/organizationsGeneratePortalLinkResponse"
             }
@@ -255,22 +253,20 @@
     },
     "/api/v1/organizations/{id}/settings": {
       "patch": {
-        "description": "Update the settings of the Organization. The settings include the SSO settings, Directory sync settings etc.",
+        "description": "Update the settings of an organization, including SSO and directory sync settings.",
         "tags": ["Organization"],
         "summary": "Update Organization Settings",
         "operationId": "OrganizationService_UpdateOrganizationSettings",
         "parameters": [
           {
             "type": "string",
-            "description": "Organization ID",
+            "description": "The unique identifier of the organization.",
             "name": "id",
             "in": "path",
             "required": true
           },
           {
-            "name": "features",
-            "type": "array of objects",
-            "description": "Features to be updated for an Organization",
+            "name": "settings",
             "in": "body",
             "required": true,
             "schema": {
@@ -280,7 +276,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Updated Successfully",
+            "description": "Organization settings updated successfully.",
             "schema": {
               "$ref": "#/definitions/organizationsGetOrganizationResponse"
             }
@@ -290,21 +286,21 @@
     },
     "/api/v1/organizations/{organization_id}/connections/{id}": {
       "get": {
-        "description": "Get Connection details",
+        "description": "Retrieve details of a specific connection within an organization.",
         "tags": ["Connection"],
-        "summary": "Get Connection",
+        "summary": "Get Connection Details",
         "operationId": "ConnectionService_GetConnection",
         "parameters": [
           {
             "type": "string",
-            "description": "Organization ID for the Connection.",
+            "description": "The unique identifier of the organization.",
             "name": "organization_id",
             "in": "path",
             "required": true
           },
           {
             "type": "string",
-            "description": "Connection ID. Unique ID for the connection",
+            "description": "The unique identifier of the connection.",
             "name": "id",
             "in": "path",
             "required": true
@@ -312,7 +308,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Successfully retrieved connection details.",
             "schema": {
               "$ref": "#/definitions/connectionsGetConnectionResponse"
             }
@@ -322,21 +318,21 @@
     },
     "/api/v1/organizations/{organization_id}/connections/{id}:disable": {
       "patch": {
-        "description": "Disable a SSO Connection",
+        "description": "Disable a specific SSO connection within an organization.",
         "tags": ["Connection"],
-        "summary": "Disable a Connection for an Organization",
+        "summary": "Disable SSO Connection",
         "operationId": "ConnectionService_DisableConnection",
         "parameters": [
           {
             "type": "string",
-            "description": "Organization ID for the Connection.",
+            "description": "The unique identifier of the organization.",
             "name": "organization_id",
             "in": "path",
             "required": true
           },
           {
             "type": "string",
-            "description": "Connection ID. Unique ID for the connection",
+            "description": "The unique identifier of the connection.",
             "name": "id",
             "in": "path",
             "required": true
@@ -344,7 +340,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "SSO connection disabled successfully.",
             "schema": {
               "$ref": "#/definitions/connectionsToggleConnectionResponse"
             }
@@ -354,21 +350,21 @@
     },
     "/api/v1/organizations/{organization_id}/connections/{id}:enable": {
       "patch": {
-        "description": "Enable a SSO Connection",
+        "description": "Enable a specific SSO connection within an organization.",
         "tags": ["Connection"],
-        "summary": "Enable a Connection for an Organization",
+        "summary": "Enable SSO Connection",
         "operationId": "ConnectionService_EnableConnection",
         "parameters": [
           {
             "type": "string",
-            "description": "Organization ID for the Connection.",
+            "description": "The unique identifier of the organization.",
             "name": "organization_id",
             "in": "path",
             "required": true
           },
           {
             "type": "string",
-            "description": "Connection ID. Unique ID for the connection",
+            "description": "The unique identifier of the connection.",
             "name": "id",
             "in": "path",
             "required": true
@@ -376,7 +372,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "SSO connection enabled successfully.",
             "schema": {
               "$ref": "#/definitions/connectionsToggleConnectionResponse"
             }
@@ -387,7 +383,7 @@
     "/api/v1/organizations/{organization_id}/directories": {
       "get": {
         "tags": ["Directory"],
-        "summary": "List Directories",
+        "summary": "List Directories for an Organization",
         "operationId": "DirectoryService_ListDirectories",
         "parameters": [
           {
@@ -399,7 +395,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Successfully retrieved the list of directories.",
             "schema": {
               "$ref": "#/definitions/directoriesListDirectoriesResponse"
             }
@@ -412,7 +408,7 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Organization ID",
+            "description": "The unique identifier of the organization.",
             "name": "organization_id",
             "in": "path",
             "required": true
@@ -422,7 +418,6 @@
             "in": "body",
             "required": true,
             "schema": {
-              "description": "Directory Details",
               "$ref": "#/definitions/v1directoriesCreateDirectory"
             }
           }
@@ -433,7 +428,7 @@
     "/api/v1/organizations/{organization_id}/directories/{directory_id}/groups": {
       "get": {
         "tags": ["Directory"],
-        "summary": "List Groups",
+        "summary": "List Groups in a Directory",
         "operationId": "DirectoryService_ListDirectoryGroups",
         "parameters": [
           {
@@ -473,7 +468,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Successfully retrieved the list of groups in the directory.",
             "schema": {
               "$ref": "#/definitions/directoriesListDirectoryGroupsResponse"
             }
@@ -484,7 +479,7 @@
     "/api/v1/organizations/{organization_id}/directories/{directory_id}/secrets": {
       "post": {
         "tags": ["Directory"],
-        "summary": "Create Secret for a Directory",
+        "summary": "Create a Secret for a Directory",
         "operationId": "DirectoryService_CreateDirectorySecret",
         "parameters": [
           {
@@ -502,7 +497,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Secret created successfully for the directory.",
             "schema": {
               "$ref": "#/definitions/directoriesCreateDirectorySecretResponse"
             }
@@ -513,7 +508,7 @@
     "/api/v1/organizations/{organization_id}/directories/{directory_id}/secrets:regenerate": {
       "post": {
         "tags": ["Directory"],
-        "summary": "Regenerate Secret for a Directory",
+        "summary": "Regenerate a Secret for a Directory",
         "operationId": "DirectoryService_RegenerateDirectorySecret",
         "parameters": [
           {
@@ -531,7 +526,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Secret regenerated successfully for the directory.",
             "schema": {
               "$ref": "#/definitions/directoriesRegenerateDirectorySecretResponse"
             }
@@ -542,7 +537,7 @@
     "/api/v1/organizations/{organization_id}/directories/{directory_id}/users": {
       "get": {
         "tags": ["Directory"],
-        "summary": "List Users",
+        "summary": "List Users in a Directory",
         "operationId": "DirectoryService_ListDirectoryUsers",
         "parameters": [
           {
@@ -587,7 +582,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Successfully retrieved the list of users in the directory.",
             "schema": {
               "$ref": "#/definitions/directoriesListDirectoryUsersResponse"
             }
@@ -598,19 +593,19 @@
     "/api/v1/organizations/{organization_id}/directories/{id}": {
       "get": {
         "tags": ["Directory"],
-        "summary": "Get Directory",
+        "summary": "Retrieve Directory Details",
         "operationId": "DirectoryService_GetDirectory",
         "parameters": [
           {
             "type": "string",
-            "description": "Organization ID",
+            "description": "The unique identifier of the organization.",
             "name": "organization_id",
             "in": "path",
             "required": true
           },
           {
             "type": "string",
-            "description": "ID of the Directory",
+            "description": "The unique identifier of the directory.",
             "name": "id",
             "in": "path",
             "required": true
@@ -618,7 +613,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Successfully retrieved directory details.",
             "schema": {
               "$ref": "#/definitions/directoriesGetDirectoryResponse"
             }
@@ -719,14 +714,14 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Organization ID for the Connection.",
+            "description": "The unique identifier of the organization.",
             "name": "organization_id",
             "in": "path",
             "required": true
           },
           {
             "type": "string",
-            "description": "Directory ID. Unique ID for the directory",
+            "description": "The unique identifier of the directory.",
             "name": "id",
             "in": "path",
             "required": true
@@ -734,7 +729,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Directory disabled successfully.",
             "schema": {
               "$ref": "#/definitions/directoriesToggleDirectoryResponse"
             }
@@ -750,14 +745,14 @@
         "parameters": [
           {
             "type": "string",
-            "description": "Organization ID for the Connection.",
+            "description": "The unique identifier of the organization.",
             "name": "organization_id",
             "in": "path",
             "required": true
           },
           {
             "type": "string",
-            "description": "Directory ID. Unique ID for the directory",
+            "description": "The unique identifier of the directory.",
             "name": "id",
             "in": "path",
             "required": true
@@ -765,7 +760,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Directory enabled successfully.",
             "schema": {
               "$ref": "#/definitions/directoriesToggleDirectoryResponse"
             }
@@ -775,21 +770,21 @@
     },
     "/api/v1/organizations:search": {
       "get": {
-        "description": "List all Organizations in the Environment with given query. The query can be any one of name, organizationID or externalID, if more than one organization matches the query string multiple results are returned. The response contains page_token that can be used to access the next page of results.",
+        "description": "Search for organizations within the environment using a query string. The query can match the name, organization ID, or external ID. If multiple organizations match, multiple results are returned. Use the page_token from the response to access subsequent pages of results.",
         "tags": ["Organization"],
-        "summary": "Search Organizations",
+        "summary": "Search for Organizations",
         "operationId": "OrganizationService_SearchOrganization",
         "parameters": [
           {
             "type": "string",
-            "description": "query to search for. The search is case insensitive. minimum length should be 3",
+            "description": "The query string to search for. The search is case-insensitive and requires a minimum length of 3 characters.",
             "name": "query",
             "in": "query"
           },
           {
             "type": "integer",
             "format": "int64",
-            "description": "Number of results to be returned. Max supported page_size is 30",
+            "description": "The maximum number of results to return. The maximum supported page size is 30.",
             "name": "page_size",
             "in": "query"
           },
@@ -801,7 +796,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Successfully retrieved the search results for organizations.",
             "schema": {
               "$ref": "#/definitions/organizationsSearchOrganizationsResponse"
             }
@@ -811,13 +806,13 @@
     },
     "/api/v1/providers": {
       "get": {
-        "description": "Get a list of Connection Providers",
+        "description": "Retrieve a list of available connection providers.",
         "tags": ["Connection"],
-        "summary": "Get Connection Providers",
+        "summary": "List Connection Providers",
         "operationId": "ConnectionService_GetProviders",
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Successfully retrieved the list of connection providers.",
             "schema": {
               "$ref": "#/definitions/connectionsGetProvidersResponse"
             }
@@ -827,15 +822,15 @@
     },
     "/oauth/authorize": {
       "get": {
-        "description": "Authorization URL initiates the Login flow with Scalekit.\n\nScalekit expects atleast one of the following parameters to be present. The parameters are used to determine the SSO connection used to Login in the user. \n\n`domain` - Email domain of the user. Domain should be mapped to an Organization. The SSO connection from the org would be used to login to the app.\n\n`connection_id` - ID of the SSO connection. If the Connection's status is `active`, the user will be redirected to the SSO Connection's identity provider configured.\n\n`organization_id` -  ID of Organization. The user will be redirected to the SSO connection's identity provider configured for that organization.\n\n`provider` -  ID of SSO Provider, Incase of Social Logins . e.g `google`",
+        "description": "Initiate the login flow with Scalekit using the authorization URL. At least one of the following parameters must be present: domain, connection_id, organization_id, or provider. These parameters determine the SSO connection used for user login.",
         "tags": ["Authentication"],
-        "summary": "Authorization URL",
+        "summary": "Initiate Authorization Flow",
         "operationId": "OAuth_AuthorizeEndpoint",
         "parameters": [
           {
             "type": "string",
             "example": "code",
-            "description": "The client ID string that you obtain from the API Credentials page",
+            "description": "The client ID obtained from the API Credentials page.",
             "name": "client_id",
             "in": "query",
             "required": true
@@ -844,7 +839,7 @@
             "type": "string",
             "format": "uri",
             "example": "https://mysaasapp.com/redirect_uri",
-            "description": "Determines where the response is sent. The value of this parameter must exactly match one of the authorized redirect values that you set in the API Credentials page (including the HTTP or HTTPS scheme, case, and trailing '/', if any).",
+            "description": "The URI where the response is sent. Must match one of the authorized redirect URIs set in the API Credentials page.",
             "name": "redirect_uri",
             "in": "query",
             "required": true
@@ -853,28 +848,28 @@
             "type": "string",
             "format": "hostname",
             "example": "acmecorp.com",
-            "description": "Domain part of the email address that is mapped to an organization. Example. yourcustomer.com",
+            "description": "The domain part of the email address mapped to an organization.",
             "name": "domain",
             "in": "query"
           },
           {
             "type": "string",
             "example": "conn_16796494564719556",
-            "description": "Connection ID for which the SSO flow must be initiated for. If the Connection's status is `active`, the user will be redirected to the SSO Connection's identity provider configured",
+            "description": "The connection ID for initiating the SSO flow.",
             "name": "connection_id",
             "in": "query"
           },
           {
             "type": "string",
             "example": "org_16796494564719556",
-            "description": "Organization ID for which the SSO flow must be initiated for. Based on the organization ID supplied, the user will be redirected to the SSO connection's identity provider configured for that organization.",
+            "description": "The organization ID for initiating the SSO flow.",
             "name": "organization_id",
             "in": "query"
           },
           {
             "type": "string",
             "example": "github",
-            "description": "Key for the Social SSO Provider. This is common to all Organizations. e.g. `google`, `github`, `linkedin`, `gitlab`, `microsoft`, `salesforce`",
+            "description": "The key for the social SSO provider, e.g., google, github.",
             "name": "provider",
             "in": "query"
           },
@@ -882,7 +877,7 @@
             "enum": ["code"],
             "type": "string",
             "example": "code",
-            "description": "Value must be `code`",
+            "description": "Must be set to 'code'.",
             "name": "response_type",
             "in": "query",
             "required": true
@@ -890,7 +885,7 @@
           {
             "type": "string",
             "example": "openid email profile",
-            "description": "Value must be `openid email profile`",
+            "description": "Must be set to 'openid email profile'.",
             "name": "scope",
             "in": "query",
             "required": true
@@ -898,14 +893,14 @@
           {
             "type": "string",
             "example": "S256",
-            "description": "An opaque string that is round-tripped in the protocol; that is to say, it is returned back as-is as a URI parameter in the Basic flow. The state can be useful for correlating requests and responses. Because your redirect_uri can be guessed, using a state value can increase your assurance that an incoming connection is the result of an authentication request initiated by your app.\n\nState will be useful if you would like to retain some information about the user that you would like to use at the end of the login flow. E.g. deep link URL in your product to redirect the user to after a successful login.\n\nIf you generate a random string or encode the hash of some client state (e.g., a cookie) in this state variable, you can validate the response to additionally ensure that the request and response originated in the same browser. This additional validation offers protection against attacks such as cross-site request forgery.",
+            "description": "An opaque string for correlating requests and responses.",
             "name": "state",
             "in": "query"
           },
           {
             "type": "string",
             "example": "code",
-            "description": "A random value generated by your app that enables replay protection.",
+            "description": "A random value for replay protection.",
             "name": "nonce",
             "in": "query"
           },
@@ -913,14 +908,14 @@
             "type": "string",
             "format": "email",
             "example": "johndoe@acmecorp.com",
-            "description": "When your app knows the email address of the user it is trying to authenticate, it can provide this parameter as a hint to the authentication server and Scalekit will pass this information to your customer's identity provider. Some identity providers prefill the login box with this value to make the login experience easier for the end user.",
+            "description": "Email address hint for the authentication server.",
             "name": "login_hint",
             "in": "query"
           },
           {
             "type": "string",
             "example": "a_rand_txt_34533",
-            "description": "A challenge code generated from `code_verifier` that is required for PKCE flows. This is used ensure if the request was handled by the right parties. The string is stored by Scalekit to be used when validating the token request with a `code_verifier`.  A code_challenge is generated as follows `code_challenge = SHA256(code_verifier)` .",
+            "description": "Challenge code for PKCE flows.",
             "name": "code_challenge",
             "in": "query"
           },
@@ -928,14 +923,14 @@
             "enum": ["plain", "S256"],
             "type": "string",
             "example": "S256",
-            "description": "The algorithm used to process the code challenge. The value should be `S256`",
+            "description": "Algorithm for processing the code challenge.",
             "name": "code_challenge_method",
             "in": "query"
           }
         ],
         "responses": {
           "302": {
-            "description": "Success",
+            "description": "Redirected successfully to the identity provider.",
             "schema": {}
           }
         }
@@ -943,55 +938,55 @@
     },
     "/oauth/token": {
       "post": {
-        "description": "The code provided to the Redirect URI. Code can be exchanged for a ID Token containing the user details using the Token URL.",
+        "description": "Exchange the authorization code for an ID token containing user details. This endpoint validates the code and returns the ID token.",
         "tags": ["Authentication"],
-        "summary": "Token URL",
+        "summary": "Exchange Authorization Code for Token",
         "operationId": "OAuth_TokenEndpoint",
         "parameters": [
           {
             "type": "string",
-            "description": "The code received by the Redirect URI as part of the Authentication Response.",
+            "description": "The authorization code received by the redirect URI.",
             "name": "code",
             "in": "body",
             "required": true
           },
           {
             "type": "string",
-            "description": "The redirect URI where this code was received. This will used to validate the code to make the code was infact generated for this redirect_uri.",
+            "description": "The redirect URI where the code was received.",
             "name": "redirect_uri",
             "in": "body",
             "required": true
           },
           {
             "type": "string",
-            "description": "Unique client ID that represents your application.",
+            "description": "The unique client ID representing your application.",
             "name": "client_id",
             "in": "body",
             "required": true
           },
           {
             "type": "string",
-            "description": "The client secret to authorize the client.",
+            "description": "The client secret for authorizing the client.",
             "name": "client_secret",
             "in": "body",
             "required": true
           },
           {
             "type": "string",
-            "description": "Grant Type must be `authorization_code`.",
+            "description": "Must be set to 'authorization_code'.",
             "name": "grant_type",
             "in": "body"
           },
           {
             "type": "string",
-            "description": "Used in PKCE flow, code_verifier is derived from the `code_challenge` presented at the Authorization Endpoint",
+            "description": "Code verifier for PKCE flow.",
             "name": "code_verifier",
             "in": "body"
           }
         ],
         "responses": {
           "200": {
-            "description": "Code validated Successfuly",
+            "description": "Authorization code validated successfully, and token issued.",
             "schema": {
               "$ref": "#/definitions/oauthTokenResponse"
             }
