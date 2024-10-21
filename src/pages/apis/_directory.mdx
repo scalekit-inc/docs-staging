@@ -349,25 +349,20 @@ Scalekit synchronizes and stores the users and groups from connected directories
 <APIEndpoint
     tag="Directory"
     method="patch"
-    endpoint="/api/v1/organizations/{organization_id}/directories/{id}:disable"
-/>
-
-<APIEndpoint
-    tag="Directory"
-    method="patch"
     endpoint="/api/v1/organizations/{organization_id}/directories/{id}:enable"
 />
 
-<APIEndpoint
-    tag="Directory"
-    method="get"
-    endpoint="/api/v1/organizations/{organization_id}/directories"
-/>
 
 <APIEndpoint
     tag="Directory"
     method="get"
     endpoint="/api/v1/organizations/{organization_id}/directories/{id}"
+/>
+
+<APIEndpoint
+    tag="Directory"
+    method="get"
+    endpoint="/api/v1/organizations/{organization_id}/directories/{directory_id}/users"
 />
 
 <APIEndpoint
@@ -379,5 +374,11 @@ Scalekit synchronizes and stores the users and groups from connected directories
 <APIEndpoint
     tag="Directory"
     method="get"
-    endpoint="/api/v1/organizations/{organization_id}/directories/{directory_id}/users"
+    endpoint="/api/v1/organizations/{organization_id}/directories"
+/>
+
+<APIEndpoint
+    tag="Directory"
+    method="patch"
+    endpoint="/api/v1/organizations/{organization_id}/directories/{id}:disable"
 />
