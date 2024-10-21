@@ -34,9 +34,7 @@ export default function Endpoints({ tag, excludeEndpoints = [] }) {
     <div className="scalar-card scalar-card-sticky">
       <div className="scalar-card-content scalar-card--muted scalar-card-header">
         <div className="scalar-card-header-slots">
-          <div className="scalar-card-header-slot scalar-card-header-title">
-            Endpoints
-          </div>
+          <div className="scalar-card-header-slot scalar-card-header-title">Endpoints</div>
           <div className="scalar-card-header-slot scalar-card-header-actions"></div>
         </div>
       </div>
@@ -46,18 +44,11 @@ export default function Endpoints({ tag, excludeEndpoints = [] }) {
             .filter(
               endpoint =>
                 !excludeEndpoints.some(
-                  exclude =>
-                    exclude.method === endpoint.method &&
-                    exclude.label === endpoint.label,
+                  exclude => exclude.method === endpoint.method && exclude.label === endpoint.label,
                 ),
             )
             .map(endpoint => (
-              <Endpoint
-                key={endpoint.href}
-                href={endpoint.href}
-                method={endpoint.method}
-                label={endpoint.label}
-              />
+              <Endpoint key={endpoint.href} href={endpoint.href} method={endpoint.method} label={endpoint.label} />
             ))}
         </div>
       </div>

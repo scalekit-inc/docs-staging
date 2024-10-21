@@ -1240,6 +1240,7 @@ svg {
   overflow: hidden;
   text-overflow: ellipsis;
   text-transform: uppercase;
+  font-size: 12px;
 }
 
 .scalar-card-header-title span {
@@ -1251,24 +1252,28 @@ svg {
 .endpoint span.get {
   color: var(--scalar-color-blue);
   text-transform: uppercase;
+  font-size: 12px;
 }
 
 .scalar-card-header-title span.method.post,
 .endpoint span.post {
   color: var(--scalar-color-green);
   text-transform: uppercase;
+  font-size: 12px;
 }
 
 .scalar-card-header-title span.method.delete,
 .endpoint span.delete {
   text-transform: uppercase;
   color: var(--scalar-color-red);
+  font-size: 12px;
 }
 
 .scalar-card-header-title span.method.patch,
 .endpoint span.patch {
   text-transform: uppercase;
   color: var(--scalar-color-yellow);
+  font-size: 12px;
 }
 
 .scalar-card-header-title span.method.put,
@@ -1320,7 +1325,7 @@ svg {
   cursor: pointer;
   display: inline-block;
   font-family: var(--ifm-font-family-monospace);
-  font-size: var(--scalar-small);
+  font-size: 12px;
   line-height: 1.55;
   min-width: 62px;
   text-align: right;
