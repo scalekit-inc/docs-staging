@@ -1,10 +1,10 @@
-<CodeWithHeader method="patch" endpoint="/api/v1/organizations/{organization_id}/connections/{id}:enable">
+<CodeWithHeader method="patch" endpoint="/api/v1/organizations/{organization_id}/directories/{id}:disable">
 <Tabs groupId="tech-stack" querystring>
 <TabItem value="curl" label="cURL">
 
 ```bash showLineNumbers
-curl --location --request PATCH 'https://$ENV_URL/api/v1/organizations/{organization_id}/connections/{id}:enable'\
---header 'Accept: application/json'
+curl --location --request PATCH 'https://<SCALEKIT_ENVIRONMENT_URL>/api/v1/organizations/<organization_id>/directories/<directory_id>:disable' \
+--header 'Authorization: Bearer <SCALEKIT_ACCESS_TOKEN>'
 ```
 
 </TabItem>
