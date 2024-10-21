@@ -24,8 +24,14 @@ import DisableConnection from '@site/src/pages/apis/embeds/tag/Connection/patch/
 import EnableConnection from '@site/src/pages/apis/embeds/tag/Connection/patch/api/v1/organizations/{organization_id}/connections/{id}:enable.md';
 
 import ListDirectories from '@site/src/pages/apis/embeds/tag/Directory/get/api/v1/organizations/{organization_id}/directories.md';
+import ListGroups from '@site/src/pages/apis/embeds/tag/Directory/get/api/v1/organizations/{organization_id}/directories/{directory_id}/groups.md';
+import ListUsers from '@site/src/pages/apis/embeds/tag/Directory/get/api/v1/organizations/{organization_id}/directories/{directory_id}/users.md';
+import GetDirectory from '@site/src/pages/apis/embeds/tag/Directory/get/api/v1/organizations/{organization_id}/directories/{id}.md';
+import DisableDirectory from '@site/src/pages/apis/embeds/tag/Directory/patch/api/v1/organizations/{organization_id}/directories/{id}:disable.md';
+import EnableDirectory from '@site/src/pages/apis/embeds/tag/Directory/patch/api/v1/organizations/{organization_id}/directories/{id}:enable.md';
 
 const data = require('../../openapi/scalekit.swagger.json');
+
 const endpointData = {
   summary: (endpoint, method) => {
     if (data['paths'][endpoint]) {
@@ -108,6 +114,16 @@ const APIEndpointCodeSamples = ({ filename }) => {
       return <GetConnection />;
     case '@site/src/pages/apis/embeds/tag/Directory/get/api/v1/organizations/{organization_id}/directories.md':
       return <ListDirectories />;
+    case '@site/src/pages/apis/embeds/tag/Directory/get/api/v1/organizations/{organization_id}/directories/{directory_id}/groups.md':
+      return <ListGroups />;
+    case '@site/src/pages/apis/embeds/tag/Directory/get/api/v1/organizations/{organization_id}/directories/{directory_id}/users.md':
+      return <ListUsers />;
+    case '@site/src/pages/apis/embeds/tag/Directory/get/api/v1/organizations/{organization_id}/directories/{id}.md':
+      return <GetDirectory />;
+    case '@site/src/pages/apis/embeds/tag/Directory/patch/api/v1/organizations/{organization_id}/directories/{id}:disable.md':
+      return <DisableDirectory />;
+    case '@site/src/pages/apis/embeds/tag/Directory/patch/api/v1/organizations/{organization_id}/directories/{id}:enable.md':
+      return <EnableDirectory />;
     default:
       return <></>;
   }
