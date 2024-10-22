@@ -95,12 +95,11 @@ https://auth.yoursaas.com
 <TabItem value="curl" label="cURL">
 
 ```bash showLineNumbers
-$ curl https://{ENV_URL}/oauth/token \
-  -X POST \
-  -H 'Content-Type: application/x-www-form-urlencoded' \
-  -d 'client_id={client_id}' \
-  -d 'client_secret={client_secret}' \
-  -d 'grant_type=client_credentials'\
+curl -L 'https://<ENV_URL>/oauth/token' \
+     -H 'Content-Type: application/x-www-form-urlencoded' \
+     -d 'client_id=skc_<client_id>' \
+     -d 'client_secret=test_<client_secret>' \
+     -d 'grant_type=client_credentials'
 ```
 
 </TabItem>
