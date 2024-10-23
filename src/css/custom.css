@@ -1016,6 +1016,7 @@ code {
 code,
 pre code {
   font-size: 12px;
+  word-wrap: anywhere;
 }
 
 label:has(.persist_chkbox) {
