@@ -520,7 +520,7 @@ figure img {
 article,
 nav.pagination-nav,
 .feedbackFooter {
-  padding: 0 7%;
+  padding: 0 5%;
 }
 
 .pagination-nav__link {
@@ -649,6 +649,12 @@ p {
   font-size: 13px;
 }
 
+.navbar__secondary .navbar__link--active {
+  background: none;
+  border-radius: 0;
+  border-bottom: 2px solid var(--ifm-color-primary);
+}
+
 .navbar__link--active {
   background-color: var(--secondary-blue-light);
   font-weight: 600;
@@ -686,7 +692,13 @@ a.dropdown__link:has(span.product-dropdown-label):hover {
   :root {
     --ifm-font-size-base: 16px;
   }
+  aside.theme-doc-sidebar-container {
+    border-right: none !important;
+  }
 
+  .table-of-contents {
+    border: none !important;
+  }
   article h1 {
     font-size: 2rem !important;
   }
@@ -782,6 +794,14 @@ ul.table-of-contents.table-of-contents__left-border:before {
 
 .navbar {
   padding: 0 var(--ifm-navbar-padding-horizontal);
+  height: 100%;
+}
+
+.navbar:has(.navbar__secondary) {
+  display: block;
+}
+.navbar:has(.navbar__secondary) ~ .main-wrapper {
+  --ifm-navbar-height: 7rem;
 }
 
 .navbar__logo {

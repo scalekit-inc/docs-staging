@@ -178,41 +178,36 @@ const config: Config = {
       },
       items: [
         {
-          type: 'dropdown',
-          position: 'left',
-          label: 'Product',
-          items: [
-            {
-              html: '<span class="product-dropdown-label">Choose a product</span>',
-              to: '#',
-            },
-            {
-              to: '/sso/quickstart',
-              label: 'Single Sign-on',
-              className: 'sso',
-            },
-            {
-              to: '/scim/quickstart',
-              label: 'SCIM Provisioning',
-              className: 'scim',
-            },
-          ],
+          to: '/',
+          label: 'Home',
+          className: 'homeLink',
+          secondary: true,
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'ssoSidebar',
+          label: 'Single Sign-on',
+          className: 'sso',
+          secondary: true,
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'scimSidebar',
+          label: 'SCIM Provisioning',
+          className: 'scim',
+          secondary: true,
         },
         {
           to: '/apis',
           label: 'API Reference',
           position: 'right',
+          secondary: true,
         },
         {
           to: '/sdks',
           label: 'SDKs',
           position: 'right',
-          items: [
-            {
-              to: 'scalekit-by-example/scalekit-by-example',
-              label: 'Examples',
-            },
-          ],
+          secondary: true,
         },
         {
           type: 'dropdown',
@@ -227,6 +222,10 @@ const config: Config = {
               type: 'doc',
               label: 'Glossary',
               docId: 'manage-scalekit/glossary',
+            },
+            {
+              to: 'scalekit-by-example/scalekit-by-example',
+              label: 'Examples',
             },
           ],
         },
