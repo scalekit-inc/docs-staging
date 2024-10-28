@@ -96,7 +96,7 @@ const sidebars: SidebarsConfig = {
       label: 'Customize User Attributes',
       id: 'sso/guides/setup-sso/customize-user-attributes',
     },
-      {
+    {
       type: 'doc',
       label: 'Test SSO with Okta',
       id: 'sso/guides/test-your-integration/using-okta',
@@ -237,6 +237,52 @@ const sidebars: SidebarsConfig = {
       type: 'doc',
       label: 'Firebase',
       id: 'integrations/firebase',
+    },
+    {
+      type: 'html',
+      value: '<div />', // The link label
+      defaultStyle: true,
+    },
+    {
+      type: 'html',
+      value:
+        "<span class='text--uppercase text--light sidenav-category-heading'>Social Connectors</span>",
+      defaultStyle: true,
+    },
+    {
+      type: 'doc',
+      label: 'Google',
+      id: 'integrations/social-connections/google',
+    },
+    {
+      type: 'doc',
+      label: 'Github',
+      id: 'integrations/social-connections/github',
+    },
+    {
+      type: 'doc',
+      label: 'Gitlab',
+      id: 'integrations/social-connections/gitlab',
+    },
+    {
+      type: 'doc',
+      label: 'Microsoft',
+      id: 'integrations/social-connections/microsoft',
+    },
+    {
+      type: 'doc',
+      label: 'Salesforce',
+      id: 'integrations/social-connections/salesforce',
+    },
+    {
+      type: 'doc',
+      label: 'LinkedIn',
+      id: 'integrations/social-connections/linkedin',
+    },
+    {
+      type: 'html',
+      value: '<div />', // The link label
+      defaultStyle: true,
     },
   ],
   guidesSidebar: [
