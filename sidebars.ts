@@ -243,7 +243,6 @@ const sidebars: SidebarsConfig = {
       value: '<div />', // The link label
       defaultStyle: true,
     },
-
     {
       type: 'html',
       value:
