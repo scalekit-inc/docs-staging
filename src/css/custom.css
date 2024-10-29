@@ -771,6 +771,7 @@ ul.table-of-contents.table-of-contents__left-border:before {
   color: var(--docsearch-text-color);
 }
 
+/*default hide all the elements other than the content*/
 .theme-doc-sidebar-container,
 nav.navbar,
 nav.pagination-nav,
@@ -779,21 +780,26 @@ footer,
 .feedbackFooter {
   display: none !important;
 }
+/*show necessary elements when not inside an iframe*/
+html[data-inside-iframe='false'] {
+  nav.pagination-nav {
+    display: grid !important;
+  }
 
-html[data-inside-iframe='false'] nav.pagination-nav {
-  display: grid !important;
+  .theme-doc-sidebar-container,
+  nav.navbar,
+  footer,
+  .feedbackFooter {
+    display: block !important;
+  }
 }
-
-/*hide unnecessary elements when inside an iframe*/
-html[data-inside-iframe='false'] .theme-doc-sidebar-container,
-html[data-inside-iframe='false'] nav.navbar,
-html[data-inside-iframe='false'] footer,
-html[data-inside-iframe='false'] .feedbackFooter {
-  display: block !important;
-}
-
-html[data-inside-iframe='true'] main {
-  max-width: 100%;
+html[data-inside-iframe='true'] {
+  main {
+    max-width: 100%;
+  }
+  article {
+    padding: 0;
+  }
 }
 
 html {
