@@ -781,25 +781,21 @@ footer,
   display: none !important;
 }
 /*show necessary elements when not inside an iframe*/
-html[data-inside-iframe='false'] {
-  nav.pagination-nav {
-    display: grid !important;
-  }
-
-  .theme-doc-sidebar-container,
-  nav.navbar,
-  footer,
-  .feedbackFooter {
-    display: block !important;
-  }
+html[data-inside-iframe='false'] nav.pagination-nav {
+  display: grid !important;
 }
-html[data-inside-iframe='true'] {
-  main {
-    max-width: 100%;
-  }
-  article {
-    padding: 0;
-  }
+html[data-inside-iframe='false'] .theme-doc-sidebar-container,
+html[data-inside-iframe='false'] nav.navbar,
+html[data-inside-iframe='false'] footer,
+html[data-inside-iframe='false'] .feedbackFooter {
+  display: block !important;
+}
+
+html[data-inside-iframe='true'] main {
+  max-width: 100%;
+}
+html[data-inside-iframe='true'] article {
+  padding: 0;
 }
 
 html {
