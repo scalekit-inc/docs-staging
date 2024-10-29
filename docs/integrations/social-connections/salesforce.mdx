@@ -1,6 +1,8 @@
 # Salesforce as Your Sign In Option
 
-<Subtitle>Easily add Salesforce Sign In to your app with Scalekit</Subtitle>
+<Subtitle>
+  Easily add Salesforce Sign In to your app with Scalekit
+</Subtitle>
 
 ## Overview
 
@@ -9,11 +11,9 @@ through the process of setting up the connection between Scalekit and Salesforce
 "Sign in with Salesforce" to your application.
 
 <figure>
-  ![Overview Diagram](@site/docs/sso/assets/single-sign-on/quickstart/scalekit_social.png)
-  <figcaption>
-    A diagram showing "Your Application" connecting to "Scalekit" via OpenID Connect, which links to Salesforce using
-    OAuth 2.0.
-  </figcaption>
+  ![Overview
+  Diagram](@site/docs/sso/assets/single-sign-on/quickstart/scalekit_social.png)
+  <figcaption>A diagram showing "Your Application" connecting to "Scalekit" via OpenID Connect, which links to Salesforce using OAuth 2.0.</figcaption>
 </figure>
 
 By the end of this guide, you will be able to:
@@ -28,7 +28,8 @@ By the end of this guide, you will be able to:
 Open your Scalekit dashboard and navigate to Social Login under the Authentication section.
 
 <figure>
-  ![Scalekit dashboard showcasing social login setup with various platform integration
+  ![Scalekit dashboard showcasing social login setup with various
+  platform integration
   options.](@site/docs/sso/assets/integrations/google-social/1-navigate-to-social-logins.png)
   <figcaption>Scalekit dashboard showcasing social login setup with various platform integration options.</figcaption>
 </figure>
@@ -38,7 +39,8 @@ Open your Scalekit dashboard and navigate to Social Login under the Authenticati
 Click the "+ Add Connection" button and select Salesforce from the list of available options.
 
 <figure>
-  ![Add social login connections: Google, Microsoft, GitHub, Salesforce,
+  ![Add social login connections: Google, Microsoft, GitHub,
+  Salesforce,
   Salesforce.](@site/docs/sso/assets/integrations/google-social/2-list-social-logins.png)
   <figcaption>Add social login connections: Salesforce</figcaption>
 </figure>
@@ -52,17 +54,15 @@ The OAuth Configuration details page helps you set up the connection:
   to authenticate your app and establish trust with Salesforce.
 
 <figure>
-  ![Configure OAuth settings](@site/docs/sso/assets/integrations/google-social/3-google-oauth-config.png)
-  <figcaption>
-    Salesforce OAuth configuration in Scalekit, showing redirect URI, client credentials, and scopes for social login
-    setup.
-  </figcaption>
+  ![Configure OAuth
+  settings](@site/docs/sso/assets/integrations/google-social/3-google-oauth-config.png)
+  <figcaption>Salesforce OAuth configuration in Scalekit, showing redirect URI, client credentials, and scopes for social login setup.</figcaption>
 </figure>
 
 **Set up Salesforce OAuth 2.0**
 
 Salesforce lets you set up OAuth through the Mircosoft Identity Platform.
-[Follow Salesforce's instructions to set up OAuth 2.0](https://dub.sh/connected-app-create-salesforce).
+[Follow Salesforce's instructions to set up OAuth 2.0](https://help.salesforce.com/s/articleView?id=sf.connected_app_create_api_integration.htm&type=5).
 
 - Use the Redirect URI from Scalekit as the Redirect URI in Salesforce's setup
 - Copy the generated Client ID and Client Secret into the Scalekit Dashboard
@@ -70,11 +70,10 @@ Salesforce lets you set up OAuth through the Mircosoft Identity Platform.
 After completing the setup, click "Save Changes" in Scalekit for the changes to take effect.
 
 <figure>
-  ![Google OAuth configuration for social login, showing redirect URI, client ID, and scopes for
+  ![Google OAuth configuration for social login, showing redirect URI,
+  client ID, and scopes for
   authentication.](@site/docs/sso/assets/integrations/google-social/4-after-oauth-config.png)
-  <figcaption>
-    Salesforce OAuth configuration for social login, showing redirect URI, client ID, and scopes for authentication.
-  </figcaption>
+  <figcaption>Salesforce OAuth configuration for social login, showing redirect URI, client ID, and scopes for authentication.</figcaption>
 </figure>
 
 ## Test the Connection
@@ -83,7 +82,8 @@ Click the "Test Connection" button in Scalekit. You will be redirected to the Sa
 access. A summary table will show the information that will be sent to your app.
 
 <figure>
-  ![Test connection success](@site/docs/sso/assets/integrations/google-social/5-successful-test-connection.png)
+  ![Test connection
+  success](@site/docs/sso/assets/integrations/google-social/5-successful-test-connection.png)
   <figcaption>Test connection success, showing the consent screen and summary table.</figcaption>
 </figure>
 
