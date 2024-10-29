@@ -528,7 +528,7 @@ p {
     min-width: 75%;
   }
 
-  .page_right_hint{
+  .page_right_hint {
     position: fixed;
     top: 10vw;
     /*Together, the right and width occupy 22% of the screen width. vw dynamically calculates the viewport's width*/
@@ -771,13 +771,23 @@ ul.table-of-contents.table-of-contents__left-border:before {
   color: var(--docsearch-text-color);
 }
 
+.theme-doc-sidebar-container,
+nav.navbar,
+nav.pagination-nav,
+footer,
+.theme-doc-breadcrumbs,
+.feedbackFooter {
+  visibility: hidden;
+}
+
 /*hide unnecessary elements when inside an iframe*/
-html[data-inside-iframe='true'] .theme-doc-sidebar-container,
-html[data-inside-iframe='true'] nav.navbar,
-html[data-inside-iframe='true'] nav.pagination-nav,
-html[data-inside-iframe='true'] footer,
-html[data-inside-iframe='true'] .theme-doc-breadcrumbs {
-  display: none;
+html[data-inside-iframe='false'] .theme-doc-sidebar-container,
+html[data-inside-iframe='false'] nav.navbar,
+html[data-inside-iframe='false'] nav.pagination-nav,
+html[data-inside-iframe='false'] footer,
+html[data-inside-iframe='false'] .theme-doc-breadcrumbs,
+html[data-inside-iframe='false'] .feedbackFooter {
+  visibility: visible;
 }
 
 html {
