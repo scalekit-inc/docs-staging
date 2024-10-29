@@ -777,17 +777,19 @@ nav.pagination-nav,
 footer,
 .theme-doc-breadcrumbs,
 .feedbackFooter {
-  visibility: hidden;
+  display: none !important;
+}
+
+html[data-inside-iframe='false'] nav.pagination-nav {
+  display: grid !important;
 }
 
 /*hide unnecessary elements when inside an iframe*/
 html[data-inside-iframe='false'] .theme-doc-sidebar-container,
 html[data-inside-iframe='false'] nav.navbar,
-html[data-inside-iframe='false'] nav.pagination-nav,
 html[data-inside-iframe='false'] footer,
-html[data-inside-iframe='false'] .theme-doc-breadcrumbs,
 html[data-inside-iframe='false'] .feedbackFooter {
-  visibility: visible;
+  display: block !important;
 }
 
 html {
