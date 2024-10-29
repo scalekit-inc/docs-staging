@@ -792,6 +792,10 @@ html[data-inside-iframe='false'] .feedbackFooter {
   display: block !important;
 }
 
+html[data-inside-iframe='true'] main {
+  max-width: 100%;
+}
+
 html {
   scroll-behavior: smooth;
 }
