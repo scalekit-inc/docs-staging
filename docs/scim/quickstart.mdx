@@ -1,3 +1,7 @@
+---
+title: Quickstart
+---
+
 import InstallSDK from '@site/docs/sso/templates/_install-sdk.md';
 
 # Quickstart
@@ -14,7 +18,7 @@ With Scalekit, you can:
 - Consume **REST APIs** to list users, groups, and directories on-demand
 
 <figure className="width-75">
-  ![](@site/docs/scim/assets/1-quickstart-dir-sync.png)
+  ![](@site/docs/scim/assets/1-quickstart-scim.png)
   <figcaption></figcaption>
 </figure>
 
@@ -23,6 +27,196 @@ Scalekit enables you to sync user accounts with the latest data in the directory
 - Create accounts for new hires during onboarding
 - Deactivate accounts when employees depart
 - Adjust access levels as employees change roles
+
+## User Provisioning with Scalekit's Directory API
+
+Scalekit's Directory API allows you to fetch information about users, groups, and directories associated with an
+organization on-demand. This is useful for scenarios like running cron jobs to sync user and group data. In this guide,
+we'll demonstrate how to use the List Users in a Directory API to retrieve a list of users in a specific directory.
+
+Before you begin, ensure that your organization has a directory set up in Scalekit.
+
+Before diving in, ensure you have:
+
+1. A Scalekit account
+2. An organization with a configured directory in Scalekit (or use the default _Test Organization_)
+3. Access to the Scalekit Dashboard
+
+#### Setting Up the SDK
+
+Scalekit offers language-specific SDKs for fast SSO integration. Use the installation instructions below for your
+technology stack:
+
+<InstallSDK />
+
+Navigate to the API Config tab in the Scalekit Dashboard to obtain your credentials. Store your credentials securely in
+a <SimpleCode>.env</SimpleCode> file:
+
+<CodeWithHeader title=".env">
+
+```shellscript
+SCALEKIT_ENVIRONMENT_URL='https://b2b-app-dev.scalekit.com'
+SCALEKIT_CLIENT_ID='<CLIENT_ID_FROM_SCALEKIT_DASHBOARD>'
+SCALEKIT_CLIENT_SECRET='<SECRET_FROM_SCALEKIT_DASHBOARD>'
+```
+
+</CodeWithHeader>
+
+Initialize the SDK with your API credentials and make your first API call to list organizations.
+
+<CodeWithHeader title="Make your first SDK call">
+<Tabs groupId="tech-stack" queryString>
+<TabItem value="curl" label="cURL">
+
+```bash
+curl -L 'https://<ENV_URL>/oauth/token' \
+-H 'Content-Type: application/x-www-form-urlencoded' \
+-d 'client_id=<CLIENT_ID>' \
+-d 'client_secret=<CLIENT_SECRET>' \
+-d 'grant_type=client_credentials'
+
+```
+
+</TabItem>
+
+<TabItem value="nodejs" label="Node.js">
+
+```javascript
+import { ScalekitClient } from '@scalekit-sdk/node';
+
+const scalekit = new ScalekitClient(
+  process.env.SCALEKIT_ENVIRONMENT_URL,
+  process.env.SCALEKIT_CLIENT_ID,
+  process.env.SCALEKIT_CLIENT_SECRET,
+);
+
+const { organizations } = await scalekit.organization.listOrganization({
+  pageSize: 10,
+});
+
+console.log(`Name of the a organization: ${organizations[0].display_name}`);
+```
+
+</TabItem>
+
+</Tabs>
+</CodeWithHeader>
+<CodeWithHeader title="Terminal Output">
+
+```console
+Name of the a organization: AcmeCorp
+```
+
+</CodeWithHeader>
+
+## Working with Directories
+
+### Retrieving a Directory
+
+To begin syncing user and group data, first retrieve the directory associated with your organization:
+
+<CodeWithHeader title="Retrieve a Directory">
+<Tabs groupId="tech-stack" queryString>
+<TabItem value="nodejs" label="Node.js">
+
+```javascript
+async function getDirectory(organizationId) {
+  const { directory } = await scalekit.directory.getDirectory(organizationId);
+  console.log('Directory ID:', directory.id);
+  return directory;
+}
+
+const organizationId = 'org_33247113199762954';
+const directory = await getDirectory(organizationId);
+```
+
+</TabItem>
+</Tabs>
+</CodeWithHeader>
+
+<CodeWithHeader title="Terminal Output">
+
+```
+Directory ID: dir_33247113199762954
+```
+
+</CodeWithHeader>
+
+### Listing Users in a Directory
+
+Fetch users within a specific directory:
+
+<CodeWithHeader title="List Users in a Directory">
+<Tabs groupId="tech-stack" queryString>
+<TabItem value="nodejs" label="Node.js">
+
+```javascript
+async function listUsers(directoryId) {
+  const { users } = await scalekit.directory.listDirectoryUsers(directoryId);
+  console.log('User email in the directory:', users[0].email);
+  return users;
+}
+
+const userList = await listUsers(directory.id);
+```
+
+</TabItem>
+</Tabs>
+</CodeWithHeader>
+
+<CodeWithHeader title="Terminal Output">
+
+```
+User email in the directory: jerry@acmecorp.com
+```
+
+</CodeWithHeader>
+
+**Example Use Case**: When setting up a new customer account, you can use this function to automatically connect to
+their directory and start syncing user data.
+
+See [Directory User Object](/scim/directory-user-object)
+
+### Listing Groups
+
+Retrieve groups within a directory:
+
+<CodeWithHeader title="List Groups in a Directory">
+<Tabs groupId="tech-stack" queryString>
+<TabItem value="nodejs" label="Node.js">
+
+```javascript
+async function listGroups(directoryId) {
+  const { groups } = await scalekit.directory.listDirectoryGroups(directoryId);
+  console.log('Group Object: \n', JSON.stringify(groups[0], null, 2));
+  return groups;
+}
+
+const groups = await listGroups(directory.id);
+```
+
+</TabItem>
+</Tabs>
+</CodeWithHeader>
+
+<CodeWithHeader title="Terminal Output">
+
+```
+Group Object:
+{
+  "id": "dirgroup_38074475882742351",
+  "display_name": "Skyflow Users",
+  "total_users": 2
+}
+```
+
+</CodeWithHeader>
+
+**Example Use Case**: You can use this function to implement role-based access control in your application, assigning
+permissions based on the groups a user belongs to.
+
+Scalekit's Directory API provides a simple way to fetch user and group information on-demand. Refer to our
+[API reference](/apis) and [examples](/scalekit-by-example/scalekit-by-example) to explore more capabilities.
 
 ## Realtime User Provisioning with Webhooks
 
@@ -64,22 +258,17 @@ export async function POST(req: NextRequest) {
 </TabItem>
 </Tabs>
 
-In this example, the endpoint URL is
-
-<SimpleCode>
-  https://<span></span>www<span></span>.hero-saas.<span></span>app/api/webhook/user-access
-</SimpleCode>
+In this example, the endpoint URL is <SimpleCode>
+https://<span></span>www<span></span>.hero-saas.<span></span>app/api/webhook/user-access </SimpleCode>
 
 When the endpoint receives an HTTP POST request with event data, it extracts the name and email from the payload and
-calls
-
-<SimpleCode>createUserAccount()</SimpleCode> to perform the necessary business logic — in this case, creating a user account.
+calls <SimpleCode>createUserAccount()</SimpleCode> to perform the necessary business logic — in this case, creating a
+user account.
 
 ### 2. Register Webhook Endpoint
 
 First, navigate to the "Webhooks" tab in the Scalekit Dashboard. Click on the "+Add Endpoint" button and enter the
 endpoint URL along with a meaningful description. Finally, select the desired event types, such as
-
 <SimpleCode>scalekit.dir.user.\*</SimpleCode>, to subscribe to the relevant events.
 
 <figure className="width-75">![](@site/docs/scim/assets/2-quickstart-dir-sync.png)</figure>
@@ -92,15 +281,18 @@ Refer to the [API reference](/apis#tag/Webhooks) for the list of all available e
 ### 3. Receive Event Payloads
 
 Scalekit sends event payloads to your app for consumption and standardizes the payload structure across different
-directory providers your customers may use. Since we subscribed to user events, let's log an example of a new hire
+directory providers your customers may use.Since we subscribed to user events, let's log an example of a new hire
 gaining access to your app when Scalekit sends a user creation event.
 
+<CodeWithHeader>
 <Tabs groupId="tech-stack" queryString>
 <TabItem value="nextjs" label="Next.js">
 
 ```javascript showLineNumbers
 const event = await req.json();
-console.log(event);
+// Business logic with Event Object
+console.log(`Event Type: ${event.type}`);
+console.log(`${event.data.given_name}'s account is provisioned`);
 ```
 
 </TabItem>
@@ -109,202 +301,23 @@ console.log(event);
 
 ```javascript showLineNumbers
 const event = await req.json();
-console.log(event);
+// Business logic with Event Object
+console.log(`Event Type: ${event.type}`);
+console.log(`${event.data.given_name}'s account is provisioned`);
 ```
 
 </TabItem>
 </Tabs>
+</CodeWithHeader>
 
-Here is the response you receive from Scalekit when a new user is assigned access to your app:
+<CodeWithHeader title="Terminal Output">
 
-<CodeWithHeader title="User Creation Event Payload">
-
-<JsonViewer
-  src={{
-    data: {
-      active: true,
-      division: 'Engineering',
-      dp_id: '00ujrox2diV2lNQQi5d7',
-      email: 'santhosh@acmecorp.com',
-      family_name: 'Jegan',
-      given_name: 'Santhosh',
-      groups: null,
-      id: 'diruser_38065705475637839',
-      locale: 'en-US',
-      name: 'Santhosh Jegan',
-      organization_id: 'org_38065303543874127',
-      preferred_username: 'santhosh@acmecorp.com',
-      raw_attributes: {
-        active: true,
-        displayName: 'Santhosh Jegan',
-        emails: [{ primary: true, type: 'work', value: 'santhosh@acmecorp.com' }],
-        externalId: '00ujrox2diV2lNQQi5d7',
-        locale: 'en-US',
-        name: { familyName: 'Jegan', givenName: 'Santhosh' },
-        password: 'Fg1hy7bY',
-        'urn:ietf:params:scim:schemas:extension:enterprise:2.0:User': {
-          division: 'Engineering',
-        },
-        userName: 'santhosh@acmecorp.com',
-      },
-    },
-    environment_id: 'env_33245698191261706',
-    id: 'evt_38073034552115294',
-    object: 'DirectoryUser',
-    occurred_at: '2024-09-19T15:41:37.002602567Z',
-    organization_id: 'org_38065303543874127',
-    spec_version: '1',
-    type: 'scalekit.dir.user.create',
-  }}
-/>
+```console
+Event Type: scalekit.dir.user.create
+Santhosh's account is provisioned
+```
 
 </CodeWithHeader>
 
 You have successfully created a webhook endpoint in your app, registered it with Scalekit, and received event payloads
-to support your business use cases. Now, let's explore another approach where we use APIs instead of Webhooks!
-
-## User Provisioning with Scalekit's Directory API
-
-Scalekit's Directory API allows you to fetch information about users, groups, and directories associated with an
-organization on-demand. This is useful for scenarios like running cron jobs to sync user and group data. In this guide,
-we'll demonstrate how to use the List Users in a Directory API to retrieve a list of users in a specific directory.
-
-Before you begin, ensure that your organization has a directory set up in Scalekit.
-
-### 1. Obtaining an Access Token
-
-To make API calls to Scalekit, you'll need an access token. Follow these steps to obtain one:
-
-1. Go to the Scalekit Dashboard and navigate to the API Config tab
-2. Copy the Client ID, Client Secret, and Environment URL
-3. Make a <SimpleCode>POST</SimpleCode> request to `https://ENV_URL/oauth/token` with the following parameters in the
-   request body:
-   - <SimpleCode>client_id</SimpleCode>: Your Client ID
-   - <SimpleCode>client_secret</SimpleCode>: Your Client Secret
-   - <SimpleCode>grant_type</SimpleCode>: Set to <SimpleCode>client_credentials</SimpleCode>
-
-Example request using cURL:
-
-```bash
-curl -L 'https://<ENV_URL>/oauth/token' \
--H 'Content-Type: application/x-www-form-urlencoded' \
--d 'client_id=<CLIENT_ID>' \
--d 'client_secret=<CLIENT_SECRET>' \
--d 'grant_type=client_credentials'
-
-```
-
-The response will contain an <SimpleCode>access_token</SimpleCode> that you can use for subsequent API calls:
-
-```json
-{
-  "access_token": "DCR5c8139165228a82e442445fe01c16",
-  "token_type": "bearer",
-  "expires_in": 1799
-}
-```
-
-### 2. Listing Users in a Directory
-
-To list users in a specific directory, make a <SimpleCode>GET</SimpleCode> request to the following endpoint:
-
-```
-https://<ENV_URL>/api/v1/organizations/<organization_id>/directories/<directory_id>/users
-```
-
-Include the <SimpleCode>access_token</SimpleCode> in the <SimpleCode>Authorization</SimpleCode> header:
-
-```bash
-curl -L 'https://<ENV_URL>/api/v1/organizations/<organization_id>/directories/<directory_id>/users' \\
--H 'Authorization: Bearer <access_token>'
-
-```
-
-The response will contain a list of users in the specified directory:
-
-```json
-{
-  "users": [
-    {
-      "id": "diruser_38074510863303247",
-      "email": "bar@acmecorp.com",
-      "preferred_username": "bar@acmecorp.com",
-      "given_name": "Bar",
-      "family_name": "Man",
-      "updated_at": "2024-09-19T15:56:16.954861Z",
-      "emails": ["bar@acmecorp.com"],
-      "groups": [
-        {
-          "id": "dirgroup_38074475882742351",
-          "display_name": "Skyflow Users",
-          "total_users": 0
-        }
-      ]
-    }
-  ],
-  "total_size": 4,
-  "next_page_token": "",
-  "prev_page_token": ""
-}
-```
-
-### 3. Listing Groups in a Directory
-
-To list groups in a specific directory, make a `GET` request to the following endpoint:
-
-```
-https://<ENV_URL>/api/v1/organizations/<organization_id>/directories/<directory_id>/groups
-```
-
-  <div class="row">
-    <div class="col col--6">
-      <div class="col-demo">
-        Include the <SimpleCode>access_token</SimpleCode> in the <SimpleCode>Authorization</SimpleCode> header:
-        <CodeWithHeader title="Listing Groups in a Directory">
-
-        ```bash
-        curl --location \
-        'https://<SCALEKIT_ENVIRONMENT_URL>/api/v1/organizations/<organization_id>/directories/<directory_id>/groups' \
-        --header 'Authorization: Bearer <SCALEKIT_ACCESS_TOKEN>'
-
-        ```
-        </CodeWithHeader>
-
-        </div>
-    </div>
-    <div class="col col--6">
-      <div class="col-demo">
-
-The response will contain a list of groups in the specified directory:
-
-  <CodeWithHeader title="Listing Groups in a Directory">
-
-          ```json
-          {
-            "groups": [
-              {
-                "id": "dirgroup_38074475882742351",
-                "display_name": "Skyflow Users",
-                "total_users": 2,
-                "updated_at": "2024-09-19T16:26:18.573597Z"
-              }
-            ],
-            "total_size": 3,
-            "next_page_token": "",
-            "prev_page_token": ""
-          }
-          ```
-
-</CodeWithHeader>
-        </div>
-    </div>
-  </div>
-
-:::info
-
-SDKs for listing users and groups are coming soon.
-
-:::
-
-Scalekit's Directory API provides a simple way to fetch user and group information on-demand. Refer to our
-[API reference](/apis) and [examples](/scalekit-by-example/scalekit-by-example) to explore more capabilities.
+to support your business use cases.

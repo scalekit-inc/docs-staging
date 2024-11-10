@@ -200,15 +200,20 @@ const sidebars: SidebarsConfig = {
       label: 'Setup Webhooks',
       id: 'scim/setup-directory-events',
     },
-    {
-      type: 'doc',
-      label: 'Directory User Object',
-      id: 'scim/directory-user-object',
-    },
+    // {
+    //   type: 'doc',
+    //   label: 'Directory User Object',
+    //   id: 'scim/directory-user-object',
+    // },
     {
       type: 'doc',
       label: 'Automated Role Assignment',
       id: 'scim/automatically-assign-roles',
+    },
+    {
+      type: 'doc',
+      label: 'Webhook Best Practices',
+      id: 'scim/webhooks',
     },
     {
       type: 'html',
@@ -247,13 +252,8 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'doc',
-      label: 'What is Directory Sync?',
+      label: 'SCIM Provisioning for SaaS',
       id: 'scim/basics',
-    },
-    {
-      type: 'doc',
-      label: 'Webhooks',
-      id: 'scim/webhooks',
     },
     {
       type: 'doc',
@@ -275,22 +275,22 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'doc',
-      label: 'Okta (SAML)',
+      label: 'Okta [SAML]',
       id: 'integrations/okta-saml',
     },
     {
       type: 'doc',
-      label: 'Azure AD (SAML)',
+      label: 'Azure AD [SAML]',
       id: 'integrations/azure-ad-saml',
     },
     {
       type: 'doc',
-      label: 'OneLogin (SAML)',
+      label: 'OneLogin [SAML]',
       id: 'integrations/onelogin-saml',
     },
     {
       type: 'doc',
-      label: 'JumpCloud (SAML)',
+      label: 'JumpCloud [SAML]',
       id: 'integrations/jumpcloud-saml',
     },
     {
@@ -353,11 +353,11 @@ const sidebars: SidebarsConfig = {
       label: 'OneLogin',
       id: 'integrations/onelogin-scim',
     },
-    {
-      type: 'doc',
-      label: 'SCIM',
-      id: 'integrations/scim',
-    },
+    // {
+    //   type: 'doc',
+    //   label: 'SCIM',
+    //   id: 'integrations/scim',
+    // },
     {
       type: 'html',
       value: '<div />', // The link label

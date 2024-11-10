@@ -3,14 +3,14 @@ hide_table_of_contents: true
 title: 'API Reference'
 ---
 
-import InstallSDK from '@site/docs/sso/templates/\_install-sdk.md';
-import ConnectionTag from './\_connection.md';
-import AdminPortalTag from './\_adminPortal.md';
-import OrganizationTag from './\_organization.md';
-import WebhooksTag from './\_webhooks.mdx';
+import InstallSDK from '@site/docs/sso/templates/_install-sdk.md';
+import ConnectionTag from './_connection.md';
+import AdminPortalTag from './_adminPortal.md';
+import OrganizationTag from './_organization.md';
+import WebhooksTag from './_webhooks.mdx';
 import SidebarWrapper from '@site/src/components/SidebarWrapper';
 import SidebarItems from '@site/src/components/SidebarItems';
-import DirectoryTag from './\_directory.mdx';
+import DirectoryTag from './_directory.mdx';
 
 <SidebarWrapper>
 <div className="custom_container">
@@ -72,7 +72,7 @@ https://auth.yoursaas.com
 </div>
 </div>
 
-<IntersectingHeader id="authentication" title="Authentication" initialInView="false"/>
+<IntersectingHeader id="authentication" title="Authentication" initialInView="false" />
 
 <div className="row section">
     <div className="col col--6">
@@ -178,7 +178,7 @@ public class Main {
 </div>
 </div>
 
-<IntersectingHeader id="using-access-token" title="Using Access Token" subheading="true" classList="ApiCategoryList"/>
+<IntersectingHeader id="using-access-token" title="Using Access Token" subheading="true" classList="ApiCategoryList" />
 
 <div className="row section">
     <div className="col col--6">
@@ -194,6 +194,7 @@ public class Main {
       easier for you.
     </div>
     <div className="col col--6">
+
 <CodeWithHeader title="Using Bearer Token">
 
 ```shell showLineNumbers
@@ -207,7 +208,7 @@ $ curl --request GET "https://{ENV_URL}/api/v1/organizations" \
 </div>
 </div>
 
-<IntersectingHeader id="error-handling" title="Error Handling"/>
+<IntersectingHeader id="error-handling" title="Error Handling" />
 
 <div className="row section">
     <div className="col col--6">
@@ -267,7 +268,7 @@ More details about the Single Sign-on flow is described <Link href="/sso/quickst
 <APIEndpoint method="get" endpoint="/oauth/authorize" tag="Authentication" />
 <APIEndpoint method="post" endpoint="/oauth/token" tag="Authentication" />
 
- {/* Organization Tag */}
+{/* Organization Tag */}
 
 <OrganizationTag></OrganizationTag>
 
