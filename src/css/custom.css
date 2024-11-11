@@ -321,8 +321,10 @@ figure img {
 
 .menu.thin-scrollbar,
 .sidebar-group {
-  padding: 0.5rem 0;
+  padding: 0.5rem 0 0.5rem 0;
+  margin-right: 0px;
   font-size: 14px;
+  border-right: 1px solid var(--ifm-toc-border-color);
 }
 
 .menu__list-item {
@@ -696,9 +698,10 @@ a.dropdown__link:has(span.product-dropdown-label):hover {
     border-right: none !important;
   }
 
-  .table-of-contents {
+  /* .table-of-contents {
     border: none !important;
-  }
+  } */
+
   article h1 {
     font-size: 2rem !important;
   }
@@ -727,6 +730,8 @@ a.dropdown__link:has(span.product-dropdown-label):hover {
 @media (pointer: fine) {
   .thin-scrollbar {
     scrollbar-width: auto;
+    margin-right: 0px;
+    padding-right: 0px;
   }
 }
 .cardContainer {
