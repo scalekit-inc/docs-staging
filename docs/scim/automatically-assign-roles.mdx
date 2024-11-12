@@ -4,25 +4,30 @@ displayed_sidebar: 'scimSidebar'
 
 # Automatic Role Assignment
 
-<Subtitle>Assing roles to users (in your app) based on their group memberships in their directory.</Subtitle>
+<Subtitle>
+  Assing roles to users (in your app) based on their group memberships in their directory.
+</Subtitle>
 
-Manually assigning roles to users in your app (e.g., viewer, member, editor, admin) can be time-consuming for
-administrators, especially in large enterprises where access requirements change frequently. Scalekit allows
-administrators to set up workflows that automatically inform your app about the roles to assign to users.
+Manually assigning roles to users in your app (e.g., viewer, member, editor, admin) can be
+time-consuming for administrators, especially in large enterprises where access requirements change
+frequently. Scalekit allows administrators to set up workflows that automatically inform your app
+about the roles to assign to users.
 
 <figure>
-  ![SCIM User Provisioning Flow Directory to Scalekit to Your B2B App](@site/docs/scim/assets/gbra.png)
-  <figcaption>SCIM User Provisioning Flow Directory to Scalekit to Your B2B App</figcaption>
+  ![SCIM User Provisioning Flow Directory to Scalekit to Your B2B
+  App](@site/docs/scim/assets/gbra-1.png)
+  <figcaption>SCIM User Provisioning Flow Directory to Scalekit to Your App</figcaption>
 </figure>
 
 ## Introduction
 
-A popular approach for automating role assignment is to create groups in the directory provider. Each group lists the
-users that should have a specific role in your app. For example, an administrator might create a "GitHub Maintainers"
-group to grant "maintainer" access to the GitHub app for certain employees.
+A popular approach for automating role assignment is to create groups in the directory provider.
+Each group lists the users that should have a specific role in your app. For example, an
+administrator might create a "GitHub Maintainers" group to grant "maintainer" access to the GitHub
+app for certain employees.
 
-By leveraging Scalekit's events, your app can be informed about these groups and their members, enabling you to
-automatically assign the appropriate roles to users.
+By leveraging Scalekit's events, your app can be informed about these groups and their members,
+enabling you to automatically assign the appropriate roles to users.
 
 ## Enabling Group-Based Role Assignment
 
@@ -38,21 +43,22 @@ To enable administrators to map groups to roles in your app:
   <figcaption>Adding roles in Scalekit dashboard.</figcaption>
 </figure>
 
-The first role you create in your app becomes the default role automatically. This means users who don't belong to any
-specific group will be assigned this role upon account creation. To change the default role, navigate to the role
-settings, click the "..." menu next to the desired role, select "Edit," and toggle the "Set as default role" option.
+The first role you create in your app becomes the default role automatically. This means users who
+don't belong to any specific group will be assigned this role upon account creation. To change the
+default role, navigate to the role settings, click the "..." menu next to the desired role, select
+"Edit," and toggle the "Set as default role" option.
 
 :::tip
 
-Choose clear Display Names and Descriptions for your roles to help administrators understand the access levels in the
-Admin Portal.
+Choose clear Display Names and Descriptions for your roles to help administrators understand the
+access levels in the Admin Portal.
 
 :::
 
 ## Creating Webhook Endpoint
 
-To assign roles based on group membership, your app needs to be informed about groups and their users. Here's an example
-webhook endpoint using Next.js:
+To assign roles based on group membership, your app needs to be informed about groups and their
+users. Here's an example webhook endpoint using Next.js:
 
 <CodeWithHeader title="Webhook Endpoint">
 
@@ -82,7 +88,8 @@ export async function POST(req: NextRequest) {
 </Tabs>
 </CodeWithHeader>
 
-Register this webhook in the Scalekit Dashboard > Webhooks and subscribe to all group-related events. In this example,
+Register this webhook in the Scalekit Dashboard > Webhooks and subscribe to all group-related
+events. In this example,
 
 <SimpleCode>
   https:<span></span>//www<span></span>.hero-saas.app<span></span>/api/webhook/role-assignment
@@ -91,8 +98,8 @@ is the webhook endpoint.
 
 ## Example Event Object
 
-When an administrator creates a group or adds users to a group, Scalekit sends an event object to your app with the
-necessary information to assign roles.
+When an administrator creates a group or adds users to a group, Scalekit sends an event object to
+your app with the necessary information to assign roles.
 
 <CodeWithHeader title="Group Creation Event">
 
@@ -153,8 +160,8 @@ necessary information to assign roles.
 
 </CodeWithHeader>
 
-The event data is contained within the data property, while other information about the organization and event type is
-present at the same level as data in the JSON object.
+The event data is contained within the data property, while other information about the organization
+and event type is present at the same level as data in the JSON object.
 
 Group-based role assignment offers several benefits:
 
@@ -163,6 +170,7 @@ Group-based role assignment offers several benefits:
 - No need for workarounds
 - Automatic, realtime role assignment based on events from directory provider
 
-By leveraging Scalekit's group-based role assignment, you can streamline access management for your enterprise customers
-and ensure that user roles stay up-to-date with their directory provider. For more information about event objects,
-refer to the [Events Reference documentation](/apis#tag/Webhooks).
+By leveraging Scalekit's group-based role assignment, you can streamline access management for your
+enterprise customers and ensure that user roles stay up-to-date with their directory provider. For
+more information about event objects, refer to the
+[Events Reference documentation](/apis#tag/Webhooks).
