@@ -34,12 +34,12 @@ enabling you to automatically assign the appropriate roles to users.
 To enable administrators to map groups to roles in your app:
 
 1. Go to the Scalekit Dashboard
-2. Select Configuration > "Roles"
-3. Toggle "Group Based Role Assignment"
+2. Select "SCIM Provisioning"
+3. Switch to the "Role Assignment" tab
 4. Create your app's roles
 
 <figure className="width-75">
-  ![How Scalekit works](@site/docs/scim/assets/automatically-assign-roles-3.png)
+  ![How Scalekit works](@site/docs/scim/assets/automatically-assign-roles-4.png)
   <figcaption>Adding roles in Scalekit dashboard.</figcaption>
 </figure>
 
@@ -50,8 +50,8 @@ default role, navigate to the role settings, click the "..." menu next to the de
 
 :::tip
 
-Choose clear Display Names and Descriptions for your roles to help administrators understand the
-access levels in the Admin Portal.
+Choose clear Display Names and Descriptions for your roles to help customers understand and align
+with the access levels in the Admin Portal.
 
 :::
 
@@ -89,17 +89,18 @@ export async function POST(req: NextRequest) {
 </CodeWithHeader>
 
 Register this webhook in the Scalekit Dashboard > Webhooks and subscribe to all group-related
-events. In this example,
-
-<SimpleCode>
-  https:<span></span>//www<span></span>.hero-saas.app<span></span>/api/webhook/role-assignment
-</SimpleCode>
+events. In this
+example,<SimpleCode>https:<span></span>//www<span></span>.your-app.com<span></span>/api/webhook/role-assignment</SimpleCode>
 is the webhook endpoint.
 
 ## Example Event Object
 
 When an administrator creates a group or adds users to a group, Scalekit sends an event object to
 your app with the necessary information to assign roles.
+
+<div class="row">
+
+<div class="col col--6">
 
 <CodeWithHeader title="Group Creation Event">
 
@@ -128,7 +129,10 @@ your app with the necessary information to assign roles.
 
 </CodeWithHeader>
 
-<CodeWithHeader title="User Addition to Group Event">
+</div>
+
+<div class="col col--6">
+  <CodeWithHeader title="User Addition to Group Event">
 
 <JsonViewer
   src={{
@@ -159,6 +163,10 @@ your app with the necessary information to assign roles.
 />
 
 </CodeWithHeader>
+
+</div>
+
+</div>
 
 The event data is contained within the data property, while other information about the organization
 and event type is present at the same level as data in the JSON object.
