@@ -54,12 +54,12 @@ Organization represents a customer or a tenant of your application. Use this to 
       <Parameter
         attrKey="create_time"
         type="string"
-        description="Timestamp at which this organization record was created in ISO 8601 format"
+        description="Timestamp at which this organization record was created in RFC 3339 format"
       />
       <Parameter
         attrKey="update_time"
         type="string"
-        description="Timestamp at which this organization record was last updated in ISO 8601 format"
+        description="Timestamp at which this organization record was last updated in RFC 3339 format"
       />
     </ul>
     </div>

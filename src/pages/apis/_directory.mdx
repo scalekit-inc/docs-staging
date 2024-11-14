@@ -2,19 +2,23 @@
 
 <div className="row section">
   <div className="col col--6">
-    The Directory object represents a connection to a <TermTip jargon="directory provider" />. You can programmatically
-    enable or disable directories for an organization using the Directory API. Scalekit synchronizes and stores the
-    users and groups from connected directories. The Directory API allows you to fetch users and groups from the
-    directory on demand.
+    The Directory object represents a connection to a <TermTip jargon="directory provider" />. You
+    can programmatically enable or disable directories for an organization using the Directory API.
+    Scalekit synchronizes and stores the users and groups from connected directories. The Directory
+    API allows you to fetch users and groups from the directory on demand.
   </div>
   <div className="col col--6">
     <Endpoints
       tag="Directory"
       excludeEndpoints={[
-        { method: 'post', label: '/api/v1/organizations/{organization_id}/directories/{directory_id}/secrets' },
         {
           method: 'post',
-          label: '/api/v1/organizations/{organization_id}/directories/{directory_id}/secrets:regenerate',
+          label: '/api/v1/organizations/{organization_id}/directories/{directory_id}/secrets',
+        },
+        {
+          method: 'post',
+          label:
+            '/api/v1/organizations/{organization_id}/directories/{directory_id}/secrets:regenerate',
         },
       ]}
     />
@@ -103,7 +107,7 @@
         <Parameter
             attrKey="last_synced_at"
             type="string"
-            description="Timestamp of when the directory was last synced in ISO 8601 format."
+            description="Timestamp of when the directory was last synced in RFC 3339 format."
         />
 
         <Parameter
@@ -240,17 +244,17 @@
                 <Parameter
                 attrKey="create_time"
                 type="string"
-                description="Timestamp of when the secret was created in ISO 8601 format."
+                description="Timestamp of when the secret was created in RFC 3339 format."
                 />
                 <Parameter
                 attrKey="expire_time"
                 type="string"
-                description="Timestamp of when the secret expires in ISO 8601 format."
+                description="Timestamp of when the secret expires in RFC 3339 format."
                 />
                 <Parameter
                 attrKey="last_used_time"
                 type="string"
-                description="Timestamp of when the secret was last used in ISO 8601 format."
+                description="Timestamp of when the secret was last used in RFC 3339 format."
                 />
             </ul>
             </details>
@@ -276,12 +280,12 @@
                 <Parameter
                 attrKey="user_updated_at"
                 type="string"
-                description="Timestamp of when the user stats were last updated in ISO 8601 format."
+                description="Timestamp of when the user stats were last updated in RFC 3339 format."
                 />
                 <Parameter
                 attrKey="group_updated_at"
                 type="string"
-                description="Timestamp of when the group stats were last updated in ISO 8601 format."
+                description="Timestamp of when the group stats were last updated in RFC 3339 format."
                 />
             </ul>
             </details>
@@ -532,8 +536,7 @@
                     name: 'Amit Sharma',
                     roles: [
                         {
-                            role: 'customer_success_manager',
-                            name: 'Customer Success Manager',
+                            role_name: 'customer_success_manager',
                         },
                     ],
                     groups: [
@@ -597,7 +600,7 @@
             <Parameter
                 attrKey="updated_at"
                 type="string"
-                description="Timestamp indicating the last modification time of the group in ISO 8601 format. Useful for tracking recent changes to group composition."
+                description="Timestamp indicating the last modification time of the group in RFC 3339 format. Useful for tracking recent changes to group composition."
             />
         </ul>
     </div>
@@ -623,7 +626,11 @@
   endpoint="/api/v1/organizations/{organization_id}/directories/{id}:enable"
 />
 
-<APIEndpoint tag="Directory" method="get" endpoint="/api/v1/organizations/{organization_id}/directories/{id}" />
+<APIEndpoint
+  tag="Directory"
+  method="get"
+  endpoint="/api/v1/organizations/{organization_id}/directories/{id}"
+/>
 
 <APIEndpoint
   tag="Directory"
@@ -637,7 +644,11 @@
   endpoint="/api/v1/organizations/{organization_id}/directories/{directory_id}/groups"
 />
 
-<APIEndpoint tag="Directory" method="get" endpoint="/api/v1/organizations/{organization_id}/directories" />
+<APIEndpoint
+  tag="Directory"
+  method="get"
+  endpoint="/api/v1/organizations/{organization_id}/directories"
+/>
 
 <APIEndpoint
   tag="Directory"

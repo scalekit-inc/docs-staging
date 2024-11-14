@@ -138,7 +138,8 @@ const config: Config = {
     metadata: [
       {
         name: 'keywords',
-        content: 'documentation, authentication, single sign-on, sso, saml, oidc, oauth2, enterprise',
+        content:
+          'documentation, authentication, single sign-on, sso, saml, oidc, oauth2, enterprise',
       },
       { property: 'twitter:card', content: 'summary_large_image' },
       { property: 'twitter:title', content: 'Home | Scalekit Docs' },
@@ -223,10 +224,10 @@ const config: Config = {
               label: 'Glossary',
               docId: 'manage-scalekit/glossary',
             },
-            {
-              to: 'scalekit-by-example/scalekit-by-example',
-              label: 'Examples',
-            },
+            // {
+            //   to: 'examples',
+            //   label: 'Examples',
+            // },
           ],
         },
         {

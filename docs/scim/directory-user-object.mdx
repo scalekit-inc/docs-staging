@@ -6,13 +6,14 @@ hide_table_of_contents: true
 
 <Subtitle>Discover the Directory User Attributes from the Directory Providers</Subtitle>
 
-Organizations rely on Directory Providers as the source of truth for user information. By setting up SCIM Provisioning,
-your app receives real-time updates, ensuring it remains current with this source. Scalekit normalizes response from
-Directory Providers that adhere to the SCIM protocol for straightforward easy of implementation.
+Organizations rely on Directory Providers as the source of truth for user information. By setting up
+SCIM Provisioning, your app receives real-time updates, ensuring it remains current with this
+source. Scalekit normalizes response from Directory Providers that adhere to the SCIM protocol for
+straightforward easy of implementation.
 
-Your app can [register a Webhook endpoint](docs/scim/setup-directory-events.mdx) to listen to these directory events.
-See the [Events Reference](/apis#tag/Webhooks) for more information. Each Event Object has a Directory User Object as
-part of its payload.
+Your app can [register a Webhook endpoint](docs/scim/setup-directory-events.mdx) to listen to these
+directory events. See the [Events Reference](/apis#tag/Webhooks) for more information. Each Event
+Object has a Directory User Object as part of its payload.
 
 ## Directory User Object Attributes
 
@@ -60,8 +61,7 @@ Each Directory User Object has the following attributes:
     name: 'Amit Sharma',
     roles: [
       {
-        role: 'customer_success_manager',
-        name: 'Customer Success Manager',
+        role_name: 'customer_success_manager',
       },
     ],
     groups: [
@@ -121,14 +121,15 @@ Each Directory User Object has the following attributes:
 
 ## Custom Attributes
 
-Custom attributes are admin-defined data points or properties that your app can use to tailor and enhance user
-experiences. These attributes allow for the personalization of content, features, and functionalities based on specific
-user characteristics or preferences. For example, if your B2B SaaS app offers analytics dashboards, you can use a custom
-attribute like <SimpleCode>department</SimpleCode> to display relevant dashboards to users.
+Custom attributes are admin-defined data points or properties that your app can use to tailor and
+enhance user experiences. These attributes allow for the personalization of content, features, and
+functionalities based on specific user characteristics or preferences. For example, if your B2B SaaS
+app offers analytics dashboards, you can use a custom attribute
+like <SimpleCode>department</SimpleCode> to display relevant dashboards to users.
 
 [Learn more about mapping the necessary attributes from the directory provider](docs/scim/map-user-attributes.mdx).
 
 ## Raw Attributes
 
-Scalekit receives information via the SCIM protocol and retains all properties from the directory provider under
-the <SimpleCode>raw_attributes</SimpleCode> property without modification.
+Scalekit receives information via the SCIM protocol and retains all properties from the directory
+provider under the <SimpleCode>raw_attributes</SimpleCode> property without modification.
