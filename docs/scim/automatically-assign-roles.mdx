@@ -4,14 +4,19 @@ displayed_sidebar: 'scimSidebar'
 
 # Automatic Role Assignment
 
-<Subtitle>
-  Assing roles to users (in your app) based on their group memberships in their directory.
-</Subtitle>
+<Subtitle>Assign App Roles from Directory Group Memberships</Subtitle>
 
-Manually assigning roles to users in your app (e.g., viewer, member, editor, admin) can be
-time-consuming for administrators, especially in large enterprises where access requirements change
-frequently. Scalekit allows administrators to set up workflows that automatically inform your app
-about the roles to assign to users.
+Manually assigning roles to users in your application, such as viewer, member, editor, or admin, can
+be a time-consuming task for administrators, particularly in large enterprises where access needs
+frequently change. Scalekit streamlines this process by allowing administrators to establish
+workflows that automatically update your app about the roles to assign to users.
+
+## Introduction
+
+A common strategy for managing varying access levels is to group users based on their specific
+access requirements. For example, if you are developing an application similar to GitHub with roles
+like maintainer, writer, and viewer, customer administrators can create user groups for each role
+within their directory provider.
 
 <figure>
   ![SCIM User Provisioning Flow Directory to Scalekit to Your B2B
@@ -19,15 +24,11 @@ about the roles to assign to users.
   <figcaption>SCIM User Provisioning Flow Directory to Scalekit to Your App</figcaption>
 </figure>
 
-## Introduction
-
-A popular approach for automating role assignment is to create groups in the directory provider.
-Each group lists the users that should have a specific role in your app. For example, an
-administrator might create a "GitHub Maintainers" group to grant "maintainer" access to the GitHub
-app for certain employees.
-
-By leveraging Scalekit's events, your app can be informed about these groups and their members,
-enabling you to automatically assign the appropriate roles to users.
+Scalekit notifies your application when administrators create groups or add users to them, enabling
+you to take necessary actions such as creating or modifying user roles as directed by the
+organization’s administrator. Regardless of the directory provider your customers use, Scalekit
+delivers normalized information, eliminating the need for data transformation across different
+providers.
 
 ## Enabling Group-Based Role Assignment
 
@@ -40,7 +41,7 @@ To enable administrators to map groups to roles in your app:
 
 <figure className="width-75">
   ![How Scalekit works](@site/docs/scim/assets/automatically-assign-roles-4.png)
-  <figcaption>Adding roles in Scalekit dashboard.</figcaption>
+  <figcaption>Registering roles in Scalekit dashboard.</figcaption>
 </figure>
 
 The first role you create in your app becomes the default role automatically. This means users who
@@ -55,14 +56,42 @@ with the access levels in the Admin Portal.
 
 :::
 
-## Creating Webhook Endpoint
+## Listening to Events
 
-To assign roles based on group membership, your app needs to be informed about groups and their
-users. Here's an example webhook endpoint using Next.js:
+Scalekit continuously monitors updates from your customers’ directory providers and sends event
+payloads to your application via a registered webhook endpoint. To set up these endpoints and manage
+subscriptions, refer to the Scalekit Dashboard documentation.
 
-<CodeWithHeader title="Webhook Endpoint">
+In this scenario, you will listen for the <SimpleCode>scalekit.dir.user.update</SimpleCode> event to
+determine a user's role from the payload. Scalekit automatically includes a role property relevant
+to your app, based on the role information configured in the Scalekit Dashboard.
+
+<CodeWithHeader title="Webhook Endpoint for Role Updates">
 
 <Tabs groupId="tech-stack" queryString>
+
+<TabItem value="Node.js" label="Node.js">
+
+```javascript showLineNumbers
+// Webhook endpoint
+app.post('/api/webhook/role-assignment', async (req, res) => {
+  const event = req.body;
+  const { email, name, roles } = event.data;
+  console.log('Admin added user to Viewer Group -> Scalekit informs Your App\n');
+
+  // Destructure role_name from roles array
+  const roleName = roles.length > 0 ? roles[0].role_name : null;
+  console.log('Role name received:', roleName);
+
+  // Logic to update user role and permissions
+  await assignRole(roleName, email);
+  console.log('App updated access for user:', email);
+
+  res.status(201).json({ message: 'Role assigned' });
+});
+```
+
+</TabItem>
 <TabItem value="nextjs" label="Next.js">
 
 ```javascript showLineNumbers
@@ -77,108 +106,41 @@ import { NextRequest, NextResponse } from 'next/server';
  */
 
 export async function POST(req: NextRequest) {
-  const event = await req.json();
-  const { email, name } = event.data;
+  const event = req.body;
+  const { email, name, roles } = event.data;
+  console.log('Admin added user to Viewer Group -> Scalekit informs Your App\n');
+
+  // Destructure role_name from roles array
+  const roleName = roles.length > 0 ? roles[0].role_name : null;
+  console.log('Role name received:', roleName);
+
+  // Logic to update user role and permissions
   await assignRole(roleName, email);
+  console.log('App updated access for user:', email);
+
   return NextResponse.json({ message: "Role assigned" }, { status: 201 });
 }
 ```
 
 </TabItem>
+
 </Tabs>
 </CodeWithHeader>
 
-Register this webhook in the Scalekit Dashboard > Webhooks and subscribe to all group-related
-events. In this
-example,<SimpleCode>https:<span></span>//www<span></span>.your-app.com<span></span>/api/webhook/role-assignment</SimpleCode>
-is the webhook endpoint.
+<CodeWithHeader title="Terminal Output">
 
-## Example Event Object
+```
+Admin added user to Viewer Group -> Scalekit informs Your App
 
-When an administrator creates a group or adds users to a group, Scalekit sends an event object to
-your app with the necessary information to assign roles.
-
-<div class="row">
-
-<div class="col col--6">
-
-<CodeWithHeader title="Group Creation Event">
-
-<JsonViewer
-  src={{
-    data: {
-      directory_id: 'dir_38610496391217780',
-      display_name: 'Avengers',
-      external_id: null,
-      id: 'dirgroup_38862741498233423',
-      organization_id: 'org_38609339635728478',
-      raw_attributes: {
-        displayName: 'Avengers',
-        members: null,
-      },
-    },
-    environment_id: 'env_32080745237316098',
-    id: 'evt_38862741515010639',
-    object: 'DirectoryGroup',
-    occurred_at: '2024-09-25T02:26:39.036398577Z',
-    organization_id: 'org_38609339635728478',
-    spec_version: '1',
-    type: 'scalekit.dir.group.create',
-  }}
-/>
+Role name received: viewer
+App updated access for user: jerry@acmecorp.com
+```
 
 </CodeWithHeader>
 
-</div>
+See the [User Event Payload Reference](/apis#tag/Webhooks/scalekit.dir.user.update) for more
+information about the payload structure.
 
-<div class="col col--6">
-  <CodeWithHeader title="User Addition to Group Event">
-
-<JsonViewer
-  src={{
-    data: {
-      directory_id: 'dir_38610496391217780',
-      display_name: 'Avengers',
-      external_id: null,
-      id: 'dirgroup_38862741498233423',
-      organization_id: 'org_38609339635728478',
-      raw_attributes: {
-        displayName: 'Avengers',
-        members: [
-          {
-            display: 'testuser2@gmail.com',
-            value: 'diruser_38864946578129487',
-          },
-        ],
-      },
-    },
-    environment_id: 'env_32080745237316098',
-    id: 'evt_38864948910162368',
-    object: 'DirectoryGroup',
-    occurred_at: '2024-09-25T02:48:34.745030921Z',
-    organization_id: 'org_38609339635728478',
-    spec_version: '1',
-    type: 'scalekit.dir.group.update',
-  }}
-/>
-
-</CodeWithHeader>
-
-</div>
-
-</div>
-
-The event data is contained within the data property, while other information about the organization
-and event type is present at the same level as data in the JSON object.
-
-Group-based role assignment offers several benefits:
-
-- Easy setup for your customers
-- Flexible role mapping
-- No need for workarounds
-- Automatic, realtime role assignment based on events from directory provider
-
-By leveraging Scalekit's group-based role assignment, you can streamline access management for your
-enterprise customers and ensure that user roles stay up-to-date with their directory provider. For
-more information about event objects, refer to the
-[Events Reference documentation](/apis#tag/Webhooks).
+By utilizing Scalekit's group-based role assignment feature, you can simplify access management for
+your enterprise customers and ensure that user roles remain synchronized with their directory
+provider.
