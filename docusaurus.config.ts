@@ -168,80 +168,133 @@ const config: Config = {
         hideable: false,
       },
     },
-
     navbar: {
       // title: 'Scalekit Docs',
       logo: {
-        href: '/',
+        // href: '/',
         src: '/img/scalekit_docs_logo.svg',
         srcDark:
           'https://assets-global.website-files.com/65b87d98fa638289e10b8f61/65c269053d86c92e0cf91db5_scalekit-logo.svg',
       },
       items: [
         {
-          to: '/',
-          label: 'Home',
-          className: 'homeLink',
-          secondary: true,
-        },
-        {
           type: 'docSidebar',
           sidebarId: 'ssoSidebar',
+          to: 'sso/quickstart',
           label: 'Single Sign-on',
+          position: 'left',
           className: 'sso',
-          secondary: true,
         },
         {
+          to: '/scim/quickstart',
           type: 'docSidebar',
           sidebarId: 'scimSidebar',
           label: 'SCIM Provisioning',
+          position: 'left',
           className: 'scim',
-          secondary: true,
-        },
-        {
-          to: '/apis',
-          label: 'API Reference',
-          position: 'right',
-          secondary: true,
         },
         {
           to: '/sdks',
           label: 'SDKs',
-          position: 'right',
-          secondary: true,
-        },
-        {
-          type: 'dropdown',
-          label: 'Resources',
-          position: 'right',
-          items: [
-            {
-              label: 'Integrations',
-              href: '/integrations',
-            },
-            {
-              type: 'doc',
-              label: 'Glossary',
-              docId: 'manage-scalekit/glossary',
-            },
-            // {
-            //   to: 'examples',
-            //   label: 'Examples',
-            // },
-          ],
-        },
-        {
-          type: 'search',
           position: 'left',
         },
         {
+          to: '/apis',
+          label: 'API Reference',
+          position: 'left',
+        },
+        {
+          label: 'Integrations',
+          type: 'docSidebar',
+          sidebarId: 'integrationsSidebar',
+          to: '/integrations',
+          position: 'left',
+        },
+        {
+          type: 'search',
+          position: 'right',
+        },
+        {
           to: 'https://www.scalekit.com/?intent=earlyaccess&utm_source=docs',
-          html: 'Get Early Access &rarr;',
+          html: 'Get Early Access',
           position: 'right',
           className: 'loginLink',
         },
       ],
     },
+    // navbar: {
+    //   // title: 'Scalekit Docs',
+    //   logo: {
+    //     href: '/',
+    //     src: '/img/scalekit_docs_logo.svg',
+    //     srcDark:
+    //       'https://assets-global.website-files.com/65b87d98fa638289e10b8f61/65c269053d86c92e0cf91db5_scalekit-logo.svg',
+    //   },
+    //   items: [
+    //     {
+    //       to: '/',
+    //       label: 'Home',
+    //       className: 'homeLink',
+    //       secondary: true,
+    //     },
+    //     {
+    //       type: 'docSidebar',
+    //       sidebarId: 'ssoSidebar',
+    //       label: 'Single Sign-on',
+    //       className: 'sso',
+    //       secondary: true,
+    //     },
+    //     {
+    //       type: 'docSidebar',
+    //       sidebarId: 'scimSidebar',
+    //       label: 'SCIM Provisioning',
+    //       className: 'scim',
+    //       secondary: true,
+    //     },
+    //     {
+    //       to: '/apis',
+    //       label: 'API Reference',
+    //       position: 'right',
+    //       secondary: true,
+    //     },
+    //     {
+    //       to: '/sdks',
+    //       label: 'SDKs',
+    //       position: 'right',
+    //       secondary: true,
+    //     },
+    //     {
+    //       type: 'dropdown',
+    //       label: 'Resources',
+    //       position: 'right',
+    //       items: [
+    //         {
+    //           label: 'Integrations',
+    //           href: '/integrations',
+    //         },
+    //         {
+    //           type: 'doc',
+    //           label: 'Glossary',
+    //           docId: 'manage-scalekit/glossary',
+    //         },
+    //         // {
+    //         //   to: 'examples',
+    //         //   label: 'Examples',
+    //         // },
+    //       ],
+    //     },
+    //     {
+    //       type: 'search',
+    //       position: 'left',
+    //     },
+    //     {
+    //       to: 'https://www.scalekit.com/?intent=earlyaccess&utm_source=docs',
+    //       html: 'Get Early Access &rarr;',
+    //       position: 'right',
+    //       className: 'loginLink',
+    //     },
+    //   ],
+    // },
     imageZoom: {
       // CSS selector to apply the plugin to, defaults to '.markdown img'
       selector: '.markdown :not(.cardContainer h3) > img,  .markdown :not(.language-row) img',
