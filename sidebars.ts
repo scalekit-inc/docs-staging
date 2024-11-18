@@ -202,11 +202,11 @@ const sidebars: SidebarsConfig = {
         "<span class='text--uppercase text--light sidenav-category-heading'>Implementation</span>",
       defaultStyle: true,
     },
-    {
-      type: 'doc',
-      label: 'Setup Webhooks',
-      id: 'scim/setup-directory-events',
-    },
+    // {
+    //   type: 'doc',
+    //   label: 'Setup Webhooks',
+    //   id: 'scim/setup-directory-events',
+    // },
     // {
     //   type: 'doc',
     //   label: 'Directory User Object',
