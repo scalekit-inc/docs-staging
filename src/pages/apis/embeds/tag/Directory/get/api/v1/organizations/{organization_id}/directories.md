@@ -1,4 +1,4 @@
-<CodeWithHeader method="patch" endpoint="/api/v1/organizations/{organization_id}/connections/{id}:enable">
+<CodeWithHeader method="patch" endpoint="/api/v1/organizations/{organization_id}/directories">
 <Tabs groupId="tech-stack" querystring>
 <TabItem value="curl" label="cURL">
 
@@ -11,47 +11,47 @@ curl --location 'https://<SCALEKIT_ENVIRONMENT_URL>/api/v1/organizations/<organi
 <TabItem value="nodejs" label="Node.js">
 
 ```js showLineNumbers
-const sc = new ScalekitClient(
-  <SCALEKIT_ENVIRONMENT_URL>,
-  <SCALEKIT_CLIENT_ID>,
-  <SCALEKIT_CLIENT_SECRET>
-);
+async function getDirectory(organizationId) {
+  const { directory } = await scalekit.directory.getDirectory(organizationId);
+  console.log('Directory ID:', directory.id);
+  return directory;
+}
 
-await sc.connection.enableConnection(organizationId, connectionId);
+const organizationId = 'org_33247113199762954';
+const directory = await getDirectory(organizationId);
 ```
 
 </TabItem>
 <TabItem value="py" label="Python">
 
 ```python showLineNumbers
+from scalekit import ScalekitClient
 
-sc = ScalekitClient(
-  <SCALEKIT_ENVIRONMENT_URL>,
-  <SCALEKIT_CLIENT_ID>,
-  <SCALEKIT_CLIENT_SECRET>
+# Initialize the SDK client
+scalekit_client = ScalekitClient(
+  '<SCALEKIT_ENVIRONMENT_URL>',
+  '<SCALEKIT_CLIENT_ID>',
+  '<SCALEKIT_CLIENT_SECRET>'
 )
 
-sc.connection.enable_connection(
-  organization_id,
-  connection_id,
+directory = scalekit_client.directory.get_directory(
+  directory_id='<directory_id>', organization_id='<organization_id>'
 )
+print(f'Directory details: {directory}')
 ```
 
 </TabItem>
 <TabItem value="golang" label="Go">
 
 ```go showLineNumbers
+
 sc := scalekit.NewScalekitClient(
   <SCALEKIT_ENVIRONMENT_URL>,
   <SCALEKIT_CLIENT_ID>,
   <SCALEKIT_CLIENT_SECRET>
 )
 
-err := sc.Connection.EnableConnection(
-  ctx,
-  organizationId,
-  connectionId,
-)
+directories,err := sc.Directory().ListDirectories(ctx, organizationId)
 ```
 
 </TabItem>
@@ -59,13 +59,15 @@ err := sc.Connection.EnableConnection(
 <TabItem value="java" label="Java">
 
 ```java showLineNumbers
+import com.scalekit.ScalekitClient;
+
 ScalekitClient scalekitClient = new ScalekitClient(
   "<SCALEKIT_ENVIRONMENT_URL>",
   "<SCALEKIT_CLIENT_ID>",
   "<SCALEKIT_CLIENT_SECRET>"
 );
 
-ToggleConnectionResponse response = client.connections().enableConnection(connectionId, organizationId);
+ListDirectoriesResponse response = client.directories().listDirectories(organizationId);
 
 ```
 

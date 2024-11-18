@@ -11,30 +11,32 @@ curl --location 'https://<SCALEKIT_ENVIRONMENT_URL>/api/v1/organizations/<organi
 <TabItem value="nodejs" label="Node.js">
 
 ```js showLineNumbers
-const sc = new ScalekitClient(
-  <SCALEKIT_ENVIRONMENT_URL>,
-  <SCALEKIT_CLIENT_ID>,
-  <SCALEKIT_CLIENT_SECRET>
-);
+async function listUsers(directoryId) {
+  const { users } = await scalekit.directory.listDirectoryUsers(directoryId);
+  console.log('User email in the directory:', users[0].email);
+  return users;
+}
 
-await sc.connection.enableConnection(organizationId, connectionId);
+const userList = await listUsers(directory.id);
 ```
 
 </TabItem>
 <TabItem value="py" label="Python">
 
 ```python showLineNumbers
+from scalekit import ScalekitClient
 
-sc = ScalekitClient(
-  <SCALEKIT_ENVIRONMENT_URL>,
-  <SCALEKIT_CLIENT_ID>,
-  <SCALEKIT_CLIENT_SECRET>
+# Initialize the SDK client
+scalekit_client = ScalekitClient(
+  '<SCALEKIT_ENVIRONMENT_URL>',
+  '<SCALEKIT_CLIENT_ID>',
+  '<SCALEKIT_CLIENT_SECRET>'
 )
 
-sc.connection.enable_connection(
-  organization_id,
-  connection_id,
+directory_users = scalekit_client.directory.list_directory_users(
+  directory_id='<directory_id>', organization_id='<organization_id>'
 )
+print(f'directory users: {str(directory_users)}')
 ```
 
 </TabItem>
@@ -47,11 +49,11 @@ sc := scalekit.NewScalekitClient(
   <SCALEKIT_CLIENT_SECRET>
 )
 
-err := sc.Connection.EnableConnection(
-  ctx,
-  organizationId,
-  connectionId,
-)
+options := &ListDirectoryUsersOptions{
+		PageSize: 10,
+		PageToken: "",
+	}
+directoryUsers,err := sc.Directory().ListDirectoryUsers(ctx, organizationId, directoryId, options)
 ```
 
 </TabItem>
@@ -59,13 +61,23 @@ err := sc.Connection.EnableConnection(
 <TabItem value="java" label="Java">
 
 ```java showLineNumbers
+import com.scalekit.ScalekitClient;
+
 ScalekitClient scalekitClient = new ScalekitClient(
   "<SCALEKIT_ENVIRONMENT_URL>",
   "<SCALEKIT_CLIENT_ID>",
   "<SCALEKIT_CLIENT_SECRET>"
 );
 
-ToggleConnectionResponse response = client.connections().enableConnection(connectionId, organizationId);
+var options = ListDirectoryResourceOptions.builder()
+  .pageSize(10)
+  .pageToken("")
+  .includeDetail(true)
+  .build();
+
+ListDirectoryUsersResponse usersResponse = client
+  .directories()
+  .listDirectoryUsers(directory.getId(), organizationId, options);
 
 ```
 

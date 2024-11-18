@@ -24,17 +24,19 @@ await sc.connection.enableConnection(organizationId, connectionId);
 <TabItem value="py" label="Python">
 
 ```python showLineNumbers
+from scalekit import ScalekitClient
 
-sc = ScalekitClient(
-  <SCALEKIT_ENVIRONMENT_URL>,
-  <SCALEKIT_CLIENT_ID>,
-  <SCALEKIT_CLIENT_SECRET>
+# Initialize the SDK client
+scalekit_client = ScalekitClient(
+  '<SCALEKIT_ENVIRONMENT_URL>',
+  '<SCALEKIT_CLIENT_ID>',
+  '<SCALEKIT_CLIENT_SECRET>'
 )
 
-sc.connection.enable_connection(
-  organization_id,
-  connection_id,
+directory_response = scalekit_client.directory.disable_directory(
+  directory_id='<directory_id>', organization_id='<organization_id>'
 )
+print(f'Disable Directory Response: {str(directory_response)}')
 ```
 
 </TabItem>
@@ -46,12 +48,7 @@ sc := scalekit.NewScalekitClient(
   <SCALEKIT_CLIENT_ID>,
   <SCALEKIT_CLIENT_SECRET>
 )
-
-err := sc.Connection.EnableConnection(
-  ctx,
-  organizationId,
-  connectionId,
-)
+disable,err := sc.Directory().DisableDirectory(ctx, organizationId, directoryId)
 ```
 
 </TabItem>
@@ -59,13 +56,17 @@ err := sc.Connection.EnableConnection(
 <TabItem value="java" label="Java">
 
 ```java showLineNumbers
+import com.scalekit.ScalekitClient;
+
 ScalekitClient scalekitClient = new ScalekitClient(
   "<SCALEKIT_ENVIRONMENT_URL>",
   "<SCALEKIT_CLIENT_ID>",
   "<SCALEKIT_CLIENT_SECRET>"
 );
 
-ToggleConnectionResponse response = client.connections().enableConnection(connectionId, organizationId);
+ToggleDirectoryResponse disableResponse = client
+  .directories()
+  .disableDirectory(directoryId, organizationId);
 
 ```
 

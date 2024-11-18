@@ -11,30 +11,32 @@ curl --location 'https://<SCALEKIT_ENVIRONMENT_URL>/api/v1/organizations/<organi
 <TabItem value="nodejs" label="Node.js">
 
 ```js showLineNumbers
-const sc = new ScalekitClient(
-  <SCALEKIT_ENVIRONMENT_URL>,
-  <SCALEKIT_CLIENT_ID>,
-  <SCALEKIT_CLIENT_SECRET>
-);
+async function listGroups(directoryId) {
+  const { groups } = await scalekit.directory.listDirectoryGroups(directoryId);
+  console.log('Group Object: \n', JSON.stringify(groups[0], null, 2));
+  return groups;
+}
 
-await sc.connection.enableConnection(organizationId, connectionId);
+const groups = await listGroups(directory.id);
 ```
 
 </TabItem>
 <TabItem value="py" label="Python">
 
 ```python showLineNumbers
+from scalekit import ScalekitClient
 
-sc = ScalekitClient(
-  <SCALEKIT_ENVIRONMENT_URL>,
-  <SCALEKIT_CLIENT_ID>,
-  <SCALEKIT_CLIENT_SECRET>
+# Initialize the SDK client
+scalekit_client = ScalekitClient(
+  '<SCALEKIT_ENVIRONMENT_URL>',
+  '<SCALEKIT_CLIENT_ID>',
+  '<SCALEKIT_CLIENT_SECRET>'
 )
 
-sc.connection.enable_connection(
-  organization_id,
-  connection_id,
+directory_groups = scalekit_client.directory.list_directory_groups(
+  directory_id='<directory_id>', organization_id='<organization_id>'
 )
+print(f'directory groups: {str(directory_groups)}')
 ```
 
 </TabItem>
@@ -46,12 +48,12 @@ sc := scalekit.NewScalekitClient(
   <SCALEKIT_CLIENT_ID>,
   <SCALEKIT_CLIENT_SECRET>
 )
+options := &ListDirectoryGroupsOptions{
+		PageSize: 10,
+		PageToken:"",
+	}
 
-err := sc.Connection.EnableConnection(
-  ctx,
-  organizationId,
-  connectionId,
-)
+directoryGroups, err := sc.Directory().ListDirectoryGroups(ctx, organizationId, directoryId, options)
 ```
 
 </TabItem>
@@ -59,13 +61,23 @@ err := sc.Connection.EnableConnection(
 <TabItem value="java" label="Java">
 
 ```java showLineNumbers
+import com.scalekit.ScalekitClient;
+
 ScalekitClient scalekitClient = new ScalekitClient(
   "<SCALEKIT_ENVIRONMENT_URL>",
   "<SCALEKIT_CLIENT_ID>",
   "<SCALEKIT_CLIENT_SECRET>"
 );
 
-ToggleConnectionResponse response = client.connections().enableConnection(connectionId, organizationId);
+var options = ListDirectoryResourceOptions.builder()
+  .pageSize(10)
+  .pageToken("")
+  .includeDetail(true)
+  .build();
+
+ListDirectoryGroupsResponse groupsResponse = client
+  .directories()
+  .listDirectoryGroups(directory.getId(), organizationId, options);
 
 ```
 

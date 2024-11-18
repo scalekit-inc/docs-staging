@@ -98,6 +98,65 @@ console.log(`Name of the a organization: ${organizations[0].display_name}`);
 
 </TabItem>
 
+<TabItem value="python" label="Python">
+
+```python
+from scalekit import ScalekitClient
+
+# Initialize the SDK client
+scalekit_client = ScalekitClient(
+  '<SCALEKIT_ENVIRONMENT_URL>',
+  '<SCALEKIT_CLIENT_ID>',
+  '<SCALEKIT_CLIENT_SECRET>'
+)
+
+org_list = (scalekit_client
+            .organization
+            .list_organizations(page_size='100'))
+
+print(f'Organisation details: {org_list[0]}')
+
+```
+
+</TabItem>
+
+<TabItem value="go" label="Go" >
+
+```go
+sc := scalekit.NewScalekitClient(
+  <SCALEKIT_ENVIRONMENT_URL>,
+  <SCALEKIT_CLIENT_ID>,
+  <SCALEKIT_CLIENT_SECRET>
+)
+
+organization, err := sc.Organization.GetOrganization(
+  ctx,
+  organizationId
+)
+```
+
+</TabItem>
+
+<TabItem value="java" label="Java">
+
+```java
+import com.scalekit.ScalekitClient;
+
+ScalekitClient scalekitClient = new ScalekitClient(
+  "<SCALEKIT_ENVIRONMENT_URL>",
+  "<SCALEKIT_CLIENT_ID>",
+  "<SCALEKIT_CLIENT_SECRET>"
+);
+
+CreateOrganization createOrganization = CreateOrganization.newBuilder()
+  .setDisplayName("Test organization")
+  .build();
+
+Organization organization = client.organizations().create(createOrganization);
+
+```
+
+</TabItem>
 </Tabs>
 </CodeWithHeader>
 <CodeWithHeader title="Terminal Output">
@@ -131,6 +190,59 @@ const directory = await getDirectory(organizationId);
 ```
 
 </TabItem>
+
+<TabItem value="python" label="Python">
+
+```python
+from scalekit import ScalekitClient
+
+# Initialize the SDK client
+scalekit_client = ScalekitClient(
+  '<SCALEKIT_ENVIRONMENT_URL>',
+  '<SCALEKIT_CLIENT_ID>',
+  '<SCALEKIT_CLIENT_SECRET>'
+)
+
+directory = scalekit_client.directory.get_directory(
+  directory_id='<directory_id>', organization_id='<organization_id>'
+)
+print(f'Directory details: {directory}')
+
+```
+
+</TabItem>
+
+<TabItem value="go" label="Go">
+
+```go
+sc := scalekit.NewScalekitClient(
+  <SCALEKIT_ENVIRONMENT_URL>,
+  <SCALEKIT_CLIENT_ID>,
+  <SCALEKIT_CLIENT_SECRET>
+)
+
+directory, err := sc.Directory().GetDirectory(ctx, organizationId, directoryId)
+
+```
+
+</TabItem>
+
+<TabItem value="java" label="Java">
+
+```java
+import com.scalekit.ScalekitClient;
+
+ScalekitClient scalekitClient = new ScalekitClient(
+  "<SCALEKIT_ENVIRONMENT_URL>",
+  "<SCALEKIT_CLIENT_ID>",
+  "<SCALEKIT_CLIENT_SECRET>"
+);
+
+Directory directory = client.directories().getDirectory(directoryId, organizationId);
+
+```
+
+</TabItem>
 </Tabs>
 </CodeWithHeader>
 
@@ -158,6 +270,71 @@ async function listUsers(directoryId) {
 }
 
 const userList = await listUsers(directory.id);
+```
+
+</TabItem>
+
+<TabItem value="python" label="Python">
+
+```python
+from scalekit import ScalekitClient
+
+# Initialize the SDK client
+scalekit_client = ScalekitClient(
+  '<SCALEKIT_ENVIRONMENT_URL>',
+  '<SCALEKIT_CLIENT_ID>',
+  '<SCALEKIT_CLIENT_SECRET>'
+)
+
+directory_users = scalekit_client.directory.list_directory_users(
+  directory_id='<directory_id>', organization_id='<organization_id>'
+)
+print(f'directory users: {str(directory_users)}')
+
+```
+
+</TabItem>
+
+<TabItem value="go" label="Go">
+
+```go
+sc := scalekit.NewScalekitClient(
+  <SCALEKIT_ENVIRONMENT_URL>,
+  <SCALEKIT_CLIENT_ID>,
+  <SCALEKIT_CLIENT_SECRET>
+)
+
+options := &ListDirectoryUsersOptions{
+		PageSize: 10,
+		PageToken: "",
+}
+directoryUsers,err := sc.Directory().ListDirectoryUsers(ctx, organizationId, directoryId, options)
+
+```
+
+</TabItem>
+
+<TabItem value="java" label="Java">
+
+```java
+import com.scalekit.ScalekitClient;
+
+ScalekitClient scalekitClient = new ScalekitClient(
+  "<SCALEKIT_ENVIRONMENT_URL>",
+  "<SCALEKIT_CLIENT_ID>",
+  "<SCALEKIT_CLIENT_SECRET>"
+);
+
+var options = ListDirectoryResourceOptions.builder()
+  .pageSize(10)
+  .pageToken("")
+  .includeDetail(true)
+  .build();
+
+ListDirectoryUsersResponse usersResponse = client
+  .directories()
+  .listDirectoryUsers(directory.getId(), organizationId, options);
+
 ```
 
 </TabItem>
@@ -196,6 +373,71 @@ const groups = await listGroups(directory.id);
 ```
 
 </TabItem>
+
+<TabItem value="python" label="Python">
+
+```python
+
+from scalekit import ScalekitClient
+
+# Initialize the SDK client
+scalekit_client = ScalekitClient(
+  '<SCALEKIT_ENVIRONMENT_URL>',
+  '<SCALEKIT_CLIENT_ID>',
+  '<SCALEKIT_CLIENT_SECRET>'
+)
+
+directory_groups = scalekit_client.directory.list_directory_groups(
+  directory_id='<directory_id>', organization_id='<organization_id>'
+)
+print(f'directory groups: {str(directory_groups)}')
+
+```
+
+</TabItem>
+
+<TabItem value="go" label="Go">
+
+```go
+sc := scalekit.NewScalekitClient(
+  <SCALEKIT_ENVIRONMENT_URL>,
+  <SCALEKIT_CLIENT_ID>,
+  <SCALEKIT_CLIENT_SECRET>
+)
+options := &ListDirectoryGroupsOptions{
+		PageSize: 10,
+		PageToken:"",
+	}
+
+directoryGroups, err := sc.Directory().ListDirectoryGroups(ctx, organizationId, directoryId, options)
+```
+
+</TabItem>
+
+<TabItem value="java" label="Java">
+
+```java
+import com.scalekit.ScalekitClient;
+
+ScalekitClient scalekitClient = new ScalekitClient(
+  "<SCALEKIT_ENVIRONMENT_URL>",
+  "<SCALEKIT_CLIENT_ID>",
+  "<SCALEKIT_CLIENT_SECRET>"
+);
+
+var options = ListDirectoryResourceOptions.builder()
+  .pageSize(10)
+  .pageToken("")
+  .includeDetail(true)
+  .build();
+
+ListDirectoryGroupsResponse groupsResponse = client
+  .directories()
+  .listDirectoryGroups(directory.getId(), organizationId, options);
+
+```
+
+</TabItem>
 </Tabs>
 </CodeWithHeader>
 
@@ -221,13 +463,13 @@ more capabilities.
 
 ## Realtime User Provisioning with Webhooks
 
-### 1. Create a Webhook Endpoint
+### Create a Webhook Endpoint
 
 To receive realtime events from directory providers, create a webhook endpoint and register it in
 the Scalekit dashboard.
 
 <Tabs groupId="tech-stack" queryString>
-<TabItem value="nodejs" label="Next.js">
+<TabItem value="nextjs" label="Next.js">
 
 ```javascript showLineNumbers
 import { NextRequest, NextResponse } from 'next/server';
@@ -257,25 +499,52 @@ export async function POST(req: NextRequest) {
 ```
 
 </TabItem>
+
+<TabItem value="nodejs" label="Node.js">
+
+```javascript
+
+```
+
+</TabItem>
+
+<TabItem value="python" label="Python">
+
+```python
+
+```
+
+</TabItem>
+
+<TabItem value="go" label="Go">
+
+```go
+
+```
+
+</TabItem>
+
+<TabItem value="java" label="Java">
+
+```java
+
+```
+
+</TabItem>
 </Tabs>
 
-In this example, the endpoint URL is
-
-<SimpleCode>
-  https://<span></span>www<span></span>.hero-saas.<span></span>app/api/webhook/user-access
-</SimpleCode>
+{/* prettier-ignore */}
+In this example, the endpoint URL is<SimpleCode>https://<span></span>www<span></span>.hero-saas.<span></span>app/api/webhook/user-access</SimpleCode>
 
 When the endpoint receives an HTTP POST request with event data, it extracts the name and email from
 the payload and calls <SimpleCode>createUserAccount()</SimpleCode> to perform the necessary business
 logic — in this case, creating a user account.
 
-### 2. Register Webhook Endpoint
+### Register Webhook Endpoint
 
 First, navigate to the "Webhooks" tab in the Scalekit Dashboard. Click on the "+Add Endpoint" button
 and enter the endpoint URL along with a meaningful description. Finally, select the desired event
-types, such as
-
-<SimpleCode>scalekit.dir.user.\*</SimpleCode>, to subscribe to the relevant events.
+types, such as <SimpleCode>scalekit.dir.user.\*</SimpleCode>, to subscribe to the relevant events.
 
 <figure className="width-75">![](@site/docs/scim/assets/2-quickstart-dir-sync.png)</figure>
 
@@ -285,7 +554,7 @@ directory providers.
 Refer to the [API reference](/apis#tag/Webhooks) for the list of all available event types and
 [setting up webhooks](scim/webhooks.mdx) to explore testing webhooks with test endpoints.
 
-### 3. Receive Event Payloads
+### Receive Event Payloads
 
 Scalekit sends event payloads to your app for consumption and standardizes the payload structure
 across different directory providers your customers may use.Since we subscribed to user events,
@@ -312,6 +581,30 @@ const event = await req.json();
 // Business logic with Event Object
 console.log(`Event Type: ${event.type}`);
 console.log(`${event.data.given_name}'s account is provisioned`);
+```
+
+</TabItem>
+
+<TabItem value="python" label="Python">
+
+```python
+
+```
+
+</TabItem>
+
+<TabItem value="go" label="Go">
+
+```go
+
+```
+
+</TabItem>
+
+<TabItem value="java" label="Java">
+
+```java
+
 ```
 
 </TabItem>
