@@ -178,6 +178,8 @@ const config: Config = {
       },
       items: [
         {
+          type: 'docSidebar',
+          sidebarId: 'ssoSidebar',
           to: '/sso/quickstart',
           label: 'Single Sign-on',
           position: 'left',
@@ -185,6 +187,8 @@ const config: Config = {
         },
         {
           to: '/scim/quickstart',
+          type: 'docSidebar',
+          sidebarId: 'scimSidebar',
           label: 'SCIM Provisioning',
           position: 'left',
           className: 'scim',
@@ -201,7 +205,9 @@ const config: Config = {
         },
         {
           label: 'Integrations',
-          href: '/integrations',
+          type: 'docSidebar',
+          sidebarId: 'integrationsSidebar',
+          to: '/integrations',
           position: 'left',
         },
         {
