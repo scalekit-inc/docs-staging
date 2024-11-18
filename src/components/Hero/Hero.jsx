@@ -3,6 +3,8 @@ import styles from './Hero.module.css';
 
 const Hero = ({ title, subtitle, callToAction, children }) => {
   const renderTextWithLineBreaks = text => {
+    if (!text) return null;
+
     return text.split('\n').map((line, index) => (
       <span key={index}>
         {line}

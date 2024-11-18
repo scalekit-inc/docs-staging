@@ -210,6 +210,35 @@
   --ifm-button-border-color: var(--primary-purple-200);
 }
 
+.button--tertiary {
+  background-color: transparent;
+  color: var(--primary-graphite-500);
+  padding-left: 0px;
+}
+:where(.button--tertiary):not(.button--outline):hover {
+  /* background-color: transparent; */
+  /* opacity: 0.9; */
+  text-decoration: none; /* Remove underline */
+  border: none;
+  color: var(--primary-purple-500);
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+.cta-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Adjust the gap between buttons */
+  align-items: left; /* Center the buttons */
+}
+
+.button {
+  width: 100%; /* Make buttons full width of the container */
+  max-width: 300px; /* Set a max width for the buttons */
+  text-align: left;
+}
+
 .homepage {
   margin: 0 7%;
 }
@@ -251,6 +280,10 @@ figure.width-50 {
 
 figure.width-75 {
   width: 75%;
+}
+
+.reduced-image {
+  width: 10%;
 }
 
 figure {
@@ -917,7 +950,7 @@ ul.table-of-contents.table-of-contents__left-border:before {
   border-radius: 4px !important;
   border: 1.1px solid;
   height: 32px;
-  width: 30vw;
+  width: 20vw;
   border-color: #cecece;
   font-family: var(--ifm-font-family-base);
 }
@@ -1138,21 +1171,24 @@ svg {
 .loginLink:hover {
   background-color: #202020;
   text-decoration: none;
+  color: #ffffff;
 }
 
 .loginLink {
   padding-right: 12px !important;
   padding-left: 12px;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  border: 1px solid var(--primary-grey-300);
+  padding-top: 2.4px;
+  padding-bottom: 2.4px;
+
   border-radius: 5px;
   margin-right: 20px;
   margin-left: 20px;
   background-color: #000000;
   color: #ffffff;
-  font-weight: 600;
+  font-weight: 550;
   text-align: center;
+
+  /* height: px; */
 }
 
 .iconExternalLink_node_modules-\@docusaurus-theme-classic-lib-theme-Icon-ExternalLink-styles-module {
@@ -1564,6 +1600,7 @@ article:has(.custom_container) {
 }
 
 .docsRating .btn-outline {
+  width: auto;
   margin: 0 8px;
   color: var(--ifm-color-primary);
 }
@@ -1571,8 +1608,8 @@ article:has(.custom_container) {
 .btn-outline {
   align-items: center;
   background-color: #fff;
-  padding-left: 8px; /* Adjusted padding */
-  padding-right: 8px; /* Adjusted padding */
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .btn-outline svg {
