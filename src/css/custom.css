@@ -314,7 +314,12 @@ figure img {
 }
 
 .navbar__item {
-  padding: 0.45rem 1rem;
+  padding: 0.55rem 1rem;
+}
+
+.navbar__item:hover {
+  padding: 0.55rem 1rem;
+  background-color: #eeeeee;
 }
 
 .limited-width {
@@ -681,7 +686,7 @@ p {
   color: var(--primary-graphite-400);
   margin: 0 0.5rem;
   border-radius: 4px;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .navbar__secondary .navbar__link--active {
@@ -691,7 +696,7 @@ p {
 }
 
 .navbar__link--active {
-  background-color: var(--secondary-blue-light);
+  background-color: #ffffff;
   font-weight: 600;
 }
 
@@ -832,7 +837,7 @@ ul.table-of-contents.table-of-contents__left-border:before {
 
 .navbar {
   padding: 0 var(--ifm-navbar-padding-horizontal);
-  height: 100%;
+  height: 64px;
 }
 
 .navbar:has(.navbar__secondary) {
@@ -1194,18 +1199,11 @@ svg {
   color: var(--scalekit-blue);
 }
 
-.loginLink:hover {
-  background-color: #202020;
-  text-decoration: none;
-  color: #ffffff;
-}
-
 .loginLink {
   padding-right: 12px !important;
-  padding-left: 12px;
-  padding-top: 2.4px;
-  padding-bottom: 2.4px;
-
+  padding-top: 3px;
+  padding-left: 12.2px;
+  padding-bottom: 3px;
   border-radius: 5px;
   margin-right: 20px;
   margin-left: 20px;
@@ -1213,10 +1211,16 @@ svg {
   color: #ffffff;
   font-weight: 550;
   text-align: center;
-
-  /* height: px; */
 }
 
+.loginLink:hover {
+  background-color: #202020;
+  padding-top: 2.6px;
+  padding-left: 3px;
+  padding-bottom: 3px;
+  text-decoration: none;
+  color: #ffffff;
+}
 .iconExternalLink_node_modules-\@docusaurus-theme-classic-lib-theme-Icon-ExternalLink-styles-module {
   display: none;
 }
