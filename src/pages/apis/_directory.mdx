@@ -2,19 +2,23 @@
 
 <div className="row section">
   <div className="col col--6">
-    The Directory object represents a connection to a <TermTip jargon="directory provider" />. You can programmatically
-    enable or disable directories for an organization using the Directory API. Scalekit synchronizes and stores the
-    users and groups from connected directories. The Directory API allows you to fetch users and groups from the
-    directory on demand.
+    The Directory object represents a connection to a <TermTip jargon="directory provider" />. You
+    can programmatically enable or disable directories for an organization using the Directory API.
+    Scalekit synchronizes and stores the users and groups from connected directories. The Directory
+    API allows you to fetch users and groups from the directory on demand.
   </div>
   <div className="col col--6">
     <Endpoints
       tag="Directory"
       excludeEndpoints={[
-        { method: 'post', label: '/api/v1/organizations/{organization_id}/directories/{directory_id}/secrets' },
         {
           method: 'post',
-          label: '/api/v1/organizations/{organization_id}/directories/{directory_id}/secrets:regenerate',
+          label: '/api/v1/organizations/{organization_id}/directories/{directory_id}/secrets',
+        },
+        {
+          method: 'post',
+          label:
+            '/api/v1/organizations/{organization_id}/directories/{directory_id}/secrets:regenerate',
         },
       ]}
     />
@@ -623,7 +627,11 @@
   endpoint="/api/v1/organizations/{organization_id}/directories/{id}:enable"
 />
 
-<APIEndpoint tag="Directory" method="get" endpoint="/api/v1/organizations/{organization_id}/directories/{id}" />
+<APIEndpoint
+  tag="Directory"
+  method="get"
+  endpoint="/api/v1/organizations/{organization_id}/directories/{id}"
+/>
 
 <APIEndpoint
   tag="Directory"
@@ -637,7 +645,11 @@
   endpoint="/api/v1/organizations/{organization_id}/directories/{directory_id}/groups"
 />
 
-<APIEndpoint tag="Directory" method="get" endpoint="/api/v1/organizations/{organization_id}/directories" />
+<APIEndpoint
+  tag="Directory"
+  method="get"
+  endpoint="/api/v1/organizations/{organization_id}/directories"
+/>
 
 <APIEndpoint
   tag="Directory"
