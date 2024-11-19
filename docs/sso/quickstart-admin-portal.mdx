@@ -1,9 +1,9 @@
 ---
 title: 'Admin Portal for SSO Integration: Empowering IT Admins with Scalekit'
 description:
-  "Discover how Scalekit's Admin Portal enables IT admins to configure Single Sign-On independently, reducing
-  engineering and support team overhead. Explore API and no-code integration options for effortless Single
-  Sign-On setup."
+  "Discover how Scalekit's Admin Portal enables IT admins to configure Single Sign-On independently,
+  reducing engineering and support team overhead. Explore API and no-code integration options for
+  effortless Single Sign-On setup."
 keywords:
   [
     'Single Sign-On',
@@ -28,13 +28,19 @@ import InstallSDK from '@site/docs/sso/templates/_install-sdk.md';
 
 # Admin Portal
 
-<Subtitle>Empower your customers to configure and manage Single Sign-On settings by themselves</Subtitle>
+<Subtitle>
+  Empower your customers to configure and manage Single Sign-On settings by themselves
+</Subtitle>
 
-The Admin Portal allows enterprise organizations to easily configure connections between your app and their identity or directory providers. By providing a self-serve portal, you can reduce back-and-forth communication between your team and your customers' teams.
-Scalekit fully hosts and manages the Admin Portal, offering two integration options:
-1. No-Code Admin Portal: Generate a shareable link to the portal and distribute it to your customers through regular communication channels.
-2. Embedded Admin Portal: Seamlessly integrate the Admin Portal into your application using an iframe.
+The Admin Portal allows enterprise organizations to easily configure connections between your app
+and their identity or directory providers. By providing a self-serve portal, you can reduce
+back-and-forth communication between your team and your customers' teams. Scalekit fully hosts and
+manages the Admin Portal, offering two integration options:
 
+1. No-Code Admin Portal: Generate a shareable link to the portal and distribute it to your customers
+   through regular communication channels.
+2. Embedded Admin Portal: Seamlessly integrate the Admin Portal into your application using an
+   iframe.
 
 ## 1. No-Code Admin Portal
 
@@ -46,33 +52,31 @@ Log in to your [Scalekit Dashboard](https://app.scalekit.com/).
 2. Select the organization you want to provide with access to the portal.
 3. Click "Generate Link" to create a new, shareable Admin Portal link.
 
-<figure>
-  ![Integrate via Shareable Link](@site/docs/scim/assets/1-admin-portal.png)
-</figure>
+<figure>![Integrate via Shareable Link](@site/docs/scim/assets/1-admin-portal.png)</figure>
 
 **Important Considerations**
 
-- This link is valid for 7 days but can be revoked at any time from the dashboard for security purposes.
+- This link is valid for 7 days but can be revoked at any time from the dashboard for security
+  purposes.
 - The link can be distributed through communication channels such as email, Slack, etc
-- Exercise caution, as anyone with this link can view and update their organization's Single Sign-On settings
+- Exercise caution, as anyone with this link can view and update their organization's Single Sign-On
+  settings
 
-<figure>
-  ![Integrate via Shareable Link](@site/docs/scim/assets/2-admin-portal.png)
-</figure>
+<figure>![Integrate via Shareable Link](@site/docs/scim/assets/2-admin-portal.png)</figure>
 
 ## 2. Embedded Admin Portal
 
-Embedding the Admin Portal within your app provides advantages such as Easy discoverability, Convenient access for making changes on the go, and Reduced navigation barriers for IT admins.
+Embedding the Admin Portal within your app provides advantages such as Easy discoverability,
+Convenient access for making changes on the go, and Reduced navigation barriers for IT admins.
 
-<figure>
-  ![Integrate via API](@site/docs/scim/assets/3-admin-portal.png)
-</figure>
+<figure>![Integrate via API](@site/docs/scim/assets/3-admin-portal.png)</figure>
 
 Install the Scalekit SDK, which includes the <SimpleCode>generatePortalLink()</SimpleCode> method:
 
 <InstallSDK />
 
-Use the Generate Portal Link API to create a unique and embeddable Admin Portal link for an organization:
+Use the Generate Portal Link API to create a unique and embeddable Admin Portal link for an
+organization:
 
 <CodeWithHeader title="Generate Portal Link">
 
@@ -85,23 +89,22 @@ import { Scalekit } from '@scalekit-sdk/node';
 const scalekit = new Scalekit(
   process.env.ENVIRONMENT_URL,
   process.env.CLIENT_ID,
-  process.env.CLIENT_SECRET
+  process.env.CLIENT_SECRET,
 );
 
 async function generatePortalLink(orgID) {
   const link = await scalekit.organization.generatePortalLink(orgID);
   console.log(JSON.stringify(link, null, 2));
 }
-
 ```
 
 </TabItem>
 </Tabs>
 
-
 </CodeWithHeader>
 
-The API will return a JSON object containing the <SimpleCode>location</SimpleCode> property, which is the URL to the Admin Portal.
+The API will return a JSON object containing the <SimpleCode>location</SimpleCode> property, which
+is the URL to the Admin Portal.
 
 <CodeWithHeader title="Generate Portal Link (Response Object)">
 
@@ -115,7 +118,8 @@ The API will return a JSON object containing the <SimpleCode>location</SimpleCod
 
 </CodeWithHeader>
 
-Access the <SimpleCode>location</SimpleCode> property and set it as the <SimpleCode>src</SimpleCode> attribute of an iframe in your web pages.
+Access the <SimpleCode>location</SimpleCode> property and set it as the <SimpleCode>src</SimpleCode>
+attribute of an iframe in your web pages.
 
 <CodeWithHeader title="Embed Admin Portal in an Iframe">
 
@@ -126,7 +130,8 @@ Access the <SimpleCode>location</SimpleCode> property and set it as the <SimpleC
     src="https://random-subdomain.scalekit.dev/magicLink/8930509d-68cf-4e2c-8c6d-94d2b5e2db43"
     width="100%"
     height="600px"
-    frameborder="0">
+    frameborder="0"
+  >
   </iframe>
 </body>
 ```
@@ -135,9 +140,14 @@ Access the <SimpleCode>location</SimpleCode> property and set it as the <SimpleC
 
 **Important Considerations**
 
-1. The generated link is designed for one-time use and expires after 5 minutes or upon its initial access.
+1. The generated link is designed for one-time use and expires after 5 minutes or upon its initial
+   access.
 2. Ensure your domain is listed as one of the Redirect URIs in the Scalekit Dashboard > API Config.
-3. Once activated, the IT admin can configure SSO for an extended period. The session remains active until the setup is complete.
-4. For local development, use tools like Svix or Ngrok to expose localhost URLs to the internet. Register the generated HTTPS URLs in the Scalekit Dashboard > API Config, and access the webpage using the Svix or Ngrok URL.
+3. Once activated, the IT admin can configure SSO for an extended period. The session remains active
+   until the setup is complete.
+4. For local development, use tools like Svix or Ngrok to expose localhost URLs to the internet.
+   Register the generated HTTPS URLs in the Scalekit Dashboard > API Config, and access the webpage
+   using the Svix or Ngrok URL.
 
-The Admin Portal can be customized to match your brand's logo and colors. Refer to the [Customize Admin Portal Guide](docs/sso/domain-and-theme-customization) for more information.
+The Admin Portal can be customized to match your brand's logo and colors. Refer to the
+[Customize Admin Portal Guide](/sso/domain-and-theme-customization) for more information.

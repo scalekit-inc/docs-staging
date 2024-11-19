@@ -1,8 +1,9 @@
 ---
 title: 'Implementing Single Sign-On with Scalekit: A Step-by-Step Guide'
 description:
-  "Learn how to integrate Single Sign-On (SSO) into your application using Scalekit's APIs. This guide provides a
-  detailed walkthrough for setting up SSO with major identity providers like Okta and Microsoft Entra ID."
+  "Learn how to integrate Single Sign-On (SSO) into your application using Scalekit's APIs. This
+  guide provides a detailed walkthrough for setting up SSO with major identity providers like Okta
+  and Microsoft Entra ID."
 keywords:
   [
     'Single Sign-On',
@@ -24,10 +25,11 @@ import InstallSDK from '@site/docs/sso/templates/_install-sdk.md';
 
 <Subtitle>Integrate with dozens of identity providers via SAML or OIDC</Subtitle>
 
-Single Sign-On (SSO) enhances B2B SaaS application's security and offers a smooth user experience. Scalekit is an
-authentication platform that enables developers to implement enterprise features like SSO with just a few lines of code.
-Scalekit abstracts the complexities associated with SAML, OIDC and offers prebuilt integrations with all major identity
-providers like Okta, Microsoft Entra ID, Jumpcloud, Onelogin.
+Single Sign-On (SSO) enhances B2B SaaS application's security and offers a smooth user experience.
+Scalekit is an authentication platform that enables developers to implement enterprise features like
+SSO with just a few lines of code. Scalekit abstracts the complexities associated with SAML, OIDC
+and offers prebuilt integrations with all major identity providers like Okta, Microsoft Entra ID,
+Jumpcloud, Onelogin.
 
 This quickstart guide will show you how to implement SSO using Scalekit.
 
@@ -45,20 +47,21 @@ Before diving in, make sure you have:
 
 ### Install the Scalekit SDK
 
-Scalekit offers language-specific SDKs for fast SSO integration. Use the installation instructions below for your
-technology stack.
+Scalekit offers language-specific SDKs for fast SSO integration. Use the installation instructions
+below for your technology stack.
 
 <InstallSDK />
 
 ### Set up API credentials
 
-Secure your Scalekit API communication by setting up environment variables. You'll need three key pieces of information
-from your Scalekit Dashboard:
+Secure your Scalekit API communication by setting up environment variables. You'll need three key
+pieces of information from your Scalekit Dashboard:
 
-1. **Environment URL**: The base URL for API calls. Each environment (dev, staging, prod) has a unique URL.
+1. **Environment URL**: The base URL for API calls. Each environment (dev, staging, prod) has a
+   unique URL.
 2. **Client ID**: Your app's unique identifier for Scalekit communications.
-3. **Client Secret**: A private key to authenticate your API requests. For security purposes, this is generated only
-   when you request using the Scalekit Dashboard.
+3. **Client Secret**: A private key to authenticate your API requests. For security purposes, this
+   is generated only when you request using the Scalekit Dashboard.
 
 #### Get Your Credentials
 
@@ -68,7 +71,8 @@ from your Scalekit Dashboard:
 
 #### Store Credentials Securely
 
-Never hardcode secrets in your app. Use environment variables instead. Here's how to set them in a `.env` file:
+Never hardcode secrets in your app. Use environment variables instead. Here's how to set them in a
+`.env` file:
 
 <CodeWithHeader title=".env">
 
@@ -88,12 +92,13 @@ SCALEKIT_CLIENT_SECRET='<SECRET_FROM_SCALEKIT_DASHBOARD>'
 
   :::
 
-Now you're ready to start integrating SSO into your app! Next, we'll cover how to use the SDK to authenticate users.
+Now you're ready to start integrating SSO into your app! Next, we'll cover how to use the SDK to
+authenticate users.
 
 ## 2. Authorize the Users
 
-To start login with Single Sign-On (SSO), your app must redirect users to the Scalekit Authorization URL with
-appropriate social connection provider details.
+To start login with Single Sign-On (SSO), your app must redirect users to the Scalekit Authorization
+URL with appropriate social connection provider details.
 
 Construct the Authorization URL using the following query parameters:
 
@@ -114,10 +119,11 @@ https://auth.scalekit.com/authorize?
 
 </CodeWithHeader>
 
-See our [Authorization URL Parameters Guide](/sso/guides/key-concepts/authorization-url) for a full list of accepted
-parameters.
+See our [Authorization URL Parameters Guide](/sso/guides/key-concepts/authorization-url) for a full
+list of accepted parameters.
 
-Next, construct your Authorization URL with these parameters and redirect users to this URL when they try to log in.
+Next, construct your Authorization URL with these parameters and redirect users to this URL when
+they try to log in.
 
 <CodeWithHeader title="Construct Authorization URL">
 
@@ -127,7 +133,11 @@ Next, construct your Authorization URL with these parameters and redirect users 
 ```javascript showLineNumbers
 import { ScalekitClient } from '@scalekit-sdk/node';
 // Initialize the SDK client
-const scalekit = new ScalekitClient('<SCALEKIT_ENVIRONMENT_URL>', '<SCALEKIT_CLIENT_ID>', '<SCALEKIT_CLIENT_SECRET>');
+const scalekit = new ScalekitClient(
+  '<SCALEKIT_ENVIRONMENT_URL>',
+  '<SCALEKIT_CLIENT_ID>',
+  '<SCALEKIT_CLIENT_SECRET>',
+);
 
 const options = {};
 
@@ -243,7 +253,10 @@ public class Main {
     // User's email domain detects the correct enterprise SSO connection.
     options.setLoginHint("user@example.com");
     try {
-      String url = scalekitClient.authentication().getAuthorizationUrl(redirectUrl, options).toString();
+      String url = scalekitClient
+        .authentication()
+        .getAuthorizationUrl(redirectUrl, options)
+        .toString();
     } catch (Exception e) {
       System.out.println(e.getMessage());
     }
@@ -261,10 +274,11 @@ Finally, handle the callback at your <SimpleCode>redirect_uri</SimpleCode> to co
 
 ## 3. Fetch User Details
 
-After a successful SSO, Scalekit redirects the user to your <SimpleCode>redirect_uri</SimpleCode> with a unique
+After a successful SSO, Scalekit redirects the user to your <SimpleCode>redirect_uri</SimpleCode>
+with a unique
 
-<SimpleCode>code</SimpleCode> in the browser. Exchange the <SimpleCode>code</SimpleCode> for user profile details (on the
-serverside).
+<SimpleCode>code</SimpleCode> in the browser. Exchange the <SimpleCode>code</SimpleCode> for user profile
+details (on the serverside).
 
 Here's how to turn that <SimpleCode>code</SimpleCode> into user data:
 
@@ -274,7 +288,8 @@ Here's how to turn that <SimpleCode>code</SimpleCode> into user data:
 
 ```javascript showLineNumbers
 // Handle oauth redirect_url, fetch code and error_description from request params
-const { code, error, error_description, idp_initiated_login, connection_id, relay_state } = req.query;
+const { code, error, error_description, idp_initiated_login, connection_id, relay_state } =
+  req.query;
 
 if (error) {
   // Handle errors

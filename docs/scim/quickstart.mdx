@@ -156,13 +156,6 @@ Organization organization = scalekitClient.organizations().create(createOrganiza
 </TabItem>
 </Tabs>
 </CodeWithHeader>
-<CodeWithHeader title="Terminal Output">
-
-```console
-Name of the a organization: AcmeCorp
-```
-
-</CodeWithHeader>
 
 ## Working with Directories
 
@@ -176,15 +169,12 @@ organization:
 <TabItem value="nodejs" label="Node.js">
 
 ```javascript
-async function getDirectory(organizationId, directoryId) {
-  const { directory } = await scalekit.directory.getDirectory(organizationId, directoryId);
-  console.log('Directory ID:', directory.id);
-  return directory;
-}
+// Get Directory using Organization ID and Directory ID
+const { directory } = await scalekit.directory.getDirectory('<organization_id>', '<directory_id>');
 
-const organizationId = 'org_33247113199762954';
-const directoryId = 'dir_3324684545954';
-const directory = await getDirectory(organizationId, directoryId);
+// Get Directory using Organization ID
+const { directory } =
+  await scalekit.directory.getPrimaryDirectoryByOrganizationId('<organization_id>');
 ```
 
 </TabItem>
@@ -192,20 +182,9 @@ const directory = await getDirectory(organizationId, directoryId);
 <TabItem value="python" label="Python">
 
 ```python
-from scalekit import ScalekitClient
-
-# Initialize the SDK client
-scalekit_client = ScalekitClient(
-  '<SCALEKIT_ENVIRONMENT_URL>',
-  '<SCALEKIT_CLIENT_ID>',
-  '<SCALEKIT_CLIENT_SECRET>'
-)
-
 directory = scalekit_client.directory.get_directory(
   directory_id='<directory_id>', organization_id='<organization_id>'
 )
-print(f'Directory details: {directory}')
-
 ```
 
 </TabItem>
@@ -213,11 +192,7 @@ print(f'Directory details: {directory}')
 <TabItem value="go" label="Go">
 
 ```go
-sc := scalekit.NewScalekitClient(
-  <SCALEKIT_ENVIRONMENT_URL>,
-  <SCALEKIT_CLIENT_ID>,
-  <SCALEKIT_CLIENT_SECRET>
-)
+
 
 directory, err := sc.Directory().GetDirectory(ctx, organizationId, directoryId)
 
@@ -228,28 +203,12 @@ directory, err := sc.Directory().GetDirectory(ctx, organizationId, directoryId)
 <TabItem value="java" label="Java">
 
 ```java
-import com.scalekit.ScalekitClient;
-
-ScalekitClient scalekitClient = new ScalekitClient(
-  "<SCALEKIT_ENVIRONMENT_URL>",
-  "<SCALEKIT_CLIENT_ID>",
-  "<SCALEKIT_CLIENT_SECRET>"
-);
-
 Directory directory = scalekitClient.directories().getDirectory(directoryId, organizationId);
 
 ```
 
 </TabItem>
 </Tabs>
-</CodeWithHeader>
-
-<CodeWithHeader title="Terminal Output">
-
-```
-Directory ID: dir_33247113199762954
-```
-
 </CodeWithHeader>
 
 ### Listing Users in a Directory
@@ -275,14 +234,6 @@ const userList = await listUsers(directory.id);
 <TabItem value="python" label="Python">
 
 ```python
-from scalekit import ScalekitClient
-
-# Initialize the SDK client
-scalekit_client = ScalekitClient(
-  '<SCALEKIT_ENVIRONMENT_URL>',
-  '<SCALEKIT_CLIENT_ID>',
-  '<SCALEKIT_CLIENT_SECRET>'
-)
 
 directory_users = scalekit_client.directory.list_directory_users(
   directory_id='<directory_id>', organization_id='<organization_id>'
@@ -296,11 +247,6 @@ print(f'directory users: {str(directory_users)}')
 <TabItem value="go" label="Go">
 
 ```go
-sc := scalekit.NewScalekitClient(
-  <SCALEKIT_ENVIRONMENT_URL>,
-  <SCALEKIT_CLIENT_ID>,
-  <SCALEKIT_CLIENT_SECRET>
-)
 
 options := &ListDirectoryUsersOptions{
 		PageSize: 10,
@@ -315,14 +261,6 @@ directoryUsers,err := sc.Directory().ListDirectoryUsers(ctx, organizationId, dir
 <TabItem value="java" label="Java">
 
 ```java
-import com.scalekit.ScalekitClient;
-
-ScalekitClient scalekitClient = new ScalekitClient(
-  "<SCALEKIT_ENVIRONMENT_URL>",
-  "<SCALEKIT_CLIENT_ID>",
-  "<SCALEKIT_CLIENT_SECRET>"
-);
-
 var options = ListDirectoryResourceOptions.builder()
   .pageSize(10)
   .pageToken("")
@@ -339,18 +277,10 @@ ListDirectoryUsersResponse usersResponse = scalekitClient
 </Tabs>
 </CodeWithHeader>
 
-<CodeWithHeader title="Terminal Output">
-
-```
-User email in the directory: jerry@acmecorp.com
-```
-
-</CodeWithHeader>
-
 **Example Use Case**: When setting up a new customer account, you can use this function to
 automatically connect to their directory and start syncing user data.
 
-See [Directory User Object](/scim/directory-user-object)
+See [Directory User Object](/apis#tag/DirectoryUser/object)
 
 ### Listing Groups
 
@@ -361,13 +291,7 @@ Retrieve groups within a directory:
 <TabItem value="nodejs" label="Node.js">
 
 ```javascript
-async function listGroups(directoryId) {
-  const { groups } = await scalekit.directory.listDirectoryGroups(directoryId);
-  console.log('Group Object: \n', JSON.stringify(groups[0], null, 2));
-  return groups;
-}
-
-const groups = await listGroups(directory.id);
+const { groups } = await scalekit.directory.listDirectoryGroups('<directory_id>');
 ```
 
 </TabItem>
@@ -375,21 +299,9 @@ const groups = await listGroups(directory.id);
 <TabItem value="python" label="Python">
 
 ```python
-
-from scalekit import ScalekitClient
-
-# Initialize the SDK client
-scalekit_client = ScalekitClient(
-  '<SCALEKIT_ENVIRONMENT_URL>',
-  '<SCALEKIT_CLIENT_ID>',
-  '<SCALEKIT_CLIENT_SECRET>'
-)
-
 directory_groups = scalekit_client.directory.list_directory_groups(
   directory_id='<directory_id>', organization_id='<organization_id>'
 )
-print(f'directory groups: {str(directory_groups)}')
-
 ```
 
 </TabItem>
@@ -397,11 +309,6 @@ print(f'directory groups: {str(directory_groups)}')
 <TabItem value="go" label="Go">
 
 ```go
-sc := scalekit.NewScalekitClient(
-  <SCALEKIT_ENVIRONMENT_URL>,
-  <SCALEKIT_CLIENT_ID>,
-  <SCALEKIT_CLIENT_SECRET>
-)
 options := &ListDirectoryGroupsOptions{
 		PageSize: 10,
 		PageToken:"",
@@ -415,14 +322,6 @@ directoryGroups, err := sc.Directory().ListDirectoryGroups(ctx, organizationId, 
 <TabItem value="java" label="Java">
 
 ```java
-import com.scalekit.ScalekitClient;
-
-ScalekitClient scalekitClient = new ScalekitClient(
-  "<SCALEKIT_ENVIRONMENT_URL>",
-  "<SCALEKIT_CLIENT_ID>",
-  "<SCALEKIT_CLIENT_SECRET>"
-);
-
 var options = ListDirectoryResourceOptions.builder()
   .pageSize(10)
   .pageToken("")
@@ -439,25 +338,12 @@ ListDirectoryGroupsResponse groupsResponse = scalekitClient
 </Tabs>
 </CodeWithHeader>
 
-<CodeWithHeader title="Terminal Output">
-
-```
-Group Object:
-{
-  "id": "dirgroup_38074475882742351",
-  "display_name": "Skyflow Users",
-  "total_users": 2
-}
-```
-
-</CodeWithHeader>
-
 **Example Use Case**: You can use this function to implement role-based access control in your
 application, assigning permissions based on the groups a user belongs to.
 
 Scalekit's Directory API provides a simple way to fetch user and group information on-demand. Refer
-to our [API reference](/apis) and [examples](/scalekit-by-example/scalekit-by-example) to explore
-more capabilities.
+to our [API reference](/apis) and [examples](/scim/explore-sample-apps) to explore more
+capabilities.
 
 ## Realtime User Provisioning with Webhooks
 
@@ -467,41 +353,31 @@ To receive realtime events from directory providers, create a webhook endpoint a
 the Scalekit dashboard.
 
 <Tabs groupId="tech-stack" queryString>
-<TabItem value="nextjs" label="Next.js">
 
-```javascript showLineNumbers
-import { NextRequest, NextResponse } from 'next/server';
+<TabItem value="nodejs" label="Node.js">
 
-/**
- * Webhook Endpoint using Next.js App Router v14.2
- * @endpoint /api/webhook/user-access
- * app/api
- * └── webhook
- *     └── user-access
- *         └── route.ts
- */
-
-export async function POST(req: NextRequest) {
+```javascript
+app.post('/api/webhook/user-access', async (req, res) => {
   // Parse the JSON body of the request
-  const event = await req.json();
-
-  // Destructure to get necessary data from the event
+  const event = req.body;
   const { email, name } = event.data;
+  const headers = req.headers;
+  const secret = process.env.SCALEKIT_WEBHOOK_SECRET;
+
+  try {
+    // Verify the webhook payload using the secret, headers, and event data
+    await scalekit.verifyWebhookPayload(secret, headers, event);
+  } catch (error) {
+    // Return a 400 response if the signature is invalid
+    return NextResponse.json({ error: 'Invalid signature' }, { status: 400 });
+  }
 
   // Call a function to perform business logic
   await createUserAccount(email, name);
 
   // Return a JSON response with a status code of 201
-  return NextResponse.json({ message: "User account created" }, { status: 201 });
-}
-```
-
-</TabItem>
-
-<TabItem value="nodejs" label="Node.js">
-
-```javascript
-
+  res.status(201).json({ message: 'User account created' });
+});
 ```
 
 </TabItem>
@@ -510,13 +386,20 @@ export async function POST(req: NextRequest) {
 
 ```python
 
-```
+from fastapi import FastAPI, Request
 
-</TabItem>
+app = FastAPI()
 
-<TabItem value="go" label="Go">
+@app.post("/webhook")
+async def api_webhook(request: Request):
+    headers = request.headers
+    body = await request.json()
 
-```go
+    print(
+        scale.verify_webhook_payload(
+            secret='<secret>', headers=headers, payload=json.dumps(body).encode('utf-8')
+        )
+    )
 
 ```
 
@@ -525,6 +408,26 @@ export async function POST(req: NextRequest) {
 <TabItem value="java" label="Java">
 
 ```java
+@PostMapping("/webhook")
+public String webhook(@RequestBody String body, @RequestHeader Map<String, String> headers) {
+  String secret = "<WEBHOOK SECRET>";
+  boolean valid = scalekit.webhook().verifyWebhookPayload(secret, headers, body.getBytes());
+  if (!valid) {
+    return "error";
+  }
+  ObjectMapper mapper = new ObjectMapper();
+  try {
+    JsonNode node = mapper.readTree(body);
+    String object = node.get("object").asText();
+    JsonNode data = node.get("data");
+    System.out.println("Object: " + object);
+    System.out.println("Data: " + data);
+    //business logic on data goes here
+  } catch (IOException e) {
+    return "error";
+  }
+  return "ok";
+}
 
 ```
 
@@ -532,7 +435,7 @@ export async function POST(req: NextRequest) {
 </Tabs>
 
 {/* prettier-ignore */}
-In this example, the endpoint URL is<SimpleCode>https://<span></span>www<span></span>.hero-saas.<span></span>app/api/webhook/user-access</SimpleCode>
+In this example, the endpoint URL is <SimpleCode>https://<span></span>www<span></span>.hero-saas.<span></span>app/api/webhook/user-access</SimpleCode>
 
 When the endpoint receives an HTTP POST request with event data, it extracts the name and email from
 the payload and calls <SimpleCode>createUserAccount()</SimpleCode> to perform the necessary business
@@ -543,8 +446,6 @@ logic — in this case, creating a user account.
 First, navigate to the "Webhooks" tab in the Scalekit Dashboard. Click on the "+Add Endpoint" button
 and enter the endpoint URL along with a meaningful description. Finally, select the desired event
 types, such as <SimpleCode>scalekit.dir.user.\*</SimpleCode>, to subscribe to the relevant events.
-
-<figure className="width-75">![](@site/docs/scim/assets/2-quickstart-dir-sync.png)</figure>
 
 Click "Create." Once registered, the webhook endpoint will start receiving event payloads from the
 directory providers.
@@ -559,64 +460,7 @@ across different directory providers your customers may use.Since we subscribed 
 let's log an example of a new hire gaining access to your app when Scalekit sends a user creation
 event.
 
-<CodeWithHeader>
-<Tabs groupId="tech-stack" queryString>
-<TabItem value="nextjs" label="Next.js">
-
-```javascript showLineNumbers
-const event = await req.json();
-// Business logic with Event Object
-console.log(`Event Type: ${event.type}`);
-console.log(`${event.data.given_name}'s account is provisioned`);
-```
-
-</TabItem>
-
-<TabItem value="nodejs" label="Node.js">
-
-```javascript showLineNumbers
-const event = await req.json();
-// Business logic with Event Object
-console.log(`Event Type: ${event.type}`);
-console.log(`${event.data.given_name}'s account is provisioned`);
-```
-
-</TabItem>
-
-<TabItem value="python" label="Python">
-
-```python
-
-```
-
-</TabItem>
-
-<TabItem value="go" label="Go">
-
-```go
-
-```
-
-</TabItem>
-
-<TabItem value="java" label="Java">
-
-```java
-
-```
-
-</TabItem>
-</Tabs>
-</CodeWithHeader>
-
-<CodeWithHeader title="Terminal Output">
-
-```console
-Event Type: scalekit.dir.user.create
-Santhosh's account is provisioned
-```
-
-</CodeWithHeader>
+See [Webhook Events](/apis#tag/Webhooks) for the list of all available event types.
 
 You have now successfully created and registered a webhook endpoint, allowing your app to receive
 real-time events to automate user provisioning.

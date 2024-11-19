@@ -92,34 +92,26 @@ app.post('/api/webhook/role-assignment', async (req, res) => {
 ```
 
 </TabItem>
-<TabItem value="nextjs" label="Next.js">
 
-```javascript showLineNumbers
-import { NextRequest, NextResponse } from 'next/server';
+<TabItem value="java" label="Java">
 
-/**
- * Webhook Endpoint: /api/webhook/role-assignment
- * app/api
- * └── webhook
- *     └── role-assignment
- *         └── route.ts
- */
-
-export async function POST(req: NextRequest) {
-  const event = req.body;
-  const { email, name, roles } = event.data;
-  console.log('Admin added user to Viewer Group -> Scalekit informs Your App\n');
-
-  // Destructure role_name from roles array
-  const roleName = roles.length > 0 ? roles[0].role_name : null;
-  console.log('Role name received:', roleName);
-
-  // Logic to update user role and permissions
-  await assignRole(roleName, email);
-  console.log('App updated access for user:', email);
-
-  return NextResponse.json({ message: "Role assigned" }, { status: 201 });
+```java
+@PostMapping("/webhook")
+public String webhook(@RequestBody String body, @RequestHeader Map<String, String> headers) {
+  ObjectMapper mapper = new ObjectMapper();
+  try {
+    JsonNode node = mapper.readTree(body);
+    JsonNode roles = node.get("data").get("roles");
+    String email = node.get("data").get("email").asText();
+    System.out.println(roles);
+    System.out.println(email);
+    //Add role to user
+  } catch (IOException e) {
+    return "error";
+  }
+  return "ok";
 }
+
 ```
 
 </TabItem>

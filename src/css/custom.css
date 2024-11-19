@@ -214,7 +214,7 @@
   background-color: transparent;
   font-size: 1.05rem;
   text-decoration: underline;
-  color: var(--primary-graphite-500);
+  color: var(--primary-graphite-400);
   padding-left: 0px;
 }
 :where(.button--tertiary):not(.button--outline):hover {
