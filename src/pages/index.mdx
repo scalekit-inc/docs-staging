@@ -21,7 +21,7 @@ import { FaArrowRight } from 'react-icons/fa6';
 
 <div className="homepage">
 <div className="row hero">
-<div className="col col--4 padding-vert--lg">
+<div className="col col--6 padding-vert--lg">
 {/** changing "title" to titles just temporarily to hide subtitle */}
 {/* <Hero title="Enterprise Auth for Developers" titles="Learn how to implement authentication capabilities through our quick start guides, SDKs and code samples" titles="Scalekit Docs"> */}
 <Hero className="hero" title={`Add enterprise auth \n to your SaaS without delay`} >
@@ -31,7 +31,7 @@ import { FaArrowRight } from 'react-icons/fa6';
   </div>
 </Hero>
 </div>
-<div className="col col--8">
+<div className="col col--6">
 ![Welcome to Scalekit Docs](/img/hero_docs_2.png)
 </div>
 </div>
@@ -46,11 +46,11 @@ Implement SSO with our easy to follow quick start guides.
 <div className="col col--7">
 <ProductList
 items={[{
-  title: "Login with SSO",
+  title: "Login with SSO: Quickstart",
   description: "Launch enterprise SSO in hours. Connect your application to any of your customers identity providers through SAML or OIDC",
   href: "/sso/quickstart",
 },{
-  title: "Login with Social",
+  title: "Login with Social: Quickstart",
   description: "Make it easy for your customers to securely login to your application with social providers like Google, Microsoft, GitHub etc",
   href: "/sso/social-login",
 },{
@@ -80,12 +80,17 @@ Automatically provision and deprovision users with our easy to follow quick star
 <ProductList
 items={[{
   title: "Quick Start",
-  description: "Implement SCIM Provisioning in hours. Connect your application to any of your customers directory providers through SCIM v2",
+  description: "Implement SCIM Provisioning in hours. Connect your application to any of your customers directory providers through SCIM",
   href: "/scim/quickstart",
 },{
   title: "Automatic Role Assignment",
   description: " Implement Group Based Access Control in your application with our easy to follow quick start guides",
   href: "/scim/automatically-assign-roles",
+},
+{
+  title: "Launch Checklist",
+  description: "Check off these recommended steps before launching your app in Production",
+  href: "/scim/checklist",
 }]}>
 
 </ProductList>
