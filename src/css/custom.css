@@ -212,13 +212,15 @@
 
 .button--tertiary {
   background-color: transparent;
+  font-size: 1.05rem;
+  text-decoration: underline;
   color: var(--primary-graphite-500);
   padding-left: 0px;
 }
 :where(.button--tertiary):not(.button--outline):hover {
   /* background-color: transparent; */
   /* opacity: 0.9; */
-  text-decoration: none; /* Remove underline */
+  text-decoration: underline; /* Remove underline */
   border: none;
   color: var(--primary-purple-500);
   transition:
@@ -234,7 +236,6 @@
 }
 
 .button {
-  width: 100%; /* Make buttons full width of the container */
   max-width: 300px; /* Set a max width for the buttons */
   text-align: left;
 }
@@ -314,6 +315,12 @@ figure img {
 }
 
 .navbar__item {
+  padding: 0.55rem 1rem;
+}
+
+.navbar__item:hover {
+  padding: 0.55rem 1rem;
+  background-color: #eeeeee;
   padding: 0.55rem 1rem;
 }
 
@@ -696,7 +703,7 @@ p {
 }
 
 .navbar__link--active {
-  background-color: #ffffff;
+  background-color: #eeeeee;
   font-weight: 600;
 }
 
@@ -1216,8 +1223,10 @@ svg {
 .loginLink:hover {
   background-color: #202020;
   padding-top: 2.6px;
-  padding-left: 3px;
+  padding-left: 12.2px;
   padding-bottom: 3px;
+  margin-right: 20px;
+  margin-left: 20px;
   text-decoration: none;
   color: #ffffff;
 }

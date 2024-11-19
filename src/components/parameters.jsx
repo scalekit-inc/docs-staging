@@ -1,6 +1,6 @@
-import Markdown from "react-markdown";
+import Markdown from 'react-markdown';
 
-var data = require("../../openapi/scalekit.swagger.json");
+var data = require('../../openapi/scalekit.swagger.json');
 
 export function Parameter({ children, ...props }) {
   return (
@@ -8,7 +8,7 @@ export function Parameter({ children, ...props }) {
       <div className="attr">
         <span className="key">{props.attrKey}</span>
         <span className="type">{props.type}</span>
-        {props.required ? <span className="required">required</span> : ""}
+        {props.required ? <span className="required">required</span> : ''}
       </div>
       <div className="desc">
         <Markdown>{props.description}</Markdown>
@@ -18,15 +18,11 @@ export function Parameter({ children, ...props }) {
   );
 }
 
-export default function Parameters({
-  header = "Parameters",
-  endpoint,
-  method,
-}) {
+export default function Parameters({ header = 'Parameters', endpoint, method }) {
   return (
     <ul className="ApiReference-Parameters">
       <li className="ApiReference-Parameter header">{header}</li>
-      {data["paths"][endpoint][method]["parameters"].map((param, index) => (
+      {data['paths'][endpoint][method]['parameters'].map((param, index) => (
         <Parameter
           key={index}
           attrKey={param.name}

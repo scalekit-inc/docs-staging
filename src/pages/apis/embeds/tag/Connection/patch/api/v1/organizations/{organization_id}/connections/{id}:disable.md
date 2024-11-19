@@ -64,7 +64,7 @@ ScalekitClient scalekitClient = new ScalekitClient(
   "<SCALEKIT_CLIENT_SECRET>"
 );
 
-ToggleConnectionResponse response = client.connections().disableConnection(connectionId, organizationId);
+ToggleConnectionResponse response = scalekitClient.connections().disableConnection(connectionId, organizationId);
 
 ```
 

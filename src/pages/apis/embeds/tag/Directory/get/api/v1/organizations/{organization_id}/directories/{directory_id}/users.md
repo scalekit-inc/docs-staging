@@ -75,7 +75,7 @@ var options = ListDirectoryResourceOptions.builder()
   .includeDetail(true)
   .build();
 
-ListDirectoryUsersResponse usersResponse = client
+ListDirectoryUsersResponse usersResponse = scalekitClient
   .directories()
   .listDirectoryUsers(directory.getId(), organizationId, options);
 

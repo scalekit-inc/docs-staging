@@ -1595,11 +1595,11 @@
       "type": "object",
       "properties": {
         "next_page_token": {
-          "description": "Token to retrieve the next page of results. This field is populated when there are more users available than returned in the current response. Use this token in the 'page_token' field of the next request to fetch the subsequent page of users.",
+          "description": "Token to retrieve the next page of results. Use this token in the 'page_token' field of the next request to fetch the subsequent page of users.",
           "type": "string"
         },
         "prev_page_token": {
-          "description": "Token to retrieve the previous page of results. This field is populated when there are preceding pages of users available. Use this token in the 'page_token' field of the next request to fetch the prior page of users, enabling backward navigation through the paginated results.",
+          "description": "Token to retrieve the previous page of results. Use this token in the 'page_token' field of the next request to fetch the prior page of users.",
           "type": "string"
         },
         "total_size": {
