@@ -212,14 +212,15 @@
 
 .button--tertiary {
   background-color: transparent;
-  /* border: 1px solid var(--primary-graphite-500); */
+  font-size: 1.05rem;
+  text-decoration: underline;
   color: var(--primary-graphite-500);
   padding-left: 0px;
 }
 :where(.button--tertiary):not(.button--outline):hover {
   /* background-color: transparent; */
   /* opacity: 0.9; */
-  text-decoration: none; /* Remove underline */
+  text-decoration: underline; /* Remove underline */
   border: none;
   color: var(--primary-purple-500);
   transition:

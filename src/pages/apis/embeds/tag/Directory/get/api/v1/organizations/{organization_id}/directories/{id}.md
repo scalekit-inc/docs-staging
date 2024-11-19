@@ -68,7 +68,7 @@ ScalekitClient scalekitClient = new ScalekitClient(
   "<SCALEKIT_CLIENT_SECRET>"
 );
 
-Directory directory = client.directories().getDirectory(directoryId, organizationId);
+Directory directory = scalekitClient.directories().getDirectory(directoryId, organizationId);
 
 ```
 

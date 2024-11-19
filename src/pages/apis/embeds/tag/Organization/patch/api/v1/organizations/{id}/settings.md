@@ -31,7 +31,7 @@ const sc = new ScalekitClient(
   <SCALEKIT_CLIENT_SECRET>
 );
 
-sc.organization.updateOrganizationSettings(organization.id, {
+const settings = {
   features: [{
     name: 'sso',
     enabled: true
@@ -41,7 +41,9 @@ sc.organization.updateOrganizationSettings(organization.id, {
     enabled: true
     },
   ],
-});
+}
+
+await sc.organization.updateOrganizationSettings('<organization_id>', settings);
 ```
 
 </TabItem>
@@ -89,8 +91,13 @@ settings := OrganizationSettings{
 				Name:    "sso",
 				Enabled: true,
 			},
+			{
+				Name:    "dir_sync",
+				Enabled: true,
+			},
 		},
 	}
+
 organization,err := sc.Organization().UpdateOrganizationSettings(ctx, organizationId, settings)
 ```
 
@@ -107,8 +114,20 @@ ScalekitClient scalekitClient = new ScalekitClient(
   "<SCALEKIT_CLIENT_SECRET>"
 );
 
-Directory directory = client.directories().getPrimaryDirectoryByOrganizationId(organizationId);
 
+
+ OrganizationSettingsFeature featureSSO = OrganizationSettingsFeature.newBuilder()
+                .setName("sso")
+                .setEnabled(true)
+                .build();
+
+OrganizationSettingsFeature featureDirectorySync = OrganizationSettingsFeature.newBuilder()
+                .setName("dir_sync")
+                .setEnabled(true)
+                .build();
+
+updatedOrganization = scalekitClient.organizations()
+                .updateOrganizationSettings(organization.getId(), List.of(featureSSO, featureDirectorySync));
 ```
 
 </TabItem>

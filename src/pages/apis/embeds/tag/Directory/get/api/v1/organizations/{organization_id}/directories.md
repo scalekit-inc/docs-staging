@@ -65,7 +65,7 @@ ScalekitClient scalekitClient = new ScalekitClient(
   "<SCALEKIT_CLIENT_SECRET>"
 );
 
-ListDirectoriesResponse response = client.directories().listDirectories(organizationId);
+ListDirectoriesResponse response = scalekitClient.directories().listDirectories(organizationId);
 
 ```
 

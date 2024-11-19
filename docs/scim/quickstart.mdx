@@ -149,7 +149,7 @@ CreateOrganization createOrganization = CreateOrganization.newBuilder()
   .setDisplayName("Test organization")
   .build();
 
-Organization organization = client.organizations().create(createOrganization);
+Organization organization = scalekitClient.organizations().create(createOrganization);
 
 ```
 
@@ -236,7 +236,7 @@ ScalekitClient scalekitClient = new ScalekitClient(
   "<SCALEKIT_CLIENT_SECRET>"
 );
 
-Directory directory = client.directories().getDirectory(directoryId, organizationId);
+Directory directory = scalekitClient.directories().getDirectory(directoryId, organizationId);
 
 ```
 
@@ -329,7 +329,7 @@ var options = ListDirectoryResourceOptions.builder()
   .includeDetail(true)
   .build();
 
-ListDirectoryUsersResponse usersResponse = client
+ListDirectoryUsersResponse usersResponse = scalekitClient
   .directories()
   .listDirectoryUsers(directory.getId(), organizationId, options);
 
@@ -429,7 +429,7 @@ var options = ListDirectoryResourceOptions.builder()
   .includeDetail(true)
   .build();
 
-ListDirectoryGroupsResponse groupsResponse = client
+ListDirectoryGroupsResponse groupsResponse = scalekitClient
   .directories()
   .listDirectoryGroups(directory.getId(), organizationId, options);
 

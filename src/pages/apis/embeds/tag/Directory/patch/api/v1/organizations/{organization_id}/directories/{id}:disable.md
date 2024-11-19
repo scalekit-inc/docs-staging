@@ -64,7 +64,7 @@ ScalekitClient scalekitClient = new ScalekitClient(
   "<SCALEKIT_CLIENT_SECRET>"
 );
 
-ToggleDirectoryResponse disableResponse = client
+ToggleDirectoryResponse disableResponse = scalekitClient
   .directories()
   .disableDirectory(directoryId, organizationId);
 

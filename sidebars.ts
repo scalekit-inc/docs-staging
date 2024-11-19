@@ -272,13 +272,12 @@ const sidebars: SidebarsConfig = {
     {
       type: 'doc',
       label: 'Overview',
-      className: 'text--uppercase text--light sidenav-category-heading',
       id: 'integrations/integrations',
     },
     {
       type: 'html',
       value:
-        "<span class='text--uppercase text--light sidenav-category-heading'>Identity Providers</span>",
+        "<span class='text--uppercase text--light sidenav-category-heading'>SSO Integrations</span>",
       defaultStyle: true,
     },
     {
@@ -340,7 +339,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'html',
       value:
-        "<span class='text--uppercase text--light sidenav-category-heading'>Directory Providers</span>",
+        "<span class='text--uppercase text--light sidenav-category-heading'>SCIM Integrations</span>",
       defaultStyle: true,
     },
     {
