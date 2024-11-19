@@ -85,8 +85,10 @@ Organization represents a customer or a tenant of your application. Use this to 
   </div>
 </div>
 </div>
+
 <APIEndpoint tag="Organization" method="get" endpoint="/api/v1/organizations" />
 <APIEndpoint tag="Organization" method="post" endpoint="/api/v1/organizations" />
 <APIEndpoint tag="Organization" method="get" endpoint="/api/v1/organizations/{id}" />
 <APIEndpoint tag="Organization" method="patch" endpoint="/api/v1/organizations/{id}" />
+<APIEndpoint tag="Organization" method="patch" endpoint="/api/v1/organizations/{id}/settings" />
 <APIEndpoint tag="Organization" method="delete" endpoint="/api/v1/organizations/{id}" />

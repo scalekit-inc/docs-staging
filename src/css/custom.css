@@ -212,6 +212,7 @@
 
 .button--tertiary {
   background-color: transparent;
+  /* border: 1px solid var(--primary-graphite-500); */
   color: var(--primary-graphite-500);
   padding-left: 0px;
 }
@@ -234,7 +235,6 @@
 }
 
 .button {
-  width: 100%; /* Make buttons full width of the container */
   max-width: 300px; /* Set a max width for the buttons */
   text-align: left;
 }
@@ -696,7 +696,7 @@ p {
 }
 
 .navbar__link--active {
-  background-color: #ffffff;
+  background-color: #eeeeee;
   font-weight: 600;
 }
 
@@ -1190,8 +1190,10 @@ svg {
 .loginLink:hover {
   background-color: #202020;
   padding-top: 2.6px;
-  padding-left: 3px;
+  padding-left: 12.2px;
   padding-bottom: 3px;
+  margin-right: 20px;
+  margin-left: 20px;
   text-decoration: none;
   color: #ffffff;
 }

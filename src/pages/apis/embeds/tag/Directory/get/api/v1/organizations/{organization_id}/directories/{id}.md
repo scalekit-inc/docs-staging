@@ -3,22 +3,23 @@
 <TabItem value="curl" label="cURL">
 
 ```bash showLineNumbers
-curl --location 'https://<SCALEKIT_ENVIRONMENT_URL>/api/v1/organizations/<organization_id>/directories' \
---header 'Authorization: Bearer <SCALEKIT_ACCESS_TOKEN>'
+curl --location 'https://$ENV_URL/api/v1/organizations/{organizations_id}/directories/{directory_id}' \
+--header 'Authorization: Bearer <ACCESS_TOKEN>'
 ```
 
 </TabItem>
 <TabItem value="nodejs" label="Node.js">
 
 ```js showLineNumbers
-async function getDirectory(organizationId) {
-  const { directory } = await scalekit.directory.getDirectory(organizationId);
+async function getDirectory(organizationId, directoryId) {
+  const { directory } = await scalekit.directory.getDirectory(organizationId, directoryId);
   console.log('Directory ID:', directory.id);
   return directory;
 }
 
 const organizationId = 'org_33247113199762954';
-const directory = await getDirectory(organizationId);
+const directoryId = 'dir_3324684545954';
+const directory = await getDirectory(organizationId, directoryId);
 ```
 
 </TabItem>
@@ -74,6 +75,79 @@ Directory directory = client.directories().getDirectory(directoryId, organizatio
 </TabItem>
 
 </Tabs>
+</CodeWithHeader>
+
+<CodeWithHeader title="Get Primary Directory (Alternative)">
+
+<Tabs groupId="tech-stack" querystring>
+<TabItem value="nodejs" label="Node.js">
+
+```js showLineNumbers
+async function getPrimaryDirectoryByOrganizationId(organizationId) {
+  const { directory } =
+    await scalekit.directory.getPrimaryDirectoryByOrganizationId(organizationId);
+  console.log('Directory ID:', directory.id);
+  return directory;
+}
+
+const organizationId = 'org_33247113199762954';
+const directory = await getDirectory(organizationId);
+```
+
+</TabItem>
+
+<TabItem value="py" label="Python">
+
+```python showLineNumbers
+from scalekit import ScalekitClient
+
+# Initialize the SDK client
+scalekit_client = ScalekitClient(
+  '<SCALEKIT_ENVIRONMENT_URL>',
+  '<SCALEKIT_CLIENT_ID>',
+  '<SCALEKIT_CLIENT_SECRET>'
+)
+
+primary_directory = scalekit_client.directory.get_primary_directory_by_organization_id(
+  organization_id='<organization_id>'
+)
+print(f'Primary Directory: {str(primary_directory)}')
+
+```
+
+</TabItem>
+
+<TabItem value="golang" label="Go">
+
+```go showLineNumbers
+sc := scalekit.NewScalekitClient(
+  <SCALEKIT_ENVIRONMENT_URL>,
+  <SCALEKIT_CLIENT_ID>,
+  <SCALEKIT_CLIENT_SECRET>
+)
+directory,err := sc.Directory().GetPrimaryDirectoryByOrganizationId(ctx, organizationId)
+```
+
+</TabItem>
+
+<TabItem value="java" label="Java">
+
+```java showLineNumbers
+import com.scalekit.ScalekitClient;
+
+ScalekitClient scalekitClient = new ScalekitClient(
+  "<SCALEKIT_ENVIRONMENT_URL>",
+  "<SCALEKIT_CLIENT_ID>",
+  "<SCALEKIT_CLIENT_SECRET>"
+);
+
+Directory directory = client.directories().getPrimaryDirectoryByOrganizationId(organizationId);
+
+```
+
+</TabItem>
+</Tabs>
+
 </CodeWithHeader>
 
 <CodeWithHeader title="Response">

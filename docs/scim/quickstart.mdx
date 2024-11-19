@@ -110,12 +110,9 @@ scalekit_client = ScalekitClient(
   '<SCALEKIT_CLIENT_SECRET>'
 )
 
-org_list = (scalekit_client
-            .organization
-            .list_organizations(page_size='100'))
+org_list = scalekit_client.organization.list_organizations(page_size='100')
 
 print(f'Organisation details: {org_list[0]}')
-
 ```
 
 </TabItem>
@@ -179,14 +176,15 @@ organization:
 <TabItem value="nodejs" label="Node.js">
 
 ```javascript
-async function getDirectory(organizationId) {
-  const { directory } = await scalekit.directory.getDirectory(organizationId);
+async function getDirectory(organizationId, directoryId) {
+  const { directory } = await scalekit.directory.getDirectory(organizationId, directoryId);
   console.log('Directory ID:', directory.id);
   return directory;
 }
 
 const organizationId = 'org_33247113199762954';
-const directory = await getDirectory(organizationId);
+const directoryId = 'dir_3324684545954';
+const directory = await getDirectory(organizationId, directoryId);
 ```
 
 </TabItem>

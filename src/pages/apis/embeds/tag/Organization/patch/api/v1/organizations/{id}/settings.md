@@ -1,21 +1,24 @@
-<CodeWithHeader method="patch" endpoint="/api/v1/organizations">
+<CodeWithHeader method="patch" endpoint="/api/v1/organizations/{organization_id}/settings">
 <Tabs groupId="tech-stack" querystring>
 <TabItem value="curl" label="cURL">
 
 ```bash showLineNumbers
-curl --location --request PATCH 'https://$ENV_URL/api/v1/organizations/{id}' \
+curl --location --request PATCH 'https://$ENV_URL/api/v1/organizations/{organizations_id}/settings' \
 --header 'Content-Type: application/json' \
---header 'Accept: application/json' \
+--header 'Authorization: Bearer <ACCESS_TOKEN>'\
 --data '{
-  "features": [
-    {
-      "enabled": true,
-      "name": "string"
-    }
-  ]
+    "features":
+    [
+        {
+            "name": "sso",
+            "enabled": false
+        },
+        {
+            "name": "dir_sync",
+            "enabled": true
+        }
+    ]
 }'
-
-
 ```
 
 </TabItem>
@@ -28,9 +31,16 @@ const sc = new ScalekitClient(
   <SCALEKIT_CLIENT_SECRET>
 );
 
-const organization = await sc.organization.updateOrganization(organization_id, {
-  displayName: 'displayName',
-  externalId: 'externalId',
+sc.organization.updateOrganizationSettings(organization.id, {
+  features: [{
+    name: 'sso',
+    enabled: true
+  },
+  {
+    name: 'dir_sync',
+    enabled: true
+    },
+  ],
 });
 ```
 
@@ -38,16 +48,29 @@ const organization = await sc.organization.updateOrganization(organization_id, {
 <TabItem value="py" label="Python">
 
 ```python showLineNumbers
-sc = ScalekitClient(
-  <SCALEKIT_ENVIRONMENT_URL>,
-  <SCALEKIT_CLIENT_ID>,
-  <SCALEKIT_CLIENT_SECRET>
+from scalekit import ScalekitClient
+
+# Initialize the SDK client
+scalekit_client = ScalekitClient(
+  '<SCALEKIT_ENVIRONMENT_URL>',
+  '<SCALEKIT_CLIENT_ID>',
+  '<SCALEKIT_CLIENT_SECRET>'
 )
 
-organization = sc.organization.update_organization(organization_id, {
-  display_name: "display_name",
-  external_id: "external_id"
-})
+settings = [
+        {
+            "name": "sso",
+            "enabled": true
+        },
+        {
+            "name": "dir_sync",
+            "enabled": true
+        }
+    ]
+
+scalekit_client.organization.update_organization_settings(
+  organization_id='<organization_id>', settings=settings
+)
 ```
 
 </TabItem>
@@ -60,14 +83,15 @@ sc := scalekit.NewScalekitClient(
   <SCALEKIT_CLIENT_SECRET>
 )
 
-organization, err := sc.Organization.UpdateOrganization(
-  ctx,
-  organizationId,
-  &scalekit.UpdateOrganization{
-    DisplayName: "displayName",
-    ExternalId: "externalId",
-  },
-)
+settings := OrganizationSettings{
+		Features: []Feature{
+			{
+				Name:    "sso",
+				Enabled: true,
+			},
+		},
+	}
+organization,err := sc.Organization().UpdateOrganizationSettings(ctx, organizationId, settings)
 ```
 
 </TabItem>
@@ -75,17 +99,15 @@ organization, err := sc.Organization.UpdateOrganization(
 <TabItem value="java" label="Java">
 
 ```java showLineNumbers
+import com.scalekit.ScalekitClient;
+
 ScalekitClient scalekitClient = new ScalekitClient(
   "<SCALEKIT_ENVIRONMENT_URL>",
   "<SCALEKIT_CLIENT_ID>",
   "<SCALEKIT_CLIENT_SECRET>"
 );
 
-UpdateOrganization updateOrganization = UpdateOrganization.newBuilder()
-  .setDisplayName("Updated Organization Name")
-  .build();
-
-Organization updatedOrganizationById = scalekitClient.organizations().updateById(organizationId, updateOrganization);
+Directory directory = client.directories().getPrimaryDirectoryByOrganizationId(organizationId);
 
 ```
 

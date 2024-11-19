@@ -48,7 +48,12 @@ export default function Endpoints({ tag, excludeEndpoints = [] }) {
                 ),
             )
             .map(endpoint => (
-              <Endpoint key={endpoint.href} href={endpoint.href} method={endpoint.method} label={endpoint.label} />
+              <Endpoint
+                key={endpoint.href}
+                href={endpoint.href}
+                method={endpoint.method}
+                label={endpoint.label}
+              />
             ))}
         </div>
       </div>

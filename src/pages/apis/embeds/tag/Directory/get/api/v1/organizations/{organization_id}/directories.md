@@ -3,22 +3,21 @@
 <TabItem value="curl" label="cURL">
 
 ```bash showLineNumbers
-curl --location 'https://<SCALEKIT_ENVIRONMENT_URL>/api/v1/organizations/<organization_id>/directories' \
---header 'Authorization: Bearer <SCALEKIT_ACCESS_TOKEN>'
+curl --location 'https://$ENV_URL/api/v1/organizations/{organizations_id}/directories'\
+--header 'Authorization: Bearer <ACCESS_TOKEN>'
 ```
 
 </TabItem>
 <TabItem value="nodejs" label="Node.js">
 
 ```js showLineNumbers
-async function getDirectory(organizationId) {
-  const { directory } = await scalekit.directory.getDirectory(organizationId);
-  console.log('Directory ID:', directory.id);
-  return directory;
-}
+const sc = new ScalekitClient(
+  <SCALEKIT_ENVIRONMENT_URL>,
+  <SCALEKIT_CLIENT_ID>,
+  <SCALEKIT_CLIENT_SECRET>
+);
 
-const organizationId = 'org_33247113199762954';
-const directory = await getDirectory(organizationId);
+await scalekit.directory.listDirectories('<organization_id>');
 ```
 
 </TabItem>
@@ -34,10 +33,9 @@ scalekit_client = ScalekitClient(
   '<SCALEKIT_CLIENT_SECRET>'
 )
 
-directory = scalekit_client.directory.get_directory(
-  directory_id='<directory_id>', organization_id='<organization_id>'
+directories_list = scalekit_client.directory.list_directories(
+	organization_id='<organization_id>'
 )
-print(f'Directory details: {directory}')
 ```
 
 </TabItem>

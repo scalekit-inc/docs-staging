@@ -3,8 +3,8 @@
 <TabItem value="curl" label="cURL">
 
 ```bash showLineNumbers
-curl --location --request PATCH 'https://<SCALEKIT_ENVIRONMENT_URL>/api/v1/organizations/<organization_id>/directories/<directory_id>:enable' \
---header 'Authorization: Bearer <SCALEKIT_ACCESS_TOKEN>'
+curl --location --request PATCH 'https://$ENV_URL/api/v1/organizations/{organizations_id}/directories/{directory_id}:enable'\
+--header 'Authorization: Bearer <ACCESS_TOKEN>'
 ```
 
 </TabItem>
@@ -17,7 +17,7 @@ const sc = new ScalekitClient(
   <SCALEKIT_CLIENT_SECRET>
 );
 
-await sc.connection.enableConnection(organizationId, connectionId);
+await sc.directory.enableDirectory('<organization_id>', '<directory_id>');
 ```
 
 </TabItem>
