@@ -95,22 +95,9 @@ async function generatePortalLink(orgID) {
 <TabItem value="python" label="Python">
 
 ```python
-
-from scalekit import ScalekitClient
-
-# Initialize the SDK client
-scalekit_client = ScalekitClient(
-  '<SCALEKIT_ENVIRONMENT_URL>',
-  '<SCALEKIT_CLIENT_ID>',
-  '<SCALEKIT_CLIENT_SECRET>'
-)
-
-portal_link = (scalekit_client
+portal_link = scalekit_client
                 .organization
-                .generate_portal_link('<organization_id>'))
-
-print(f'Admin portal link for given org: {portal_link}')
-
+                .generate_portal_link('<organization_id>')
 ```
 
 </TabItem>

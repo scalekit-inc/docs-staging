@@ -26,10 +26,10 @@ Here's an example of how to verify webhooks using the Svix library:
 <CodeWithHeader title="Webhook Signature Verification">
 <Tabs>
 
-<TabItem label="Next.js" value="Next">
+<TabItem label="Node.js" value="Node">
 
 ```javascript
-export async function POST(req: NextRequest) {
+app.post('/webhook', async (req, res) => {
   // Parse the JSON body of the request
   const event = await req.json();
 
@@ -44,9 +44,9 @@ export async function POST(req: NextRequest) {
     await scalekit.verifyWebhookPayload(secret, headers, event);
   } catch (error) {
     // Return a 400 response if the signature is invalid
-    return NextResponse.json({ error: 'Invalid signature' }, { status: 400 });
+    res.status(400).json({ error: 'Invalid signature' });
   }
-}
+});
 ```
 
 </TabItem>
@@ -141,7 +141,7 @@ future.
 <TabItem label="Node.js" value="Node">
 
 ```javascript
-app.post('/your-endpoint', async (req, res) => {
+app.post('/webhook', async (req, res) => {
   const event = req.body;
 
   if (event.type === 'scalekit.dir.user.create') {
@@ -162,12 +162,11 @@ async function createUserAccount(email, name) {
 <TabItem label="Python" value="Python">
 
 ```python
-
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-@app.route('/your-endpoint', methods=['POST'])
+@app.route('/webhook', methods=['POST'])
 def handle_post():
     event = request.json
 
