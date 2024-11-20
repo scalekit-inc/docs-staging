@@ -370,7 +370,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'html',
       value:
-        "<span class='text--uppercase text--light sidenav-category-heading'>Social Connectors</span>",
+        "<span class='text--uppercase text--light sidenav-category-heading'>Social Connections</span>",
       defaultStyle: true,
     },
     {
