@@ -47,7 +47,7 @@ const config: Config = {
   baseUrl: '/',
   trailingSlash: false,
   organizationName: 'scalekit-inc',
-  projectName: 'docs-staging',
+  projectName: 'docs',
   deploymentBranch: 'gh-pages',
   onBrokenLinks: 'log',
   onBrokenMarkdownLinks: 'warn',

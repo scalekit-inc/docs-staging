@@ -1,4 +1,4 @@
-var homepageURL = '/docs-staging/';
+
 export function onRouteDidUpdate({ location, previousLocation }) {
   if (location.pathname !== previousLocation?.pathname) {
     document.documentElement.dataset.insideIframe =
