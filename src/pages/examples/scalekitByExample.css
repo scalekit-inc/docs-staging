@@ -1,0 +1,36 @@
+.col-demo h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.col-demo ul {
+  list-style: none;
+  padding: 0;
+}
+
+.col-demo li {
+  margin-bottom: 5px;
+}
+
+.col-demo a {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  color: var(--primary-graphite-500); /* Use a standard color */
+  transition: color 0.3s;
+}
+
+.col-demo a:hover {
+  color: var(--primary-purple-400); /* Use a standard hover color */
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  transition: color 0.3s;
+}
+
+.badge--lang {
+  font-size: 0.8rem;
+  padding: 0.1rem 0.2rem;
+  border: 1px solid var(--primary-graphite-75);
+  border-radius: 10px;
+  background-color: var(--secondary-blue-light-2);
+  color: var(--primary-graphite-200);
+}
