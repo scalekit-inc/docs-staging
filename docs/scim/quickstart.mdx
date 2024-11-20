@@ -220,13 +220,8 @@ Fetch users within a specific directory:
 <TabItem value="nodejs" label="Node.js">
 
 ```javascript
-async function listUsers(directoryId) {
-  const { users } = await scalekit.directory.listDirectoryUsers(directoryId);
-  console.log('User email in the directory:', users[0].email);
-  return users;
-}
-
-const userList = await listUsers(directory.id);
+const { users } = await scalekit.directory.listDirectoryUsers('<directory_id>');
+//  users[0].email has the email of the first user in the directory
 ```
 
 </TabItem>
@@ -369,7 +364,7 @@ app.post('/api/webhook/user-access', async (req, res) => {
     await scalekit.verifyWebhookPayload(secret, headers, event);
   } catch (error) {
     // Return a 400 response if the signature is invalid
-    return NextResponse.json({ error: 'Invalid signature' }, { status: 400 });
+    return res.status(400).json({ error: 'Invalid signature' });
   }
 
   // Call a function to perform business logic
