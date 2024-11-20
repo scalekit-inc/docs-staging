@@ -16,9 +16,9 @@
   },
   "dependencies": {
     "@docsearch/js": "^3.6.1",
-    "@docusaurus/core": "^3.5.2",
-    "@docusaurus/plugin-client-redirects": "^3.5.2",
-    "@docusaurus/preset-classic": "^3.5.2",
+    "@docusaurus/core": "^3.6.2",
+    "@docusaurus/plugin-client-redirects": "^3.6.2",
+    "@docusaurus/preset-classic": "^3.6.2",
     "@floating-ui/react": "^0.26.19",
     "@mdx-js/react": "^3.0.0",
     "@shikijs/rehype": "^1.12.1",
