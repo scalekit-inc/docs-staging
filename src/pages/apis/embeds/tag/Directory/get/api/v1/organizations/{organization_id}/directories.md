@@ -26,7 +26,6 @@ await scalekit.directory.listDirectories('<organization_id>');
 ```python showLineNumbers
 from scalekit import ScalekitClient
 
-# Initialize the SDK client
 scalekit_client = ScalekitClient(
   '<SCALEKIT_ENVIRONMENT_URL>',
   '<SCALEKIT_CLIENT_ID>',

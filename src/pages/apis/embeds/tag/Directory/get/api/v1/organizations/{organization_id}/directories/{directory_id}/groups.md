@@ -11,13 +11,13 @@ curl --location 'https://<SCALEKIT_ENVIRONMENT_URL>/api/v1/organizations/<organi
 <TabItem value="nodejs" label="Node.js">
 
 ```js showLineNumbers
-async function listGroups(directoryId) {
-  const { groups } = await scalekit.directory.listDirectoryGroups(directoryId);
-  console.log('Group Object: \n', JSON.stringify(groups[0], null, 2));
-  return groups;
-}
+const sc = new ScalekitClient(
+  <SCALEKIT_ENVIRONMENT_URL>,
+  <SCALEKIT_CLIENT_ID>,
+  <SCALEKIT_CLIENT_SECRET>
+);
 
-const groups = await listGroups(directory.id);
+const { groups } = await scalekit.directory.listDirectoryGroups(directoryId);
 ```
 
 </TabItem>
@@ -26,7 +26,6 @@ const groups = await listGroups(directory.id);
 ```python showLineNumbers
 from scalekit import ScalekitClient
 
-# Initialize the SDK client
 scalekit_client = ScalekitClient(
   '<SCALEKIT_ENVIRONMENT_URL>',
   '<SCALEKIT_CLIENT_ID>',

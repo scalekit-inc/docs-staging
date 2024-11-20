@@ -51,7 +51,7 @@ app.post('/webhook', async (req, res) => {
 
 </TabItem>
 
-<TabItem label="Python" value="Python">
+{/* <TabItem label="Python" value="Python">
 
 ```python
 from svix.webhooks import Webhook
@@ -71,9 +71,9 @@ wh = Webhook(secret)
 payload = wh.verify(payload, headers)
 ```
 
-</TabItem>
+</TabItem> */}
 
-<TabItem label="Go" value="Go">
+{/* <TabItem label="Go" value="Go">
 
 ```go
 import (
@@ -95,7 +95,7 @@ err := wh.Verify(payload, headers)
 // returns nil on success, error otherwise
 ```
 
-</TabItem>
+</TabItem> */}
 
 <TabItem label="Java" value="Java">
 
@@ -159,7 +159,7 @@ async function createUserAccount(email, name) {
 
 </TabItem>
 
-<TabItem label="Python" value="Python">
+{/* <TabItem label="Python" value="Python">
 
 ```python
 from flask import Flask, request, jsonify
@@ -183,21 +183,55 @@ def create_user_account(email, name):
 
 ```
 
-</TabItem>
+</TabItem> */}
 
-<TabItem label="" value="Go">
+{/* <TabItem label="" value="Go">
 
 ```go
 
 
 ```
 
-</TabItem>
+</TabItem> */}
 
-<TabItem label="" value="Java">
+<TabItem label="Java" value="Java">
 
 ```java
 
+@PostMapping("/webhook")
+    public String webhook(@RequestBody String body, @RequestHeader Map<String, String> headers) {
+
+
+        String secret = "<WEBHOOK_SECRET>";
+
+        //verify webhook payload
+        boolean valid  = scalekit.webhook().verifyWebhookPayload(secret,headers,body.getBytes());
+        if (!valid) {
+            throw new RuntimeException("Invalid signature");
+        }
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode node;
+
+        try {
+            node = mapper.readTree(body);
+        } catch (IOException e) {
+            return "error";
+        }
+
+        String eventType = node.get("type").asText();
+        switch (eventType) {
+            case "scalekit.dir.user.create":
+                // create a user
+                break;
+            case "scalekit.dir.user.update":
+                // update a user
+                break;
+            default:
+                System.out.println("Unknown event type");
+        }
+
+  return "ok";
+}
 ```
 
 </TabItem>

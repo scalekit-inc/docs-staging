@@ -11,13 +11,13 @@ curl --location 'https://<SCALEKIT_ENVIRONMENT_URL>/api/v1/organizations/<organi
 <TabItem value="nodejs" label="Node.js">
 
 ```js showLineNumbers
-async function listUsers(directoryId) {
-  const { users } = await scalekit.directory.listDirectoryUsers(directoryId);
-  console.log('User email in the directory:', users[0].email);
-  return users;
-}
+const sc = new ScalekitClient(
+  <SCALEKIT_ENVIRONMENT_URL>,
+  <SCALEKIT_CLIENT_ID>,
+  <SCALEKIT_CLIENT_SECRET>
+);
 
-const userList = await listUsers(directory.id);
+  const { users } = await scalekit.directory.listDirectoryUsers(directoryId);
 ```
 
 </TabItem>
@@ -36,7 +36,6 @@ scalekit_client = ScalekitClient(
 directory_users = scalekit_client.directory.list_directory_users(
   directory_id='<directory_id>', organization_id='<organization_id>'
 )
-print(f'directory users: {str(directory_users)}')
 ```
 
 </TabItem>
