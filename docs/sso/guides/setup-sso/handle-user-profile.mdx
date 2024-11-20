@@ -19,23 +19,26 @@ Handle the <SimpleCode>/auth/callback</SimpleCode> route in your app to receive 
 
 Refer to the [Redirect URI](/sso/guides/key-concepts/redirect-uri) section for valid URIs
 
-## **Handling Callback Route**
+## Handling Callback Route
 
 During redirection, the callback route receives a code as query parameters. Use Scalekit's SDK to retrieve user details and an access token.
 
 The user details, which come in the form of an encoded token, provide your application with information about the user. On the other hand, the access token plays an instrumental role in facilitating subsequent requests to Scalekit API endpoints. For example, the <SimpleCode>/userinfo</SimpleCode> endpoint.
 
+<CodeWithHeader >
 ```ts title="app/auth/callback/route.ts"
 const { user, accessToken } = await scalekit.authenticateWithCode(
   code,
   <redirectUri>
 );
 ```
+</CodeWithHeader>
 
 Store this information as cookies with the <SimpleCode> httpOnly </SimpleCode> attribute enabled for secure HTTP calls:
 
 Here is a code example demonstrating this process. In this example, after setting the cookies, the user is directed to the /me path in the User Interface (UI).
 
+<CodeWithHeader>
 ```ts title="app/auth/callback/route.ts"
 const url = request.nextUrl.clone();
 url.searchParams.delete('code');
@@ -55,6 +58,7 @@ response.cookies.set({
 });
 return response;
 ```
+</CodeWithHeader>
 
 After authentication, redirect the user to the client-side <SimpleCode>/me</SimpleCode> page.
 
@@ -66,6 +70,7 @@ The <SimpleCode>/me</SimpleCode> page welcomes the user with their first and las
 
 Here is a Next.js example code:
 
+<CodeWithHeader>
 ```tsx title="app/me/page.tsx"
 <Container title="Me">
   {!user ? (
@@ -107,10 +112,11 @@ Here is a Next.js example code:
   )}
 </Container>
 ```
-
+</CodeWithHeader>
 The <SimpleCode>user</SimpleCode> and <SimpleCode>logout</SimpleCode> methods above would invoke <SimpleCode>getUser()</SimpleCode> and <SimpleCode>logOutUser()</SimpleCode> methods
 to get the cookies or even remove them accordingly.
 
+<CodeWithHeader>
 ```ts title="service/auth.ts"
 export const getUser = async (): Promise<{
   user: User | null;
@@ -131,5 +137,5 @@ export const logOutUser = async (): Promise<void> => {
   cookies().delete('accessToken');
 };
 ```
-
+</CodeWithHeader>
 **Handle User Attributes**: Implement these steps to effectively handle user attributes from the Identity Provider and manage user authentication in your B2B SaaS application

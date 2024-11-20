@@ -61,12 +61,21 @@ The OAuth Configuration details page helps you set up the connection:
 **Set up Gitlab OAuth 2.0**
 
 Gitlab lets you set up OAuth through the Mircosoft Identity Platform.
-[Follow Gitlab's instructions to set up OAuth 2.0](https://docs.gitlab.co.jp/ee/integration/oauth_provider.html).
+[Follow Gitlab's instructions to set up OAuth 2.0](https://dub.sh/gitlab-oauth-provider).
 
 - Use the Redirect URI from Scalekit as the Redirect URI in Gitlab's setup
 - Copy the generated Client ID and Client Secret into the Scalekit Dashboard
 
 After completing the setup, click "Save Changes" in Scalekit for the changes to take effect.
+
+<figure>
+  ![Gitlab OAuth configuration for social login, showing redirect URI, client ID, and scopes for
+  authentication.](@site/docs/sso/assets/integrations/social-connections/gitlab-2.png)
+
+  <figcaption>
+    Gitlab OAuth configuration for social login, showing redirect URI, client ID, and scopes for authentication.
+  </figcaption>
+</figure>
 
 ## Test the Connection
 
@@ -74,11 +83,8 @@ Click the "Test Connection" button in Scalekit. You will be redirected to the Gi
 A summary table will show the information that will be sent to your app.
 
 <figure>
-  ![Test Connection successful](@site/docs/sso/assets/integrations/social-connections/gitlab-2.png)
-
-  <figcaption>
-    Test connection success, showing the consent screen and summary table.
-  </figcaption>
+  ![Test connection success](@site/docs/sso/assets/integrations/google-social/5-successful-test-connection.png)
+  <figcaption>Test connection success, showing the consent screen and summary table.</figcaption>
 </figure>
 
 ## Next steps

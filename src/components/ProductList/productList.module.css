@@ -8,8 +8,8 @@
   display: flex;
   gap: 16px;
   padding: 1.5rem;
-  border: 1px solid var(--ifm-color-emphasis-200);
-  border-radius: 0px;
+  border: 1px solid var(--primary-grey-300);
+  border-radius: 2px;
   background-color: var(--background-panels);
   text-decoration: none; /* Ensure links have no underline */
   color: inherit; /* Ensure link color is inherited */
@@ -17,14 +17,15 @@
 
 .productItem:hover {
   text-decoration: none;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
-    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  box-shadow:
+    var(--primary-purple-50) 0px 10px 15px -3px,
+    var(--primary-purple-75) 0px 4px 6px -2px;
   transition: color 200ms;
-  color: var(--text-content);
+  color: var(--primary-graphite-200);
 }
 
 .productItem:hover h3 {
-  color: var(--ifm-link-color);
+  color: var(--primary-indigo-blue-500);
   text-decoration: none;
 }
 

@@ -1,23 +1,6 @@
 import React from 'react';
 import styles from './Glossary.module.css';
-
-const glossary_items = {
-  Workspace: 'Represents the account of Scalekit customer.',
-  Application: 'A product or product-line that you offer to your customers',
-  Environment:
-    'This is your application’s deployment environment. Scalekit maps to your deployment policies and your application can have multiple environments such as development, test, staging, and production. Each environment on Scalekit will have its own configuration, API settings, and authentication policies. Each environment is strictly separated from each other, thus ensuring protection and isolation of data and configuration.',
-  'Team member':
-    'A user in the account that uses, evaluates, and implements Scalekit platform. These could be your organization’s full time employees or consultants. Eg: product managers, developers, customer success managers from your team.',
-  Dashboard:
-    'The dashboard of Scalekit that your team members would use to configure and integrate with your application.',
-  Organization:
-    'This is your customer’s organization. Your application’s users would belong to this organization.',
-  'Admin Portal':
-    "The user interface (UI) utilized by your customers' IT administrators to configure Single Sign-On (SSO) connections and settings is fully managed and hosted by Scalekit. This UI can be presented either as a standalone portal or as an embedded feature within your application's admin settings section.",
-  User: 'Users of your application that belong to your customers’ organizations. Includes users, admins, IT admins who use and implement your application.',
-  Connection:
-    'Represents the unique integration between your application and your customer’s organization. Examples: Connection 1 is Okta’s identity provider integration with your customer, Foocorp. Connection 2 is Microsoft Azure’s integration with another of your customer, Barcorp.',
-};
+import glossary_items from './term-explorer-eli5.json';
 
 import { useState } from 'react';
 import {
@@ -34,8 +17,12 @@ import {
   FloatingPortal,
 } from '@floating-ui/react';
 
-export const TooltippedGlossary = ({ glossary }) => {
+export const TermTip = ({ jargon }) => {
+  const glossary = jargon.toLowerCase();
   const [isOpen, setIsOpen] = useState(false);
+  const glossary_items = Object.fromEntries(
+    Object.entries(require('./term-explorer-eli5.json')).map(([key, value]) => [key.toLowerCase(), value]),
+  );
 
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
@@ -60,30 +47,16 @@ export const TooltippedGlossary = ({ glossary }) => {
   const role = useRole(context, { role: 'tooltip' });
 
   // Merge all the interactions into prop getters
-  const { getReferenceProps, getFloatingProps } = useInteractions([
-    hover,
-    focus,
-    dismiss,
-    role,
-  ]);
+  const { getReferenceProps, getFloatingProps } = useInteractions([hover, focus, dismiss, role]);
 
   return (
     <>
-      <span
-        ref={refs.setReference}
-        {...getReferenceProps()}
-        className={styles.glossary}
-      >
-        {glossary}
+      <span ref={refs.setReference} {...getReferenceProps()} className={styles.glossary}>
+        {jargon}
       </span>
       <FloatingPortal>
         {isOpen && (
-          <div
-            className={styles.tooltip}
-            ref={refs.setFloating}
-            style={floatingStyles}
-            {...getFloatingProps()}
-          >
+          <div className={styles.tooltip} ref={refs.setFloating} style={floatingStyles} {...getFloatingProps()}>
             {glossary_items[glossary]}
           </div>
         )}
@@ -92,24 +65,29 @@ export const TooltippedGlossary = ({ glossary }) => {
   );
 };
 
-export const GlossaryListing = () => (
-  <div>
-    {Object.keys(glossary_items).map((item, index) => (
-      <Glossary
-        key={index}
-        name={item}
-        description={glossary_items[item]}
-      ></Glossary>
-    ))}
-  </div>
-);
+export const GlossaryListing = () => {
+  const sortedGlossaryItems = Object.keys(glossary_items).sort();
 
-const Glossary = ({ name, description }) => (
-  <p>
-    <strong>{name}</strong>
-    <br />
-    {description}
-  </p>
-);
+  return (
+    <div className={styles.glossaryContainer}>
+      <div className={styles.glossaryContent}>
+        {sortedGlossaryItems.map((item, index) => (
+          <Glossary key={index} name={item} description={glossary_items[item]} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const Glossary = ({ name, description }) => {
+  return (
+    <div>
+      <dl className={styles.glossaryList} id={name}>
+        <dt>{name}</dt>
+        <dd>{description}</dd>
+      </dl>
+    </div>
+  );
+};
 
 export default Glossary;

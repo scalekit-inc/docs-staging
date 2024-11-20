@@ -1,7 +1,21 @@
 ---
-title: "Testing SSO Integration with Okta and Scalekit"
-description: "Learn how to verify your SSO connection using Okta as the identity provider. Follow our comprehensive guide to test and validate Single Sign-On scenarios with Scalekit, ensuring seamless integration for your enterprise customers."
-keywords: ["SSO Testing", "Okta Integration", "Scalekit", "Single Sign-On", "SP Initiated SSO", "IdP Initiated SSO", "Identity Provider", "SSO Scenarios", "Error Handling", "SSO Validation"]
+title: 'Testing SSO Integration with Okta and Scalekit'
+description:
+  'Learn how to verify your SSO connection using Okta as the identity provider. Follow our comprehensive guide to test
+  and validate Single Sign-On scenarios with Scalekit, ensuring seamless integration for your enterprise customers.'
+keywords:
+  [
+    'SSO Testing',
+    'Okta Integration',
+    'Scalekit',
+    'Single Sign-On',
+    'SP Initiated SSO',
+    'IdP Initiated SSO',
+    'Identity Provider',
+    'SSO Scenarios',
+    'Error Handling',
+    'SSO Validation',
+  ]
 ---
 
 import Card from '@site/src/components/Card/Card';
@@ -9,24 +23,29 @@ import CardList from '@site/src/components/CardList/CardList';
 
 # Test SSO
 
-<Subtitle>
-  Verify SSO Connection using Okta as the identity provider
-</Subtitle>
+<Subtitle>Verify SSO Connection using Okta as the identity provider</Subtitle>
 
-Using our [Quickstart guide](/sso/quickstart), you would have integrated Scalekit and implemented the SSO authentication in your sandbox environment. Now, it's time to test your SSO integration for all possible customer scenarios.
+Using our [Quickstart guide](/sso/quickstart), you would have integrated Scalekit and implemented the SSO authentication
+in your sandbox environment. Now, it's time to test your SSO integration for all possible customer scenarios.
 
-Before getting started, we recommend you signup for an [Okta developer account](https://developer.okta.com/signup/) so that you can test and verify SSO integration with Scalekit.
+Before getting started, we recommend you signup for an [Okta developer account](https://developer.okta.com/signup/) so
+that you can test and verify SSO integration with Scalekit.
 
 ## Setup your environment for testing
 
-For effective testing purposes, lets simulate a real scenario of onboarding an enterprise organization to your application. Assume the organization uses Okta as identity provider and is expecting to Single Sign-on with Okta.
+For effective testing purposes, lets simulate a real scenario of onboarding an enterprise organization to your
+application. Assume the organization uses Okta as identity provider and is expecting to Single Sign-on with Okta.
 
 1. Create an organization in the [Scalekit Dashboard](https://app.scalekit.com) with a name that reflects your customer.
-2. Generate an <TooltippedGlossary glossary="Admin Portal" /> link in the overview section of the created organization.
-3. Open the Admin Portal link and follow our [Okta Integration guide](/integrations/okta-saml) to setup an active SSO connection using Okta.
+2. Generate an <TermTip jargon="Admin Portal" /> link in the overview section of the created organization.
+3. Open the Admin Portal link and follow our [Okta Integration guide](/integrations/okta-saml) to setup an active SSO
+   connection using Okta.
 
 :::tip
-You can [customize the admin portal](/sso/domain-and-theme-customization) and theme it according to your application's brand guidelines to give a more polished experience.
+
+You can [customize the admin portal](/sso/domain-and-theme-customization) and theme it according to your
+application's brand guidelines to give a more polished experience.
+
 :::
 
 Now that you have an active SSO connection, make sure that you have successfully validated the below scenarios.
@@ -38,42 +57,47 @@ Now that you have an active SSO connection, make sure that you have successfully
 In this scenario, user starts the Single Sign-on flow from your application's login page.
 
 <figure>
-  ![SP initiated SSO
-  workflow](@site/docs/sso/assets/single-sign-on/quickstart/how-sso-works.png)
+  ![SP initiated SSO workflow](@site/docs/sso/assets/single-sign-on/quickstart/how-sso-works.png)
   <figcaption>SP initiated SSO workflow</figcaption>
 </figure>
 
 Validate the following:
 
-- Scalekit redirects the user to the appropriate identity provider based on the [Authorization URL](/sso/guides/key-concepts/authorization-url) you provided.
+- Scalekit redirects the user to the appropriate identity provider based on the
+  [Authorization URL](/sso/guides/key-concepts/authorization-url) you provided.
 - Your application can retrieve the user details by exchanging the `code` you received in the above step.
 
 ### Scenario 2: IdP Initiated SSO
 
-In this scenario, user is logged in the identity provider and selects your application. The SSO flow gets initiated from the identity provider (IdP). Diagram below explains the workflow
+In this scenario, user is logged in the identity provider and selects your application. The SSO flow gets initiated from
+the identity provider (IdP). Diagram below explains the workflow
 
 <figure>
-  ![Scalekit's recommended workflow for IdP initiated
-  SSO](/img/idp_initiated_sso_with_scalekit.png)
-  <figcaption>
-    Scalekit's recommended workflow for IdP initiated SSO
-  </figcaption>
+  ![Scalekit's recommended workflow for IdP initiated SSO](/img/idp_initiated_sso_with_scalekit.png)
+  <figcaption>Scalekit's recommended workflow for IdP initiated SSO</figcaption>
 </figure>
 
 Validate the following:
 
-- User is redirected to the default Redirect URI with request parameters. This Redirect URI is configured in the Scalekit dashboard.
-- Your application detects this as IdP-initiated SSO (based on the request parameters) and initiates the SP-initiated SSO. For step-by-step details, check out this guide on the [implementing Idp-initiated SSO](/sso/guides/setup-sso/implement-idp-initiated-sso)
+- User is redirected to the default Redirect URI with request parameters. This Redirect URI is configured in the
+  Scalekit dashboard.
+- Your application detects this as IdP-initiated SSO (based on the request parameters) and initiates the SP-initiated
+  SSO. For step-by-step details, check out this guide on the
+  [implementing Idp-initiated SSO](/sso/guides/setup-sso/implement-idp-initiated-sso)
 - User is redirected to the appropriate identity provider based on the Authorization URL provided.
-- After the user is authenticated by the identity provider, they are navigated to the Redirect URI with a one time `code` along with the `state` parameter sent in the Authorization URL.
+- After the user is authenticated by the identity provider, they are navigated to the Redirect URI with a one time
+  `code` along with the `state` parameter sent in the Authorization URL.
 - Your application can retrieve the user details by exchanging the `code` you received in the above step.
 
 ### Scenario 3: Handling Errors
 
-Sometimes, SSO login could fail due to improper SSO configuration, incomplete user profiles, or integration issues with Scalekit.
+Sometimes, SSO login could fail due to improper SSO configuration, incomplete user profiles, or integration issues with
+Scalekit.
 
-Handle errors and display appropriate error messages to your users. Go through the possible [error codes](/sso/guides/setup-sso/error-handling).
+Handle errors and display appropriate error messages to your users. Go through the possible
+[error codes](/sso/guides/setup-sso/error-handling).
 
 ## Next Steps
 
-After validating all scenarios, you are ready to go live. Visit our [Launch Checklist](/sso/launch-checklist) guide before you start onboarding real customers in your production environment.
+After validating all scenarios, you are ready to go live. Visit our [Launch Checklist](/sso/launch-checklist) guide
+before you start onboarding real customers in your production environment.

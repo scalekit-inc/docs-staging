@@ -1,14 +1,30 @@
 .glossary {
-  text-decoration: underline dotted;
-  text-decoration-color: var(--scalekit-blue);
+  /* text-decoration: underline dashed; */
+  text-decoration-color: var(--secondary-blue-normal-hover);
   cursor: help;
 }
 .tooltip {
-  background-color: #444;
+  background-color: var(--primary-graphite-200);
   max-width: 400px;
   line-height: 1.5em;
   color: white;
   font-size: 90%;
   padding: 8px;
   border-radius: 8px;
+}
+
+.glossaryTitle {
+  font-style: italic;
+}
+
+.glossaryList dt {
+  font-weight: 500;
+  font-size: 1.1em;
+  color: var(--primary-graphite-500);
+  margin-top: 1em;
+}
+
+.glossaryList dd {
+  margin-left: 1em;
+  margin-bottom: 1em;
 }

@@ -1,0 +1,126 @@
+---
+displayed_sidebar: 'scimSidebar'
+---
+
+# Automatic Role Assignment
+
+<Subtitle>Assign App Roles from Directory Group Memberships</Subtitle>
+
+Manually assigning roles to users in your application, such as viewer, member, editor, or admin, can
+be a time-consuming task for administrators, particularly in large enterprises where access needs
+frequently change. Scalekit streamlines this process by allowing administrators to establish
+workflows that automatically update your app about the roles to assign to users.
+
+## Introduction
+
+A common strategy for managing varying access levels is to group users based on their specific
+access requirements. For example, if you are developing an application similar to GitHub with roles
+like maintainer, writer, and viewer, customer administrators can create user groups for each role
+within their directory provider.
+
+<figure>
+  ![SCIM User Provisioning Flow Directory to Scalekit to Your B2B
+  App](@site/docs/scim/assets/gbra-1.png)
+  <figcaption>SCIM User Provisioning Flow Directory to Scalekit to Your App</figcaption>
+</figure>
+
+Scalekit notifies your application when administrators create groups or add users to them, enabling
+you to take necessary actions such as creating or modifying user roles as directed by the
+organization’s administrator. Regardless of the directory provider your customers use, Scalekit
+delivers normalized information, eliminating the need for data transformation across different
+providers.
+
+## Enabling Group-Based Role Assignment
+
+To enable administrators to map groups to roles in your app:
+
+1. Go to the Scalekit Dashboard
+2. Select "SCIM Provisioning"
+3. Switch to the "Role Assignment" tab
+4. Create your app's roles
+
+<figure className="width-75">
+  ![How Scalekit works](@site/docs/scim/assets/automatically-assign-roles-4.png)
+  <figcaption>Registering roles in Scalekit dashboard.</figcaption>
+</figure>
+
+The first role you create in your app becomes the default role automatically. This means users who
+don't belong to any specific group will be assigned this role upon account creation. To change the
+default role, navigate to the role settings, click the "..." menu next to the desired role, select
+"Edit," and toggle the "Set as default role" option.
+
+:::tip
+
+Choose clear Display Names and Descriptions for your roles to help customers understand and align
+with the access levels in the Admin Portal.
+
+:::
+
+## Listening to Events
+
+Scalekit continuously monitors updates from your customers’ directory providers and sends event
+payloads to your application via a registered webhook endpoint. To set up these endpoints and manage
+subscriptions, refer to the Scalekit Dashboard documentation.
+
+In this scenario, you will listen for the <SimpleCode>scalekit.dir.user.update</SimpleCode> event to
+determine a user's role from the payload. Scalekit automatically includes a role property relevant
+to your app, based on the role information configured in the Scalekit Dashboard.
+
+<CodeWithHeader title="Webhook Endpoint for Role Updates">
+
+<Tabs groupId="tech-stack" queryString>
+
+<TabItem value="Node.js" label="Node.js">
+
+```javascript showLineNumbers
+// Webhook endpoint
+app.post('/api/webhook/role-assignment', async (req, res) => {
+  const event = req.body;
+  const { email, name, roles } = event.data;
+  console.log('Admin added user to Viewer Group -> Scalekit informs Your App\n');
+
+  // Destructure role_name from roles array
+  const roleName = roles.length > 0 ? roles[0].role_name : null;
+  console.log('Role name received:', roleName);
+
+  // Logic to update user role and permissions
+  await assignRole(roleName, email);
+  console.log('App updated access for user:', email);
+
+  res.status(201).json({ message: 'Role assigned' });
+});
+```
+
+</TabItem>
+
+<TabItem value="java" label="Java">
+
+```java
+@PostMapping("/webhook")
+public String webhook(@RequestBody String body, @RequestHeader Map<String, String> headers) {
+  ObjectMapper mapper = new ObjectMapper();
+  try {
+    JsonNode node = mapper.readTree(body);
+    JsonNode roles = node.get("data").get("roles");
+    String email = node.get("data").get("email").asText();
+    System.out.println(roles);
+    System.out.println(email);
+    //Add role to user
+  } catch (IOException e) {
+    return "error";
+  }
+  return "ok";
+}
+```
+
+</TabItem>
+
+</Tabs>
+</CodeWithHeader>
+
+See the [User Event Payload Reference](/apis#tag/Webhooks/scalekit.dir.user.update) for more
+information about the payload structure.
+
+By utilizing Scalekit's group-based role assignment feature, you can simplify access management for
+your enterprise customers and ensure that user roles remain synchronized with their directory
+provider.
