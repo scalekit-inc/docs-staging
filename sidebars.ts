@@ -188,6 +188,11 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'doc',
+      label: 'Admin Portal',
+      id: 'scim/admin-portal',
+    },
+    {
+      type: 'doc',
       label: 'Launch Checklist',
       id: 'scim/checklist',
     },
@@ -199,7 +204,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'html',
       value:
-        "<span class='text--uppercase text--light sidenav-category-heading'>Implementation</span>",
+        "<span class='text--uppercase text--light sidenav-category-heading'>Implementation Guides</span>",
       defaultStyle: true,
     },
     // {
@@ -217,26 +222,7 @@ const sidebars: SidebarsConfig = {
       label: 'Automated Role Assignment',
       id: 'scim/automatically-assign-roles',
     },
-    {
-      type: 'doc',
-      label: 'Webhook Best Practices',
-      id: 'scim/webhooks',
-    },
-    {
-      type: 'html',
-      value: '<div />', // The link label
-      defaultStyle: true,
-    },
-    {
-      type: 'html',
-      value: "<span class='text--uppercase text--light sidenav-category-heading'>Manage</span>",
-      defaultStyle: true,
-    },
-    {
-      type: 'doc',
-      label: 'Admin Portal',
-      id: 'scim/admin-portal',
-    },
+
     // {
     //   type: 'doc',
     //   label: 'Attribute Mapping',
@@ -247,6 +233,7 @@ const sidebars: SidebarsConfig = {
       label: 'Customize Admin Portal',
       id: 'scim/domain-and-theme-customization',
     },
+
     {
       type: 'html',
       value: '<div />', // The link label
@@ -254,18 +241,24 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'html',
-      value: "<span class='text--uppercase text--light sidenav-category-heading'>Guides</span>",
+      value:
+        "<span class='text--uppercase text--light sidenav-category-heading'>Learning Resources</span>",
       defaultStyle: true,
     },
     {
       type: 'doc',
-      label: 'SCIM Provisioning Basics',
+      label: 'SCIM Provisioning: Overview',
       id: 'scim/basics',
     },
     {
       type: 'doc',
-      label: 'The SCIM Protocol',
+      label: 'SCIM Protocol: Technical Details',
       id: 'scim/scim-protocol',
+    },
+    {
+      type: 'doc',
+      label: 'Webhook Best Practices',
+      id: 'scim/webhooks',
     },
   ],
   integrationsSidebar: [
@@ -282,32 +275,32 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'doc',
-      label: 'Okta [SAML]',
+      label: 'Okta - SAML',
       id: 'integrations/okta-saml',
     },
     {
       type: 'doc',
-      label: 'Azure AD [SAML]',
+      label: 'Azure AD - SAML',
       id: 'integrations/azure-ad-saml',
     },
     {
       type: 'doc',
-      label: 'OneLogin [SAML]',
+      label: 'OneLogin - SAML',
       id: 'integrations/onelogin-saml',
     },
     {
       type: 'doc',
-      label: 'JumpCloud [SAML]',
+      label: 'JumpCloud - SAML',
       id: 'integrations/jumpcloud-saml',
     },
     {
       type: 'doc',
-      label: 'SAML',
+      label: 'Any Identity Provider - SAML',
       id: 'integrations/saml',
     },
     {
       type: 'doc',
-      label: 'OIDC',
+      label: 'Any Identity Provider - OIDC',
       id: 'integrations/oidc',
     },
     {
@@ -315,27 +308,7 @@ const sidebars: SidebarsConfig = {
       value: '<div />', // The link label
       defaultStyle: true,
     },
-    {
-      type: 'html',
-      value:
-        "<span class='text--uppercase text--light sidenav-category-heading'>Auth Systems</span>",
-      defaultStyle: true,
-    },
-    {
-      type: 'doc',
-      label: 'Auth0',
-      id: 'integrations/auth0',
-    },
-    {
-      type: 'doc',
-      label: 'Firebase',
-      id: 'integrations/firebase',
-    },
-    {
-      type: 'html',
-      value: '<div />', // The link label
-      defaultStyle: true,
-    },
+
     {
       type: 'html',
       value:
@@ -372,6 +345,28 @@ const sidebars: SidebarsConfig = {
       value: '<div />', // The link label
       defaultStyle: true,
     },
+    {
+      type: 'html',
+      value:
+        "<span class='text--uppercase text--light sidenav-category-heading'>Auth Systems</span>",
+      defaultStyle: true,
+    },
+    {
+      type: 'doc',
+      label: 'Auth0',
+      id: 'integrations/auth0',
+    },
+    {
+      type: 'doc',
+      label: 'Firebase',
+      id: 'integrations/firebase',
+    },
+    {
+      type: 'html',
+      value: '<div />', // The link label
+      defaultStyle: true,
+    },
+
     {
       type: 'html',
       value:
