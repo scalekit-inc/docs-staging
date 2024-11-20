@@ -73,7 +73,6 @@ Convenient access for making changes on the go, and Reduced navigation barriers 
 
 Install the Scalekit SDK, which includes the <SimpleCode>generatePortalLink()</SimpleCode> method:
 
-<InstallSDK />
 
 Use the Generate Portal Link API to create a unique and embeddable Admin Portal link for an
 organization:
@@ -84,6 +83,8 @@ organization:
 <TabItem value="nodejs" label="Node.js">
 
 ```javascript showLineNumbers
+//Install and Import Scalekit SDK
+
 async function generatePortalLink(orgID) {
   const link = await scalekit.organization.generatePortalLink(orgID);
   console.log(JSON.stringify(link, null, 2));
@@ -92,7 +93,7 @@ async function generatePortalLink(orgID) {
 
 </TabItem>
 
-<TabItem value="python" label="Python">
+{/* <TabItem value="python" label="Python">
 
 ```python
 portal_link = scalekit_client
@@ -100,19 +101,23 @@ portal_link = scalekit_client
                 .generate_portal_link('<organization_id>')
 ```
 
-</TabItem>
+</TabItem> */}
 
-<TabItem value="go" label="Go">
+{/* <TabItem value="go" label="Go">
 
 ```go
-
+link, err := sc.Organization.GeneratePortalLink(
+  ctx,
+  organizationId
+)
 ```
 
-</TabItem>
+</TabItem> */}
 
 <TabItem value="java" label="Java">
 
 ```java
+Link response = scalekitClient.organizations().generatePortalLink(organizationId);
 
 ```
 
