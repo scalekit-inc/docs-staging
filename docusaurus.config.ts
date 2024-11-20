@@ -222,79 +222,6 @@ const config: Config = {
         },
       ],
     },
-    // navbar: {
-    //   // title: 'Scalekit Docs',
-    //   logo: {
-    //     href: '/',
-    //     src: '/img/scalekit_docs_logo.svg',
-    //     srcDark:
-    //       'https://assets-global.website-files.com/65b87d98fa638289e10b8f61/65c269053d86c92e0cf91db5_scalekit-logo.svg',
-    //   },
-    //   items: [
-    //     {
-    //       to: '/',
-    //       label: 'Home',
-    //       className: 'homeLink',
-    //       secondary: true,
-    //     },
-    //     {
-    //       type: 'docSidebar',
-    //       sidebarId: 'ssoSidebar',
-    //       label: 'Single Sign-on',
-    //       className: 'sso',
-    //       secondary: true,
-    //     },
-    //     {
-    //       type: 'docSidebar',
-    //       sidebarId: 'scimSidebar',
-    //       label: 'SCIM Provisioning',
-    //       className: 'scim',
-    //       secondary: true,
-    //     },
-    //     {
-    //       to: '/apis',
-    //       label: 'API Reference',
-    //       position: 'right',
-    //       secondary: true,
-    //     },
-    //     {
-    //       to: '/sdks',
-    //       label: 'SDKs',
-    //       position: 'right',
-    //       secondary: true,
-    //     },
-    //     {
-    //       type: 'dropdown',
-    //       label: 'Resources',
-    //       position: 'right',
-    //       items: [
-    //         {
-    //           label: 'Integrations',
-    //           href: '/integrations',
-    //         },
-    //         {
-    //           type: 'doc',
-    //           label: 'Glossary',
-    //           docId: 'manage-scalekit/glossary',
-    //         },
-    //         // {
-    //         //   to: 'examples',
-    //         //   label: 'Examples',
-    //         // },
-    //       ],
-    //     },
-    //     {
-    //       type: 'search',
-    //       position: 'left',
-    //     },
-    //     {
-    //       to: 'https://www.scalekit.com/?intent=earlyaccess&utm_source=docs',
-    //       html: 'Get Early Access &rarr;',
-    //       position: 'right',
-    //       className: 'loginLink',
-    //     },
-    //   ],
-    // },
     imageZoom: {
       // CSS selector to apply the plugin to, defaults to '.markdown img'
       selector: '.markdown :not(.cardContainer h3) > img,  .markdown :not(.language-row) img',
@@ -316,7 +243,7 @@ const config: Config = {
     algolia: {
       appId: '7554BDRAJD',
       apiKey: '0a906499d09119c83fd6d0568e7f8517',
-      indexName: 'scalekit-staging',
+      indexName: 'scalekit',
       contextualSearch: false,
       insights: true,
       searchPagePath: false,
