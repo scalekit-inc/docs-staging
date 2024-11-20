@@ -171,7 +171,7 @@ const config: Config = {
     navbar: {
       // title: 'Scalekit Docs',
       logo: {
-        // href: '/',
+        href: '/',
         src: '/img/scalekit_docs_logo.svg',
         srcDark:
           'https://assets-global.website-files.com/65b87d98fa638289e10b8f61/65c269053d86c92e0cf91db5_scalekit-logo.svg',
