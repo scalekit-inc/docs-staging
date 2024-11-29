@@ -134,13 +134,11 @@ try {
 </CodeWithHeader>
 <CodeWithHeader title="Response">
 
-```js
-{
+<JsonViewer src={{
   "access_token": "ey ... vPnyWBQ",
   "expires_in": 899,
   "id_token": "eyJhbGc ... ar79GwZg",
   "token_type": "Bearer"
-}
-```
+}} />
 
 </CodeWithHeader>

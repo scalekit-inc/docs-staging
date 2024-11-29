@@ -65,9 +65,7 @@ ScalekitClient scalekitClient = new ScalekitClient(
   "<SCALEKIT_CLIENT_SECRET>"
 );
 
-ToggleConnectionResponse response = client
-  .connections()
-  .enableConnection(connectionId, organizationId);
+ToggleConnectionResponse response = scalekitClient.connections().enableConnection(connectionId, organizationId);
 
 ```
 
@@ -77,11 +75,9 @@ ToggleConnectionResponse response = client
 </CodeWithHeader>
 <CodeWithHeader title="Response">
 
-```js
-{
+<JsonViewer src={{
   "enabled": true,
   "error_message": ""
-}
-```
+}} />
 
 </CodeWithHeader>

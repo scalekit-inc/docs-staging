@@ -54,12 +54,12 @@ Organization represents a customer or a tenant of your application. Use this to 
       <Parameter
         attrKey="create_time"
         type="string"
-        description="Timestamp at which this organization record was created in ISO 8601 format"
+        description="Timestamp at which this organization record was created in RFC 3339 format"
       />
       <Parameter
         attrKey="update_time"
         type="string"
-        description="Timestamp at which this organization record was last updated in ISO 8601 format"
+        description="Timestamp at which this organization record was last updated in RFC 3339 format"
       />
     </ul>
     </div>
@@ -67,26 +67,28 @@ Organization represents a customer or a tenant of your application. Use this to 
     <div className="scalar-card-sticky">
         <CodeWithHeader title="Organization Object">
 
-```js
-{
-    "id": "org_2123312131125533",
-    "display_name": "Acme Corp",
-    "create_time": "2024-01-05T14:48:00.000Z",
-    "external_id": "my_unique_id",
-    "metadata": {
-      "someKey": "somevalue"
-    },
-    "region_code": "US",
-    "update_time": "…"
-}
-```
+          ```json
+          {
+              "id": "org_2123312131125533",
+              "display_name": "Acme Corp",
+              "create_time": "2024-01-05T14:48:00.000Z",
+              "external_id": "my_unique_id",
+              "metadata": {
+                "someKey": "somevalue"
+              },
+              "region_code": "US",
+              "update_time": "…"
+          }
+          ```
 
-</CodeWithHeader>
+  </CodeWithHeader>
+  </div>
 </div>
-    </div>
 </div>
+
 <APIEndpoint tag="Organization" method="get" endpoint="/api/v1/organizations" />
 <APIEndpoint tag="Organization" method="post" endpoint="/api/v1/organizations" />
 <APIEndpoint tag="Organization" method="get" endpoint="/api/v1/organizations/{id}" />
 <APIEndpoint tag="Organization" method="patch" endpoint="/api/v1/organizations/{id}" />
+<APIEndpoint tag="Organization" method="patch" endpoint="/api/v1/organizations/{id}/settings" />
 <APIEndpoint tag="Organization" method="delete" endpoint="/api/v1/organizations/{id}" />

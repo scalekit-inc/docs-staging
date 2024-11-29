@@ -1,0 +1,63 @@
+---
+toc_max_heading_level: 2
+title: 'Customizing the Admin Portal in Scalekit'
+description:
+  'Learn how to customize the Scalekit Admin Portal to match your brand identity. This guide covers
+  setting up a custom domain, updating the logo, colors, and favicon to ensure a cohesive user
+  experience.'
+keywords:
+  [
+    'Scalekit',
+    'Admin Portal Customization',
+    'Custom Domain',
+    'CNAME Configuration',
+    'Custom Theme',
+    'Brand Identity',
+    'Logo',
+    'Accent Color',
+    'Favicon',
+  ]
+---
+
+# Customize Admin Portal
+
+<Subtitle>Customize configuration portal UI to fit your brand and design needs</Subtitle>
+
+Customizing the Admin Portal helps align the UI interface with your application's brand identity,
+ensuring a cohesive look and feel. This guide walks you through the steps to customize to suit your
+brand.
+
+## Custom Domain
+
+Scalekit sets up your environment using a unique endpoint URL that ends with the <SimpleCode>scalekit.com</SimpleCode> domain. However, you can customize this using CNAME configuration.
+
+Example:
+
+| Before                                                               | After                                                               |
+| -------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| <SimpleCode> https:<span></span>//b2b-app.scalekit.com </SimpleCode> | <SimpleCode> https:<span></span>//admin.hero-saas.app </SimpleCode> |
+
+Users will see this web address in their browser when they visit the Admin Portal or sign in using
+Single Sign-On (SSO)
+
+:::info
+
+1. CNAME Configuration Limitation: CNAME configuration is only available for production
+   environments.
+2. SSL Certificate Automation: After successful CNAME configuration, the SSL certificate for the
+   custom domain will be automatically set up.
+3. Base URL: Ensure the new CNAME URL is used as the base URL after configuration.
+
+   :::
+
+## Custom Theme
+
+Customize the Admin Portal to match your brand. This includes:
+
+- **Logo**: Display your brand’s logo.
+- **Colors**: Update the admin portal’s accent color to match your brand
+- **Favicon**: Update the favicon to fit your brand
+
+You can set up a custom domain, upload your company logo, choose colors that match your brand
+palette, and add a favicon. These simple customization options ensure that the Admin Portal looks
+and feels like a seamless extension of your application.

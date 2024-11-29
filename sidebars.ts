@@ -1,7 +1,7 @@
 import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
 
 const sidebars: SidebarsConfig = {
-  homeSidebar: [
+  ssoSidebar: [
     {
       type: 'html',
       value:
@@ -66,11 +66,11 @@ const sidebars: SidebarsConfig = {
       label: 'Add SSO to your Login Page',
       id: 'sso/guides/setup-sso/build-login-page',
     },
-    {
-      type: 'doc',
-      label: 'Fetch User Attributes from IdP',
-      id: 'sso/guides/setup-sso/handle-user-profile',
-    },
+    // {
+    //   type: 'doc',
+    //   label: 'Fetch User Attributes from IdP',
+    //   id: 'sso/guides/setup-sso/handle-user-profile',
+    // },
     // {
     //   type: "doc",
     //   label: "Handle Raw Attributes from IdP",
@@ -96,7 +96,7 @@ const sidebars: SidebarsConfig = {
       label: 'Customize User Attributes',
       id: 'sso/guides/setup-sso/customize-user-attributes',
     },
-      {
+    {
       type: 'doc',
       label: 'Test SSO with Okta',
       id: 'sso/guides/test-your-integration/using-okta',
@@ -143,7 +143,6 @@ const sidebars: SidebarsConfig = {
         "<span class='text--uppercase text--light sidenav-category-heading'>Learning Guides</span>",
       defaultStyle: true,
     },
-
     {
       type: 'doc',
       label: 'Authorization URL',
@@ -170,6 +169,98 @@ const sidebars: SidebarsConfig = {
       id: 'sso/guides/key-concepts/manage-client-secrets',
     },
   ],
+  scimSidebar: [
+    {
+      type: 'html',
+      value:
+        "<span class='text--uppercase text--light sidenav-category-heading'>Getting Started</span>",
+      defaultStyle: true,
+    },
+    {
+      type: 'doc',
+      label: 'Quickstart',
+      id: 'scim/quickstart',
+    },
+    {
+      type: 'doc',
+      label: 'Sample Apps',
+      id: 'scim/explore-sample-apps',
+    },
+    {
+      type: 'doc',
+      label: 'Admin Portal',
+      id: 'scim/admin-portal',
+    },
+    {
+      type: 'doc',
+      label: 'Launch Checklist',
+      id: 'scim/checklist',
+    },
+    {
+      type: 'html',
+      value: '<div />', // The link label
+      defaultStyle: true,
+    },
+    {
+      type: 'html',
+      value:
+        "<span class='text--uppercase text--light sidenav-category-heading'>Implementation Guides</span>",
+      defaultStyle: true,
+    },
+    // {
+    //   type: 'doc',
+    //   label: 'Setup Webhooks',
+    //   id: 'scim/setup-directory-events',
+    // },
+    // {
+    //   type: 'doc',
+    //   label: 'Directory User Object',
+    //   id: 'scim/directory-user-object',
+    // },
+    {
+      type: 'doc',
+      label: 'Automated Role Assignment',
+      id: 'scim/automatically-assign-roles',
+    },
+
+    // {
+    //   type: 'doc',
+    //   label: 'Attribute Mapping',
+    //   id: 'scim/map-user-attributes',
+    // },
+    {
+      type: 'doc',
+      label: 'Customize Admin Portal',
+      id: 'scim/domain-and-theme-customization',
+    },
+
+    {
+      type: 'html',
+      value: '<div />', // The link label
+      defaultStyle: true,
+    },
+    {
+      type: 'html',
+      value:
+        "<span class='text--uppercase text--light sidenav-category-heading'>Learning Resources</span>",
+      defaultStyle: true,
+    },
+    {
+      type: 'doc',
+      label: 'SCIM Provisioning: Overview',
+      id: 'scim/basics',
+    },
+    {
+      type: 'doc',
+      label: 'SCIM Protocol: Technical Details',
+      id: 'scim/scim-protocol',
+    },
+    {
+      type: 'doc',
+      label: 'Webhook Best Practices',
+      id: 'scim/webhooks',
+    },
+  ],
   integrationsSidebar: [
     {
       type: 'doc',
@@ -178,43 +269,38 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: 'html',
-      value: '<div />', // The link label
-      defaultStyle: true,
-    },
-    {
-      type: 'html',
       value:
-        "<span class='text--uppercase text--light sidenav-category-heading'>Identity Provider Guides</span>",
+        "<span class='text--uppercase text--light sidenav-category-heading'>SSO Integrations</span>",
       defaultStyle: true,
     },
     {
       type: 'doc',
-      label: 'Okta SAML',
+      label: 'Okta - SAML',
       id: 'integrations/okta-saml',
     },
     {
       type: 'doc',
-      label: 'Azure AD SAML',
+      label: 'Azure AD - SAML',
       id: 'integrations/azure-ad-saml',
     },
     {
       type: 'doc',
-      label: 'OneLogin SAML',
+      label: 'OneLogin - SAML',
       id: 'integrations/onelogin-saml',
     },
     {
       type: 'doc',
-      label: 'JumpCloud SAML',
+      label: 'JumpCloud - SAML',
       id: 'integrations/jumpcloud-saml',
     },
     {
       type: 'doc',
-      label: 'SAML',
+      label: 'Any Identity Provider - SAML',
       id: 'integrations/saml',
     },
     {
       type: 'doc',
-      label: 'OIDC',
+      label: 'Any Identity Provider - OIDC',
       id: 'integrations/oidc',
     },
     {
@@ -222,10 +308,47 @@ const sidebars: SidebarsConfig = {
       value: '<div />', // The link label
       defaultStyle: true,
     },
+
     {
       type: 'html',
       value:
-        "<span class='text--uppercase text--light sidenav-category-heading'>Integration with Auth System</span>",
+        "<span class='text--uppercase text--light sidenav-category-heading'>SCIM Integrations</span>",
+      defaultStyle: true,
+    },
+    {
+      type: 'doc',
+      label: 'Okta',
+      id: 'integrations/okta-scim',
+    },
+    {
+      type: 'doc',
+      label: 'Azure AD',
+      id: 'integrations/azure-scim',
+    },
+    // {
+    //   type: 'doc',
+    //   label: 'JumpCloud',
+    //   id: 'integrations/jumpcloud-scim',
+    // },
+    {
+      type: 'doc',
+      label: 'OneLogin',
+      id: 'integrations/onelogin-scim',
+    },
+    // {
+    //   type: 'doc',
+    //   label: 'SCIM',
+    //   id: 'integrations/scim',
+    // },
+    {
+      type: 'html',
+      value: '<div />', // The link label
+      defaultStyle: true,
+    },
+    {
+      type: 'html',
+      value:
+        "<span class='text--uppercase text--light sidenav-category-heading'>Auth Systems</span>",
       defaultStyle: true,
     },
     {
@@ -237,6 +360,53 @@ const sidebars: SidebarsConfig = {
       type: 'doc',
       label: 'Firebase',
       id: 'integrations/firebase',
+    },
+    {
+      type: 'html',
+      value: '<div />', // The link label
+      defaultStyle: true,
+    },
+
+    {
+      type: 'html',
+      value:
+        "<span class='text--uppercase text--light sidenav-category-heading'>Social Connections</span>",
+      defaultStyle: true,
+    },
+    {
+      type: 'doc',
+      label: 'Google',
+      id: 'integrations/social-connections/google',
+    },
+    {
+      type: 'doc',
+      label: 'Github',
+      id: 'integrations/social-connections/github',
+    },
+    {
+      type: 'doc',
+      label: 'Gitlab',
+      id: 'integrations/social-connections/gitlab',
+    },
+    {
+      type: 'doc',
+      label: 'Microsoft',
+      id: 'integrations/social-connections/microsoft',
+    },
+    {
+      type: 'doc',
+      label: 'Salesforce',
+      id: 'integrations/social-connections/salesforce',
+    },
+    {
+      type: 'doc',
+      label: 'LinkedIn',
+      id: 'integrations/social-connections/linkedin',
+    },
+    {
+      type: 'html',
+      value: '<div />', // The link label
+      defaultStyle: true,
     },
   ],
   guidesSidebar: [

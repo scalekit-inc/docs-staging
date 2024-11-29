@@ -1,0 +1,19 @@
+/* CenteredComponent.css */
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto; /* Change from 100vh to auto */
+  padding-top: 20px; /* Add padding to position it from the top */
+  text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.centered-container > p {
+  font-size: 1.1rem;
+}
