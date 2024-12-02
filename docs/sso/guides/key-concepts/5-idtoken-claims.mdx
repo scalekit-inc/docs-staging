@@ -1,6 +1,5 @@
 ---
 slug: idtoken-claims
-displayed_sidebar: homeSidebar
 title: "Inspect Claims in ID Token with Scalekit"
 description: "Understand how to inspect and validate claims in an ID Token issued by Scalekit. Learn about the structure of ID Tokens, including their payload, and the significance of various claims for user profile information."
 keywords: ["ID Token", "JWT", "Scalekit", "User Authentication", "Claims", "JSON Web Token", "Profile Information", "Secure Authentication", "Token Validation", "OAuth"]
@@ -14,8 +13,9 @@ Here's an example of the payload. Note this is formatted for readability and the
 
 ## Sample Payload
 
-```js
-{
+<CodeWithHeader>
+<JsonViewer
+  src={{
   "iss": "https://yoursaas.scalekit.com",
   "azp": "skc_12205605011849527",
   "aud": ["skc_12205605011849527"],
@@ -32,8 +32,10 @@ Here's an example of the payload. Note this is formatted for readability and the
   "locale": "en",
   "email": "john.doe@acmecorp.com",
   "email_verified": true
-}
-```
+}}
+/>
+
+</CodeWithHeader>
 
 ## Full list of ID Token Claims
 

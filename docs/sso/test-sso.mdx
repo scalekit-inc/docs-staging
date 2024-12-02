@@ -2,60 +2,70 @@
 description: Verify SSO Connection using IdP Simulator
 title: Test Single Sign-on integration
 ---
+
 # Test Single Sign-on integration
 
-<Subtitle>
-  Validate your SSO Integration using Scalekit's Identity Provider Simulator
-</Subtitle>
+<Subtitle>Validate your SSO Integration using Scalekit's Identity Provider Simulator</Subtitle>
 
-After implementing Single Sign-on using our [Quickstart guide](/sso/quickstart), now it's time to validate your integration for all possible scenarios. To make your integration testing easy and also comprehensive, we have already setup your development environment with the two key components:
+After implementing Single Sign-on using our [Quickstart guide](/sso/quickstart), now it's time to validate your
+integration for all possible scenarios. To make your integration testing easy and also comprehensive, we have already
+setup your development environment with the two key components:
 
-- *Identity Provider Simulator:* We built an Identity Provider simulator to help you test for all possible Single Sign-on scenarios eliminating the need for you to use the likes of Okta, Microsoft Entra ID etc. This is provided at no cost to help you get familiar with enterprise Single Sign-on scenarios.
-- *Test Organization:* As part of your development environment, we have created a test organization with an SSO connection setup with our IdP Simulator so that you can test your integration for all possible scenarios. To help with your testing efforts, we also added <SimpleCode>@example.com</SimpleCode> or <SimpleCode>@example.org</SimpleCode> domains as part of this organization.
+- _Identity Provider Simulator:_ We built an Identity Provider simulator to help you test for all possible Single
+  Sign-on scenarios eliminating the need for you to use the likes of Okta, Microsoft Entra ID etc. This is provided at
+  no cost to help you get familiar with enterprise Single Sign-on scenarios.
+- _Test Organization:_ As part of your development environment, we have created a test organization with an SSO
+  connection setup with our IdP Simulator so that you can test your integration for all possible scenarios. To help with
+  your testing efforts, we also added <SimpleCode>@example.com</SimpleCode> or <SimpleCode>@example.org</SimpleCode>
+  domains as part of this organization.
 
-Please ensure you test for all three below Single Sign-on scenarios to prepare you to launch your SSO workflows in production with your real customers.
+Please ensure you test for all three below Single Sign-on scenarios to prepare you to launch your SSO workflows in
+production with your real customers.
 
 ## Scenario 1: Service Provider (SP) Initiated SSO
 
-In this most common scenario, users initiate Single Sign-On (SSO) from your application's login page. If you have not implemented Single Sign-on in your login page, please visit our [how-to guide](/sso/guides/setup-sso/build-login-page) to help you add SSO to your login page.
+In this most common scenario, users initiate Single Sign-On (SSO) from your application's login page. If you have not
+implemented Single Sign-on in your login page, please visit our [how-to guide](/sso/guides/setup-sso/build-login-page)
+to help you add SSO to your login page.
 
 Below is a quick workflow diagram of how SP Initiated SSO works:
 
-<figure>
+<figure className="limited-width">
   ![SP initiated SSO](@site/docs/sso/assets/single-sign-on/testing-sso/with-idp-simulator/1.png)
-  <figcaption>
-    SP (Your application) Initiated SSO
-  </figcaption>
+  <figcaption>SP (Your application) Initiated SSO</figcaption>
 </figure>
 
-To validate this scenario, ensure the following::
+To validate this scenario, ensure the following:
 
-- **Redirection to Identity Provider**: Verify that Scalekit correctly redirects the user to the appropriate identity provider based on the [Authorization URL](https://docs.scalekit.com/sso/guides/key-concepts/authorization-url) you have provided. This involves checking that the URL is constructed correctly and that the redirection occurs seamlessly.
-- **Retrieving User Details**: Confirm that your application can successfully retrieve user details by exchanging the <SimpleCode>code</SimpleCode> received in the previous step.
+- **Redirection to Identity Provider**: Verify that Scalekit correctly redirects the user to the appropriate identity
+  provider based on the [Authorization URL](https://docs.scalekit.com/sso/guides/key-concepts/authorization-url) you
+  have provided. This involves checking that the URL is constructed correctly and that the redirection occurs
+  seamlessly.
+- **Retrieving User Details**: Confirm that your application can successfully retrieve user details by exchanging
+  the <SimpleCode>code</SimpleCode> received in the previous step.
 
 To test this scenario, generate authorization URL using the organization ID of the Test Organization.
 
-<figure>
+<figure className="limited-width">
   ![SP initiated SSO](@site/docs/sso/assets/single-sign-on/testing-sso/with-idp-simulator/1.1.png)
   <figcaption>
     The Test Organization is located at Workspace → Development → Organizations → Test Organization.
   </figcaption>
 </figure>
 
-Here is a code snippet that demonstrates generating an Authorization URL using an Organization ID, as outlined in Step 2 of the sequence diagram. See the Authorization URL [documentation](/sso/guides/key-concepts/authorization-url) for more details.
+Here is a code snippet that demonstrates generating an Authorization URL using an Organization ID, as outlined in Step 2
+of the sequence diagram. See the Authorization URL [documentation](/sso/guides/key-concepts/authorization-url) for more
+details.
 
 <Tabs groupId="tech-stack" queryString>
 <TabItem value="nodejs" label="Node.js">
 
 ```js
 const options = {};
-options["organizationId"] = 'org_32656XXXXXX0438';
+options['organizationId'] = 'org_32656XXXXXX0438';
 
 // Generate Authorization Url
-const authorizationURL = scalekit.getAuthorizationUrl(
-  redirectUrl,
-  options,
-);
+const authorizationURL = scalekit.getAuthorizationUrl(redirectUrl, options);
 
 res.redirect(authorizationUrl);
 ```
@@ -110,80 +120,108 @@ String url = scalekitClient
 </TabItem>
 </Tabs>
 
-The user will be redirected to the Identity Provider (IdP) Simulator, where they can select a scenario to simulate as a user. Select "User Login via SSO" to view a form. This form is used to simulate the Identity Provider (IdP) passing the relevant details that correspond to a user signing into your application.
+The user will be redirected to the Identity Provider (IdP) Simulator, where they can select a scenario to simulate as a
+user. Select "User Login via SSO" to view a form. This form is used to simulate the Identity Provider (IdP) passing the
+relevant details that correspond to a user signing into your application.
 
-<figure>
+<figure className="limited-width">
   ![IdP Simulator](@site/docs/sso/assets/single-sign-on/testing-sso/with-idp-simulator/2.1.png)
-  <figcaption>
-    User Login via SSO
-  </figcaption>
+  <figcaption>User Login via SSO</figcaption>
 </figure>
 
-Enter the user details simulating an user signing into your application via SSO. Your app will receive the <SimpleCode>idToken</SimpleCode> indicating that your simulation was successful. The following are a details encoded in the <SimpleCode>idToken</SimpleCode>.
+Enter the user details simulating an user signing into your application via SSO. Your app will receive the
 
-<figure>
+<SimpleCode>idToken</SimpleCode> indicating that your simulation was successful. The following are a details encoded in the
+<SimpleCode>idToken</SimpleCode>.
+
+<figure className="limited-width">
   ![IdP Simulator](@site/docs/sso/assets/single-sign-on/testing-sso/with-idp-simulator/2.2.png)
-  <figcaption>
-    Successful SSO Simulation (Test app renders response in JSON)
-  </figcaption>
+  <figcaption>Successful SSO Simulation (Test app renders response in JSON)</figcaption>
 </figure>
 
 :::tip
- To receive Custom Attributes from the IdP Simulator, ensure they are registered in Scalekit Workspace by navigating to Development > Single Sign-On > Custom Attributes.
- :::
+
+To receive Custom Attributes from the IdP Simulator, ensure they are registered in Scalekit Workspace by navigating to
+Development > Single Sign-On > Custom Attributes.
+
+:::
 
 ## Scenario 2: User initiates SSO from IdP
 
-Users can also initiate the sign-in process to your application from the Identity Provider (IdP), typically through an applications catalog. This flow enables them to see the applications available to them within their organization and access them conveniently.
+Users can also initiate the sign-in process to your application from the Identity Provider (IdP), typically through an
+applications catalog. This flow enables them to see the applications available to them within their organization and
+access them conveniently.
 
-If you haven't yet implemented IdP initiated SSO workflow in your application via Scalekit, please go through our [how-to guide](/sso/guides/setup-sso/implement-idp-initiated-sso) and come back to here to understand how to test for this scenario.
+If you haven't yet implemented IdP initiated SSO workflow in your application via Scalekit, please go through our
+[how-to guide](/sso/guides/setup-sso/implement-idp-initiated-sso) and come back to here to understand how to test for
+this scenario.
 
 Below is a quick workflow diagram of how SP Initiated SSO works:
-<figure>
+
+<figure className="limited-width">
   ![IdP initiated SSO](@site/docs/sso/assets/single-sign-on/testing-sso/with-idp-simulator/4.png)
-  <figcaption>
-    IdP initiated SSO
-  </figcaption>
+  <figcaption>IdP initiated SSO</figcaption>
 </figure>
 
-To test this scenario, generate the Authorization URL using the Test Organization and get redirected to the IdP Simulator. Select "IdP initiated SSO" from the dropdown menu and proceed to simulate the login by entering the test user details.
+To test this scenario, generate the Authorization URL using the Test Organization and get redirected to the IdP
+Simulator. Select "IdP initiated SSO" from the dropdown menu and proceed to simulate the login by entering the test user
+details.
 
-<figure>
+<figure className="limited-width">
   ![IdP initiated SSO](@site/docs/sso/assets/single-sign-on/testing-sso/with-idp-simulator/3.1.png)
-  <figcaption>
-    IdP initiated SSO
-  </figcaption>
+  <figcaption>IdP initiated SSO</figcaption>
 </figure>
 
-Implement a condition in your callback handler to identify whether the callback from Scalekit is IdP-initiated or not to handle this scenario. Learn more about [implementing IdP initiated SSO](/sso/guides/setup-sso/implement-idp-initiated-sso).
+Implement a condition in your callback handler to identify whether the callback from Scalekit is IdP-initiated or not to
+handle this scenario. Learn more about
+[implementing IdP initiated SSO](/sso/guides/setup-sso/implement-idp-initiated-sso).
 
 <figure>
   ![IdP initiated SSO](@site/docs/sso/assets/single-sign-on/testing-sso/with-idp-simulator/3.2.png)
-  <figcaption>
-    Successful IdP initiated SSO Simulation (Test app renders response in JSON)
-  </figcaption>
+  <figcaption>Successful IdP initiated SSO Simulation (Test app renders response in JSON)</figcaption>
 </figure>
 
-If the callback is IdP-initiated, retrieve the necessary details, such as <SimpleCode>connection_id</SimpleCode> or <SimpleCode>organization_id</SimpleCode>, from Scalekit to construct an Authorization URL. This step effectively converts an IdP-initiated SSO into an SP-initiated SSO.
+If the callback is IdP-initiated, retrieve the necessary details, such as <SimpleCode>connection_id</SimpleCode>
+or <SimpleCode>organization_id</SimpleCode>, from Scalekit to construct an Authorization URL. This step effectively
+converts an IdP-initiated SSO into an SP-initiated SSO.
 
 :::note
 
-- For simulation purposes in the IdP simulator, you can select and simulate IdP-initiated SSO to test your application. In an ideal scenario, users would choose your app from their Identity Provider and begin the sign-in process into your app.
-- The IdP simulator uses the default redirect URL as the callback URL when a user initiates SSO from the IdP. Ensure the correct default redirect URL is configured in the Scalekit dashboard.
+- For simulation purposes in the IdP simulator, you can select and simulate IdP-initiated SSO to test your application.
+  In an ideal scenario, users would choose your app from their Identity Provider and begin the sign-in process into your
+  app.
+- The IdP simulator uses the default redirect URL as the callback URL when a user initiates SSO from the IdP. Ensure the
+  correct default redirect URL is configured in the Scalekit dashboard.
 
 :::
 
 ## Scenario 3: Handle Errors
 
-Users may encounter errors in less-than-ideal scenarios. Your app should be equipped to handle these situations to meet user expectations. To simulate and manage errors, after redirecting to the Authorization URL, select the "Error" scenario and proceed
+Users may encounter errors in less-than-ideal scenarios. Your app should be equipped to handle these situations to meet
+user expectations. To simulate and manage errors, after redirecting to the Authorization URL, select the "Error"
+scenario and proceed
 
 <figure>
   ![Error Scenario](@site/docs/sso/assets/single-sign-on/testing-sso/with-idp-simulator/4.0.png)
-    <figcaption>
-     Simulate Error Scenario
-    </figcaption>
+  <figcaption>Simulate Error Scenario</figcaption>
 </figure>
 
 ## Next Steps
 
-After validating all scenarios, you are ready to go live. Visit our [Launch Checklist](/sso/launch-checklist) guide before you start onboarding real customers in your production environment.
+After validating all scenarios, you are ready to go live. Visit our [Launch Checklist](/sso/launch-checklist) guide
+before you start onboarding real customers in your production environment.
+
+```ts twoslash
+interface Todo {
+  title: string;
+}
+// ---cut---
+const todo: Readonly<Todo> = {
+  title: 'Delete inactive users'.toUpperCase(),
+};
+//    ^?
+
+todo.title = 'Hello';
+Number.parseInt('123', 10);
+//      ^?
+```

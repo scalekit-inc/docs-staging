@@ -70,9 +70,6 @@ err := sc.Organization.DeletePortalLink(
 </CodeWithHeader>
 <CodeWithHeader title="Response">
 
-```js
-{
-}
-```
+<JsonViewer src={{}} />
 
 </CodeWithHeader>

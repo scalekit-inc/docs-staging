@@ -1,4 +1,4 @@
-<IntersectingHeader id="tag/Connection" title="Connection" />
+<IntersectingHeader id="tag/Connection" title="SSO Connection" />
 <div className="row section">
     <div className="col col--6">
     </div>
@@ -107,14 +107,14 @@
                     <Parameter attrKey="token_auth_type" type="string" description="" />
                 </details>
             </Parameter>
-            <Parameter attrKey="create_time" type="string" description="Timestamp at which this organization record was created in ISO 8601 format" />
-            <Parameter attrKey="update_time" type="string" description="Timestamp at which this organization record was last updated in ISO 8601 format" />
+            <Parameter attrKey="create_time" type="string" description="Timestamp at which this organization record was created in RFC 3339 format" />
+            <Parameter attrKey="update_time" type="string" description="Timestamp at which this organization record was last updated in RFC 3339 format" />
         </ul>
     </div>
     <div className="col col--6">
         <div className="scalar-card-sticky">
             <CodeWithHeader title="Connection Object">
-                ```js
+            <JsonViewer src={
                 {
                     "id": "conn_2123312131125533",
                     "organization_id": "org_1232434",
@@ -130,21 +130,42 @@
                         "sp_metadata_url": "https://youridp.com/service/saml/metadata",
                         "idp_metadata_url": "https://youridp.com/service/idp/metadata",
                         "idp_sso_url": "https://youridp.com/sso/saml",
-                    }
+                    },
                     "attribute_mapping":{
                         "email": "email",
                         "family_name": "lastName",
                         "given_name": "firstName",
                         "sub": "nameid",
-                    }
+                    },
                     "create_time": "2024-01-05T14:48:00.000Z",
-                }
-                ```
+                }} />
             </CodeWithHeader>
         </div>
     </div>
 </div>
+
 <APIEndpoint tag="Connection" method="get" endpoint="/api/v1/connections" />
-<APIEndpoint tag="Connection" method="get" endpoint="/api/v1/organizations/{organization_id}/connections/{id}" />
-<APIEndpoint tag="Connection" method="patch" endpoint="/api/v1/organizations/{organization_id}/connections/{id}:disable" />
-<APIEndpoint tag="Connection" method="patch" endpoint="/api/v1/organizations/{organization_id}/connections/{id}:enable" />
+
+<APIEndpoint
+    tag="Connection"
+    method="get"
+    endpoint="/api/v1/organizations/{organization_id}/connections/{id}"
+/>
+
+<APIEndpoint
+    tag="Connection"
+    method="patch"
+    endpoint="/api/v1/organizations/{organization_id}/connections/{id}:disable"
+/>
+
+<APIEndpoint
+    tag="Connection"
+    method="patch"
+    endpoint="/api/v1/organizations/{organization_id}/connections/{id}:enable"
+/>
+
+<APIEndpoint
+    tag="Connection"
+    method="patch"
+    endpoint="/api/v1/organizations/{organization_id}/connections/{id}:enable"
+/>

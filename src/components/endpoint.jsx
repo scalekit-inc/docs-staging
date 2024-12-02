@@ -1,18 +1,18 @@
-var data = require("../../openapi/scalekit.swagger.json");
+var data = require('../../openapi/scalekit.swagger.json');
 
 function getEndPoints(tag) {
   let desiredEndpoints = [];
-  for (const endpoint in data["paths"]) {
+  for (const endpoint in data['paths']) {
     // go through all the endpoints
-    for (const key in data["paths"][endpoint]) {
+    for (const key in data['paths'][endpoint]) {
       // Go through all the methods with that endpoint
-      const value = data["paths"][endpoint][key];
+      const value = data['paths'][endpoint][key];
       // get the actual method + endpoint object and check if it contains tag
       if (value.tags.includes(tag)) {
         desiredEndpoints.push({
           method: key,
           label: endpoint,
-          href: "#tag/" + tag + "/" + key + endpoint,
+          href: '#tag/' + tag + '/' + key + endpoint,
         });
       }
     }
@@ -20,7 +20,7 @@ function getEndPoints(tag) {
   return desiredEndpoints;
 }
 
-function Endpoint({ href, method, label }) {
+export function Endpoint({ href, method, label }) {
   return (
     <a className="endpoint" href={href}>
       <span className={method}>{method}</span>
@@ -34,9 +34,7 @@ export default function Endpoints({ tag, excludeEndpoints = [] }) {
     <div className="scalar-card scalar-card-sticky">
       <div className="scalar-card-content scalar-card--muted scalar-card-header">
         <div className="scalar-card-header-slots">
-          <div className="scalar-card-header-slot scalar-card-header-title">
-            Endpoints
-          </div>
+          <div className="scalar-card-header-slot scalar-card-header-title">Endpoints</div>
           <div className="scalar-card-header-slot scalar-card-header-actions"></div>
         </div>
       </div>
@@ -44,14 +42,12 @@ export default function Endpoints({ tag, excludeEndpoints = [] }) {
         <div className="endpoints">
           {getEndPoints(tag)
             .filter(
-              (endpoint) =>
+              endpoint =>
                 !excludeEndpoints.some(
-                  (exclude) =>
-                    exclude.method === endpoint.method &&
-                    exclude.label === endpoint.label
-                )
+                  exclude => exclude.method === endpoint.method && exclude.label === endpoint.label,
+                ),
             )
-            .map((endpoint) => (
+            .map(endpoint => (
               <Endpoint
                 key={endpoint.href}
                 href={endpoint.href}

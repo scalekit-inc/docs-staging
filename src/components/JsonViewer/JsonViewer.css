@@ -1,0 +1,17 @@
+/* Override the max-width rule */
+.jer-editor-container {
+  max-width: inherit !important;
+  margin-right: 0px !important;
+  font-family: var(--ifm-font-family-monospace) !important;
+  font-size: 12px !important;
+}
+
+.jer-collapse-icon svg {
+  width: 0.7rem;
+  line-height: 1rem;
+  vertical-align: bottom;
+}
+
+.border-top-left-radius .border-top-right-radius {
+  border-radius: 0px !important;
+}

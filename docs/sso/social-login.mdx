@@ -1,24 +1,39 @@
 ---
-title: "Getting Started with Social Connections Using Scalekit"
-description: "Learn how to integrate social login functionality into your application using Scalekit. Enable OAuth login with providers like Google, Microsoft, and GitHub to enhance security and user experience."
-keywords: ["Social Login", "Scalekit", "OAuth", "Single Sign-On", "SSO", "Google Login", "Microsoft Login", "GitHub Login", "B2B SaaS Security", "Identity Provider"]
+title: 'Getting Started with Social Connections Using Scalekit'
+description:
+  'Learn how to integrate social login functionality into your application using Scalekit. Enable OAuth login with
+  providers like Google, Microsoft, and GitHub to enhance security and user experience.'
+keywords:
+  [
+    'Social Login',
+    'Scalekit',
+    'OAuth',
+    'Single Sign-On',
+    'SSO',
+    'Google Login',
+    'Microsoft Login',
+    'GitHub Login',
+    'B2B SaaS Security',
+    'Identity Provider',
+  ]
 ---
+
 import InstallSDK from '@site/docs/sso/templates/_install-sdk.md';
 
 # Getting Started with Social Connections
 
-<Subtitle>
-  Enable OAuth login to your application with Google, Microsoft,
-  GitHub, etc.
-</Subtitle>
+<Subtitle>Enable OAuth login to your application with Google, Microsoft, GitHub, etc.</Subtitle>
 
-Single Sign-On (SSO) enhances B2B SaaS application security and user experience by enabling secure authentication through an organization's Identity Provider (IdP). Some organizations use social identity providers like Google, Microsoft, GitHub, Salesforce etc.
+Single Sign-On (SSO) enhances B2B SaaS application security and user experience by enabling secure authentication
+through an organization's Identity Provider (IdP). Some organizations use social identity providers like Google,
+Microsoft, GitHub, Salesforce etc.
 
-Scalekit enables your users login to your application with any of the social identity providers through OAuth 2.0. This quickstart guide will show you how to add Social Login (e.g., Login with Google) functionality to your application with just a few lines of code.
+Scalekit enables your users login to your application with any of the social identity providers through OAuth 2.0. This
+quickstart guide will show you how to add Social Login (e.g., Login with Google) functionality to your application with
+just a few lines of code.
 
 <figure>
-  ![How Scalekit
-  works](@site/docs/sso/assets/single-sign-on/quickstart/scalekit_social.png)
+  ![How Scalekit works](@site/docs/sso/assets/single-sign-on/quickstart/scalekit_social.png)
   <figcaption>Login with Social Providers via Scalekit</figcaption>
 </figure>
 
@@ -31,13 +46,15 @@ Before diving in, make sure you have:
 
 ### Install the Scalekit SDK
 
-Scalekit offers language-specific SDKs for quick and easy integration with social login providers. Use the installation instructions below for your technology stack.
+Scalekit offers language-specific SDKs for quick and easy integration with social login providers. Use the installation
+instructions below for your technology stack.
 
 <InstallSDK />
 
 ### Set up API credentials
 
-Secure your Scalekit API communication by setting up environment variables. You'll need three key pieces of information from your Scalekit Dashboard:
+Secure your Scalekit API communication by setting up environment variables. You'll need three key pieces of information
+from your Scalekit Dashboard:
 
 1. **Environment URL**: The base URL for API calls. Each environment (dev, staging, prod) has a unique URL.
 2. **Client ID**: Your app's unique identifier for Scalekit communications.
@@ -55,7 +72,7 @@ Never hardcode secrets in your app. Use environment variables instead. Here's ho
 
 <CodeWithHeader title=".env">
 
-```jsx
+```dotenv
 SCALEKIT_ENVIRONMENT_URL = 'https://b2b-app-dev.scalekit.com';
 SCALEKIT_CLIENT_ID = '<CLIENT_ID_FROM_SCALEKIT_DASHBOARD>';
 SCALEKIT_CLIENT_SECRET = '<SECRET_FROM_SCALEKIT_DASHBOARD>';
@@ -63,31 +80,35 @@ SCALEKIT_CLIENT_SECRET = '<SECRET_FROM_SCALEKIT_DASHBOARD>';
 
 </CodeWithHeader>
 
-Now you're ready to start integrating social connections into your app! Next, we'll cover how to use the SDK to authenticate users.
+Now you're ready to start integrating social connections into your app! Next, we'll cover how to use the SDK to
+authenticate users.
 
 ## 2. Authorize the Users
 
-To start login with social connections, your app must redirect users to the Scalekit Authorization URL with appropriate social connection provider details.
+To start login with social connections, your app must redirect users to the Scalekit Authorization URL with appropriate
+social connection provider details.
 
 Construct the Authorization URL using the following query parameters:
-| Parameter | Details | | | |
-|------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|---|---|
-| <SimpleCode className="text--semibold">redirect_uri</SimpleCode> | Where Scalekit sends users after IdP authentication. <br />Example: <SimpleCode>https:<span></span>//your-saas-app.com/auth/callback</SimpleCode> After the user is logged into the social provider, Scalekit redirects the user to this URI with one time authorization `code`. In the later section, we will explain how to use this unique `code` to fetch user details | | | |
-| <SimpleCode className="text--semibold">client_id</SimpleCode> | Your app's unique Scalekit identifier which is mandatory for all requests. This uniquely identifies both your app and the environment (staging, prod). | | | |
-| <SimpleCode className="text--semibold">provider</SimpleCode> | Informs Scalekit which Social Provider to use. You can use <SimpleCode>provider</SimpleCode> as the request parameter with value being the unique code of the provider. For e.g., `microsoft`. <br />Currently, we support the following providers: `google`, `microsoft`, `github`, `gitlab`, `linkedin`, `salesforce` | | | |
+
+| Parameter                                                        | Details                                                                                                                                                                                                                                                                                                                                                                    |
+| :--------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <SimpleCode className="text--semibold">redirect_uri</SimpleCode> | Where Scalekit sends users after IdP authentication. <br />Example: <SimpleCode>https:<span></span>//your-saas-app.com/auth/callback</SimpleCode> After the user is logged into the social provider, Scalekit redirects the user to this URI with one time authorization `code`. In the later section, we will explain how to use this unique `code` to fetch user details |
+| <SimpleCode className="text--semibold">client_id</SimpleCode>    | Your app's unique Scalekit identifier which is mandatory for all requests. This uniquely identifies both your app and the environment (staging, prod).                                                                                                                                                                                                                     |
+| <SimpleCode className="text--semibold">provider</SimpleCode>     | Informs Scalekit which Social Provider to use. You can use <SimpleCode>provider</SimpleCode> as the request parameter with value being the unique code of the provider. For e.g., `microsoft`. <br />Currently, we support the following providers: `google`, `microsoft`, `github`, `gitlab`, `linkedin`, `salesforce`                                                    |
 
 <CodeWithHeader title="Example Authorization URL">
 
-```sh
-https://auth.scalekit.com/authorize
-  ?client_id=skc_1220XXXXX349527
-  &redirect_uri=https://yourapp.com/auth/callback
-  &provider=microsoft
+```xml
+https://auth.scalekit.com/authorize?
+  client_id=skc_122056050118122349527&
+  redirect_uri=https://yourapp.com/auth/callback&
+  provider=microsoft
 ```
 
 </CodeWithHeader>
 
-See our [Authorization URL Parameters Guide](/sso/guides/key-concepts/authorization-url) for a full list of accepted parameters.
+See our [Authorization URL Parameters Guide](/sso/guides/key-concepts/authorization-url) for a full list of accepted
+parameters.
 
 Next, construct your Authorization URL with these parameters and redirect users to this URL when they try to log in.
 
@@ -99,11 +120,7 @@ Next, construct your Authorization URL with these parameters and redirect users 
 import { Scalekit } from '@scalekit-sdk/node';
 
 // Initialize the SDK client
-const scalekit = new Scalekit(
-  '<SCALEKIT_ENVIRONMENT_URL>',
-  '<SCALEKIT_CLIENT_ID>',
-  '<SCALEKIT_CLIENT_SECRET>',
-);
+const scalekit = new Scalekit('<SCALEKIT_ENVIRONMENT_URL>', '<SCALEKIT_CLIENT_ID>', '<SCALEKIT_CLIENT_SECRET>');
 
 const authorizationURL = scalekit.getAuthorizationUrl(redirectUri, {
   provider: 'microsoft',
@@ -185,10 +202,7 @@ public class Main {
     options.setProvider("microsoft");
     try {
       // Pass the Social Login Provider details while constructing the authorization URL.
-      String url = scalekitClient
-        .authentication()
-        .getAuthorizationUrl(redirectUrl, options)
-        .toString();
+      String url = scalekitClient.authentication().getAuthorizationUrl(redirectUrl, options).toString();
     } catch (Exception e) {
       System.out.println(e.getMessage());
     }
@@ -205,7 +219,10 @@ Finally, handle the callback at your <SimpleCode>redirect_uri</SimpleCode> to co
 
 ## 3. Fetch User Details
 
-After a successful SSO, Scalekit redirects the user to your <SimpleCode>redirect_uri</SimpleCode> with a unique <SimpleCode>code</SimpleCode> in the browser. Exchange the <SimpleCode>code</SimpleCode> for user profile details (on the serverside).
+After a successful SSO, Scalekit redirects the user to your <SimpleCode>redirect_uri</SimpleCode> with a unique
+
+<SimpleCode>code</SimpleCode> in the browser. Exchange the <SimpleCode>code</SimpleCode> for user profile details (on the
+serverside).
 
 Here's how to turn that <SimpleCode>code</SimpleCode> into user data:
 

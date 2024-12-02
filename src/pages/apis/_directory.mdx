@@ -1,0 +1,657 @@
+<IntersectingHeader id="tag/Directory" title="Directory" />
+
+<div className="row section">
+  <div className="col col--6">
+    The Directory object represents a connection to a <TermTip jargon="directory provider" />. You
+    can programmatically enable or disable directories for an organization using the Directory API.
+    Scalekit synchronizes and stores the users and groups from connected directories. The Directory
+    API allows you to fetch users and groups from the directory on demand.
+  </div>
+  <div className="col col--6">
+    <Endpoints
+      tag="Directory"
+      excludeEndpoints={[
+        {
+          method: 'post',
+          label: '/api/v1/organizations/{organization_id}/directories/{directory_id}/secrets',
+        },
+        {
+          method: 'post',
+          label:
+            '/api/v1/organizations/{organization_id}/directories/{directory_id}/secrets:regenerate',
+        },
+      ]}
+    />
+  </div>
+</div>
+
+<IntersectingHeader
+  id="tag/Directory/object"
+  title="The Directory Object"
+  subheading="true"
+  classList="ApiCategoryList"
+/>
+
+<div className="row section">
+    <div className="col col--6">
+
+        <ul className="ApiReference-Parameters">
+        <li className="ApiReference-Parameter header">Attributes</li>
+
+        <Parameter
+            attrKey="id"
+            type="string"
+            description="Unique identifier for the directory."
+        />
+
+        <Parameter
+            attrKey="name"
+            type="string"
+            description="The name of the directory."
+        />
+
+        <Parameter
+            attrKey="directory_provider"
+            type="enum"
+            description="The directory provider.">
+            <details>
+            <summary>Possible values</summary>
+            <Parameter attrKey="OKTA" />
+            </details>
+        </Parameter>
+
+        <Parameter
+            attrKey="directory_type"
+            type="enum"
+            description="The protocol used to connect to the directory.">
+            <details>
+            <summary>Possible values</summary>
+            <Parameter attrKey="SCIM" />
+            </details>
+        </Parameter>
+
+        <Parameter
+            attrKey="directory_endpoint"
+            type="string"
+            description="The URL endpoint for connecting to the directory."
+        />
+
+        <Parameter
+            attrKey="enabled"
+            type="boolean"
+            description="Indicates if the directory connection is enabled."
+        />
+
+        <Parameter
+            attrKey="status"
+            type="enum"
+            description="The status of the directory connection.">
+            <details>
+            <summary>Possible values</summary>
+            <Parameter attrKey="DRAFT" />
+            </details>
+        </Parameter>
+
+        <Parameter
+            attrKey="organization_id"
+            type="string"
+            description="The ID of the organization the directory belongs to."
+        />
+
+        <Parameter
+            attrKey="source"
+            type="string"
+            description="The source of the directory."
+        />
+
+        <Parameter
+            attrKey="last_synced_at"
+            type="string"
+            description="Timestamp of when the directory was last synced in RFC 3339 format."
+        />
+
+        <Parameter
+            attrKey="total_users"
+            type="integer"
+            description="The total number of users in the directory."
+        />
+
+        <Parameter
+            attrKey="total_groups"
+            type="integer"
+            description="The total number of groups in the directory."
+        />
+
+        <Parameter
+            attrKey="mappings"
+            type="array"
+            description="An array of attribute mappings between the directory and Scalekit.">
+            <details>
+            <summary>Attributes</summary>
+            <ul className="ApiReference-Parameters">
+                <Parameter
+                attrKey="key"
+                type="string"
+                description="The attribute key in the directory."
+                />
+                <Parameter
+                attrKey="map_to"
+                type="string"
+                description="The attribute to map to in Scalekit."
+                />
+                <Parameter
+                attrKey="display_name"
+                type="string"
+                description="The display name for the mapped attribute."
+                />
+            </ul>
+            </details>
+        </Parameter>
+
+        <Parameter
+            attrKey="attribute_mappings"
+            type="object"
+            description="Object containing attribute mappings.">
+            <details>
+            <summary>Attributes</summary>
+            <ul className="ApiReference-Parameters">
+                <Parameter
+                attrKey="attributes"
+                type="array"
+                description="Array of attribute mappings.">
+                <details>
+                    <summary>Attributes</summary>
+                    <ul className="ApiReference-Parameters">
+                    <Parameter
+                        attrKey="key"
+                        type="string"
+                        description="The attribute key."
+                    />
+                    <Parameter
+                        attrKey="map_to"
+                        type="string"
+                        description="The attribute to map to."
+                    />
+                    </ul>
+                </details>
+                </Parameter>
+            </ul>
+            </details>
+        </Parameter>
+
+        <Parameter
+            attrKey="role_assignments"
+            type="object"
+            description="Object containing role assignments.">
+            <details>
+            <summary>Attributes</summary>
+            <ul className="ApiReference-Parameters">
+                <Parameter
+                attrKey="assignments"
+                type="array"
+                description="Array of role assignments.">
+                <details>
+                    <summary>Attributes</summary>
+                    <ul className="ApiReference-Parameters">
+                    <Parameter
+                        attrKey="group_id"
+                        type="string"
+                        description="The ID of the group to assign the role to."
+                    />
+                    <Parameter
+                        attrKey="role_id"
+                        type="string"
+                        description="The ID of the role to assign."
+                    />
+                    </ul>
+                </details>
+                </Parameter>
+            </ul>
+            </details>
+        </Parameter>
+
+        <Parameter
+            attrKey="secrets"
+            type="array"
+            description="An array of secrets associated with the directory.">
+            <details>
+            <summary>Attributes</summary>
+            <ul className="ApiReference-Parameters">
+                <Parameter
+                attrKey="id"
+                type="string"
+                description="The ID of the secret."
+                />
+                <Parameter
+                attrKey="directory_id"
+                type="string"
+                description="The ID of the directory the secret belongs to."
+                />
+                <Parameter
+                attrKey="secret_suffix"
+                type="string"
+                description="The suffix of the secret."
+                />
+                <Parameter
+                attrKey="status"
+                type="enum"
+                description="The status of the secret.">
+                <details>
+                    <summary>Possible values</summary>
+                    <Parameter attrKey="INACTIVE" />
+                </details>
+                </Parameter>
+                <Parameter
+                attrKey="create_time"
+                type="string"
+                description="Timestamp of when the secret was created in RFC 3339 format."
+                />
+                <Parameter
+                attrKey="expire_time"
+                type="string"
+                description="Timestamp of when the secret expires in RFC 3339 format."
+                />
+                <Parameter
+                attrKey="last_used_time"
+                type="string"
+                description="Timestamp of when the secret was last used in RFC 3339 format."
+                />
+            </ul>
+            </details>
+        </Parameter>
+
+        <Parameter
+            attrKey="stats"
+            type="object"
+            description="Object containing directory statistics.">
+            <details>
+            <summary>Attributes</summary>
+            <ul className="ApiReference-Parameters">
+                <Parameter
+                attrKey="total_users"
+                type="integer"
+                description="The total number of users in the directory."
+                />
+                <Parameter
+                attrKey="total_groups"
+                type="integer"
+                description="The total number of groups in the directory."
+                />
+                <Parameter
+                attrKey="user_updated_at"
+                type="string"
+                description="Timestamp of when the user stats were last updated in RFC 3339 format."
+                />
+                <Parameter
+                attrKey="group_updated_at"
+                type="string"
+                description="Timestamp of when the group stats were last updated in RFC 3339 format."
+                />
+            </ul>
+            </details>
+        </Parameter>
+        </ul>
+    </div>
+    <div className="col col--6">
+       <div className="scalar-card-sticky">
+       <CodeWithHeader title="Directory Object">
+            <JsonViewer src={{
+                "directory": {
+                    "attribute_mappings": {
+                    "attributes": [
+                        {
+                        "key": "string",
+                        "map_to": "string"
+                        }
+                    ]
+                    },
+                    "directory_endpoint": "string",
+                    "directory_provider": "OKTA",
+                    "directory_type": "SCIM",
+                    "enabled": true,
+                    "id": "string",
+                    "last_synced_at": "2019-08-24T14:15:22Z",
+                    "mappings": [
+                    {
+                        "display_name": "string",
+                        "key": "string",
+                        "map_to": "string"
+                    }
+                    ],
+                    "name": "string",
+                    "organization_id": "string",
+                    "role_assignments": {
+                    "assignments": [
+                        {
+                        "group_id": "dirgroup_121312434123",
+                        "role_id": "role_12131243412331"
+                        }
+                    ]
+                    },
+                    "secrets": [
+                    {
+                        "create_time": "2019-08-24T14:15:22Z",
+                        "directory_id": "string",
+                        "expire_time": "2019-08-24T14:15:22Z",
+                        "id": "string",
+                        "last_used_time": "2019-08-24T14:15:22Z",
+                        "secret_suffix": "string",
+                        "status": "INACTIVE"
+                    }
+                    ],
+                    "source": "string",
+                    "stats": {
+                    "group_updated_at": "2019-08-24T14:15:22Z",
+                    "total_groups": 0,
+                    "total_users": 0,
+                    "user_updated_at": "2019-08-24T14:15:22Z"
+                    },
+                    "status": "DRAFT",
+                    "total_groups": 0,
+                    "total_users": 0
+                }
+            }} />
+       </CodeWithHeader>
+       </div>
+    </div>
+
+</div>
+
+<IntersectingHeader
+  id="tag/DirectoryUser/object"
+  title="The Directory User Object"
+  subheading="true"
+  classList="ApiCategoryList"
+/>
+
+<div className="row section">
+    <div className="col col--6">
+        <ul className="ApiReference-Parameters">
+            <li className="ApiReference-Parameter header">Attributes</li>
+
+            <Parameter
+                attrKey="id"
+                type="string"
+                description="Unique identifier for the directory user. This is a system-generated unique identifier that distinguishes each user within the directory."
+            />
+
+            <Parameter
+                attrKey="organization_id"
+                type="string"
+                description="Identifier of the organization to which the user belongs. This helps in segregating users across different organizational contexts."
+            />
+
+            <Parameter
+                attrKey="dp_id"
+                type="string"
+                description="External identifier from the identity provider (IdP). This is the original user identifier as recognized by the source directory or identity management system."
+            />
+
+            <Parameter
+                attrKey="preferred_username"
+                type="string"
+                description="The preferred username as defined by the identity provider. This may differ from the email address and is often used for login purposes."
+            />
+
+            <Parameter
+                attrKey="email"
+                type="string"
+                description="Primary email address associated with the user. Used for communication and often as a unique identifier."
+            />
+
+            <Parameter
+                attrKey="active"
+                type="boolean"
+                description="Indicates the current status of the user account. When true, the user is active and can access the system; when false, the account is disabled."
+            />
+
+            <Parameter
+                attrKey="name"
+                type="string"
+                description="Full name of the user, typically combining given name and family name."
+            />
+
+            <Parameter
+                attrKey="roles"
+                type="array"
+                description="List of roles assigned to the user, defining their permissions and access levels within the system.">
+                <details>
+                    <summary>Role Object Attributes</summary>
+                    <ul className="ApiReference-Parameters">
+                        <Parameter
+                            attrKey="role"
+                            type="string"
+                            description="Machine-readable identifier for the role."
+                        />
+                        <Parameter
+                            attrKey="name"
+                            type="string"
+                            description="Human-readable name of the role."
+                        />
+                    </ul>
+                </details>
+            </Parameter>
+
+            <Parameter
+                attrKey="groups"
+                type="array"
+                description="Groups to which the user belongs, typically used for organizational or access management purposes.">
+                <details>
+                    <summary>Group Object Attributes</summary>
+                    <ul className="ApiReference-Parameters">
+                        <Parameter
+                            attrKey="id"
+                            type="string"
+                            description="Unique identifier of the group."
+                        />
+                        <Parameter
+                            attrKey="name"
+                            type="string"
+                            description="Name of the group."
+                        />
+                    </ul>
+                </details>
+            </Parameter>
+
+            <Parameter
+                attrKey="given_name"
+                type="string"
+                description="User's first name or given name as provided by the identity provider."
+            />
+
+            <Parameter
+                attrKey="family_name"
+                type="string"
+                description="User's last name or family name as provided by the identity provider."
+            />
+
+            <Parameter
+                attrKey="nickname"
+                type="string"
+                description="Informal or alternative name for the user, often used for casual identification."
+            />
+
+            <Parameter
+                attrKey="picture"
+                type="string"
+                description="URL pointing to the user's profile picture or avatar."
+            />
+
+            <Parameter
+                attrKey="phone_number"
+                type="string"
+                description="Primary contact phone number for the user, including country code."
+            />
+
+            <Parameter
+                attrKey="address"
+                type="object"
+                description="Structured address information for the user.">
+                <details>
+                    <summary>Address Object Attributes</summary>
+                    <ul className="ApiReference-Parameters">
+                        <Parameter
+                            attrKey="postal_code"
+                            type="string"
+                            description="Postal or ZIP code for the user's address."
+                        />
+                        <Parameter
+                            attrKey="state"
+                            type="string"
+                            description="State or region of the user's address."
+                        />
+                        <Parameter
+                            attrKey="formatted"
+                            type="string"
+                            description="Full, human-readable address string."
+                        />
+                    </ul>
+                </details>
+            </Parameter>
+
+            <Parameter
+                attrKey="custom_attributes"
+                type="object"
+                description="Flexible key-value store for additional user-specific attributes not covered by standard fields."
+            />
+
+            <Parameter
+                attrKey="raw_attributes"
+                type="object"
+                description="Unmodified payload directly from the directory provider, preserving all original attributes."
+            />
+        </ul>
+    </div>
+
+    <div className="col col--6">
+        <div className="scalar-card-sticky">
+            <CodeWithHeader title="Directory User Object">
+                <JsonViewer src={{
+                    id: 'diruser_98765432101234',
+                    organization_id: 'org_12345678901234',
+                    dp_id: '<scim_external_id>',
+                    preferred_username: '<idp_user_name>',
+                    email: 'user@example.org',
+                    active: true,
+                    name: 'Amit Sharma',
+                    roles: [
+                        {
+                            role_name: 'customer_success_manager',
+                        },
+                    ],
+                    groups: [
+                        {
+                            id: 'dirgroup_56789012345678',
+                            name: 'Group Name',
+                        },
+                    ],
+                    given_name: 'Amit',
+                    family_name: 'Sharma',
+                    nickname: 'Amit',
+                    picture: 'https://example.org/images/profile.jpg',
+                    phone_number: '+919812345678',
+                    address: {
+                        postal_code: '110001',
+                        state: 'Delhi',
+                        formatted: '456, Connaught Place, New Delhi, Delhi, 110001',
+                    },
+                    custom_attributes: {
+                        department: 'sales',
+                        attribute2: 'value2',
+                    },
+                    raw_attributes: {}
+                }} />
+            </CodeWithHeader>
+        </div>
+    </div>
+
+</div>
+
+<IntersectingHeader
+  id="tag/DirectoryGroup/object"
+  title="The Directory Group Object"
+  subheading="true"
+  classList="ApiCategoryList"
+/>
+
+<div className="row section">
+    <div className="col col--6">
+        <ul className="ApiReference-Parameters">
+            <li className="ApiReference-Parameter header">Attributes</li>
+
+            <Parameter
+                attrKey="id"
+                type="string"
+                description="Unique identifier for the directory group. This is a system-generated identifier that uniquely distinguishes each group within the directory."
+            />
+
+            <Parameter
+                attrKey="display_name"
+                type="string"
+                description="Human-readable name of the group, typically used for display purposes in user interfaces and reports."
+            />
+
+            <Parameter
+                attrKey="total_users"
+                type="integer"
+                description="Total number of users currently assigned to this group. Provides a quick count of group membership."
+            />
+
+            <Parameter
+                attrKey="updated_at"
+                type="string"
+                description="Timestamp indicating the last modification time of the group in RFC 3339 format. Useful for tracking recent changes to group composition."
+            />
+        </ul>
+    </div>
+
+    <div className="col col--6">
+        <div className="scalar-card-sticky">
+            <CodeWithHeader title="Directory Group Object">
+                <JsonViewer src={{
+                    id: 'dirgroup_38074475882742351',
+                    display_name: 'Skyflow Users',
+                    total_users: 2,
+                    updated_at: '2024-09-19T16:26:18.573597Z'
+                }} />
+            </CodeWithHeader>
+        </div>
+    </div>
+
+</div>
+
+<APIEndpoint
+  tag="Directory"
+  method="patch"
+  endpoint="/api/v1/organizations/{organization_id}/directories/{id}:enable"
+/>
+
+<APIEndpoint
+  tag="Directory"
+  method="get"
+  endpoint="/api/v1/organizations/{organization_id}/directories/{id}"
+/>
+
+<APIEndpoint
+  tag="Directory"
+  method="get"
+  endpoint="/api/v1/organizations/{organization_id}/directories/{directory_id}/users"
+/>
+
+<APIEndpoint
+  tag="Directory"
+  method="get"
+  endpoint="/api/v1/organizations/{organization_id}/directories/{directory_id}/groups"
+/>
+
+<APIEndpoint
+  tag="Directory"
+  method="get"
+  endpoint="/api/v1/organizations/{organization_id}/directories"
+/>
+
+<APIEndpoint
+  tag="Directory"
+  method="patch"
+  endpoint="/api/v1/organizations/{organization_id}/directories/{id}:disable"
+/>

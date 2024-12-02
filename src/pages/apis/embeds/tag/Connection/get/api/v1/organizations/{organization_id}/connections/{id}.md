@@ -1,4 +1,7 @@
-<CodeWithHeader method="get" endpoint="/api/v1/organizations/{organization_id}/connections/{id}">
+<CodeWithHeader
+method="get"
+endpoint="/api/v1/organizations/{organization_id}/directories/{id}">
+
 <Tabs groupId="tech-stack" querystring>
 <TabItem value="curl" label="cURL">
 
@@ -68,9 +71,7 @@ ScalekitClient scalekitClient = new ScalekitClient(
   "<SCALEKIT_CLIENT_SECRET>"
 );
 
-Connection connection = client
-  .connections()
-  .getConnectionById(connectionId, organizationId);
+Connection connection = client.connections().getConnectionById(connectionId, organizationId);
 
 ```
 
@@ -79,8 +80,7 @@ Connection connection = client
 </CodeWithHeader>
 <CodeWithHeader title="Response">
 
-```js
-{
+<JsonViewer src={{
   "id": "conn_2123312131125533",
   "organization_id": "org_1232434",
   "provider": "OKTA",
@@ -95,15 +95,14 @@ Connection connection = client
     "sp_metadata_url": "https://youridp.com/service/saml/metadata",
     "idp_metadata_url": "https://youridp.com/service/idp/metadata",
     "idp_sso_url": "https://youridp.com/sso/saml",
-  }
+  },
   "attribute_mapping":{
     "email": "email",
     "family_name": "lastName",
     "given_name": "firstName",
     "sub": "nameid",
-  }
-  "create_time": "2024-01-05T14:48:00.000Z",
-}
-```
+  },
+  "create_time": "2024-01-05T14:48:00.000Z"
+}} />
 
 </CodeWithHeader>
